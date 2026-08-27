@@ -89,7 +89,7 @@ const SECTIONS: LegalSection[] = [
     body: (
       <p>
         This website does not use analytics, advertising or tracking cookies. See our{' '}
-        <Link to="/cookie-policy" className="text-gold-400 hover:underline">
+        <Link to="/cookie-policy" className="text-gold-700 hover:underline">
           Cookie Policy
         </Link>{' '}
         for full details on what this site does and does not use.
@@ -129,7 +129,7 @@ const SECTIONS: LegalSection[] = [
         You may have rights to access, correct or request deletion of personal information you've shared with us,
         depending on your location. Since anything you send us arrives via WhatsApp or email rather than a database
         we maintain, exercising these rights is straightforward — contact us at{' '}
-        <a href={`mailto:${contact.email}`} className="text-gold-400 hover:underline">
+        <a href={`mailto:${contact.email}`} className="text-gold-700 hover:underline">
           {contact.email}
         </a>{' '}
         and let us know what you'd like us to do.
@@ -165,12 +165,12 @@ const SECTIONS: LegalSection[] = [
         </p>
         <p>
           Email:{' '}
-          <a href={`mailto:${contact.email}`} className="text-gold-400 hover:underline">
+          <a href={`mailto:${contact.email}`} className="text-gold-700 hover:underline">
             {contact.email}
           </a>
           <br />
           Phone:{' '}
-          <a href={`tel:+${contact.phoneHref}`} className="text-gold-400 hover:underline">
+          <a href={`tel:+${contact.phoneHref}`} className="text-gold-700 hover:underline">
             {contact.phoneDisplay}
           </a>
         </p>

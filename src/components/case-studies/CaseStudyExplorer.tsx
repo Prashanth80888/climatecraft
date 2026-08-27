@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { getCaseStudyBySlug } from '../../data/caseStudies'
 import { SectionLabel } from '../ui/SectionLabel'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { Reveal } from '../ui/Reveal'
 
 // The one "memorable" interaction on the overview page (see master brief §10/§24):
@@ -76,7 +77,7 @@ function DesktopExplorer({ images }: { images: string[] }) {
   return (
     <div ref={ref} className="relative hidden h-[480vh] lg:block">
       <div className="sticky top-24 grid h-[calc(100vh-9rem)] max-h-[760px] grid-cols-12 gap-8">
-        <div className="relative col-span-6 overflow-hidden rounded-[28px] border border-white/[0.06] shadow-[0_60px_140px_-50px_rgba(0,0,0,0.9)]">
+        <div className="relative col-span-6 overflow-hidden rounded-[28px] border border-white/70 shadow-[0_60px_140px_-50px_rgba(18,59,61,0.4)]">
           {images.map((src, i) => (
             <motion.img
               key={src}
@@ -87,7 +88,7 @@ function DesktopExplorer({ images }: { images: string[] }) {
               className="absolute inset-0 h-full w-full object-cover"
             />
           ))}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
         </div>
 
         <div className="col-span-6 flex flex-col justify-center pl-4">
@@ -98,7 +99,7 @@ function DesktopExplorer({ images }: { images: string[] }) {
                   className="h-1.5 w-1.5 rounded-full bg-gold-400"
                   style={{ opacity: dotOpacities[i], scale: dotScales[i] }}
                 />
-                {i < STAGES.length - 1 && <span className="h-px w-6 bg-white/10" />}
+                {i < STAGES.length - 1 && <span className="h-px w-6 bg-white/50" />}
               </div>
             ))}
           </div>
@@ -106,7 +107,7 @@ function DesktopExplorer({ images }: { images: string[] }) {
           <div className="relative mt-8 h-[280px]">
             {STAGES.map((stage, i) => (
               <motion.div key={stage.label} style={{ opacity: stageOpacities[i] }} className="absolute inset-0">
-                <span className="text-[11px] font-medium uppercase tracking-widest2 text-gold-400">
+                <span className="text-[11px] font-medium uppercase tracking-widest2 text-gold-700">
                   {stage.label}
                 </span>
                 <h3 className="mt-4 max-w-sm font-display text-[1.75rem] font-normal leading-[1.15] text-cream-100 sm:text-3xl">
@@ -129,12 +130,12 @@ function MobileExplorer({ images }: { images: string[] }) {
     <div className="flex flex-col gap-10 lg:hidden">
       {STAGES.map((stage, i) => (
         <Reveal key={stage.label} amount={0.4}>
-          <div className="overflow-hidden rounded-[20px] border border-white/[0.06]">
+          <div className="overflow-hidden rounded-[20px] border border-ink-900/[0.08]">
             <div className="aspect-[4/3] w-full">
               <img src={imageForStage[i]} alt={stage.label} className="h-full w-full object-cover" />
             </div>
           </div>
-          <span className="mt-5 inline-block text-[11px] font-medium uppercase tracking-widest2 text-gold-400">
+          <span className="mt-5 inline-block text-[11px] font-medium uppercase tracking-widest2 text-gold-700">
             {stage.label}
           </span>
           <h3 className="mt-3 font-display text-2xl font-normal leading-[1.15] text-cream-100">{stage.heading}</h3>
@@ -150,17 +151,17 @@ export function CaseStudyExplorer() {
   if (!featured) return null
 
   return (
-    <section className="relative bg-teal-950/15 py-20 sm:py-24 lg:py-28">
+    <section className="relative bg-transparent py-20 sm:py-24 lg:py-28">
       {/* No overflow-hidden here: this section contains a position:sticky child
           (DesktopExplorer), and an overflow-hidden ancestor silently breaks sticky
           positioning. This gradient is inset-0, so nothing bleeds without it. */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-950 via-teal-950/15 to-ink-950" />
+      <SectionAtmosphere variant="radial" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>Case Study Explorer</SectionLabel>
           <h2 className="mt-5 max-w-xl font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
-            {featured.title} — <span className="italic text-gold-400">from space to solution.</span>
+            {featured.title} — <span className="italic text-teal-700">from space to solution.</span>
           </h2>
         </Reveal>
 

@@ -109,7 +109,7 @@ const SECTIONS: LegalSection[] = [
         selections and finishes. Because products are made to your specifications, returns or exchanges of
         custom-configured products are not available unless there is a manufacturing defect or an error on
         our part. Any such concerns should be raised by contacting{' '}
-        <a href={`mailto:${contact.email}`} className="text-gold-400 hover:underline">
+        <a href={`mailto:${contact.email}`} className="text-gold-700 hover:underline">
           {contact.email}
         </a>
         .
@@ -142,7 +142,7 @@ const SECTIONS: LegalSection[] = [
         <p>
           Any information you submit through the Request a Quote form or via WhatsApp, email or phone is
           treated in accordance with our{' '}
-          <Link to="/privacy-policy" className="text-gold-400 hover:underline">
+          <Link to="/privacy-policy" className="text-gold-700 hover:underline">
             Privacy Policy
           </Link>
           .
@@ -227,12 +227,12 @@ const SECTIONS: LegalSection[] = [
           {business.legalName}
           <br />
           Email:{' '}
-          <a href={`mailto:${contact.email}`} className="text-gold-400 hover:underline">
+          <a href={`mailto:${contact.email}`} className="text-gold-700 hover:underline">
             {contact.email}
           </a>
           <br />
           Phone:{' '}
-          <a href={`tel:+${contact.phoneHref}`} className="text-gold-400 hover:underline">
+          <a href={`tel:+${contact.phoneHref}`} className="text-gold-700 hover:underline">
             {contact.phoneDisplay}
           </a>
         </p>

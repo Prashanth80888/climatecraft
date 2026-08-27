@@ -15,8 +15,8 @@ export function CaseStudySpecs({ caseStudy }: { caseStudy: CaseStudy }) {
   if (details.length === 0) return null
 
   return (
-    <section className="relative overflow-hidden bg-teal-950/15 py-16 sm:py-20 lg:py-24">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-950 via-teal-950/15 to-ink-950" />
+    <section className="relative overflow-hidden bg-canvas-deep/25 py-16 sm:py-20 lg:py-24">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-canvas-soft via-canvas-aqua/30 to-canvas" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
@@ -26,13 +26,13 @@ export function CaseStudySpecs({ caseStudy }: { caseStudy: CaseStudy }) {
         <div className={`mt-8 grid grid-cols-1 gap-10 ${image ? 'lg:grid-cols-12 lg:gap-12' : ''}`}>
           <div className={image ? 'lg:col-span-6' : ''}>
             <RevealGroup
-              className="grid grid-cols-2 divide-y divide-white/10 border-y border-white/10 sm:grid-cols-3 sm:divide-y-0 sm:divide-x"
+              className="grid grid-cols-2 divide-y divide-white/10 border-y border-ink-900/10 sm:grid-cols-3 sm:divide-y-0 sm:divide-x"
               stagger={0.06}
             >
               {details.map((d) => (
                 <RevealItem key={d.label} className="px-1 py-6 first:pl-0 sm:px-6 sm:first:pl-0">
-                  <p className="text-[10.5px] uppercase tracking-widest text-cream-200/45">{d.label}</p>
-                  <p className="mt-2 font-display text-lg text-gold-400 sm:text-xl">{d.value}</p>
+                  <p className="text-[10.5px] uppercase tracking-widest text-cream-200/60">{d.label}</p>
+                  <p className="mt-2 font-display text-lg text-gold-700 sm:text-xl">{d.value}</p>
                 </RevealItem>
               ))}
             </RevealGroup>
@@ -41,7 +41,7 @@ export function CaseStudySpecs({ caseStudy }: { caseStudy: CaseStudy }) {
           {image && (
             <div className="lg:col-span-6">
               <Reveal delay={0.14}>
-                <div className="overflow-hidden rounded-[24px] border border-white/[0.06] shadow-[0_50px_120px_-50px_rgba(0,0,0,0.85)]">
+                <div className="overflow-hidden rounded-[24px] border border-white/70 shadow-[0_50px_120px_-50px_rgba(18,59,61,0.38)]">
                   <div className="aspect-[4/5] w-full sm:aspect-[16/12]">
                     <img
                       src={image}

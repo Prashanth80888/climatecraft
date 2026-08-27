@@ -29,14 +29,14 @@ export function ContactPage() {
         <ContactHero />
         <ContactStrip />
 
-        <section className="relative bg-ink-950 py-16 sm:py-20 lg:py-24">
+        <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
           <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-7">
                 <Reveal>
                   <SectionLabel>Start Your Quote</SectionLabel>
                   <h2 className="mt-5 max-w-md font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
-                    Tell us about <span className="italic text-gold-400">your project.</span>
+                    Tell us about <span className="italic text-teal-700">your project.</span>
                   </h2>
                 </Reveal>
                 <div className="mt-10">

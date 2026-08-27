@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
+import { AtmosphereBackground } from './components/AtmosphereBackground'
 import { Navbar } from './components/Navbar'
 import { HomePage } from './pages/HomePage'
 import { CollectionsPage } from './pages/CollectionsPage'
@@ -17,6 +18,7 @@ import { NotFoundPage } from './pages/NotFoundPage'
 function App() {
   return (
     <>
+      <AtmosphereBackground />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />

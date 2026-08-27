@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { getCaseStudyBySlug } from '../../data/caseStudies'
 import { SectionLabel } from '../ui/SectionLabel'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 
 // Three real, photographed spaces from the verified Case Studies dataset —
@@ -16,13 +17,14 @@ export function RecentWork() {
   if (studies.length === 0) return null
 
   return (
-    <section className="relative bg-ink-950 py-16 sm:py-20 lg:py-24">
+    <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
+      <SectionAtmosphere variant="radial" />
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <Reveal>
             <SectionLabel>Recent Work</SectionLabel>
             <h2 className="mt-5 max-w-lg font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
-              A few rooms, <span className="italic text-gold-400">applied.</span>
+              A few rooms, <span className="italic text-teal-700">applied.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
@@ -37,7 +39,7 @@ export function RecentWork() {
           {studies.map((study) => (
             <RevealItem key={study.slug}>
               <Link to={`/case-studies/${study.slug}`} className="group block">
-                <div className="overflow-hidden rounded-[24px] border border-white/[0.06] shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)]">
+                <div className="overflow-hidden rounded-[24px] border border-white/80 shadow-[0_40px_100px_-40px_rgba(6,59,61,0.35)]">
                   <div className="aspect-[4/5] w-full overflow-hidden">
                     <img
                       src={study.gallery[0]}
@@ -47,12 +49,12 @@ export function RecentWork() {
                     />
                   </div>
                 </div>
-                <p className="mt-4 text-[11px] font-medium uppercase tracking-widest text-gold-400/80">
+                <p className="mt-4 text-[11px] font-medium uppercase tracking-widest text-gold-700/80">
                   {study.category}
                 </p>
                 <h3 className="mt-1.5 font-display text-xl text-cream-100">{study.title}</h3>
                 <p className="mt-2 max-w-xs text-[13.5px] leading-relaxed text-cream-200/55">{study.summary}</p>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-medium uppercase tracking-widest text-cream-200/70 transition-colors duration-300 group-hover:text-gold-400">
+                <span className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-medium uppercase tracking-widest text-[#315F62]/75 transition-colors duration-300 group-hover:text-gold-700">
                   View Case Study
                   <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>

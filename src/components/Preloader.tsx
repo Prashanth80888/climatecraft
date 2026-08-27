@@ -68,14 +68,21 @@ export function Preloader({ children }: { children: ReactNode }) {
             data-testid="preloader"
             exit={{ opacity: 0, scale: prefersReducedMotion ? 1 : 1.03 }}
             transition={{ duration: prefersReducedMotion ? 0.3 : 0.7, ease: easeOut }}
-            className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-ink-950"
+            className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-canvas"
           >
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  'radial-gradient(900px 600px at 18% 12%, rgba(255,255,255,0.9) 0%, transparent 60%), radial-gradient(800px 560px at 84% 82%, rgba(201,238,236,0.85) 0%, transparent 62%), linear-gradient(180deg, #EAF8F7 0%, #E3F5F3 50%, #EAF8F7 100%)',
+              }}
+            />
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.14 }}
+              animate={{ opacity: 0.3 }}
               transition={{ duration: 1.6, ease: easeOut }}
               className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[140px]"
-              style={{ background: 'radial-gradient(circle, #1d7a6f 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 70%)' }}
             />
             <div className="grain-overlay opacity-[0.05]" />
 
@@ -101,13 +108,13 @@ export function Preloader({ children }: { children: ReactNode }) {
                   delay: prefersReducedMotion ? 0.1 : 1.05,
                   ease: easeOut,
                 }}
-                className="text-[11px] font-medium uppercase tracking-[0.32em] text-gold-400"
+                className="text-[11px] font-medium uppercase tracking-[0.32em] text-gold-700"
               >
                 {BRAND_STATEMENT}
               </motion.p>
             </div>
 
-            <div className="relative mt-9 h-px w-16 overflow-hidden rounded-full bg-white/10">
+            <div className="relative mt-9 h-px w-16 overflow-hidden rounded-full bg-ink-900/10">
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
@@ -117,7 +124,7 @@ export function Preloader({ children }: { children: ReactNode }) {
                   ease: easeOut,
                 }}
                 style={{ transformOrigin: '0% 50%' }}
-                className="h-full bg-gold-400"
+                className="h-full bg-teal-700"
               />
             </div>
           </motion.div>

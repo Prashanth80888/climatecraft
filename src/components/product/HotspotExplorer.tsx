@@ -52,7 +52,7 @@ export function HotspotExplorer({ images, hotspots, alt }: HotspotExplorerProps)
   return (
     <div
       ref={containerRef}
-      className="relative overflow-visible rounded-[28px] border border-white/10 bg-ink-900 shadow-[0_60px_140px_-50px_rgba(0,0,0,0.9)]"
+      className="relative overflow-visible rounded-[28px] border border-[#0B3F42]/[0.10] bg-[#E8EFEC] shadow-[0_50px_120px_-45px_rgba(6,61,60,0.28)]"
     >
       <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[28px] sm:aspect-[4/3] lg:aspect-[5/4]">
         <AnimatePresence mode="popLayout">
@@ -68,9 +68,9 @@ export function HotspotExplorer({ images, hotspots, alt }: HotspotExplorerProps)
             className="absolute inset-0 h-full w-full select-none object-cover"
           />
         </AnimatePresence>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
-        <span className="absolute left-4 top-4 z-10 rounded-full border border-gold-400/30 bg-ink-950/60 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-gold-300/90 backdrop-blur-md">
+        <span className="absolute left-4 top-4 z-10 rounded-full border border-gold-400/30 bg-white/60 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-gold-600 backdrop-blur-md">
           Explore the Details
         </span>
       </div>
@@ -98,13 +98,13 @@ export function HotspotExplorer({ images, hotspots, alt }: HotspotExplorerProps)
                 className={`absolute inset-0 -m-2.5 rounded-full transition-opacity duration-300 motion-reduce:animate-none ${
                   isActive ? 'opacity-0' : 'animate-ping opacity-40'
                 }`}
-                style={{ background: 'radial-gradient(circle, rgba(212,175,86,0.55) 0%, transparent 70%)' }}
+                style={{ background: 'radial-gradient(circle, rgba(22,155,154,0.55) 0%, transparent 70%)' }}
               />
               <span
                 className={`relative flex h-7 w-7 items-center justify-center rounded-full border backdrop-blur-md transition-all duration-300 ${
                   isActive
                     ? 'scale-110 border-gold-300 bg-gold-400/90 text-ink-950'
-                    : 'border-gold-300/50 bg-ink-950/60 text-gold-300 group-hover:border-gold-300 group-hover:bg-ink-950/80'
+                    : 'border-gold-300/50 bg-white/60 text-gold-600 group-hover:border-gold-300 group-hover:bg-white/75'
                 }`}
               >
                 <Plus className={`h-3.5 w-3.5 transition-transform duration-300 ${isActive ? 'rotate-45' : ''}`} strokeWidth={2.5} />
@@ -129,7 +129,7 @@ export function HotspotExplorer({ images, hotspots, alt }: HotspotExplorerProps)
                   y1={`${active.y}%`}
                   x2={`${active.x + (cardSide === 'right' ? 12 : -12)}%`}
                   y2={`${active.y + (cardVertical === 'up' ? -10 : 10)}%`}
-                  stroke="rgba(212,175,86,0.5)"
+                  stroke="rgba(22,155,154,0.5)"
                   strokeWidth={1}
                   strokeDasharray="3 3"
                 />
@@ -152,9 +152,9 @@ export function HotspotExplorer({ images, hotspots, alt }: HotspotExplorerProps)
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.3, ease: easeOut }}
-                  className="rounded-2xl border border-gold-300/25 bg-ink-950/90 p-4 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+                  className="rounded-2xl border border-gold-300/25 bg-white/85 p-4 shadow-[0_30px_60px_-20px_rgba(18,59,61,0.4)] backdrop-blur-xl"
                 >
-                  <p className="font-display text-sm italic text-gold-300">{active.title}</p>
+                  <p className="font-display text-sm italic text-gold-600">{active.title}</p>
                   <p className="mt-2 text-[12.5px] leading-relaxed text-cream-200/75">{active.description}</p>
                 </motion.div>
               </div>

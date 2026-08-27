@@ -12,9 +12,9 @@ const CHAPTER_IMAGE_MAP: Record<string, string> = {
 
 export function CinematicStickyStory() {
   return (
-    <section className="relative bg-ink-950 py-20 sm:py-28 lg:py-36">
-      <div className="pointer-events-none absolute right-[8%] top-[20%] h-[400px] w-[500px] opacity-[0.03] blur-[140px]"
-        style={{ background: 'radial-gradient(circle, #1d7a6f 0%, transparent 65%)' }}
+    <section className="relative bg-transparent py-20 sm:py-28 lg:py-36">
+      <div className="pointer-events-none absolute right-[8%] top-[20%] h-[400px] w-[500px] opacity-[0.22] blur-[140px]"
+        style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 65%)' }}
       />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
@@ -24,7 +24,7 @@ export function CinematicStickyStory() {
         <Reveal delay={0.08}>
           <h2 className="mt-5 max-w-2xl font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
             From form to feeling.{' '}
-            <span className="italic text-gold-400">Step by step.</span>
+            <span className="italic text-teal-700">Step by step.</span>
           </h2>
         </Reveal>
 
@@ -44,10 +44,10 @@ export function CinematicStickyStory() {
                 <div className={`flex flex-col gap-5 lg:col-span-5 lg:[direction:ltr]`}>
                   <Reveal delay={0.05}>
                     <div className="flex items-center gap-4">
-                      <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full border border-gold-400/25 font-display text-sm tabular-nums text-gold-400/75">
+                      <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full border border-gold-400/25 font-display text-sm tabular-nums text-gold-700/75">
                         {String(i + 1).padStart(2, '0')}
                       </span>
-                      <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-gold-400/65">
+                      <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-gold-700/65">
                         {chapter.label}
                       </span>
                     </div>
@@ -73,7 +73,7 @@ export function CinematicStickyStory() {
                 {/* Image */}
                 <div className={`lg:col-span-7 lg:[direction:ltr]`}>
                   <Reveal delay={0.1} y={20}>
-                    <div className="group relative overflow-hidden rounded-[28px] border border-white/[0.06] shadow-[0_50px_140px_-40px_rgba(0,0,0,0.85)]">
+                    <div className="group relative overflow-hidden rounded-[28px] border border-white/70 shadow-[0_50px_140px_-40px_rgba(18,59,61,0.38)]">
                       <div className="aspect-[4/3] w-full overflow-hidden sm:aspect-[16/10]">
                         <img
                           src={projectImageAt(imageSlug, chapter.id === 'movement' ? 2 : 1)}
@@ -82,7 +82,7 @@ export function CinematicStickyStory() {
                           className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
                         />
                       </div>
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent" />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                       <div className="grain-overlay absolute inset-0 opacity-[0.06]" />
                     </div>
                   </Reveal>

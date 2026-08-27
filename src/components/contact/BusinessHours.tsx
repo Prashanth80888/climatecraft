@@ -1,5 +1,6 @@
 import { MapPin } from 'lucide-react'
 import { contact } from '../../lib/assets'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { SectionLabel } from '../ui/SectionLabel'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 
@@ -20,7 +21,8 @@ export function BusinessHours() {
   const today = new Date().getDay()
 
   return (
-    <section className="relative bg-ink-950 py-16 sm:py-20 lg:py-24">
+    <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
+      <SectionAtmosphere variant="bloom" />
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-6">
@@ -28,7 +30,7 @@ export function BusinessHours() {
               <SectionLabel>Business Hours</SectionLabel>
             </Reveal>
 
-            <RevealGroup className="mt-6 divide-y divide-white/10 border-t border-white/10">
+            <RevealGroup className="mt-6 divide-y divide-[#063B3D]/10 border-t border-[#063B3D]/10">
               {DISPLAY_ORDER.map((index) => {
                 const entry = HOURS[index]
                 const isToday = index === today
@@ -36,12 +38,12 @@ export function BusinessHours() {
                   <RevealItem key={entry.day}>
                     <div className="flex items-center justify-between py-3.5">
                       <span
-                        className={`text-[14px] ${isToday ? 'font-medium text-gold-400' : 'text-cream-200/70'}`}
+                        className={`text-[14px] ${isToday ? 'font-medium text-gold-700' : 'text-[#315F62]/75'}`}
                       >
                         {entry.day}
                         {isToday && <span className="ml-2 text-[11px] uppercase tracking-widest">Today</span>}
                       </span>
-                      <span className={`text-[14px] ${isToday ? 'text-cream-100' : 'text-cream-200/50'}`}>
+                      <span className={`text-[14px] ${isToday ? 'text-[#063B3D]' : 'text-[#315F62]/60'}`}>
                         {entry.hours}
                       </span>
                     </div>
@@ -55,20 +57,20 @@ export function BusinessHours() {
             <Reveal delay={0.1}>
               <SectionLabel>The Studio</SectionLabel>
               <div className="mt-6 flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 flex-none text-gold-400" strokeWidth={1.5} />
+                <MapPin className="mt-0.5 h-4 w-4 flex-none text-gold-700" strokeWidth={1.5} />
                 <div>
-                  <p className="text-[15px] leading-relaxed text-cream-100">{contact.address}</p>
+                  <p className="text-[15px] leading-relaxed text-[#063B3D]">{contact.address}</p>
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-2 inline-block text-[12.5px] uppercase tracking-widest text-cream-200/50 transition-colors duration-300 hover:text-gold-400"
+                    className="mt-2 inline-block text-[12.5px] uppercase tracking-widest text-[#315F62]/60 transition-colors duration-300 hover:text-gold-700"
                   >
                     View on Google Maps →
                   </a>
                 </div>
               </div>
-              <p className="mt-6 max-w-sm border-t border-white/10 pt-6 text-[13.5px] leading-relaxed text-cream-200/50">
+              <p className="mt-6 max-w-sm border-t border-[#063B3D]/10 pt-6 text-[13.5px] leading-relaxed text-[#315F62]/60">
                 Trade partners are also welcome at our showrooms in {contact.showrooms}, by appointment.
               </p>
             </Reveal>

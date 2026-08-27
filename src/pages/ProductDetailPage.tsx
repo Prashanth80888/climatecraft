@@ -48,17 +48,17 @@ export function ProductDetailPage() {
   return (
     <>
       <main>
-        <section className="relative overflow-hidden bg-ink-950 pb-16 pt-32 sm:pb-20 sm:pt-36 lg:pb-24 lg:pt-44">
+        <section className="relative overflow-hidden bg-transparent pb-16 pt-32 sm:pb-20 sm:pt-36 lg:pb-24 lg:pt-44">
           <div
-            className="pointer-events-none absolute -left-40 top-0 h-[520px] w-[520px] rounded-full opacity-[0.12] blur-[130px]"
-            style={{ background: 'radial-gradient(circle, #1d7a6f 0%, transparent 70%)' }}
+            className="pointer-events-none absolute -left-40 top-0 h-[520px] w-[520px] rounded-full opacity-[0.40] blur-[130px]"
+            style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 70%)' }}
           />
           <div className="grain-overlay opacity-20" />
 
           <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <Reveal amount={0.6}>
-              <nav className="flex items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200/45">
-                <Link to="/collections" className="transition-colors duration-300 hover:text-gold-400">
+              <nav className="flex items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200/60">
+                <Link to="/collections" className="transition-colors duration-300 hover:text-gold-700">
                   Collections
                 </Link>
                 <span>/</span>
@@ -113,7 +113,7 @@ export function ProductDetailPage() {
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <div className="flex items-center gap-4">
-                      <span className="font-display text-sm italic tabular-nums text-gold-400/80">
+                      <span className="font-display text-sm italic tabular-nums text-gold-700/80">
                         {String(product.number).padStart(2, '0')} / {String(HOME_PRODUCTS.length).padStart(2, '0')}
                       </span>
                       <SectionLabel>{family.label}</SectionLabel>
@@ -165,7 +165,7 @@ export function ProductDetailPage() {
       <div className="fixed bottom-6 left-6 z-40 hidden lg:block">
         <Link
           to="/collections"
-          className="group flex h-11 items-center gap-2 rounded-full border border-white/10 bg-ink-950/80 px-4 text-[11px] font-medium uppercase tracking-widest text-cream-200/70 backdrop-blur-md transition-all duration-300 hover:border-gold-400/40 hover:text-cream-100"
+          className="group flex h-11 items-center gap-2 rounded-full border border-[#063B3D]/10 bg-white/80 px-4 text-[11px] font-medium uppercase tracking-widest text-[#315F62]/80 backdrop-blur-md transition-all duration-300 hover:border-[#169B9A]/65 hover:text-[#063B3D]"
         >
           <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" />
           All Collections

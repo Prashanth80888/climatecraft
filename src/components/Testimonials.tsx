@@ -5,6 +5,7 @@ import testimonialsData from '../data/testimonials.json'
 import type { Testimonial } from '../types'
 import { SectionLabel } from './ui/SectionLabel'
 import { Reveal } from './ui/Reveal'
+import { SectionAtmosphere } from './ui/SectionAtmosphere'
 
 const testimonials = testimonialsData as Testimonial[]
 const AUTOPLAY_MS = 5000
@@ -12,15 +13,15 @@ const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="relative flex min-h-[280px] flex-col overflow-hidden rounded-3xl border border-white/10 bg-ink-900/50 p-8 transition-colors duration-500 hover:border-gold-400/25 sm:min-h-[260px] sm:p-10">
-      <Quote className="h-6 w-6 flex-none text-gold-500/60" strokeWidth={1.5} />
+    <div className="relative flex min-h-[280px] flex-col overflow-hidden rounded-3xl border border-[#063B3D]/10 bg-white/60 p-8 transition-all duration-500 hover:border-[#169B9A]/50 hover:shadow-[0_25px_60px_-20px_rgba(6,59,61,0.22)] sm:min-h-[260px] sm:p-10">
+      <Quote className="h-6 w-6 flex-none text-gold-600/70" strokeWidth={1.5} />
 
       <p className="mt-5 font-display text-lg font-normal italic leading-relaxed text-cream-100 sm:text-xl">
         {testimonial.q}
       </p>
 
       <div className="mt-auto flex items-center gap-4 pt-7">
-        <div className="flex h-11 w-11 flex-none items-center justify-center rounded-full border border-gold-400/30 bg-gradient-to-br from-gold-500/15 via-teal-600/15 to-transparent font-display text-sm text-gold-300">
+        <div className="flex h-11 w-11 flex-none items-center justify-center rounded-full border border-gold-400/30 bg-gradient-to-br from-gold-500/15 via-teal-600/15 to-transparent font-display text-sm text-gold-600">
           {testimonial.mono}
         </div>
         <div>
@@ -63,9 +64,10 @@ export function Testimonials() {
   }
 
   return (
-    <section id="testimonials" className="relative overflow-hidden bg-ink-950 py-16 sm:py-24 lg:py-32">
+    <section id="testimonials" className="relative overflow-hidden bg-transparent py-16 sm:py-24 lg:py-32">
+      <SectionAtmosphere variant="glow" />
       <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 opacity-[0.12] blur-[110px]"
+        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 opacity-[0.40] blur-[110px]"
         style={{ background: 'radial-gradient(ellipse, #f0a92c 0%, transparent 70%)' }}
       />
 
@@ -113,7 +115,7 @@ export function Testimonials() {
                     }}
                     aria-label={`Go to testimonial ${i + 1}`}
                     className={`h-1.5 rounded-full transition-all duration-500 ${
-                      i === index ? 'w-8 bg-gold-400' : 'w-1.5 bg-cream-100/25 hover:bg-cream-100/45'
+                      i === index ? 'w-8 bg-gold-400' : 'w-1.5 bg-ink-900/20 hover:bg-ink-900/40'
                     }`}
                   />
                 ))}
@@ -127,7 +129,7 @@ export function Testimonials() {
                     restart()
                   }}
                   aria-label="Previous testimonial"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-cream-100/20 text-cream-100 transition-all duration-300 hover:border-gold-400/60 hover:bg-white/[0.04] hover:text-gold-400"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-cream-100/20 text-cream-100 transition-all duration-300 hover:border-teal-500/75 hover:bg-white/40 hover:text-gold-700"
                 >
                   <ArrowLeft className="h-4 w-4" />
                 </button>
@@ -138,7 +140,7 @@ export function Testimonials() {
                     restart()
                   }}
                   aria-label="Next testimonial"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-cream-100/20 text-cream-100 transition-all duration-300 hover:border-gold-400/60 hover:bg-white/[0.04] hover:text-gold-400"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-cream-100/20 text-cream-100 transition-all duration-300 hover:border-teal-500/75 hover:bg-white/40 hover:text-gold-700"
                 >
                   <ArrowRight className="h-4 w-4" />
                 </button>

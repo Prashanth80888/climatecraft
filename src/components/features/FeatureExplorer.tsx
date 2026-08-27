@@ -49,17 +49,17 @@ export function FeatureExplorer() {
   }
 
   return (
-    <section id="feature-explorer" className="relative overflow-hidden bg-ink-950 py-20 sm:py-24 lg:py-28">
+    <section id="feature-explorer" className="relative overflow-hidden bg-transparent py-20 sm:py-24 lg:py-28">
       <div
         className="pointer-events-none absolute -right-40 top-1/3 h-[560px] w-[560px] -translate-y-1/2 rounded-full opacity-[0.1] blur-[140px]"
-        style={{ background: 'radial-gradient(circle, #1d7a6f 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 70%)' }}
       />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>Feature Discovery</SectionLabel>
           <h2 className="mt-5 max-w-xl font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl lg:text-[2.75rem]">
-            Every detail, <span className="italic text-gold-400">explained.</span>
+            Every detail, <span className="italic text-teal-700">explained.</span>
           </h2>
           <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-cream-200/65">
             Select a collection, then choose a point on the product to explore the engineering behind it.
@@ -70,7 +70,7 @@ export function FeatureExplorer() {
           <div
             role="tablist"
             aria-label="Technology collection"
-            className="mt-9 inline-flex flex-wrap items-center gap-1 rounded-full border border-white/10 bg-ink-900/50 p-1 backdrop-blur-md"
+            className="mt-9 inline-flex flex-wrap items-center gap-1 rounded-full border border-white/80 bg-white/55 p-1 shadow-[0_14px_36px_-22px_rgba(6,59,61,0.22),inset_0_1px_0_rgba(255,255,255,0.85)] backdrop-blur-[22px]"
           >
             {PRODUCT_FAMILIES.map((f) => (
               <button
@@ -80,14 +80,14 @@ export function FeatureExplorer() {
                 aria-selected={familyId === f.id}
                 onClick={() => selectFamily(f.id)}
                 className={`relative rounded-full px-5 py-2.5 text-[11.5px] font-medium uppercase tracking-widest transition-colors duration-300 ${
-                  familyId === f.id ? 'text-ink-950' : 'text-cream-200/60 hover:text-cream-100'
+                  familyId === f.id ? 'text-white' : 'text-ink-700 hover:text-ink-900'
                 }`}
               >
                 {familyId === f.id && (
                   <motion.span
                     layoutId="family-pill"
                     transition={{ duration: 0.45, ease: easeOut }}
-                    className="absolute inset-0 rounded-full bg-gold-400 shadow-[0_8px_20px_-8px_rgba(212,175,86,0.6)]"
+                    className="absolute inset-0 rounded-full bg-teal-700 shadow-[0_10px_24px_-10px_rgba(22,155,154,0.6),inset_0_1px_0_rgba(255,255,255,0.3)]"
                   />
                 )}
                 <span className="relative z-10">{f.label}</span>
@@ -102,7 +102,7 @@ export function FeatureExplorer() {
             <motion.div
               animate={{ scale: active ? 1.015 : 1 }}
               transition={{ duration: 0.6, ease: easeOut }}
-              className="relative overflow-hidden rounded-[28px] border border-white/10 bg-ink-900 shadow-[0_60px_140px_-50px_rgba(0,0,0,0.9)]"
+              className="relative overflow-hidden rounded-[28px] border border-[#0B3F42]/[0.08] bg-[#E8EFEC] shadow-[0_50px_120px_-45px_rgba(6,61,60,0.28)]"
             >
               <div className="relative aspect-[4/5] w-full sm:aspect-[4/3] lg:aspect-[16/12]">
                 <AnimatePresence mode="popLayout">
@@ -118,15 +118,15 @@ export function FeatureExplorer() {
                   />
                 </AnimatePresence>
 
-                {/* Cinematic dim when a feature is selected */}
+                {/* Cinematic frost when a feature is selected */}
                 <motion.div
                   animate={{ opacity: active ? 0.55 : 0 }}
                   transition={{ duration: 0.5 }}
-                  className="pointer-events-none absolute inset-0 bg-ink-950"
+                  className="pointer-events-none absolute inset-0 bg-[#E5FEFF]"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/55 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
-                <span className="absolute left-5 top-5 z-10 rounded-full border border-gold-400/30 bg-ink-950/60 px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-widest text-gold-300/90 backdrop-blur-md">
+                <span className="absolute left-5 top-5 z-10 rounded-full border border-gold-400/30 bg-white/60 px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-widest text-gold-600 backdrop-blur-md">
                   {product.name}
                 </span>
 
@@ -156,13 +156,13 @@ export function FeatureExplorer() {
                         className={`absolute inset-0 -m-2.5 rounded-full transition-opacity duration-300 motion-reduce:animate-none ${
                           isActive ? 'opacity-0' : 'animate-ping opacity-30'
                         }`}
-                        style={{ background: 'radial-gradient(circle, rgba(212,175,86,0.55) 0%, transparent 70%)' }}
+                        style={{ background: 'radial-gradient(circle, rgba(22,155,154,0.55) 0%, transparent 70%)' }}
                       />
                       <span
                         className={`relative flex h-8 w-8 items-center justify-center rounded-full border font-display text-[11px] italic backdrop-blur-md transition-all duration-300 ${
                           isActive
                             ? 'scale-110 border-gold-300 bg-gold-400 text-ink-950'
-                            : 'border-gold-300/50 bg-ink-950/60 text-gold-300 group-hover:border-gold-300 group-hover:bg-ink-950/85'
+                            : 'border-gold-300/50 bg-white/60 text-gold-600 group-hover:border-gold-300 group-hover:bg-white/80'
                         }`}
                       >
                         {String(i + 1).padStart(2, '0')}
@@ -174,7 +174,7 @@ export function FeatureExplorer() {
             </motion.div>
 
             {/* Mobile: tap hint */}
-            <p className="mt-3 text-center text-[11px] uppercase tracking-widest text-cream-200/35 lg:hidden">
+            <p className="mt-3 text-center text-[11px] uppercase tracking-widest text-cream-200/55 lg:hidden">
               Tap a number to explore
             </p>
           </div>
@@ -189,17 +189,17 @@ export function FeatureExplorer() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.4, ease: easeOut }}
-                  className="rounded-[24px] border border-white/10 bg-ink-900/50 p-7 backdrop-blur-md sm:p-8"
+                  className="rounded-[24px] border border-[#063B3D]/10 bg-white/60 p-7 backdrop-blur-md sm:p-8"
                 >
-                  <span className="font-display text-sm italic tabular-nums text-gold-400/80">
+                  <span className="font-display text-sm italic tabular-nums text-gold-700/80">
                     {String(activeIndex + 1).padStart(2, '0')} / {String(hotspots.length).padStart(2, '0')}
                   </span>
                   <h3 className="mt-3 font-display text-2xl font-normal leading-tight text-cream-100 sm:text-[1.75rem]">
                     {active.title}
                   </h3>
                   <p className="mt-4 text-[14.5px] leading-relaxed text-cream-200/70">{active.description}</p>
-                  <div className="mt-5 border-t border-white/10 pt-5">
-                    <p className="text-[11px] font-medium uppercase tracking-widest text-teal-300/70">Why it matters</p>
+                  <div className="mt-5 border-t border-ink-900/10 pt-5">
+                    <p className="text-[11px] font-medium uppercase tracking-widest text-teal-800">Why it matters</p>
                     <p className="mt-2 text-[14px] leading-relaxed text-cream-200/60">
                       {BENEFITS[`${product.slug}:${active.id}`]}
                     </p>
@@ -212,21 +212,21 @@ export function FeatureExplorer() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.4, ease: easeOut }}
-                  className="rounded-[24px] border border-white/10 bg-ink-900/30 p-7 sm:p-8"
+                  className="rounded-[24px] border border-[#063B3D]/10 bg-white/40 p-7 sm:p-8"
                 >
-                  <p className="font-display text-sm italic text-gold-400/80">{family.label}</p>
+                  <p className="font-display text-sm italic text-teal-700/80">{family.label}</p>
                   <p className="mt-3 max-w-sm text-[14.5px] leading-relaxed text-cream-200/60">{family.blurb}</p>
                   <ul className="mt-6 space-y-2.5">
                     {hotspots.map((h: ProductHotspot, i) => (
                       <li key={h.id} className="flex items-center gap-3 text-[13px] text-cream-200/55">
-                        <span className="font-display text-xs italic text-gold-400/70">
+                        <span className="font-display text-xs italic text-teal-700/70">
                           {String(i + 1).padStart(2, '0')}
                         </span>
                         {h.title}
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-6 flex items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200/35">
+                  <p className="mt-6 flex items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200/55">
                     <Plus className="h-3 w-3" /> Hover or tap a number to begin
                   </p>
                 </motion.div>

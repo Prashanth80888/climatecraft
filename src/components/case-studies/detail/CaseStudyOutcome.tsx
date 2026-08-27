@@ -10,7 +10,7 @@ export function CaseStudyOutcome({ caseStudy }: { caseStudy: CaseStudy }) {
 
   if (!image) {
     return (
-      <section className="relative bg-ink-950 py-16 sm:py-20 lg:py-24">
+      <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           <Reveal>
             <SectionLabel>Design Outcome</SectionLabel>
@@ -31,7 +31,7 @@ export function CaseStudyOutcome({ caseStudy }: { caseStudy: CaseStudy }) {
   }
 
   return (
-    <section className="relative bg-ink-950 py-16 sm:py-20 lg:py-24">
+    <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>Design Outcome</SectionLabel>
@@ -46,7 +46,7 @@ export function CaseStudyOutcome({ caseStudy }: { caseStudy: CaseStudy }) {
 
           <div className="lg:col-span-5 lg:col-start-8">
             <Reveal delay={0.14}>
-              <div className="overflow-hidden rounded-[24px] border border-white/[0.06] shadow-[0_50px_120px_-50px_rgba(0,0,0,0.85)]">
+              <div className="overflow-hidden rounded-[24px] border border-white/70 shadow-[0_50px_120px_-50px_rgba(18,59,61,0.38)]">
                 <div className="aspect-[4/5] w-full">
                   <img
                     src={image}

@@ -22,7 +22,7 @@ const FAMILY_APPLICATIONS: Record<string, string> = {
 
 export function ProductFamilies() {
   return (
-    <section className="relative overflow-hidden bg-ink-950 py-20 sm:py-28 lg:py-36">
+    <section className="relative overflow-hidden bg-transparent py-20 sm:py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>Product Families</SectionLabel>
@@ -30,7 +30,7 @@ export function ProductFamilies() {
         <Reveal delay={0.08}>
           <h2 className="mt-5 max-w-xl font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
             Three families. Each designed for a different kind of{' '}
-            <span className="italic text-gold-400">space.</span>
+            <span className="italic text-teal-700">space.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.14}>
@@ -44,7 +44,7 @@ export function ProductFamilies() {
             <RevealItem key={family.id}>
               <Link
                 to={`/collections#${family.id}`}
-                className="group relative flex flex-col overflow-hidden rounded-[24px] border border-white/[0.06] bg-ink-900/30 transition-all duration-500 hover:border-gold-400/25 hover:bg-ink-900/50 hover:shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)]"
+                className="group relative flex flex-col overflow-hidden rounded-[24px] border border-[#0B3F42]/[0.10] bg-[#F4F7F5] transition-all duration-500 hover:border-[#159FA3]/40 hover:shadow-[0_28px_72px_-28px_rgba(6,61,60,0.26)]"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
@@ -53,22 +53,22 @@ export function ProductFamilies() {
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-[1000ms] ease-out group-hover:scale-[1.05]"
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/60 via-transparent to-transparent" />
-                  <span className="absolute left-4 top-4 rounded-full border border-white/10 bg-ink-950/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-cream-100/65 backdrop-blur-md">
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                  <span className="absolute left-4 top-4 rounded-full border border-ink-900/10 bg-white/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-cream-100/65 backdrop-blur-md">
                     {String(family.number).padStart(2, '0')} / 03
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-display text-xl text-cream-100 transition-colors duration-300 group-hover:text-gold-100">
+                  <h3 className="font-display text-xl text-cream-100 transition-colors duration-300 group-hover:text-gold-700">
                     {family.label}
                   </h3>
-                  <p className="mt-1 text-[12px] uppercase tracking-wide text-cream-200/40">{family.blurb}</p>
+                  <p className="mt-1 text-[12px] uppercase tracking-wide text-cream-200/55">{family.blurb}</p>
                   <p className="mt-3 text-[13.5px] leading-relaxed text-cream-200/50">
                     {FAMILY_APPLICATIONS[family.id]}
                   </p>
 
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-gold-400/80 transition-all duration-300 group-hover:gap-2.5 group-hover:text-gold-300">
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-gold-700/80 transition-all duration-300 group-hover:gap-2.5 group-hover:text-gold-600">
                     View Collection
                     <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </span>

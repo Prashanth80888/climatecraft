@@ -4,35 +4,59 @@ export default {
   theme: {
     extend: {
       colors: {
+        // ── Climate Craft canvas ────────────────────────────────────────
+        // The pale cool blue/blue-grey page environment
+        canvas: {
+          DEFAULT: '#E5FEFF',
+          soft: '#F0FAFA',
+          aqua: '#C9F3F2',
+          cyan: '#B8E9E8',
+          mint: '#F7FCFB',
+          blue: '#E0F6F5',
+          deep: '#D4F0EF',
+        },
+        // ── Ink ─────────────────────────────────────────────────────────
+        // Dark teal typography scale (readable on the light canvas & glass)
         ink: {
-          950: '#07100e',
-          900: '#0b1613',
-          800: '#0f1e1a',
-          700: '#152a24',
-          600: '#1c3730',
+          950: '#063B3D',
+          900: '#073F40',
+          800: '#17504F',
+          700: '#315F62',
+          600: '#37676A',
         },
+        // ── Teal / aqua ─────────────────────────────────────────────────
         teal: {
-          950: '#04211f',
-          900: '#0a3833',
-          800: '#0f4a43',
-          700: '#166058',
-          600: '#1d7a6f',
-          500: '#2b9587',
-          400: '#4fb3a3',
+          950: '#0B4F4E',
+          900: '#0F7776',
+          800: '#12807F',
+          700: '#169B9A',
+          600: '#1FAAAA',
+          500: '#53C9C5',
+          400: '#7FD9D5',
+          300: '#A8E8E4',
+          200: '#CDF3F1',
         },
+        // ── Warm gold ───────────────────────────────────────────────────
+        // Restrained accent family; 400 is THE brand gold, 600–800 are
+        // text-safe deepenings for use on the light canvas.
         gold: {
-          900: '#5c3a0e',
-          800: '#8a5613',
-          700: '#b87418',
-          600: '#dd931f',
-          500: '#f0a92c',
-          400: '#f5c15c',
-          300: '#f8d68b',
+          900: '#5C4715',
+          800: '#75591A',
+          700: '#8F6D20',
+          600: '#AD8A28',
+          500: '#C9A84E',
+          400: '#E7C96A',
+          300: '#F0DC9C',
+          200: '#F7EAC4',
+          100: '#FBF3DF',
         },
+        // ── Cream (legacy name, now the dark-teal text scale) ──────────
+        // Historically light text on dark; on the new light canvas these
+        // resolve to dark teal so every existing text-* class stays readable.
         cream: {
-          100: '#faf7f0',
-          200: '#f2ead9',
-          300: '#e6d9c0',
+          100: '#063B3D',
+          200: '#315F62',
+          300: '#37676A',
         },
       },
       fontFamily: {
@@ -44,6 +68,11 @@ export default {
       },
       backgroundImage: {
         'grain': "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E\")",
+      },
+      boxShadow: {
+        'glass': '0 24px 60px -28px rgba(18,59,61,0.18), 0 2px 8px -2px rgba(18,59,61,0.06)',
+        'glass-lg': '0 40px 90px -36px rgba(18,59,61,0.25), 0 4px 14px -4px rgba(18,59,61,0.08)',
+        'teal-glow': '0 18px 44px -14px rgba(22,155,154,0.45)',
       },
       keyframes: {
         marquee: {

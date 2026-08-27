@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight, Camera } from 'lucide-react'
 import { HOME_PRODUCTS, PRODUCT_FAMILIES, type HomeProduct } from '../data/homeProducts'
 import { homeProductImage } from '../lib/assets'
 import { SectionLabel } from './ui/SectionLabel'
+import { SectionAtmosphere } from './ui/SectionAtmosphere'
 import { Reveal } from './ui/Reveal'
 
 const TOTAL = HOME_PRODUCTS.length
@@ -33,18 +34,18 @@ function ProductCard({ product }: { product: HomeProduct }) {
       to={`/products/${product.slug}`}
       draggable={false}
       onMouseMove={onMouseMove}
-      className="group relative w-[270px] flex-none overflow-hidden rounded-[20px] border border-white/10 bg-ink-900/40 transition-all duration-500 ease-out hover:-translate-y-2 hover:border-gold-400/40 hover:bg-ink-900/70 hover:shadow-[0_35px_80px_-28px_rgba(0,0,0,0.8)] sm:w-[310px]"
+      className="group relative w-[270px] flex-none overflow-hidden rounded-[20px] border border-[#0B3F42]/[0.10] bg-[#F4F7F5] transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#159FA3]/35 hover:shadow-[0_28px_60px_-26px_rgba(6,61,60,0.26)] sm:w-[310px]"
     >
       {/* cursor-follow spotlight — subtle, gold-tinted, opacity-gated so it only exists on hover */}
       <div
         className="pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
           background:
-            'radial-gradient(180px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(240,169,44,0.16), transparent 70%)',
+            'radial-gradient(180px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(22,155,154,0.16), transparent 70%)',
         }}
       />
 
-      <div className="relative aspect-[4/5] overflow-hidden bg-ink-900">
+      <div className="relative aspect-[4/5] overflow-hidden bg-[#E8EFEC]">
         {product.imageCount > 0 ? (
           <img
             src={homeProductImage(product.slug)}
@@ -54,31 +55,31 @@ function ProductCard({ product }: { product: HomeProduct }) {
             className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.07]"
           />
         ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-ink-900 to-ink-950 px-6 text-center">
-            <Camera className="h-6 w-6 text-cream-200/25" strokeWidth={1.5} />
-            <span className="text-[10.5px] font-medium uppercase tracking-widest text-cream-200/35">
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-canvas-aqua to-canvas px-6 text-center">
+            <Camera className="h-6 w-6 text-cream-200/60" strokeWidth={1.5} />
+            <span className="text-[10.5px] font-medium uppercase tracking-widest text-cream-200/55">
               Photography Pending
             </span>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/10 to-transparent transition-opacity duration-500 group-hover:via-ink-950/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent transition-opacity duration-500" />
 
-        <span className="absolute left-4 top-4 font-display text-xs italic text-cream-100/60 tabular-nums transition-colors duration-500 group-hover:text-gold-300/80">
+        <span className="absolute left-4 top-4 font-display text-xs italic text-cream-100/75 tabular-nums transition-colors duration-500 group-hover:text-gold-600">
           {String(product.number).padStart(2, '0')} / {String(TOTAL).padStart(2, '0')}
         </span>
-        <span className="absolute right-4 top-4 text-[10px] font-medium uppercase tracking-widest text-cream-100/50">
+        <span className="absolute right-4 top-4 text-[10px] font-medium uppercase tracking-widest text-cream-100/70">
           {product.operation}
         </span>
       </div>
 
-      <div className="relative border-t border-white/[0.06] p-5 transition-transform duration-500 ease-out group-hover:-translate-y-0.5">
-        <h4 className="font-display text-lg text-cream-100 transition-colors duration-500 group-hover:text-gold-100">
+      <div className="relative border-t border-ink-900/[0.08] p-5 transition-transform duration-500 ease-out group-hover:-translate-y-0.5">
+        <h4 className="font-display text-lg text-cream-100 transition-colors duration-500 group-hover:text-gold-700">
           {product.name}
         </h4>
-        <p className="mt-0.5 text-[11px] uppercase tracking-widest text-cream-200/40">{product.category}</p>
+        <p className="mt-0.5 text-[11px] uppercase tracking-widest text-cream-200/55">{product.category}</p>
         <p className="mt-2 text-[12.5px] leading-relaxed text-cream-200/55">{product.teaser}</p>
 
-        <span className="mt-4 inline-flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-widest text-gold-400/90 transition-all duration-500 group-hover:gap-2.5 group-hover:text-gold-300">
+        <span className="mt-4 inline-flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-widest text-gold-700/90 transition-all duration-500 group-hover:gap-2.5 group-hover:text-gold-600">
           View Product
           <ArrowUpRight className="h-3 w-3 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </span>
@@ -198,8 +199,8 @@ function MarqueeRow({ products, dur, dir: direction }: { products: HomeProduct[]
       onPointerLeave={endDrag}
       onPointerCancel={endDrag}
     >
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-ink-950 via-ink-950/70 to-transparent sm:w-32" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-ink-950 via-ink-950/70 to-transparent sm:w-32" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-canvas via-canvas/50 to-transparent sm:w-32" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-canvas via-canvas/50 to-transparent sm:w-32" />
 
       <div ref={trackRef} className="flex w-max cursor-grab select-none gap-6 pb-2 active:cursor-grabbing sm:gap-7">
         {sequence.map((product, i) => (
@@ -212,7 +213,8 @@ function MarqueeRow({ products, dur, dir: direction }: { products: HomeProduct[]
 
 export function Collections() {
   return (
-    <section id="collections" className="relative overflow-hidden bg-ink-950 py-16 sm:py-24 lg:py-32">
+    <section id="collections" className="relative overflow-hidden bg-transparent py-16 sm:py-24 lg:py-32">
+      <SectionAtmosphere variant="bloom" />
       <div className="mx-auto max-w-7xl px-5 text-center sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>
@@ -239,12 +241,12 @@ export function Collections() {
           return (
             <div key={family.id}>
               <Reveal amount={0.15}>
-                <div className="mx-auto mb-6 flex max-w-7xl flex-wrap items-end justify-between gap-x-6 gap-y-2 border-b border-white/[0.07] px-5 pb-4 sm:px-6 lg:px-8">
+                <div className="mx-auto mb-6 flex max-w-7xl flex-wrap items-end justify-between gap-x-6 gap-y-2 border-b border-[#063B3D]/10 px-5 pb-4 sm:px-6 lg:px-8">
                   <div>
                     <h3 className="font-display text-xl text-cream-100 sm:text-2xl">{family.label}</h3>
-                    <p className="mt-1 max-w-md text-[12.5px] leading-relaxed text-cream-200/45">{family.blurb}</p>
+                    <p className="mt-1 max-w-md text-[12.5px] leading-relaxed text-cream-200/60">{family.blurb}</p>
                   </div>
-                  <span className="text-[11px] uppercase tracking-widest text-cream-200/40 tabular-nums">
+                  <span className="text-[11px] uppercase tracking-widest text-cream-200/55 tabular-nums">
                     {String(family.number).padStart(2, '0')} / {String(PRODUCT_FAMILIES.length).padStart(2, '0')}
                   </span>
                 </div>

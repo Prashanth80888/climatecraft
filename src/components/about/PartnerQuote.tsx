@@ -1,5 +1,6 @@
 import testimonialsData from '../../data/testimonials.json'
 import type { Testimonial } from '../../types'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { SectionLabel } from '../ui/SectionLabel'
 import { Reveal } from '../ui/Reveal'
 
@@ -12,7 +13,8 @@ export function PartnerQuote() {
   if (!testimonial) return null
 
   return (
-    <section className="relative bg-ink-950 py-16 sm:py-20 lg:py-24">
+    <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
+      <SectionAtmosphere variant="ambient" />
       <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>Partner Testimonial</SectionLabel>
@@ -23,7 +25,7 @@ export function PartnerQuote() {
           </p>
         </Reveal>
         <Reveal delay={0.18}>
-          <p className="mt-7 text-[13.5px] uppercase tracking-widest text-cream-200/50">
+          <p className="mt-7 text-[13.5px] uppercase tracking-widest text-[#315F62]/55">
             {testimonial.n} · {testimonial.r}
           </p>
         </Reveal>

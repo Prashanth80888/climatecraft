@@ -1,5 +1,6 @@
 import { Zap, Smartphone, Thermometer, Mic, Radio, Armchair, Palette, Wind } from 'lucide-react'
 import type { HomeProduct } from '../../data/homeProducts'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { RevealGroup, RevealItem } from '../ui/Reveal'
 import { SectionLabel } from '../ui/SectionLabel'
 
@@ -58,15 +59,16 @@ export function ProductFeatures({ product }: { product: HomeProduct }) {
   if (features.length === 0) return null
 
   return (
-    <section className="relative bg-ink-950 py-14 sm:py-18 lg:py-20">
+    <section className="relative bg-transparent py-14 sm:py-18 lg:py-20">
+      <SectionAtmosphere variant="radial" />
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionLabel>What Makes It {product.name.split('|').pop()?.trim() ?? product.name}</SectionLabel>
 
         <RevealGroup className="mt-8 flex flex-wrap gap-3 sm:gap-4">
           {features.map((f) => (
             <RevealItem key={f.label}>
-              <div className="group flex items-center gap-3 rounded-full border border-white/10 bg-ink-900/40 py-3 pl-3 pr-5 transition-all duration-300 hover:border-gold-400/35 hover:bg-ink-900/70">
-                <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full border border-gold-400/25 text-gold-400 transition-transform duration-300 group-hover:scale-110">
+              <div className="group flex items-center gap-3 rounded-full border border-ink-900/10 bg-white/45 py-3 pl-3 pr-5 transition-all duration-300 hover:border-teal-500/60 hover:bg-white/70">
+                <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full border border-gold-400/25 text-gold-700 transition-transform duration-300 group-hover:scale-110">
                   <f.icon className="h-3.5 w-3.5" strokeWidth={1.5} />
                 </span>
                 <span className="text-[12.5px] font-medium uppercase tracking-wide text-cream-100/90">

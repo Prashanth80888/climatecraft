@@ -29,7 +29,7 @@ function ExplorerCard({
       {/* Image side */}
       <Reveal delay={0.05} className="lg:col-span-7 lg:[direction:ltr]">
         <div
-          className={`group relative overflow-hidden rounded-[24px] border border-white/[0.06] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.85)] transition-shadow duration-500 hover:shadow-[0_50px_140px_-35px_rgba(0,0,0,0.9)] ${
+          className={`group relative overflow-hidden rounded-[24px] border border-white/70 shadow-[0_40px_120px_-40px_rgba(18,59,61,0.38)] transition-shadow duration-500 hover:shadow-[0_50px_140px_-35px_rgba(18,59,61,0.4)] ${
             !prefersReducedMotion ? 'card-tilt' : ''
           }`}
         >
@@ -41,12 +41,12 @@ function ExplorerCard({
               className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
             />
           </div>
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           <div className="grain-overlay absolute inset-0 opacity-[0.06]" />
 
           {/* Category badge */}
           <div className="absolute left-5 top-5">
-            <span className="inline-block rounded-full border border-white/10 bg-ink-950/60 px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-cream-100/70 backdrop-blur-md">
+            <span className="inline-block rounded-full border border-[#063B3D]/10 bg-white/65 px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-[#063B3D]/80 backdrop-blur-md">
               {entry.category}
             </span>
           </div>
@@ -56,7 +56,7 @@ function ExplorerCard({
       {/* Content side */}
       <Reveal delay={0.15} className="flex flex-col gap-5 lg:col-span-5 lg:[direction:ltr]">
         <div>
-          <p className="text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-400/75">
+          <p className="text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-700/75">
             {entry.category}
           </p>
           <h3 className="mt-3 font-display text-2xl font-normal leading-tight text-cream-100 sm:text-[1.65rem]">
@@ -67,14 +67,14 @@ function ExplorerCard({
           </p>
         </div>
 
-        <div className="space-y-4 border-t border-white/[0.06] pt-5">
+        <div className="space-y-4 border-t border-[#063B3D]/[0.08] pt-5">
           <div>
-            <p className="text-[10.5px] font-medium uppercase tracking-[0.18em] text-teal-300/60">Application</p>
-            <p className="mt-1.5 text-[13.5px] leading-relaxed text-cream-200/50">{entry.application}</p>
+            <p className="text-[10.5px] font-medium uppercase tracking-[0.18em] text-[#169B9A]/90">Application</p>
+            <p className="mt-1.5 text-[13.5px] leading-relaxed text-[#315F62]/60">{entry.application}</p>
           </div>
           <div>
-            <p className="text-[10.5px] font-medium uppercase tracking-[0.18em] text-teal-300/60">Design Intent</p>
-            <p className="mt-1.5 text-[13.5px] leading-relaxed text-cream-200/50">{entry.designIntent}</p>
+            <p className="text-[10.5px] font-medium uppercase tracking-[0.18em] text-[#169B9A]/90">Design Intent</p>
+            <p className="mt-1.5 text-[13.5px] leading-relaxed text-[#315F62]/60">{entry.designIntent}</p>
           </div>
         </div>
 
@@ -82,7 +82,7 @@ function ExplorerCard({
           {entry.features.map((f) => (
             <span
               key={f}
-              className="inline-block rounded-full border border-white/[0.06] bg-white/[0.03] px-3 py-1.5 text-[11px] text-cream-200/45"
+              className="inline-block rounded-full border border-[#063B3D]/[0.08] bg-white/40 px-3 py-1.5 text-[11px] text-[#315F62]/65"
             >
               {f}
             </span>
@@ -90,7 +90,7 @@ function ExplorerCard({
         </div>
 
         <motion.div
-          className="group/link mt-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-400/80 transition-colors duration-300 hover:text-gold-300"
+          className="group/link mt-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-700/80 transition-colors duration-300 hover:text-gold-600"
           whileHover={{ x: 4 }}
         >
           <span>Explore Space</span>
@@ -106,9 +106,9 @@ export function SpaceExplorer() {
   const filtered = SPACE_EXPLORER.filter((s) => s.category === activeCategory)
 
   return (
-    <section id="space-explorer" className="relative overflow-hidden bg-ink-950 py-20 sm:py-28 lg:py-36">
-      <div className="pointer-events-none absolute right-[8%] top-[12%] h-[400px] w-[500px] opacity-[0.035] blur-[140px]"
-        style={{ background: 'radial-gradient(circle, #1d7a6f 0%, transparent 65%)' }}
+    <section id="space-explorer" className="relative overflow-hidden bg-transparent py-20 sm:py-28 lg:py-36">
+      <div className="pointer-events-none absolute right-[8%] top-[12%] h-[400px] w-[500px] opacity-[0.25] blur-[140px]"
+        style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 65%)' }}
       />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
@@ -118,7 +118,7 @@ export function SpaceExplorer() {
         <Reveal delay={0.08}>
           <h2 className="mt-5 max-w-xl font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
             Where comfort meets{' '}
-            <span className="italic text-gold-400">considered environments.</span>
+            <span className="italic text-teal-700">considered environments.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.14}>
@@ -132,7 +132,7 @@ export function SpaceExplorer() {
           <div
             role="tablist"
             aria-label="Space category"
-            className="mt-10 inline-flex flex-wrap items-center gap-1 rounded-full border border-white/10 bg-ink-900/50 p-1 backdrop-blur-md"
+            className="mt-10 inline-flex flex-wrap items-center gap-1 rounded-full border border-white/70 bg-white/50 p-1 shadow-[0_14px_36px_-22px_rgba(18,59,61,0.3),inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-md"
           >
             {CATEGORIES.map((cat) => (
               <button
@@ -142,14 +142,14 @@ export function SpaceExplorer() {
                 aria-selected={activeCategory === cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`relative rounded-full px-5 py-2.5 text-[11.5px] font-medium uppercase tracking-widest transition-colors duration-300 ${
-                  activeCategory === cat ? 'text-ink-950' : 'text-cream-200/55 hover:text-cream-100'
+                  activeCategory === cat ? 'text-white' : 'text-ink-700 hover:text-ink-900'
                 }`}
               >
                 {activeCategory === cat && (
                   <motion.span
                     layoutId="space-cat-pill"
                     transition={{ duration: 0.45, ease: easeOut }}
-                    className="absolute inset-0 rounded-full bg-gold-400 shadow-[0_8px_20px_-8px_rgba(212,175,86,0.55)]"
+                    className="absolute inset-0 rounded-full bg-teal-700 shadow-[0_10px_24px_-10px_rgba(22,155,154,0.6),inset_0_1px_0_rgba(255,255,255,0.3)]"
                   />
                 )}
                 <span className="relative z-10">{cat}</span>
@@ -172,7 +172,7 @@ export function SpaceExplorer() {
               .slice(0, 3)
               .map((entry) => (
                 <RevealItem key={entry.id}>
-                  <div className="group relative overflow-hidden rounded-[20px] border border-white/[0.06] bg-ink-900/30 transition-all duration-500 hover:border-gold-400/25 hover:bg-ink-900/50">
+                  <div className="group relative overflow-hidden rounded-[20px] border border-[#0B3F42]/[0.10] bg-[#F4F7F5] transition-all duration-500 hover:border-[#159FA3]/35 hover:shadow-[0_24px_56px_-24px_rgba(6,61,60,0.22)]">
                     <div className="aspect-[4/3] overflow-hidden">
                       <img
                         src={projectImageAt(entry.id, 1)}
@@ -182,11 +182,11 @@ export function SpaceExplorer() {
                       />
                     </div>
                     <div className="p-5">
-                      <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-gold-400/65">{entry.category}</p>
-                      <h4 className="mt-2 font-display text-lg text-cream-100 transition-colors duration-300 group-hover:text-gold-100">
+                      <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-gold-700/65">{entry.category}</p>
+                      <h4 className="mt-2 font-display text-lg text-[#063B3D] transition-colors duration-300 group-hover:text-gold-700">
                         {entry.title}
                       </h4>
-                      <p className="mt-2 text-[13px] leading-relaxed text-cream-200/45 line-clamp-2">{entry.description}</p>
+                      <p className="mt-2 text-[13px] leading-relaxed text-[#315F62]/65 line-clamp-2">{entry.description}</p>
                     </div>
                   </div>
                 </RevealItem>

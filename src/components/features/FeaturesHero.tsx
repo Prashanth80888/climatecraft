@@ -11,6 +11,7 @@ import {
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { getProductBySlug } from '../../data/homeProducts'
 import { homeProductImage } from '../../lib/assets'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
@@ -147,12 +148,13 @@ export function FeaturesHero() {
   return (
     <section
       ref={ref}
-      className="relative w-full overflow-hidden bg-ink-950 px-4 pb-10 pt-32 sm:px-6 sm:pb-14 sm:pt-36 lg:pt-40"
+      className="relative w-full overflow-hidden bg-transparent px-4 pb-10 pt-32 sm:px-6 sm:pb-14 sm:pt-36 lg:pt-40"
     >
+      <SectionAtmosphere variant="glow" />
       {/* Ambient depth behind the image — outside the photo, in the breathing space below the navbar. */}
       <div
-        className="pointer-events-none absolute -top-10 left-1/2 h-[420px] w-[900px] -translate-x-1/2 opacity-[0.14] blur-[130px]"
-        style={{ background: 'radial-gradient(circle, #1d7a6f 0%, transparent 60%)' }}
+        className="pointer-events-none absolute -top-10 left-1/2 h-[420px] w-[900px] -translate-x-1/2 opacity-[0.42] blur-[130px]"
+        style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 60%)' }}
       />
       <div
         className="pointer-events-none absolute right-0 top-1/3 h-[320px] w-[320px] opacity-[0.1] blur-[110px]"
@@ -184,9 +186,9 @@ export function FeaturesHero() {
           </motion.div>
 
           {/* Blend every edge into the page background — no visible photo boundary, front or edge. */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/30 to-transparent" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-ink-950/55 via-transparent to-transparent" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/35" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-canvas via-canvas/30 to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-canvas/50 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas/70 via-transparent to-transparent" />
           <div className="grain-overlay opacity-[0.12]" />
 
           {/* Smart control panel — a small, honest visualization of the product's real climate range
@@ -196,10 +198,10 @@ export function FeaturesHero() {
             initial={{ opacity: 0, y: 10, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.7, delay: 3.2, ease: easeOut }}
-            className="pointer-events-none absolute left-[64%] top-[9%] hidden w-[188px] rounded-2xl border border-white/15 bg-ink-950/55 p-4 shadow-[0_25px_60px_-20px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:block"
+            className="pointer-events-none absolute left-[64%] top-[9%] hidden w-[188px] rounded-2xl border border-[#063B3D]/[0.14] bg-white/65 p-4 shadow-[0_25px_60px_-20px_rgba(6,59,61,0.28)] backdrop-blur-xl sm:block"
           >
             <div className="flex items-center justify-between">
-              <span className="text-[9px] font-medium uppercase tracking-widest text-cream-200/50">Climate Range</span>
+              <span className="text-[9px] font-medium uppercase tracking-widest text-[#315F62]/55">Climate Range</span>
               {!prefersReducedMotion && (
                 <motion.span
                   animate={{ opacity: [0.4, 1, 0.4] }}
@@ -209,21 +211,21 @@ export function FeaturesHero() {
               )}
             </div>
             <div className="mt-2 flex items-baseline gap-1.5">
-              <span className="font-display text-2xl italic text-cream-100">15°</span>
-              <span className="text-cream-200/30">—</span>
-              <span className="font-display text-2xl italic text-gold-400">35°C</span>
+              <span className="font-display text-2xl italic text-[#063B3D]">15°</span>
+              <span className="text-[#315F62]/50">—</span>
+              <span className="font-display text-2xl italic text-[#169B9A]">35°C</span>
             </div>
-            <div className="relative mt-3 h-1 overflow-hidden rounded-full bg-white/10">
+            <div className="relative mt-3 h-1 overflow-hidden rounded-full bg-white/50">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-teal-400 via-cream-200/70 to-gold-400" />
               {!prefersReducedMotion && (
                 <motion.span
                   animate={{ left: ['4%', '92%', '4%'] }}
                   transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-ink-950 bg-cream-100"
+                  className="absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-white"
                 />
               )}
             </div>
-            <div className="mt-2 flex items-center justify-between text-[8.5px] uppercase tracking-widest text-cream-200/40">
+            <div className="mt-2 flex items-center justify-between text-[8.5px] uppercase tracking-widest text-[#315F62]/55">
               <span>Cooling</span>
               <span>Heating</span>
             </div>
@@ -242,7 +244,7 @@ export function FeaturesHero() {
                     x2={f.targetX}
                     y2={f.targetY}
                     vectorEffect="non-scaling-stroke"
-                    stroke={isActive ? 'rgba(232,187,90,0.85)' : 'rgba(255,255,255,0.14)'}
+                    stroke={isActive ? 'rgba(22,155,154,0.85)' : 'rgba(255,255,255,0.14)'}
                     strokeWidth={isActive ? 0.35 : 0.18}
                     strokeDasharray="1.4 1.4"
                     initial={{ pathLength: 0, opacity: 0 }}
@@ -260,7 +262,7 @@ export function FeaturesHero() {
                 style={{
                   left: `${active.targetX}%`,
                   top: `${active.targetY}%`,
-                  background: 'radial-gradient(circle, rgba(232,187,90,0.32) 0%, transparent 72%)',
+                  background: 'radial-gradient(circle, rgba(22,155,154,0.32) 0%, transparent 72%)',
                 }}
                 animate={{ opacity: [0.35, 0.65, 0.35], scale: [0.9, 1.05, 0.9] }}
                 transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
@@ -295,7 +297,7 @@ export function FeaturesHero() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: 6 }}
                           transition={{ duration: 0.3, ease: easeOut }}
-                          className="absolute right-full top-1/2 mr-2.5 -translate-y-1/2 whitespace-nowrap rounded-full border border-gold-300/30 bg-ink-950/75 px-3 py-1.5 text-[10.5px] font-medium uppercase tracking-widest text-gold-200 backdrop-blur-md"
+                          className="absolute right-full top-1/2 mr-2.5 -translate-y-1/2 whitespace-nowrap rounded-full border border-gold-300/30 bg-white/70 px-3 py-1.5 text-[10.5px] font-medium uppercase tracking-widest text-gold-600 backdrop-blur-md"
                         >
                           {f.title}
                         </motion.span>
@@ -304,8 +306,8 @@ export function FeaturesHero() {
                     <motion.span
                       animate={{
                         scale: isActive ? 1.15 : 1,
-                        borderColor: isActive ? 'rgba(232,187,90,0.9)' : 'rgba(255,255,255,0.25)',
-                        backgroundColor: isActive ? 'rgba(232,187,90,0.95)' : 'rgba(6,17,15,0.55)',
+                        borderColor: isActive ? 'rgba(22,155,154,0.9)' : 'rgba(255,255,255,0.25)',
+                        backgroundColor: isActive ? 'rgba(22,155,154,0.95)' : 'rgba(255,255,255,0.85)',
                         color: isActive ? '#0a0f0d' : 'rgba(244,240,231,0.75)',
                       }}
                       transition={{ duration: 0.4, ease: easeOut }}
@@ -334,7 +336,7 @@ export function FeaturesHero() {
                 className="flex items-center gap-2.5"
               >
                 <span className="h-px w-6 bg-gold-400" />
-                <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-gold-400">
+                <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-gold-700">
                   Engineering &amp; Technology
                 </span>
               </motion.div>
@@ -346,7 +348,7 @@ export function FeaturesHero() {
                       initial={{ y: '110%' }}
                       animate={{ y: '0%' }}
                       transition={{ duration: 1, delay: 0.7 + i * 0.14, ease: easeOut }}
-                      className={`block ${i === 1 ? 'italic text-gold-400' : ''}`}
+                      className={`block ${i === 1 ? 'italic text-teal-700' : ''}`}
                     >
                       {line}
                     </motion.span>
@@ -372,7 +374,7 @@ export function FeaturesHero() {
               >
                 <a
                   href="#feature-explorer"
-                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gold-500 px-6 py-3.5 text-[12px] font-semibold uppercase tracking-widest text-ink-950 shadow-[0_18px_40px_-16px_rgba(240,169,44,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_-14px_rgba(240,169,44,0.65)] active:scale-[0.97]"
+                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-teal-700 px-6 py-3.5 text-[12px] font-semibold uppercase tracking-widest text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_18px_40px_-16px_rgba(22,155,154,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_22px_48px_-14px_rgba(22,155,154,0.65)] active:scale-[0.97]"
                 >
                   <span className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/2 -skew-x-12 bg-white/40 opacity-0 transition-all duration-700 ease-out group-hover:left-full group-hover:opacity-100" />
                   <span className="relative z-10">Explore Features</span>
@@ -391,11 +393,11 @@ export function FeaturesHero() {
             <motion.div
               animate={prefersReducedMotion ? {} : { y: [0, 5, 0], opacity: [0.6, 1, 0.6] }}
               transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-cream-100/60 backdrop-blur-md"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-[#063B3D]/[0.14] text-[#063B3D]/80 backdrop-blur-md"
             >
               <ChevronDown className="h-3.5 w-3.5" />
             </motion.div>
-            <span className="text-[9.5px] font-medium uppercase tracking-[0.2em] text-cream-200/40">
+            <span className="text-[9.5px] font-medium uppercase tracking-[0.2em] text-[#315F62]/60">
               Scroll to Discover
             </span>
           </motion.div>
@@ -406,7 +408,7 @@ export function FeaturesHero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.85, ease: easeOut }}
-          className="mt-6 border-t border-white/10 pt-6 sm:mt-8 sm:pt-7"
+          className="mt-6 border-t border-[#063B3D]/10 pt-6 sm:mt-8 sm:pt-7"
         >
           <div className="flex flex-wrap gap-2">
             {HERO_FEATURES.map((f, i) => {
@@ -429,8 +431,8 @@ export function FeaturesHero() {
                   aria-pressed={isActive}
                   className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-[11px] font-medium uppercase tracking-widest transition-all duration-300 ${
                     isActive
-                      ? 'border-gold-400/60 bg-gold-400/10 text-gold-300'
-                      : 'border-white/10 text-cream-200/55 hover:border-white/25 hover:text-cream-100'
+                      ? 'border-gold-400/60 bg-gold-400/10 text-gold-600'
+                      : 'border-[#063B3D]/10 text-[#315F62]/65 hover:border-[#063B3D]/20 hover:text-[#063B3D]'
                   }`}
                 >
                   <span className="font-display text-[10px] italic">{f.number}</span>
@@ -450,7 +452,7 @@ export function FeaturesHero() {
               className="mt-4 flex flex-wrap gap-x-6 gap-y-1.5"
             >
               {active.points.map((p) => (
-                <li key={p} className="flex items-center gap-2 text-[13px] text-cream-200/65">
+                <li key={p} className="flex items-center gap-2 text-[13px] text-[#315F62]/75">
                   <span className="h-1 w-1 flex-none rounded-full bg-gold-400" />
                   {p}
                 </li>

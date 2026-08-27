@@ -15,12 +15,12 @@ export function MotionExperience() {
   const [index, setIndex] = useState(0)
 
   return (
-    <section className="relative overflow-hidden bg-ink-950 py-20 sm:py-24 lg:py-28">
+    <section className="relative overflow-hidden bg-transparent py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-6">
             <Reveal>
-              <div className="relative overflow-hidden rounded-[28px] border border-white/10 shadow-[0_60px_140px_-50px_rgba(0,0,0,0.9)]">
+              <div className="relative overflow-hidden rounded-[28px] border border-white/70 shadow-[0_60px_140px_-50px_rgba(18,59,61,0.4)]">
                 <div className="relative aspect-[4/5] w-full sm:aspect-[4/3]">
                   <AnimatePresence mode="popLayout">
                     <motion.img
@@ -34,7 +34,7 @@ export function MotionExperience() {
                       className="absolute inset-0 h-full w-full select-none object-cover"
                     />
                   </AnimatePresence>
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/45 via-transparent to-transparent" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
                   {images.length > 1 && (
                     <div className="absolute inset-x-0 bottom-5 flex justify-center gap-2">
@@ -45,7 +45,7 @@ export function MotionExperience() {
                           onClick={() => setIndex(i)}
                           aria-label={`View angle ${i + 1}`}
                           className={`h-1.5 rounded-full transition-all duration-400 ${
-                            i === index ? 'w-6 bg-gold-400' : 'w-1.5 bg-white/30 hover:bg-white/50'
+                            i === index ? 'w-6 bg-gold-400' : 'w-1.5 bg-ink-900/25 hover:bg-ink-900/40'
                           }`}
                         />
                       ))}
@@ -60,7 +60,7 @@ export function MotionExperience() {
             <Reveal delay={0.1}>
               <SectionLabel>Motion Experience</SectionLabel>
               <h2 className="mt-5 max-w-md font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
-                Reclining, <span className="italic text-gold-400">without a sound.</span>
+                Reclining, <span className="italic text-teal-700">without a sound.</span>
               </h2>
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200/65">
                 A precision motor drives the reclining mechanism and leg rest on every Motorised Comfort piece —
@@ -78,7 +78,7 @@ export function MotionExperience() {
                     className={`rounded-2xl border px-5 py-4 text-left transition-all duration-300 ${
                       i === index
                         ? 'border-gold-400/50 bg-gold-400/[0.06]'
-                        : 'border-white/10 bg-ink-900/40 hover:border-white/20'
+                        : 'border-[#063B3D]/10 bg-white/50 hover:border-[#063B3D]/[0.18]'
                     }`}
                   >
                     <span className="font-display text-lg italic text-cream-100">{trait}</span>

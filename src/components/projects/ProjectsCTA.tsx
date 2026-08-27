@@ -5,8 +5,8 @@ import { SectionLabel } from '../ui/SectionLabel'
 
 export function ProjectsCTA() {
   return (
-    <section className="relative overflow-hidden bg-teal-950">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-teal-900 via-ink-950 to-ink-950" />
+    <section className="relative overflow-hidden bg-[#169B9A]">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#169B9A] via-[#0F7776] to-[#0B4F4E]" />
       <div
         className="pointer-events-none absolute -left-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full opacity-20 blur-[100px]"
         style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 70%)' }}
@@ -23,7 +23,7 @@ export function ProjectsCTA() {
         </Reveal>
         <Reveal delay={0.08}>
           <h2 className="mt-5 font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl lg:text-[2.9rem]">
-            Have a space <span className="italic text-gold-400">in mind?</span>
+            Have a space <span className="italic text-teal-700">in mind?</span>
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
@@ -40,7 +40,7 @@ export function ProjectsCTA() {
             </Link>
             <Link
               to="/collections"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-cream-200/70 transition-all duration-300 hover:border-white/25 hover:text-cream-100"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3.5 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-white/80 transition-all duration-300 hover:border-white/50 hover:text-white"
             >
               <span>Explore Collections</span>
               <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />

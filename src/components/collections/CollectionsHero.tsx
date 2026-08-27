@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { HOME_PRODUCTS, PRODUCT_FAMILIES } from '../../data/homeProducts'
 import { homeProductImage } from '../../lib/assets'
 import { SectionLabel } from '../ui/SectionLabel'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { Reveal } from '../ui/Reveal'
 
 export function CollectionsHero() {
@@ -16,11 +17,12 @@ export function CollectionsHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-ink-950 pb-16 pt-36 sm:pb-20 sm:pt-40 lg:pb-24 lg:pt-48"
+      className="relative overflow-hidden bg-transparent pb-16 pt-36 sm:pb-20 sm:pt-40 lg:pb-24 lg:pt-48"
     >
+      <SectionAtmosphere variant="ambient" />
       <div
-        className="pointer-events-none absolute -right-32 top-0 h-[480px] w-[480px] rounded-full opacity-[0.14] blur-[120px]"
-        style={{ background: 'radial-gradient(circle, #1d7a6f 0%, transparent 70%)' }}
+        className="pointer-events-none absolute -right-32 top-0 h-[480px] w-[480px] rounded-full opacity-[0.42] blur-[120px]"
+        style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 70%)' }}
       />
 
       {/* Large atmospheric product photograph — the collection's own photography as hero backdrop. */}
@@ -33,10 +35,10 @@ export function CollectionsHero() {
             src={homeProductImage(heroProduct.slug)}
             alt=""
             aria-hidden="true"
-            className="h-full w-full object-cover opacity-[0.5]"
+            className="h-full w-full object-cover opacity-[0.55]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-canvas via-canvas/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-canvas/60 via-transparent to-transparent" />
         </div>
       </motion.div>
 
@@ -48,10 +50,10 @@ export function CollectionsHero() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h1 className="mt-6 max-w-2xl font-display text-[2.6rem] font-normal leading-[1.05] text-cream-100 sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-2xl font-display text-[2.6rem] font-normal leading-[1.05] text-[#063B3D] sm:text-6xl lg:text-7xl">
             Engineered motion.
             <br />
-            <span className="italic text-gold-400">Considered comfort.</span>
+            <span className="italic text-teal-700">Considered comfort.</span>
           </h1>
         </Reveal>
 
@@ -63,18 +65,18 @@ export function CollectionsHero() {
         </Reveal>
 
         <Reveal delay={0.3}>
-          <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-white/10 pt-6">
+          <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-[#063B3D]/10 pt-6">
             <div className="flex items-baseline gap-2">
-              <span className="font-display text-2xl text-gold-400">{PRODUCT_FAMILIES.length}</span>
-              <span className="text-[11px] uppercase tracking-widest text-cream-200/50">Collections</span>
+              <span className="font-display text-2xl text-gold-700">{PRODUCT_FAMILIES.length}</span>
+              <span className="text-[11px] uppercase tracking-widest text-[#315F62]/60">Collections</span>
             </div>
             <div className="flex items-baseline gap-2">
-              <span className="font-display text-2xl text-gold-400">{HOME_PRODUCTS.length}</span>
-              <span className="text-[11px] uppercase tracking-widest text-cream-200/50">Pieces</span>
+              <span className="font-display text-2xl text-gold-700">{HOME_PRODUCTS.length}</span>
+              <span className="text-[11px] uppercase tracking-widest text-[#315F62]/60">Pieces</span>
             </div>
             <div className="flex items-baseline gap-2">
-              <span className="font-display text-2xl italic text-gold-400">MTO</span>
-              <span className="text-[11px] uppercase tracking-widest text-cream-200/50">Made to Order</span>
+              <span className="font-display text-2xl italic text-[#169B9A]">MTO</span>
+              <span className="text-[11px] uppercase tracking-widest text-[#315F62]/60">Made to Order</span>
             </div>
           </div>
         </Reveal>

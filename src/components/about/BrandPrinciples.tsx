@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { SectionLabel } from '../ui/SectionLabel'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
@@ -24,31 +25,32 @@ const PRINCIPLES = [
 
 export function BrandPrinciples() {
   return (
-    <section className="relative overflow-hidden bg-ink-900/40 py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-24">
+      <SectionAtmosphere variant="glow" />
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>What We Hold To</SectionLabel>
         </Reveal>
 
-        <RevealGroup className="mt-10 grid grid-cols-1 gap-x-8 gap-y-2 border-t border-white/10 sm:grid-cols-3">
+        <RevealGroup className="mt-10 grid grid-cols-1 gap-x-8 gap-y-2 border-t border-ink-900/10 sm:grid-cols-3">
           {PRINCIPLES.map((p) => (
             <RevealItem key={p.number}>
               <motion.div
                 initial="rest"
                 whileHover="hover"
                 animate="rest"
-                className="group relative border-white/10 px-1 py-9 sm:border-l sm:px-7 sm:first:border-l-0"
+                className="group relative border-ink-900/10 px-1 py-9 sm:border-l sm:px-7 sm:first:border-l-0"
               >
                 <motion.div
                   variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
                   transition={{ duration: 0.5, ease: easeOut }}
                   className="pointer-events-none absolute -left-10 top-0 h-40 w-40 rounded-full opacity-30 blur-[80px]"
-                  style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle, #C9A84E 0%, transparent 70%)' }}
                 />
                 <motion.span
                   variants={{ rest: { x: 0 }, hover: { x: 6 } }}
                   transition={{ duration: 0.4, ease: easeOut }}
-                  className="relative block font-display text-sm italic tabular-nums text-gold-400/80"
+                  className="relative block font-display text-sm italic tabular-nums text-gold-700/80"
                 >
                   {p.number}
                 </motion.span>

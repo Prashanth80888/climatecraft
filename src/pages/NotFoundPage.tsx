@@ -11,18 +11,18 @@ export function NotFoundPage() {
 
   return (
     <>
-      <main className="relative flex min-h-[80vh] flex-col items-center justify-center bg-ink-950 px-5 pt-32 text-center">
+      <main className="relative flex min-h-[80vh] flex-col items-center justify-center bg-transparent px-5 pt-32 text-center">
         <div
-          className="pointer-events-none absolute left-1/2 top-1/3 h-[360px] w-[720px] -translate-x-1/2 -translate-y-1/2 opacity-[0.08] blur-[130px]"
-          style={{ background: 'radial-gradient(ellipse, #1d7a6f 0%, transparent 65%)' }}
+          className="pointer-events-none absolute left-1/2 top-1/3 h-[360px] w-[720px] -translate-x-1/2 -translate-y-1/2 opacity-[0.32] blur-[130px]"
+          style={{ background: 'radial-gradient(ellipse, #53c9c5 0%, transparent 65%)' }}
         />
         <div className="grain-overlay opacity-[0.06]" />
 
         <div className="relative">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/10 text-cream-200/40">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-ink-900/10 text-cream-200/55">
             <Search className="h-6 w-6" strokeWidth={1.5} />
           </div>
-          <p className="mt-6 text-[11px] uppercase tracking-widest text-gold-400/70">404</p>
+          <p className="mt-6 text-[11px] uppercase tracking-widest text-gold-700/70">404</p>
           <h1 className="mt-4 font-display text-4xl font-normal text-cream-100 sm:text-5xl">
             Page not found.
           </h1>

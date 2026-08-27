@@ -57,7 +57,7 @@ export function Hero() {
     <section
       id="hero"
       ref={ref}
-      className="relative flex h-[100svh] min-h-[640px] w-full flex-col overflow-hidden bg-ink-950"
+      className="relative flex h-[100svh] min-h-[640px] w-full flex-col overflow-hidden bg-transparent"
     >
       <motion.div
         initial={{ scale: 1.06, opacity: 0.6 }}
@@ -79,18 +79,16 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/60 to-ink-950/20" />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink-950/70 via-transparent to-ink-950/40" />
-
-      {/* Structural navbar safe-zone: guarantees legibility regardless of video content brightness. */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ink-950/95 via-ink-950/35 to-transparent sm:h-48" />
+      {/* Localized readability gradients — only behind text, NOT covering the video */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black/40 via-black/15 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/30 via-black/10 to-transparent sm:h-56" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-black/20 to-transparent" />
 
       <div className="grain-overlay opacity-60" />
 
-      <div className="pointer-events-none absolute left-[8%] top-[22%] h-1.5 w-1.5 rounded-full bg-gold-300/70 blur-[1px] animate-shimmer" />
-      <div className="pointer-events-none absolute left-[22%] top-[38%] h-1 w-1 rounded-full bg-cream-100/50 blur-[1px] animate-shimmer [animation-delay:1s]" />
-      <div className="pointer-events-none absolute left-[15%] top-[62%] h-1 w-1 rounded-full bg-gold-400/60 blur-[1px] animate-shimmer [animation-delay:2s]" />
+      <div className="pointer-events-none absolute left-[8%] top-[22%] h-1.5 w-1.5 rounded-full bg-gold-400/80 blur-[1px] animate-shimmer" />
+      <div className="pointer-events-none absolute left-[22%] top-[38%] h-1 w-1 rounded-full bg-white/80 blur-[1px] animate-shimmer [animation-delay:1s]" />
+      <div className="pointer-events-none absolute left-[15%] top-[62%] h-1 w-1 rounded-full bg-teal-500/70 blur-[1px] animate-shimmer [animation-delay:2s]" />
 
       {/*
         Guaranteed navbar clearance. This is a real flex-column sibling with a fixed
@@ -115,14 +113,14 @@ export function Hero() {
           Motion Furniture · Est. 2009
         </motion.span>
 
-        <h1 className="max-w-3xl font-display text-[13vw] font-normal leading-[0.98] tracking-[-0.01em] text-cream-100 sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.25rem]">
+        <h1 className="max-w-3xl font-display text-[13vw] font-normal leading-[0.98] tracking-[-0.01em] text-white sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.25rem]">
           {headline.map((line, i) => (
             <motion.span
               key={line.text}
               initial={{ opacity: 0, y: '100%' }}
               animate={introComplete ? { opacity: 1, y: '0%' } : { opacity: 0, y: '100%' }}
               transition={{ duration: 1, delay: 0.45 + i * 0.14, ease: easeOut }}
-              className={`block overflow-hidden ${line.accent ? 'italic text-gold-400' : ''}`}
+              className={`block overflow-hidden ${line.accent ? 'italic text-teal-500' : ''}`}
             >
               {line.text}
             </motion.span>
@@ -133,7 +131,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={introComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.9, delay: 0.95, ease: easeOut }}
-          className="mt-7 max-w-md text-[15px] leading-relaxed text-cream-200/75 sm:text-base"
+          className="mt-7 max-w-md text-[15px] leading-relaxed text-white/75 sm:text-base"
         >
           Motorized and manually operated seating, engineered in-house and upholstered by hand — built for the
           manufacturers and galleries who set the standard.
@@ -155,10 +153,10 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={introComplete ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1, delay: 1.35 }}
-          className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/10 pt-6 sm:mt-14 lg:gap-x-10"
+          className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-ink-900/10 pt-6 sm:mt-14 lg:gap-x-10"
         >
           {trustMarks.map((mark) => (
-            <span key={mark} className="text-[10.5px] font-medium uppercase tracking-widest text-cream-200/55">
+            <span key={mark} className="text-[10.5px] font-medium uppercase tracking-widest text-white/55">
               {mark}
             </span>
           ))}
@@ -171,12 +169,12 @@ export function Hero() {
         transition={{ duration: 1, delay: 1.6 }}
         className="absolute bottom-6 right-6 z-10 hidden flex-col items-center gap-2 sm:flex lg:right-10"
       >
-        <span className="text-[10px] uppercase tracking-widest2 text-cream-200/50">Scroll</span>
+        <span className="text-[10px] uppercase tracking-widest2 text-white/50">Scroll</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <ChevronDown className="h-4 w-4 text-cream-200/50" />
+          <ChevronDown className="h-4 w-4 text-white/50" />
         </motion.div>
       </motion.div>
     </section>

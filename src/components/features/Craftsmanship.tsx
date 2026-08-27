@@ -1,5 +1,6 @@
 import { getProductBySlug } from '../../data/homeProducts'
 import { homeProductImageAt } from '../../lib/assets'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { SectionLabel } from '../ui/SectionLabel'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 
@@ -16,13 +17,14 @@ export function Craftsmanship() {
   const detailImage = homeProductImageAt(product.slug, 6)
 
   return (
-    <section className="relative bg-ink-950 py-20 sm:py-24 lg:py-28">
+    <section className="relative bg-transparent py-20 sm:py-24 lg:py-28">
+      <SectionAtmosphere variant="ambient" />
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-6">
             <Reveal>
               <div
-                className="overflow-hidden rounded-[28px] border border-white/10 shadow-[0_60px_140px_-50px_rgba(0,0,0,0.9)]"
+                className="overflow-hidden rounded-[28px] border border-white/70 shadow-[0_60px_140px_-50px_rgba(18,59,61,0.4)]"
                 style={{ clipPath: 'inset(0% round 28px)' }}
               >
                 <img
@@ -39,11 +41,11 @@ export function Craftsmanship() {
             <Reveal>
               <SectionLabel>Craftsmanship</SectionLabel>
               <h2 className="mt-5 max-w-md font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl lg:text-[2.6rem]">
-                Every surface <span className="italic text-gold-400">has a reason.</span>
+                Every surface <span className="italic text-teal-700">has a reason.</span>
               </h2>
             </Reveal>
 
-            <RevealGroup className="mt-10 divide-y divide-white/10 border-t border-white/10">
+            <RevealGroup className="mt-10 divide-y divide-[#063B3D]/10 border-t border-[#063B3D]/10">
               {POINTS.map((p) => (
                 <RevealItem key={p.title} className="py-5">
                   <h3 className="font-display text-lg text-cream-100">{p.title}</h3>

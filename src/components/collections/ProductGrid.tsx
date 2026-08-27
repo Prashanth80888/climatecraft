@@ -24,7 +24,7 @@ export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(function
   const products = HOME_PRODUCTS.filter((p) => p.familyId === family.id)
 
   return (
-    <section ref={ref} className="relative bg-ink-950 pb-24 pt-4 sm:pb-28 lg:pb-32">
+    <section ref={ref} className="relative bg-transparent pb-24 pt-4 sm:pb-28 lg:pb-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionLabel>All Pieces in {family.label}</SectionLabel>
 

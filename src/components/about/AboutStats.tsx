@@ -3,6 +3,7 @@ import { useInView } from 'framer-motion'
 import { PRODUCT_FAMILIES } from '../../data/homeProducts'
 import { contact } from '../../lib/assets'
 import { useCountUp } from '../../hooks/useCountUp'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { Reveal } from '../ui/Reveal'
 
 // Every value here is traceable to real, existing data — the founding year in
@@ -33,8 +34,8 @@ function Stat({
 }) {
   const count = useCountUp(value, active)
   return (
-    <div className="flex flex-col items-start border-t border-white/10 px-1 py-9 sm:border-t-0 sm:border-l sm:px-7 sm:py-2 sm:first:border-l-0">
-      <span className="font-display text-5xl tabular-nums text-gold-400 sm:text-6xl">
+    <div className="flex flex-col items-start border-t border-ink-900/10 px-1 py-9 sm:border-t-0 sm:border-l sm:px-7 sm:py-2 sm:first:border-l-0">
+      <span className="font-display text-5xl tabular-nums text-gold-700 sm:text-6xl">
         {count}
         {suffix}
       </span>
@@ -48,10 +49,11 @@ export function AboutStats() {
   const inView = useInView(ref, { once: true, amount: 0.5 })
 
   return (
-    <section className="relative bg-ink-900/40 py-16 sm:py-20">
+    <section className="relative bg-transparent py-16 sm:py-20">
+      <SectionAtmosphere variant="ambient" />
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
-          <div ref={ref} className="grid grid-cols-2 gap-x-6 gap-y-12 border-y border-white/10 py-2 sm:grid-cols-4">
+          <div ref={ref} className="grid grid-cols-2 gap-x-6 gap-y-12 border-y border-ink-900/10 py-2 sm:grid-cols-4">
             {STATS.map((stat) => (
               <Stat key={stat.label} {...stat} active={inView} />
             ))}

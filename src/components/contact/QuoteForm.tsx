@@ -121,9 +121,9 @@ function buildWhatsAppMessage(values: FormValues): string {
 }
 
 const inputClass =
-  'mt-2 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-[14px] text-cream-100 placeholder:text-cream-200/30 outline-none transition-all duration-300 focus:border-gold-400/50 focus:bg-white/[0.05]'
+  'mt-2 w-full rounded-xl border border-ink-900/10 bg-white/35 px-4 py-3 text-[14px] text-cream-100 placeholder:text-cream-200/50 outline-none transition-all duration-300 focus:border-gold-400/50 focus:bg-white/45'
 const labelClass = 'text-[11px] font-medium uppercase tracking-widest text-cream-200/60'
-const groupHeadingClass = 'text-[11px] font-semibold uppercase tracking-widest text-gold-400/70'
+const groupHeadingClass = 'text-[11px] font-semibold uppercase tracking-widest text-gold-700/70'
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   return (
@@ -135,7 +135,7 @@ function FieldError({ id, message }: { id: string; message?: string }) {
           animate={{ opacity: 1, y: 0, height: 'auto' }}
           exit={{ opacity: 0, y: -4, height: 0 }}
           transition={{ duration: 0.25, ease: easeOut }}
-          className="mt-1.5 flex items-center gap-1.5 overflow-hidden text-[12px] text-gold-400"
+          className="mt-1.5 flex items-center gap-1.5 overflow-hidden text-[12px] text-gold-700"
         >
           <AlertCircle className="h-3.5 w-3.5 flex-none" />
           {message}
@@ -214,11 +214,11 @@ export function QuoteForm() {
         initial={{ opacity: 0, y: 12, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.6, ease: easeOut }}
-        className="relative overflow-hidden rounded-[24px] border border-white/[0.08] bg-white/[0.02] p-8 text-center sm:p-10"
+        className="relative overflow-hidden rounded-[24px] border border-ink-900/10 bg-white/30 p-8 text-center sm:p-10"
       >
         <div
-          className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/3 rounded-full opacity-[0.18] blur-[90px]"
-          style={{ background: 'radial-gradient(circle, #f0a92c 0%, #1d7a6f 55%, transparent 75%)' }}
+          className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/3 rounded-full opacity-[0.50] blur-[90px]"
+          style={{ background: 'radial-gradient(circle, #f0a92c 0%, #53c9c5 55%, transparent 75%)' }}
         />
 
         <div className="relative mx-auto flex h-16 w-16 items-center justify-center">
@@ -254,17 +254,17 @@ export function QuoteForm() {
           Craft.
         </p>
 
-        <div className="relative mx-auto mt-7 max-w-sm space-y-2.5 rounded-xl border border-white/10 bg-white/[0.02] p-5 text-left">
+        <div className="relative mx-auto mt-7 max-w-sm space-y-2.5 rounded-xl border border-ink-900/10 bg-white/30 p-5 text-left">
           <div className="flex items-center justify-between gap-4">
-            <span className="text-[11px] uppercase tracking-widest text-cream-200/45">Product / Collection</span>
+            <span className="text-[11px] uppercase tracking-widest text-cream-200/60">Product / Collection</span>
             <span className="text-[13px] text-cream-100">{productLabelFor(selection)}</span>
           </div>
           <div className="flex items-center justify-between gap-4">
-            <span className="text-[11px] uppercase tracking-widest text-cream-200/45">Project Type</span>
+            <span className="text-[11px] uppercase tracking-widest text-cream-200/60">Project Type</span>
             <span className="text-[13px] text-cream-100">{values.projectType}</span>
           </div>
           <div className="flex items-center justify-between gap-4">
-            <span className="text-[11px] uppercase tracking-widest text-cream-200/45">Quantity</span>
+            <span className="text-[11px] uppercase tracking-widest text-cream-200/60">Quantity</span>
             <span className="text-[13px] text-cream-100">{values.quantity}</span>
           </div>
         </div>
@@ -368,7 +368,7 @@ export function QuoteForm() {
         </div>
       </div>
 
-      <div className="space-y-6 border-t border-white/10 pt-8">
+      <div className="space-y-6 border-t border-ink-900/10 pt-8">
         <p className={groupHeadingClass}>Project Information</p>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -424,11 +424,11 @@ export function QuoteForm() {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: easeOut }}
-              className="mt-3 flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3"
+              className="mt-3 flex items-center justify-between rounded-xl border border-ink-900/10 bg-white/35 px-4 py-3"
             >
               <div>
                 <p className="text-[13.5px] text-cream-100">{selection.product.name}</p>
-                <p className="mt-0.5 text-[11px] uppercase tracking-widest text-cream-200/45">
+                <p className="mt-0.5 text-[11px] uppercase tracking-widest text-cream-200/60">
                   {selection.family?.label} · {selection.product.category}
                 </p>
               </div>
@@ -451,7 +451,7 @@ export function QuoteForm() {
         </div>
       </div>
 
-      <div className="space-y-6 border-t border-white/10 pt-8">
+      <div className="space-y-6 border-t border-ink-900/10 pt-8">
         <p className={groupHeadingClass}>Project Details</p>
 
         <div>

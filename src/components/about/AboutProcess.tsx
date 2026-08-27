@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { SectionLabel } from '../ui/SectionLabel'
 import { Reveal } from '../ui/Reveal'
 
@@ -42,17 +43,18 @@ export function AboutProcess() {
   })
 
   return (
-    <section id="process" ref={ref} className="relative bg-ink-950 py-16 sm:py-20 lg:py-24">
+    <section id="process" ref={ref} className="relative bg-transparent py-16 sm:py-20 lg:py-24">
+      <SectionAtmosphere variant="radial" />
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>How We Work</SectionLabel>
           <h2 className="mt-5 max-w-lg font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
-            From mechanism <span className="italic text-gold-400">to made.</span>
+            From mechanism <span className="italic text-teal-700">to made.</span>
           </h2>
         </Reveal>
 
         <div className="relative mt-14">
-          <div className="absolute left-0 right-0 top-0 hidden h-px bg-white/10 sm:block" />
+          <div className="absolute left-0 right-0 top-0 hidden h-px bg-white/60 sm:block" />
           <motion.div
             className="absolute left-0 top-0 hidden h-px origin-left bg-gold-400 sm:block"
             style={{ scaleX: scrollYProgress }}
@@ -64,10 +66,10 @@ export function AboutProcess() {
                 key={s.step}
                 animate={{ opacity: i <= active ? 1 : 0.4 }}
                 transition={{ duration: 0.5, ease: easeOut }}
-                className="border-l border-white/10 pl-5 pt-6 sm:border-l-0 sm:pl-0 sm:pt-8"
+                className="border-l border-ink-900/10 pl-5 pt-6 sm:border-l-0 sm:pl-0 sm:pt-8"
               >
-                <span className="font-display text-sm italic tabular-nums text-gold-400/80">{s.step}</span>
-                <p className="mt-2 text-[11px] font-medium uppercase tracking-widest text-cream-200/45">{s.label}</p>
+                <span className="font-display text-sm italic tabular-nums text-gold-700/80">{s.step}</span>
+                <p className="mt-2 text-[11px] font-medium uppercase tracking-widest text-cream-200/60">{s.label}</p>
                 <h3 className="mt-2 font-display text-2xl text-cream-100">{s.title}</h3>
                 <p className="mt-3 max-w-[22ch] text-[14px] leading-relaxed text-cream-200/60">{s.copy}</p>
               </motion.div>

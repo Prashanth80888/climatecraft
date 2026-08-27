@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import type { CaseStudy } from '../../../data/caseStudies'
 import { CASE_STUDIES, getCaseStudyPrimaryProduct } from '../../../data/caseStudies'
+import { SectionAtmosphere } from '../../ui/SectionAtmosphere'
 import { SectionLabel } from '../../ui/SectionLabel'
 import { Reveal } from '../../ui/Reveal'
 
@@ -17,17 +18,18 @@ export function CaseStudyDetailHero({ caseStudy }: { caseStudy: CaseStudy }) {
   const product = getCaseStudyPrimaryProduct(caseStudy)
 
   return (
-    <section className="relative overflow-hidden bg-ink-950 pb-16 pt-32 sm:pb-20 sm:pt-36 lg:pb-24 lg:pt-44">
+    <section className="relative overflow-hidden bg-transparent pb-16 pt-32 sm:pb-20 sm:pt-36 lg:pb-24 lg:pt-44">
+      <SectionAtmosphere variant="radial" />
       <div
-        className="pointer-events-none absolute -left-32 top-0 h-[480px] w-[480px] rounded-full opacity-[0.12] blur-[130px]"
-        style={{ background: 'radial-gradient(circle, #1d7a6f 0%, transparent 70%)' }}
+        className="pointer-events-none absolute -left-32 top-0 h-[480px] w-[480px] rounded-full opacity-[0.40] blur-[130px]"
+        style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 70%)' }}
       />
       <div className="grain-overlay opacity-[0.08]" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal amount={0.6}>
-          <nav className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200/45">
-            <Link to="/case-studies" className="transition-colors duration-300 hover:text-gold-400">
+          <nav className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200/60">
+            <Link to="/case-studies" className="transition-colors duration-300 hover:text-gold-700">
               Case Studies
             </Link>
             <span>/</span>
@@ -40,7 +42,7 @@ export function CaseStudyDetailHero({ caseStudy }: { caseStudy: CaseStudy }) {
         <div className="mt-10 max-w-3xl">
           <Reveal delay={0.05}>
             <div className="flex flex-wrap items-center gap-4">
-              <span className="font-display text-sm italic tabular-nums text-gold-400/80">
+              <span className="font-display text-sm italic tabular-nums text-gold-700/80">
                 {String(caseStudy.number).padStart(2, '0')} / {String(CASE_STUDIES.length).padStart(2, '0')}
               </span>
               <SectionLabel>{caseStudy.category}</SectionLabel>
@@ -71,17 +73,17 @@ export function CaseStudyDetailHero({ caseStudy }: { caseStudy: CaseStudy }) {
 
         {product && (
           <Reveal delay={0.4} className="mt-12 sm:mt-14">
-            <div className="flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-white/10 pt-7">
+            <div className="flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-ink-900/10 pt-7">
               <div>
-                <p className="text-[10.5px] uppercase tracking-widest text-cream-200/45">Product</p>
+                <p className="text-[10.5px] uppercase tracking-widest text-cream-200/60">Product</p>
                 <p className="mt-1.5 text-[13.5px] text-cream-100">{product.name}</p>
               </div>
               <div>
-                <p className="text-[10.5px] uppercase tracking-widest text-cream-200/45">Operation</p>
+                <p className="text-[10.5px] uppercase tracking-widest text-cream-200/60">Operation</p>
                 <p className="mt-1.5 text-[13.5px] text-cream-100">{product.operation}</p>
               </div>
               <div>
-                <p className="text-[10.5px] uppercase tracking-widest text-cream-200/45">Seating</p>
+                <p className="text-[10.5px] uppercase tracking-widest text-cream-200/60">Seating</p>
                 <p className="mt-1.5 text-[13.5px] text-cream-100">
                   {product.seats} Seat{product.seats > 1 ? 's' : ''}
                 </p>
@@ -99,7 +101,7 @@ export function CaseStudyDetailHero({ caseStudy }: { caseStudy: CaseStudy }) {
           <motion.div
             animate={prefersReducedMotion ? {} : { y: [0, 5, 0], opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-cream-100/60"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-ink-900/[0.14] text-cream-100/75"
           >
             <ChevronDown className="h-3.5 w-3.5" />
           </motion.div>

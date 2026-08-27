@@ -59,10 +59,14 @@ export function Footer() {
   )
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-ink-950">
+    <footer className="relative overflow-hidden border-t border-[#071413]/50 bg-[#071413]">
       <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[320px] w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-[0.1] blur-[110px]"
-        style={{ background: 'radial-gradient(ellipse, #1d7a6f 0%, transparent 70%)' }}
+        className="pointer-events-none absolute left-1/2 top-0 h-[360px] w-[1000px] -translate-x-1/2 -translate-y-1/2 opacity-[0.12] blur-[120px]"
+        style={{ background: 'radial-gradient(ellipse, #159FA3 0%, transparent 70%)' }}
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-48"
+        style={{ background: 'linear-gradient(180deg, rgba(7,20,19,0.5) 0%, rgba(7,20,19,0) 100%)' }}
       />
 
       <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8">
@@ -75,9 +79,9 @@ export function Footer() {
                   alt="Climate Craft"
                   className="h-9 w-9 object-contain transition-transform duration-500 group-hover:scale-105"
                 />
-                <span className="font-display text-xl text-cream-100">Climate Craft</span>
+                <span className="font-display text-xl text-[#E5EFF1]">Climate Craft</span>
               </Link>
-              <p className="mt-4 max-w-xs text-[13px] leading-relaxed text-cream-200/55">
+              <p className="mt-4 max-w-xs text-[13px] leading-relaxed text-[#A8C5C7]/70">
                 Precision-engineered motion furniture, handcrafted in Europe for the world's most discerning spaces.
               </p>
               <div className="mt-6 flex items-center gap-3">
@@ -88,7 +92,7 @@ export function Footer() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={s.label}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-cream-200/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-400/50 hover:text-gold-400"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5EFF1]/15 text-[#A8C5C7]/80 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-700/50 hover:text-teal-700"
                   >
                     <s.icon className="h-4 w-4" strokeWidth={1.5} />
                   </a>
@@ -98,7 +102,7 @@ export function Footer() {
 
             {Object.entries(FOOTER_LINKS).map(([title, links]) => (
               <div key={title} className="lg:col-span-2">
-                <h4 className="text-[11px] font-semibold uppercase tracking-widest text-cream-100/80">{title}</h4>
+                <h4 className="text-[11px] font-semibold uppercase tracking-widest text-[#E5EFF1]/70">{title}</h4>
                 <ul className="mt-5 flex flex-col gap-3">
                   {links.map((link) => (
                     <li key={link.label}>
@@ -106,14 +110,14 @@ export function Footer() {
                         <a
                           href={link.to}
                           onClick={handleHashLink(link.to)}
-                          className="inline-block text-[13px] text-cream-200/55 transition-all duration-300 hover:translate-x-1 hover:text-gold-400"
+                          className="inline-block text-[13px] text-[#A8C5C7]/70 transition-all duration-300 hover:translate-x-1 hover:text-teal-700"
                         >
                           {link.label}
                         </a>
                       ) : (
                         <Link
                           to={link.to}
-                          className="inline-block text-[13px] text-cream-200/55 transition-all duration-300 hover:translate-x-1 hover:text-gold-400"
+                          className="inline-block text-[13px] text-[#A8C5C7]/70 transition-all duration-300 hover:translate-x-1 hover:text-teal-700"
                         >
                           {link.label}
                         </Link>
@@ -125,38 +129,38 @@ export function Footer() {
             ))}
 
             <div className="lg:col-span-3">
-              <h4 className="text-[11px] font-semibold uppercase tracking-widest text-cream-100/80">Connect</h4>
-              <ul className="mt-5 flex flex-col gap-3 text-[13px] text-cream-200/55">
+              <h4 className="text-[11px] font-semibold uppercase tracking-widest text-[#E5EFF1]/70">Connect</h4>
+              <ul className="mt-5 flex flex-col gap-3 text-[13px] text-[#A8C5C7]/70">
                 <li>
                   <a
                     href={`tel:+${contact.phoneHref}`}
-                    className="transition-colors duration-300 hover:text-gold-400"
+                    className="transition-colors duration-300 hover:text-teal-700"
                   >
                     {contact.phoneDisplay}
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${contact.email}`} className="transition-colors duration-300 hover:text-gold-400">
+                  <a href={`mailto:${contact.email}`} className="transition-colors duration-300 hover:text-teal-700">
                     {contact.email}
                   </a>
                 </li>
                 <li className="leading-relaxed">{contact.address}</li>
-                <li className="text-cream-200/40">Showrooms · {contact.showrooms}</li>
+                <li className="text-[#A8C5C7]/60">Showrooms · {contact.showrooms}</li>
               </ul>
             </div>
           </div>
         </Reveal>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 sm:flex-row sm:mt-16">
-          <p className="text-[12px] text-cream-200/40">© 2009–{year} Climate Craft. All rights reserved.</p>
-          <div className="flex items-center gap-6 text-[12px] text-cream-200/40">
-            <Link to="/privacy-policy" className="transition-colors duration-300 hover:text-cream-200/70">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-[#E5EFF1]/[0.08] pt-7 sm:flex-row sm:mt-16">
+          <p className="text-[12px] text-[#A8C5C7]/60">© 2009–{year} Climate Craft. All rights reserved.</p>
+          <div className="flex items-center gap-6 text-[12px] text-[#A8C5C7]/60">
+            <Link to="/privacy-policy" className="transition-colors duration-300 hover:text-[#E5EFF1]/80">
               Privacy Policy
             </Link>
-            <Link to="/terms-and-conditions" className="transition-colors duration-300 hover:text-cream-200/70">
+            <Link to="/terms-and-conditions" className="transition-colors duration-300 hover:text-[#E5EFF1]/80">
               Terms &amp; Conditions
             </Link>
-            <Link to="/cookie-policy" className="transition-colors duration-300 hover:text-cream-200/70">
+            <Link to="/cookie-policy" className="transition-colors duration-300 hover:text-[#E5EFF1]/80">
               Cookie Policy
             </Link>
           </div>

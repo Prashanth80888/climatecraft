@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Armchair, Smartphone, Zap, Thermometer, Sparkles } from 'lucide-react'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { SectionLabel } from '../ui/SectionLabel'
 import { Reveal } from '../ui/Reveal'
 
@@ -49,17 +50,17 @@ function Step({ step, index }: { step: (typeof STEPS)[number]; index: number }) 
       <div className="relative flex flex-none flex-col items-center">
         <motion.span
           animate={{
-            borderColor: inView ? 'rgba(212,175,86,0.7)' : 'rgba(255,255,255,0.12)',
-            backgroundColor: inView ? 'rgba(212,175,86,0.12)' : 'rgba(255,255,255,0.02)',
+            borderColor: inView ? 'rgba(22,155,154,0.7)' : 'rgba(6,59,61,0.15)',
+            backgroundColor: inView ? 'rgba(22,155,154,0.12)' : 'rgba(255,255,255,0.50)',
             scale: inView ? 1.08 : 1,
           }}
           transition={{ duration: 0.5, ease: easeOut }}
           className="flex h-14 w-14 items-center justify-center rounded-full border sm:h-16 sm:w-16"
         >
-          <Icon className={`h-5 w-5 transition-colors duration-500 ${inView ? 'text-gold-400' : 'text-cream-200/35'}`} strokeWidth={1.5} />
+          <Icon className={`h-5 w-5 transition-colors duration-500 ${inView ? 'text-gold-700' : 'text-[#315F62]/65'}`} strokeWidth={1.5} />
         </motion.span>
         {index < STEPS.length - 1 && (
-          <span className="mt-2 h-full w-px flex-1 bg-gradient-to-b from-white/15 to-transparent" />
+          <span className="mt-2 h-full w-px flex-1 bg-gradient-to-b from-[#063B3D]/25 to-transparent" />
         )}
       </div>
 
@@ -68,7 +69,7 @@ function Step({ step, index }: { step: (typeof STEPS)[number]; index: number }) 
         transition={{ duration: 0.5 }}
         className="max-w-lg pb-2"
       >
-        <span className="font-display text-sm italic tabular-nums text-gold-400/80">{step.number}</span>
+        <span className="font-display text-sm italic tabular-nums text-gold-700/80">{step.number}</span>
         <h3 className="mt-1 font-display text-2xl font-normal text-cream-100 sm:text-3xl">{step.title}</h3>
         <p className="mt-3 text-[14.5px] leading-relaxed text-cream-200/65">{step.copy}</p>
       </motion.div>
@@ -78,12 +79,13 @@ function Step({ step, index }: { step: (typeof STEPS)[number]; index: number }) 
 
 export function HowItWorks() {
   return (
-    <section className="relative bg-ink-950 py-20 sm:py-24 lg:py-28">
+    <section className="relative bg-transparent py-20 sm:py-24 lg:py-28">
+      <SectionAtmosphere variant="wave" />
       <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>How It Works</SectionLabel>
           <h2 className="mt-5 font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
-            From sitting down <span className="italic text-gold-400">to disappearing into it.</span>
+            From sitting down <span className="italic text-teal-700">to disappearing into it.</span>
           </h2>
         </Reveal>
 

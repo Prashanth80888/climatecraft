@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { SectionLabel } from '../ui/SectionLabel'
 import { Reveal } from '../ui/Reveal'
 
@@ -34,17 +35,18 @@ export function SpecificationStrips() {
   const [active, setActive] = useState<string | null>(null)
 
   return (
-    <section className="relative bg-ink-950 py-20 sm:py-24 lg:py-28">
+    <section className="relative bg-transparent py-20 sm:py-24 lg:py-28">
+      <SectionAtmosphere variant="radial" />
       <div className="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>By the Numbers</SectionLabel>
           <h2 className="mt-5 max-w-md font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
-            The specification, <span className="italic text-gold-400">in short.</span>
+            The specification, <span className="italic text-teal-700">in short.</span>
           </h2>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mt-10 border-t border-white/10">
+          <div className="mt-10 border-t border-ink-900/10">
             {ROWS.map((row) => {
               const isActive = active === row.number
               return (
@@ -52,7 +54,7 @@ export function SpecificationStrips() {
                   key={row.number}
                   onMouseEnter={() => setActive(row.number)}
                   onMouseLeave={() => setActive(null)}
-                  className="group relative border-b border-white/10 py-6 transition-all duration-300 sm:py-7"
+                  className="group relative border-b border-ink-900/10 py-6 transition-all duration-300 sm:py-7"
                 >
                   <motion.span
                     animate={{ scaleX: isActive ? 1 : 0 }}
@@ -64,14 +66,14 @@ export function SpecificationStrips() {
                     <div className="flex items-baseline gap-5">
                       <span
                         className={`font-display text-sm italic tabular-nums transition-colors duration-300 ${
-                          isActive ? 'text-gold-400' : 'text-cream-200/40'
+                          isActive ? 'text-gold-700' : 'text-[#315F62]/65'
                         }`}
                       >
                         {row.number}
                       </span>
                       <span className="font-display text-xl text-cream-100 sm:text-2xl">{row.title}</span>
                     </div>
-                    <span className="text-[13px] font-medium uppercase tracking-widest text-cream-200/50">
+                    <span className="text-[13px] font-medium uppercase tracking-widest text-[#315F62]/60">
                       {row.value}
                     </span>
                   </motion.div>
@@ -80,7 +82,7 @@ export function SpecificationStrips() {
                     initial={false}
                     animate={{ height: isActive ? 'auto' : 0, opacity: isActive ? 1 : 0, marginTop: isActive ? 10 : 0 }}
                     transition={{ duration: 0.35 }}
-                    className="max-w-md overflow-hidden pl-[3.35rem] text-[13.5px] leading-relaxed text-cream-200/55"
+                    className="max-w-md overflow-hidden pl-[3.35rem] text-[13.5px] leading-relaxed text-[#315F62]/65"
                   >
                     {row.copy}
                   </motion.p>

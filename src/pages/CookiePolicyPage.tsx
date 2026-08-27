@@ -127,12 +127,12 @@ const SECTIONS: LegalSection[] = [
           {business.legalName}
           <br />
           Email:{' '}
-          <a href={`mailto:${contact.email}`} className="text-gold-400 hover:underline">
+          <a href={`mailto:${contact.email}`} className="text-gold-700 hover:underline">
             {contact.email}
           </a>
           <br />
           Phone:{' '}
-          <a href={`tel:+${contact.phoneHref}`} className="text-gold-400 hover:underline">
+          <a href={`tel:+${contact.phoneHref}`} className="text-gold-700 hover:underline">
             {contact.phoneDisplay}
           </a>
         </p>

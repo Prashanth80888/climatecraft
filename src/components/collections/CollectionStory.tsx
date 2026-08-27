@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { homeProductImage } from '../../lib/assets'
 import { SectionLabel } from '../ui/SectionLabel'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { Reveal } from '../ui/Reveal'
 
 export function CollectionStory() {
@@ -12,8 +13,8 @@ export function CollectionStory() {
   const accentY = useTransform(scrollYProgress, [0, 1], ['8%', '-8%'])
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-teal-950/30 py-20 sm:py-28 lg:py-36">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-950 via-teal-950/25 to-ink-950" />
+    <section ref={sectionRef} className="relative overflow-hidden bg-transparent py-20 sm:py-28 lg:py-36">
+      <SectionAtmosphere variant="wave" />
       <div
         className="pointer-events-none absolute left-[8%] top-1/3 h-[420px] w-[420px] rounded-full opacity-[0.1] blur-[130px]"
         style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 70%)' }}
@@ -28,7 +29,7 @@ export function CollectionStory() {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="mt-6 max-w-lg font-display text-4xl font-normal leading-[1.08] text-cream-100 sm:text-5xl lg:text-[3.4rem]">
-                Every piece begins as <span className="italic text-gold-400">a mechanism.</span>
+                Every piece begins as <span className="italic text-teal-700">a mechanism.</span>
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
@@ -40,7 +41,7 @@ export function CollectionStory() {
             </Reveal>
 
             <Reveal delay={0.32}>
-              <p className="mt-12 border-t border-white/10 pt-8 font-display text-3xl italic leading-[1.15] text-gold-400 sm:text-4xl">
+              <p className="mt-12 border-t border-ink-900/10 pt-8 font-display text-3xl italic leading-[1.15] text-gold-700 sm:text-4xl">
                 Comfort, refined.
               </p>
             </Reveal>
@@ -49,7 +50,7 @@ export function CollectionStory() {
           <div className="relative lg:col-span-6">
             <motion.div
               style={{ y: mainY }}
-              className="relative z-10 w-full overflow-hidden rounded-[28px] border border-white/10 shadow-[0_50px_120px_-40px_rgba(0,0,0,0.85)] lg:ml-auto lg:w-[86%]"
+              className="relative z-10 w-full overflow-hidden rounded-[28px] border border-[#0B3F42]/[0.08] shadow-[0_40px_100px_-38px_rgba(6,61,60,0.28)] lg:ml-auto lg:w-[86%]"
             >
               <div className="aspect-[4/3] w-full">
                 <img
@@ -59,12 +60,12 @@ export function CollectionStory() {
                   loading="lazy"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
             </motion.div>
 
             <motion.div
               style={{ y: accentY }}
-              className="absolute -left-6 bottom-[-8%] z-0 hidden w-[42%] overflow-hidden rounded-[20px] border border-white/10 shadow-[0_40px_90px_-35px_rgba(0,0,0,0.8)] lg:block"
+              className="absolute -left-6 bottom-[-8%] z-0 hidden w-[42%] overflow-hidden rounded-[20px] border border-[#0B3F42]/[0.08] shadow-[0_35px_80px_-32px_rgba(6,61,60,0.25)] lg:block"
             >
               <div className="aspect-[4/5] w-full">
                 <img
@@ -74,7 +75,6 @@ export function CollectionStory() {
                   loading="lazy"
                 />
               </div>
-              <div className="absolute inset-0 bg-ink-950/20" />
             </motion.div>
           </div>
         </div>

@@ -95,9 +95,9 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
       }
     >
       {images.length === 0 ? (
-        <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-ink-900 to-ink-950 text-center">
-          <Camera className="h-7 w-7 text-cream-200/25" strokeWidth={1.5} />
-          <span className="text-[11px] font-medium uppercase tracking-widest text-cream-200/35">
+        <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-canvas-aqua to-canvas text-center">
+          <Camera className="h-7 w-7 text-cream-200/60" strokeWidth={1.5} />
+          <span className="text-[11px] font-medium uppercase tracking-widest text-cream-200/55">
             Photography Pending
           </span>
         </div>
@@ -138,7 +138,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
       )}
 
       {!fullscreen && !zoomed && (
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
       )}
 
       <AnimatePresence>
@@ -150,8 +150,8 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
             transition={{ duration: 0.4 }}
             className="pointer-events-none absolute inset-x-0 bottom-5 z-10 flex justify-center"
           >
-            <span className="flex items-center gap-2 rounded-full border border-white/15 bg-ink-950/60 px-4 py-2 text-[10.5px] font-medium uppercase tracking-widest text-cream-100/80 backdrop-blur-md">
-              <Move className="h-3.5 w-3.5 animate-pulse text-gold-300" strokeWidth={2} />
+            <span className="flex items-center gap-2 rounded-full border border-ink-900/[0.14] bg-white/60 px-4 py-2 text-[10.5px] font-medium uppercase tracking-widest text-cream-100/80 backdrop-blur-md">
+              <Move className="h-3.5 w-3.5 animate-pulse text-gold-600" strokeWidth={2} />
               Drag to explore
             </span>
           </motion.div>
@@ -164,7 +164,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
             type="button"
             onClick={() => goTo(index - 1)}
             aria-label="Previous angle"
-            className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-ink-950/50 text-cream-100 backdrop-blur-md transition-all duration-300 hover:border-gold-400/50 hover:bg-ink-950/80"
+            className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-ink-900/[0.14] bg-white/55 text-cream-100 backdrop-blur-md transition-all duration-300 hover:border-teal-500/70 hover:bg-white/75"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
@@ -172,12 +172,12 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
             type="button"
             onClick={() => goTo(index + 1)}
             aria-label="Next angle"
-            className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-ink-950/50 text-cream-100 backdrop-blur-md transition-all duration-300 hover:border-gold-400/50 hover:bg-ink-950/80"
+            className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-ink-900/[0.14] bg-white/55 text-cream-100 backdrop-blur-md transition-all duration-300 hover:border-teal-500/70 hover:bg-white/75"
           >
             <ChevronRight className="h-4 w-4" />
           </button>
 
-          <span className="absolute bottom-4 right-4 z-10 rounded-full border border-white/10 bg-ink-950/60 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream-100/70 backdrop-blur-md">
+          <span className="absolute bottom-4 right-4 z-10 rounded-full border border-ink-900/10 bg-white/60 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream-100/70 backdrop-blur-md">
             {String(index + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
           </span>
         </>
@@ -190,7 +190,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
               type="button"
               onClick={() => setExpanded(true)}
               aria-label="Expand view"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-ink-950/50 text-cream-100 backdrop-blur-md transition-all duration-300 hover:border-gold-400/50 hover:bg-ink-950/80"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-ink-900/[0.14] bg-white/55 text-cream-100 backdrop-blur-md transition-all duration-300 hover:border-teal-500/70 hover:bg-white/75"
             >
               <Maximize2 className="h-3.5 w-3.5" />
             </button>
@@ -199,7 +199,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
             type="button"
             onClick={() => setZoomed((z) => !z)}
             aria-label={zoomed ? 'Zoom out' : 'Zoom in'}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-ink-950/50 text-cream-100 backdrop-blur-md transition-all duration-300 hover:border-gold-400/50 hover:bg-ink-950/80"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-ink-900/[0.14] bg-white/55 text-cream-100 backdrop-blur-md transition-all duration-300 hover:border-teal-500/70 hover:bg-white/75"
           >
             {zoomed ? <ZoomOut className="h-3.5 w-3.5" /> : <ZoomIn className="h-3.5 w-3.5" />}
           </button>
@@ -210,7 +210,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
 
   return (
     <div>
-      <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-ink-900 shadow-[0_60px_140px_-50px_rgba(0,0,0,0.9)]">
+      <div className="relative overflow-hidden rounded-[28px] border border-[#0B3F42]/[0.10] bg-[#E8EFEC] shadow-[0_50px_120px_-45px_rgba(6,61,60,0.28)]">
         {frame(false)}
       </div>
 
@@ -223,7 +223,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
               onClick={() => goTo(i)}
               aria-label={`View ${ANGLE_LABELS[i] ?? `angle ${i + 1}`}`}
               className={`group relative flex-none overflow-hidden rounded-xl border transition-all duration-300 ${
-                i === index ? 'border-gold-400/60' : 'border-white/10 hover:border-white/25'
+                i === index ? 'border-gold-400/60' : 'border-ink-900/10 hover:border-ink-900/20'
               }`}
             >
               <div className="h-16 w-14 overflow-hidden sm:h-20 sm:w-16">
@@ -239,7 +239,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
               </div>
               <span
                 className={`absolute inset-x-0 bottom-0 py-1 text-center text-[8.5px] font-medium uppercase tracking-wider transition-colors duration-300 ${
-                  i === index ? 'bg-gold-500 text-ink-950' : 'bg-ink-950/70 text-cream-100/70'
+                  i === index ? 'bg-teal-700 text-white' : 'bg-white/65 text-ink-700 hover:bg-white/90 hover:text-ink-900'
                 }`}
               >
                 {ANGLE_LABELS[i] ?? String(i + 1).padStart(2, '0')}
@@ -256,7 +256,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-ink-950/95 p-4 backdrop-blur-lg sm:p-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-white/90 p-4 backdrop-blur-lg sm:p-8"
             onClick={() => setExpanded(false)}
           >
             <motion.div
@@ -274,7 +274,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
               type="button"
               onClick={() => setExpanded(false)}
               aria-label="Close expanded view"
-              className="absolute right-5 top-5 z-[110] flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-ink-950/60 text-cream-100 backdrop-blur-md transition-all duration-300 hover:border-gold-400/50"
+              className="absolute right-5 top-5 z-[110] flex h-10 w-10 items-center justify-center rounded-full border border-ink-900/[0.14] bg-white/60 text-cream-100 backdrop-blur-md transition-all duration-300 hover:border-teal-500/70"
             >
               <X className="h-4 w-4" />
             </button>

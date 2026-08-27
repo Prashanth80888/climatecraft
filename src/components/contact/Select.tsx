@@ -112,9 +112,9 @@ export function Select({ id, value, onChange, groups, placeholder, invalid, desc
         aria-activedescendant={open && activeValue ? `${listId}-${activeValue}` : undefined}
         onClick={() => setOpen((o) => !o)}
         onKeyDown={onKeyDown}
-        className={`mt-2 flex w-full items-center justify-between gap-3 rounded-xl border bg-white/[0.03] px-4 py-3 text-left text-[14px] outline-none transition-all duration-300 focus:border-gold-400/50 focus:bg-white/[0.05] ${
-          invalid ? 'border-gold-400/60' : 'border-white/10'
-        } ${selected ? 'text-cream-100' : 'text-cream-200/35'}`}
+        className={`mt-2 flex w-full items-center justify-between gap-3 rounded-xl border bg-white/35 px-4 py-3 text-left text-[14px] outline-none transition-all duration-300 focus:border-gold-400/50 focus:bg-white/45 ${
+          invalid ? 'border-gold-400/60' : 'border-ink-900/10'
+        } ${selected ? 'text-cream-100' : 'text-cream-200/55'}`}
       >
         <span className="truncate">{selected ? selected.label : placeholder}</span>
         <ChevronDown
@@ -131,12 +131,12 @@ export function Select({ id, value, onChange, groups, placeholder, invalid, desc
             transition={{ duration: 0.18, ease: easeOut }}
             role="listbox"
             id={listId}
-            className="absolute z-30 mt-2 max-h-64 w-full overflow-y-auto rounded-xl border border-white/10 bg-ink-900 p-1.5 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.85)]"
+            className="absolute z-30 mt-2 max-h-64 w-full overflow-y-auto rounded-xl border border-ink-900/10 bg-canvas-aqua p-1.5 shadow-[0_30px_70px_-20px_rgba(18,59,61,0.38)]"
           >
             {groups.map((group, gi) => (
               <div key={group.label ?? gi}>
                 {group.label && (
-                  <p className="px-3 pb-1.5 pt-2.5 text-[10.5px] font-medium uppercase tracking-widest text-cream-200/40">
+                  <p className="px-3 pb-1.5 pt-2.5 text-[10.5px] font-medium uppercase tracking-widest text-cream-200/55">
                     {group.label}
                   </p>
                 )}
@@ -152,11 +152,11 @@ export function Select({ id, value, onChange, groups, placeholder, invalid, desc
                       onMouseEnter={() => setActiveValue(option.value)}
                       onClick={() => commit(option.value)}
                       className={`flex cursor-pointer items-center justify-between rounded-lg px-3 py-2.5 text-[13.5px] transition-colors duration-150 ${
-                        isActive ? 'bg-white/[0.06] text-cream-100' : 'text-cream-200/80'
+                        isActive ? 'bg-white/50 text-cream-100' : 'text-cream-200/80'
                       }`}
                     >
                       <span className="truncate">{option.label}</span>
-                      {isSelected && <Check className="h-3.5 w-3.5 flex-none text-gold-400" />}
+                      {isSelected && <Check className="h-3.5 w-3.5 flex-none text-gold-700" />}
                     </div>
                   )
                 })}

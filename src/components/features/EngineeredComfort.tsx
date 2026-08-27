@@ -28,12 +28,12 @@ export function EngineeredComfort() {
   const scale = useTransform(scrollYProgress, [0, 1], [0.96, 1])
 
   return (
-    <section className="relative overflow-hidden bg-ink-950 py-20 sm:py-24 lg:py-28">
+    <section className="relative overflow-hidden bg-transparent py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
         <Reveal className="text-center">
           <SectionLabel>Engineered Comfort</SectionLabel>
           <h2 className="mx-auto mt-5 max-w-lg font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
-            Six disciplines, <span className="italic text-gold-400">one piece.</span>
+            Six disciplines, <span className="italic text-teal-700">one piece.</span>
           </h2>
         </Reveal>
 
@@ -47,7 +47,7 @@ export function EngineeredComfort() {
                 x2={50}
                 y2={50}
                 vectorEffect="non-scaling-stroke"
-                stroke={active === c.id ? 'rgba(212,175,86,0.75)' : 'rgba(255,255,255,0.12)'}
+                stroke={active === c.id ? 'rgba(22,155,154,0.75)' : 'rgba(255,255,255,0.85)'}
                 strokeWidth={active === c.id ? 1.25 : 0.75}
                 strokeDasharray="2 2"
                 pathLength={1}
@@ -58,14 +58,14 @@ export function EngineeredComfort() {
             ))}
           </svg>
 
-          <div className="absolute inset-[16%] overflow-hidden rounded-full border border-white/10 shadow-[0_50px_120px_-40px_rgba(0,0,0,0.9)]">
+          <div className="absolute inset-[16%] overflow-hidden rounded-full border border-white/70 shadow-[0_50px_120px_-40px_rgba(18,59,61,0.4)]">
             <img src={homeProductImage(product.slug)} alt={product.name} loading="lazy" className="h-full w-full object-cover" />
             <motion.div
               animate={{ opacity: active ? 0.35 : 0 }}
               transition={{ duration: 0.4 }}
               className="absolute inset-0 bg-gold-400 mix-blend-overlay"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           </div>
 
           {CONCEPTS.map((c, i) => (
@@ -87,7 +87,7 @@ export function EngineeredComfort() {
                 className={`block rounded-full border px-4 py-2 text-[11px] font-medium uppercase tracking-widest backdrop-blur-md transition-all duration-300 ${
                   active === c.id
                     ? 'scale-110 border-gold-300 bg-gold-400 text-ink-950'
-                    : 'border-white/15 bg-ink-950/70 text-cream-200/75 hover:border-white/30'
+                    : 'border-ink-900/[0.14] bg-white/65 text-cream-200/75 hover:border-ink-900/25'
                 }`}
               >
                 {c.label}

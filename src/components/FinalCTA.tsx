@@ -6,8 +6,8 @@ import { SectionLabel } from './ui/SectionLabel'
 
 export function FinalCTA() {
   return (
-    <section id="final-cta" className="relative overflow-hidden bg-teal-950">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-teal-900 via-ink-950 to-ink-950" />
+    <section id="final-cta" className="relative overflow-hidden bg-[#169B9A]">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#169B9A] via-[#0F7776] to-[#0B4F4E]" />
       <div
         className="pointer-events-none absolute -left-24 top-1/2 h-72 w-72 -translate-y-1/2 animate-shimmer rounded-full opacity-20 blur-[100px]"
         style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 70%)' }}
@@ -24,7 +24,7 @@ export function FinalCTA() {
         </Reveal>
         <Reveal delay={0.08}>
           <h2 className="mt-5 font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl lg:text-[2.9rem]">
-            Let's configure your <span className="italic text-gold-400">next piece.</span>
+            Let's configure your <span className="italic text-teal-700">next piece.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
@@ -52,7 +52,7 @@ export function FinalCTA() {
         </Reveal>
 
         <Reveal delay={0.3}>
-          <p className="mt-7 text-[12.5px] uppercase tracking-widest text-cream-200/45">
+          <p className="mt-7 text-[12.5px] uppercase tracking-widest text-cream-200/60">
             {contact.phoneDisplay} · {contact.email}
           </p>
         </Reveal>

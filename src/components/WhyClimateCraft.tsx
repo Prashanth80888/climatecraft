@@ -1,6 +1,7 @@
 import { Thermometer, VolumeX, Hand, Ruler } from 'lucide-react'
 import { SectionLabel } from './ui/SectionLabel'
 import { Reveal, RevealGroup, RevealItem } from './ui/Reveal'
+import { SectionAtmosphere } from './ui/SectionAtmosphere'
 
 const FEATURES = [
   {
@@ -27,8 +28,8 @@ const FEATURES = [
 
 export function WhyClimateCraft() {
   return (
-    <section id="why-climate-craft" className="relative overflow-hidden bg-teal-950/40 py-16 sm:py-24 lg:py-32">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-950 via-teal-950/30 to-ink-950" />
+    <section id="why-climate-craft" className="relative overflow-hidden bg-transparent py-16 sm:py-24 lg:py-32">
+      <SectionAtmosphere variant="bloom" />
       <div
         className="pointer-events-none absolute right-[10%] top-1/3 h-2 w-2 rounded-full bg-teal-400/60 blur-[1px]"
         style={{ boxShadow: '0 0 40px 10px rgba(79,179,163,0.35)' }}
@@ -56,7 +57,7 @@ export function WhyClimateCraft() {
           <RevealGroup className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:col-span-7">
             {FEATURES.map((feature) => (
               <RevealItem key={feature.title} className="group">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-gold-400/25 text-gold-400 transition-all duration-500 group-hover:scale-110 group-hover:border-gold-400/60 group-hover:bg-gold-400/5">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-gold-400/25 text-gold-700 transition-all duration-500 group-hover:scale-110 group-hover:border-teal-500/75 group-hover:bg-gold-400/5">
                   <feature.icon className="h-5 w-5" strokeWidth={1.5} />
                 </div>
                 <h3 className="mt-5 font-display text-lg text-cream-100">{feature.title}</h3>

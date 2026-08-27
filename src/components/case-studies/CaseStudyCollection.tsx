@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { CASE_STUDIES } from '../../data/caseStudies'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { SectionLabel } from '../ui/SectionLabel'
 import { Reveal } from '../ui/Reveal'
 import { CaseStudyFilter } from './CaseStudyFilter'
@@ -16,12 +17,13 @@ export function CaseStudyCollection() {
   )
 
   return (
-    <section id="case-study-index" className="relative overflow-hidden bg-ink-950 py-20 sm:py-24 lg:py-28">
+    <section id="case-study-index" className="relative overflow-hidden bg-transparent py-20 sm:py-24 lg:py-28">
+      <SectionAtmosphere variant="radial" />
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>The Studies</SectionLabel>
           <h2 className="mt-5 max-w-lg font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
-            Eight rooms, <span className="italic text-gold-400">one design problem each.</span>
+            Eight rooms, <span className="italic text-teal-700">one design problem each.</span>
           </h2>
         </Reveal>
 

@@ -2,6 +2,7 @@ import { useCallback, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useMotionValue, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, ChevronDown } from 'lucide-react'
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
@@ -51,17 +52,18 @@ export function ProjectsHero() {
       ref={sectionRef}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-ink-950 pt-40 sm:pt-44 lg:pt-48"
+      className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-transparent pt-40 sm:pt-44 lg:pt-48"
     >
+      <SectionAtmosphere variant="glow" />
       {/* Ambient background atmosphere */}
       <div className="pointer-events-none absolute inset-0">
         <div
-          className="absolute left-[12%] top-[15%] h-[600px] w-[700px] opacity-[0.05] blur-[180px]"
+          className="absolute left-[12%] top-[15%] h-[600px] w-[700px] opacity-[0.28] blur-[180px]"
           style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 65%)' }}
         />
         <div
-          className="absolute bottom-[8%] right-[8%] h-[450px] w-[550px] opacity-[0.035] blur-[150px]"
-          style={{ background: 'radial-gradient(circle, #1d7a6f 0%, transparent 65%)' }}
+          className="absolute bottom-[8%] right-[8%] h-[450px] w-[550px] opacity-[0.25] blur-[150px]"
+          style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 65%)' }}
         />
       </div>
 
@@ -72,7 +74,7 @@ export function ProjectsHero() {
           style={{ x: mouseX, y: mouseY }}
         >
           <div
-            className="absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.02] blur-[120px]"
+            className="absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.20] blur-[120px]"
             style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 60%)' }}
           />
         </motion.div>
@@ -90,7 +92,7 @@ export function ProjectsHero() {
           className="flex items-center gap-3"
         >
           <span className="h-px w-8 bg-gold-400/70" />
-          <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold-400">
+          <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold-700">
             Projects &amp; Spaces
           </span>
         </motion.div>
@@ -103,7 +105,7 @@ export function ProjectsHero() {
                 initial={{ y: '115%' }}
                 animate={{ y: '0%' }}
                 transition={{ duration: 1.1, delay: 0.55 + i * 0.15, ease: easeOut }}
-                className={`block ${line.accent ? 'italic text-gold-400' : ''}`}
+                className={`block ${line.accent ? 'italic text-teal-700' : ''}`}
               >
                 {line.text}
               </motion.span>
@@ -131,7 +133,7 @@ export function ProjectsHero() {
         >
           <a
             href="#space-explorer"
-            className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full bg-gold-500 px-7 py-4 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-ink-950 shadow-[0_20px_50px_-16px_rgba(240,169,44,0.4)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_56px_-14px_rgba(240,169,44,0.6)] active:scale-[0.97]"
+            className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full bg-teal-700 px-7 py-4 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_20px_50px_-16px_rgba(22,155,154,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_24px_56px_-14px_rgba(22,155,154,0.65)] active:scale-[0.97]"
             onClick={(e) => {
               e.preventDefault()
               document.querySelector('#space-explorer')?.scrollIntoView({ behavior: 'smooth' })
@@ -143,7 +145,7 @@ export function ProjectsHero() {
           </a>
           <Link
             to="/contact"
-            className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-cream-200/70 transition-all duration-300 hover:border-white/25 hover:text-cream-100"
+            className="group inline-flex items-center gap-2 rounded-full border border-[#063B3D]/[0.14] px-6 py-3.5 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-[#315F62]/80 transition-all duration-300 hover:border-[#063B3D]/20 hover:text-[#063B3D]"
           >
             <span>Discuss a Project</span>
             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -155,7 +157,7 @@ export function ProjectsHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 2 }}
-          className="mt-16 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-white/[0.06] pt-7 sm:mt-20"
+          className="mt-16 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-[#063B3D]/[0.08] pt-7 sm:mt-20"
         >
           {INDICATORS.map((label, i) => (
             <motion.span
@@ -163,7 +165,7 @@ export function ProjectsHero() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 2.1 + i * 0.07, ease: easeOut }}
-              className="text-[11px] font-medium uppercase tracking-[0.15em] text-cream-200/35"
+              className="text-[11px] font-medium uppercase tracking-[0.15em] text-cream-200/55"
             >
               {label}
             </motion.span>
@@ -181,7 +183,7 @@ export function ProjectsHero() {
         <motion.div
           animate={prefersReducedMotion ? {} : { y: [0, 6, 0] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-cream-100/35"
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-[#063B3D]/10 text-[#063B3D]/80"
         >
           <ChevronDown className="h-4 w-4" />
         </motion.div>

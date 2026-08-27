@@ -5,8 +5,8 @@ import { SectionLabel } from '../ui/SectionLabel'
 
 export function ContactCTA() {
   return (
-    <section className="relative overflow-hidden bg-teal-950">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-teal-900 via-ink-950 to-ink-950" />
+    <section className="relative overflow-hidden bg-[#169B9A]">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#169B9A] via-[#0F7776] to-[#0B4F4E]" />
       <div
         className="pointer-events-none absolute -left-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full opacity-20 blur-[100px]"
         style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 70%)' }}
@@ -19,7 +19,7 @@ export function ContactCTA() {
         </Reveal>
         <Reveal delay={0.08}>
           <h2 className="mt-5 font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl lg:text-[2.7rem]">
-            Every project begins <span className="italic text-gold-400">with the right conversation.</span>
+            Every project begins <span className="italic text-teal-700">with the right conversation.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.16}>

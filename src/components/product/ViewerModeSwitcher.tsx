@@ -12,7 +12,7 @@ export function ViewerModeSwitcher({ mode, onChange }: ViewerModeSwitcherProps) 
     <div
       role="tablist"
       aria-label="Product viewer mode"
-      className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-ink-900/70 p-1 backdrop-blur-md"
+      className="inline-flex items-center gap-1 rounded-full border border-ink-900/10 bg-white/70 p-1 backdrop-blur-md"
     >
       {(
         [
@@ -28,7 +28,7 @@ export function ViewerModeSwitcher({ mode, onChange }: ViewerModeSwitcherProps) 
           onClick={() => onChange(id)}
           className={`flex items-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-medium uppercase tracking-widest transition-all duration-300 ${
             mode === id
-              ? 'bg-gold-400 text-ink-950 shadow-[0_8px_20px_-8px_rgba(212,175,86,0.6)]'
+              ? 'bg-gold-400 text-ink-950 shadow-[0_8px_20px_-8px_rgba(22,155,154,0.6)]'
               : 'text-cream-200/55 hover:text-cream-100'
           }`}
         >

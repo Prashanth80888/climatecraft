@@ -1,3 +1,4 @@
+import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 import { SectionLabel } from '../ui/SectionLabel'
 
@@ -22,7 +23,8 @@ const SPACE_NEEDS = [
 
 export function ProjectPhilosophy() {
   return (
-    <section className="relative bg-ink-950 py-20 sm:py-28 lg:py-36">
+    <section className="relative bg-transparent py-20 sm:py-28 lg:py-36">
+      <SectionAtmosphere variant="bloom" />
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>The Approach</SectionLabel>
@@ -31,7 +33,7 @@ export function ProjectPhilosophy() {
         <Reveal delay={0.08}>
           <h2 className="mt-6 max-w-4xl font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl lg:text-[3rem]">
             Every space asks for a different kind of{' '}
-            <span className="italic text-gold-400">comfort.</span>
+            <span className="italic text-teal-700">comfort.</span>
           </h2>
         </Reveal>
 

@@ -40,10 +40,10 @@ export function LegalPageLayout({ eyebrow, title, intro, sections }: LegalPageLa
   return (
     <>
       <main>
-        <section className="relative w-full overflow-hidden bg-ink-950 pb-10 pt-36 sm:pb-12 sm:pt-40 lg:pt-48">
+        <section className="relative w-full overflow-hidden bg-transparent pb-10 pt-36 sm:pb-12 sm:pt-40 lg:pt-48">
           <div
             className="pointer-events-none absolute -top-16 left-1/2 h-[360px] w-[720px] -translate-x-1/2 opacity-[0.1] blur-[130px]"
-            style={{ background: 'radial-gradient(ellipse, #1d7a6f 0%, transparent 65%)' }}
+            style={{ background: 'radial-gradient(ellipse, #53c9c5 0%, transparent 65%)' }}
           />
           <div className="grain-overlay opacity-[0.06]" />
 
@@ -58,7 +58,7 @@ export function LegalPageLayout({ eyebrow, title, intro, sections }: LegalPageLa
                 </h1>
               </Reveal>
               <Reveal delay={0.16}>
-                <p className="mt-5 text-[11px] uppercase tracking-widest text-cream-200/45">
+                <p className="mt-5 text-[11px] uppercase tracking-widest text-cream-200/60">
                   Climate Craft · Last updated {LAST_UPDATED}
                 </p>
               </Reveal>
@@ -69,18 +69,18 @@ export function LegalPageLayout({ eyebrow, title, intro, sections }: LegalPageLa
           </div>
         </section>
 
-        <section className="relative bg-ink-950 pb-20 sm:pb-24 lg:pb-28">
+        <section className="relative bg-transparent pb-20 sm:pb-24 lg:pb-28">
           <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <div className="mb-10 lg:hidden">
-              <details className="group rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+              <details className="group rounded-2xl border border-ink-900/10 bg-white/30 p-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 outline-none">
                   <span className="section-label !mb-0">On This Page</span>
-                  <ChevronDown className="h-4 w-4 flex-none text-gold-400 transition-transform duration-300 group-open:rotate-180" />
+                  <ChevronDown className="h-4 w-4 flex-none text-gold-700 transition-transform duration-300 group-open:rotate-180" />
                 </summary>
                 <ul className="mt-4 space-y-3">
                   {sections.map((s) => (
                     <li key={s.id}>
-                      <a href={`#${s.id}`} className="text-[13.5px] text-cream-200/65 hover:text-gold-400">
+                      <a href={`#${s.id}`} className="text-[13.5px] text-cream-200/65 hover:text-gold-700">
                         {s.title}
                       </a>
                     </li>
@@ -93,12 +93,12 @@ export function LegalPageLayout({ eyebrow, title, intro, sections }: LegalPageLa
               <aside className="hidden lg:col-span-3 lg:block">
                 <div className="sticky top-32">
                   <p className="section-label !mb-0">On This Page</p>
-                  <ul className="mt-5 space-y-3 border-l border-white/10 pl-5">
+                  <ul className="mt-5 space-y-3 border-l border-ink-900/10 pl-5">
                     {sections.map((s) => (
                       <li key={s.id}>
                         <a
                           href={`#${s.id}`}
-                          className="block text-[13px] leading-snug text-cream-200/55 transition-colors duration-300 hover:text-gold-400"
+                          className="block text-[13px] leading-snug text-cream-200/55 transition-colors duration-300 hover:text-gold-700"
                         >
                           {s.title}
                         </a>

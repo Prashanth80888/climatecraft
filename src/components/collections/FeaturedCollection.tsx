@@ -25,7 +25,7 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
   const featured = products[0]
 
   return (
-    <section className="relative overflow-hidden bg-ink-950 py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <AnimatePresence mode="wait">
           <motion.div
@@ -36,14 +36,14 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
             transition={{ duration: 0.55, ease: easeOut }}
             className="relative grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10"
           >
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -top-10 right-0 select-none font-display text-[9rem] font-normal leading-none text-cream-100/[0.03] sm:text-[13rem] lg:right-[38%]"
-            >
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -top-10 right-0 select-none font-display text-[9rem] font-normal leading-none text-[#063B3D]/[0.03] sm:text-[13rem] lg:right-[38%]"
+              >
               {String(family.number).padStart(2, '0')}
             </span>
 
-            <div className="relative overflow-hidden rounded-[28px] border border-white/10 shadow-[0_50px_120px_-45px_rgba(0,0,0,0.85)] lg:col-span-7">
+            <div className="relative overflow-hidden rounded-[28px] border border-[#0B3F42]/[0.08] shadow-[0_40px_100px_-40px_rgba(6,61,60,0.28)] lg:col-span-7">
               <div className="aspect-[4/3] w-full sm:aspect-[16/10]">
                 <motion.img
                   key={featured.slug}
@@ -55,13 +55,13 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
               <span className="absolute left-6 top-6 section-label text-cream-100/90">Featured Collection</span>
             </div>
 
             <div className="relative lg:col-span-5">
               <div className="flex items-center gap-4">
-                <span className="font-display text-sm italic tabular-nums text-gold-400/70">
+                <span className="font-display text-sm italic tabular-nums text-gold-700/70">
                   {String(family.number).padStart(2, '0')} / {String(PRODUCT_FAMILIES.length).padStart(2, '0')}
                 </span>
                 <SectionLabel>{String(products.length).padStart(2, '0')} Pieces</SectionLabel>
