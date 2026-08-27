@@ -15,7 +15,7 @@ export function PartnerQuote() {
   return (
     <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
       <SectionAtmosphere variant="ambient" />
-      <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>Partner Testimonial</SectionLabel>
         </Reveal>
@@ -25,7 +25,7 @@ export function PartnerQuote() {
           </p>
         </Reveal>
         <Reveal delay={0.18}>
-          <p className="mt-7 text-[13.5px] uppercase tracking-widest text-[#315F62]/55">
+          <p className="mt-7 text-[13.5px] uppercase tracking-widest text-ink-700">
             {testimonial.n} · {testimonial.r}
           </p>
         </Reveal>

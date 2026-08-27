@@ -19,7 +19,7 @@ export function Craftsmanship() {
   return (
     <section className="relative bg-transparent py-20 sm:py-24 lg:py-28">
       <SectionAtmosphere variant="ambient" />
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-6">
             <Reveal>
@@ -45,11 +45,11 @@ export function Craftsmanship() {
               </h2>
             </Reveal>
 
-            <RevealGroup className="mt-10 divide-y divide-[#063B3D]/10 border-t border-[#063B3D]/10">
+            <RevealGroup className="mt-10 divide-y divide-[#063B3D]/10 border-t border-[#063B3D]/20">
               {POINTS.map((p) => (
                 <RevealItem key={p.title} className="py-5">
                   <h3 className="font-display text-lg text-cream-100">{p.title}</h3>
-                  <p className="mt-1.5 max-w-md text-[14px] leading-relaxed text-cream-200/60">{p.copy}</p>
+                  <p className="mt-1.5 max-w-md text-[14px] leading-relaxed text-cream-200">{p.copy}</p>
                 </RevealItem>
               ))}
             </RevealGroup>

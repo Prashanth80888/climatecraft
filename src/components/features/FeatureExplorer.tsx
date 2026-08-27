@@ -61,7 +61,7 @@ export function FeatureExplorer() {
           <h2 className="mt-5 max-w-xl font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl lg:text-[2.75rem]">
             Every detail, <span className="italic text-teal-700">explained.</span>
           </h2>
-          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-cream-200/65">
+          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-cream-200">
             Select a collection, then choose a point on the product to explore the engineering behind it.
           </p>
         </Reveal>
@@ -102,7 +102,7 @@ export function FeatureExplorer() {
             <motion.div
               animate={{ scale: active ? 1.015 : 1 }}
               transition={{ duration: 0.6, ease: easeOut }}
-              className="relative overflow-hidden rounded-[28px] border border-[#0B3F42]/[0.08] bg-[#E8EFEC] shadow-[0_50px_120px_-45px_rgba(6,61,60,0.28)]"
+              className="relative overflow-hidden rounded-[28px] border border-[#0B3F42]/[0.12] bg-[#E8EFEC] shadow-[0_50px_120px_-45px_rgba(6,61,60,0.28)]"
             >
               <div className="relative aspect-[4/5] w-full sm:aspect-[4/3] lg:aspect-[16/12]">
                 <AnimatePresence mode="popLayout">
@@ -174,7 +174,7 @@ export function FeatureExplorer() {
             </motion.div>
 
             {/* Mobile: tap hint */}
-            <p className="mt-3 text-center text-[11px] uppercase tracking-widest text-cream-200/55 lg:hidden">
+            <p className="mt-3 text-center text-[11px] uppercase tracking-widest text-cream-200 lg:hidden">
               Tap a number to explore
             </p>
           </div>
@@ -189,7 +189,7 @@ export function FeatureExplorer() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.4, ease: easeOut }}
-                  className="rounded-[24px] border border-[#063B3D]/10 bg-white/60 p-7 backdrop-blur-md sm:p-8"
+                  className="rounded-[24px] border border-[#063B3D]/20 bg-white/60 p-7 backdrop-blur-md sm:p-8"
                 >
                   <span className="font-display text-sm italic tabular-nums text-gold-700/80">
                     {String(activeIndex + 1).padStart(2, '0')} / {String(hotspots.length).padStart(2, '0')}
@@ -197,10 +197,10 @@ export function FeatureExplorer() {
                   <h3 className="mt-3 font-display text-2xl font-normal leading-tight text-cream-100 sm:text-[1.75rem]">
                     {active.title}
                   </h3>
-                  <p className="mt-4 text-[14.5px] leading-relaxed text-cream-200/70">{active.description}</p>
+                  <p className="mt-4 text-[14.5px] leading-relaxed text-cream-200">{active.description}</p>
                   <div className="mt-5 border-t border-ink-900/10 pt-5">
                     <p className="text-[11px] font-medium uppercase tracking-widest text-teal-800">Why it matters</p>
-                    <p className="mt-2 text-[14px] leading-relaxed text-cream-200/60">
+                    <p className="mt-2 text-[14px] leading-relaxed text-cream-200">
                       {BENEFITS[`${product.slug}:${active.id}`]}
                     </p>
                   </div>
@@ -212,13 +212,13 @@ export function FeatureExplorer() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.4, ease: easeOut }}
-                  className="rounded-[24px] border border-[#063B3D]/10 bg-white/40 p-7 sm:p-8"
+                  className="rounded-[24px] border border-[#063B3D]/20 bg-white/55 p-7 sm:p-8"
                 >
                   <p className="font-display text-sm italic text-teal-700/80">{family.label}</p>
-                  <p className="mt-3 max-w-sm text-[14.5px] leading-relaxed text-cream-200/60">{family.blurb}</p>
+                  <p className="mt-3 max-w-sm text-[14.5px] leading-relaxed text-cream-200">{family.blurb}</p>
                   <ul className="mt-6 space-y-2.5">
                     {hotspots.map((h: ProductHotspot, i) => (
-                      <li key={h.id} className="flex items-center gap-3 text-[13px] text-cream-200/55">
+                      <li key={h.id} className="flex items-center gap-3 text-[13px] text-cream-200">
                         <span className="font-display text-xs italic text-teal-700/70">
                           {String(i + 1).padStart(2, '0')}
                         </span>
@@ -226,7 +226,7 @@ export function FeatureExplorer() {
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-6 flex items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200/55">
+                  <p className="mt-6 flex items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200">
                     <Plus className="h-3 w-3" /> Hover or tap a number to begin
                   </p>
                 </motion.div>

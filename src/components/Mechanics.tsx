@@ -44,14 +44,14 @@ export function Mechanics() {
       />
       <div className="grain-overlay opacity-30" />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>How We Build</SectionLabel>
         </Reveal>
 
         <div className="mt-7 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
-            <h2 className="font-display text-[2.4rem] font-normal leading-[1.08] text-white sm:text-5xl lg:text-[3.4rem]">
+            <h2 className="font-display text-[2.4rem] font-normal leading-[1.08] text-ink-900 sm:text-5xl lg:text-[3.4rem]">
               <Reveal y={20}>
                 <span className="block">We engineer the quiet mechanics of</span>
               </Reveal>
@@ -66,12 +66,12 @@ export function Mechanics() {
 
           <div className="flex flex-col justify-end lg:col-span-5">
             <Reveal delay={0.2}>
-              <p className="text-[15px] leading-relaxed text-white/75 sm:text-base">
+              <p className="text-[15px] leading-relaxed text-ink-700 sm:text-base">
                 Every Climate Craft piece begins as a mechanism: a motor, a hinge, a hand-crank glide tuned to move
                 without a sound. Around it we build a hardwood frame, a hand-tied suspension, and an upholstery you
                 choose from a curated archive of fabrics.
               </p>
-              <p className="mt-4 text-[15px] leading-relaxed text-white/75 sm:text-base">
+              <p className="mt-4 text-[15px] leading-relaxed text-ink-700 sm:text-base">
                 We supply manufacturers, galleries and interior houses who need seating that performs as beautifully
                 as it sits.
               </p>

@@ -35,12 +35,12 @@ export function AboutFAQ() {
   return (
     <section id="faq" className="relative bg-transparent py-16 sm:py-20 lg:py-24">
       <SectionAtmosphere variant="glow" />
-      <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>Frequently Asked</SectionLabel>
         </Reveal>
 
-        <RevealGroup className="mt-8 divide-y divide-[#063B3D]/10 border-t border-[#063B3D]/10">
+        <RevealGroup className="mt-8 divide-y divide-[#063B3D]/10 border-t border-[#063B3D]/20">
           {FAQS.map((item) => (
             <RevealItem key={item.q}>
               <details className="group py-6">
@@ -48,13 +48,13 @@ export function AboutFAQ() {
                   <span className="font-display text-lg text-cream-100 sm:text-xl">{item.q}</span>
                   <ChevronDown className="h-4 w-4 flex-none text-gold-700 transition-transform duration-300 group-open:rotate-180" />
                 </summary>
-                <p className="mt-4 max-w-2xl text-[14.5px] leading-relaxed text-cream-200/65">{item.a}</p>
+                <p className="mt-4 max-w-2xl text-[14.5px] leading-relaxed text-cream-200">{item.a}</p>
               </details>
             </RevealItem>
           ))}
         </RevealGroup>
 
-        <p className="mt-8 text-[13px] text-[#315F62]/65">
+        <p className="mt-8 text-[13px] text-ink-700">
           Still have a question? Reach us at{' '}
           <a href={`mailto:${contact.email}`} className="text-gold-700 hover:underline">
             {contact.email}

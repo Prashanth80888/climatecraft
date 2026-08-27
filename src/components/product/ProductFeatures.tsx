@@ -61,7 +61,7 @@ export function ProductFeatures({ product }: { product: HomeProduct }) {
   return (
     <section className="relative bg-transparent py-14 sm:py-18 lg:py-20">
       <SectionAtmosphere variant="radial" />
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionLabel>What Makes It {product.name.split('|').pop()?.trim() ?? product.name}</SectionLabel>
 
         <RevealGroup className="mt-8 flex flex-wrap gap-3 sm:gap-4">
@@ -71,7 +71,7 @@ export function ProductFeatures({ product }: { product: HomeProduct }) {
                 <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full border border-gold-400/25 text-gold-700 transition-transform duration-300 group-hover:scale-110">
                   <f.icon className="h-3.5 w-3.5" strokeWidth={1.5} />
                 </span>
-                <span className="text-[12.5px] font-medium uppercase tracking-wide text-cream-100/90">
+                <span className="text-[12.5px] font-medium uppercase tracking-wide text-cream-100">
                   {f.label}
                 </span>
               </div>

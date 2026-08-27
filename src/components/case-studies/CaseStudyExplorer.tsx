@@ -113,7 +113,7 @@ function DesktopExplorer({ images }: { images: string[] }) {
                 <h3 className="mt-4 max-w-sm font-display text-[1.75rem] font-normal leading-[1.15] text-cream-100 sm:text-3xl">
                   {stage.heading}
                 </h3>
-                <p className="mt-4 max-w-sm text-[14.5px] leading-relaxed text-cream-200/65">{stage.body}</p>
+                <p className="mt-4 max-w-sm text-[14.5px] leading-relaxed text-cream-200">{stage.body}</p>
               </motion.div>
             ))}
           </div>
@@ -139,7 +139,7 @@ function MobileExplorer({ images }: { images: string[] }) {
             {stage.label}
           </span>
           <h3 className="mt-3 font-display text-2xl font-normal leading-[1.15] text-cream-100">{stage.heading}</h3>
-          <p className="mt-3 text-[14.5px] leading-relaxed text-cream-200/65">{stage.body}</p>
+          <p className="mt-3 text-[14.5px] leading-relaxed text-cream-200">{stage.body}</p>
         </Reveal>
       ))}
     </div>
@@ -157,7 +157,7 @@ export function CaseStudyExplorer() {
           positioning. This gradient is inset-0, so nothing bleeds without it. */}
       <SectionAtmosphere variant="radial" />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>Case Study Explorer</SectionLabel>
           <h2 className="mt-5 max-w-xl font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">

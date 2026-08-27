@@ -35,7 +35,7 @@ export function WhyClimateCraft() {
         style={{ boxShadow: '0 0 40px 10px rgba(79,179,163,0.35)' }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
             <Reveal>
@@ -47,7 +47,7 @@ export function WhyClimateCraft() {
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-cream-200/70">
+              <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-cream-200">
                 Every mechanism, every seam, every material is chosen for one reason — to move beautifully for years
                 to come.
               </p>
@@ -61,7 +61,7 @@ export function WhyClimateCraft() {
                   <feature.icon className="h-5 w-5" strokeWidth={1.5} />
                 </div>
                 <h3 className="mt-5 font-display text-lg text-cream-100">{feature.title}</h3>
-                <p className="mt-2 max-w-xs text-[13.5px] leading-relaxed text-cream-200/60">
+                <p className="mt-2 max-w-xs text-[13.5px] leading-relaxed text-cream-200">
                   {feature.description}
                 </p>
                 <span className="mt-4 block h-px w-6 bg-gold-400/30 transition-all duration-500 group-hover:w-12 group-hover:bg-gold-400/70" />

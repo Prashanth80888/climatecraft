@@ -45,7 +45,7 @@ export function AboutProcess() {
   return (
     <section id="process" ref={ref} className="relative bg-transparent py-16 sm:py-20 lg:py-24">
       <SectionAtmosphere variant="radial" />
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>How We Work</SectionLabel>
           <h2 className="mt-5 max-w-lg font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
@@ -69,9 +69,9 @@ export function AboutProcess() {
                 className="border-l border-ink-900/10 pl-5 pt-6 sm:border-l-0 sm:pl-0 sm:pt-8"
               >
                 <span className="font-display text-sm italic tabular-nums text-gold-700/80">{s.step}</span>
-                <p className="mt-2 text-[11px] font-medium uppercase tracking-widest text-cream-200/60">{s.label}</p>
+                <p className="mt-2 text-[11px] font-medium uppercase tracking-widest text-cream-200">{s.label}</p>
                 <h3 className="mt-2 font-display text-2xl text-cream-100">{s.title}</h3>
-                <p className="mt-3 max-w-[22ch] text-[14px] leading-relaxed text-cream-200/60">{s.copy}</p>
+                <p className="mt-3 max-w-[22ch] text-[14px] leading-relaxed text-cream-200">{s.copy}</p>
               </motion.div>
             ))}
           </div>

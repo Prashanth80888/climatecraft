@@ -6,7 +6,7 @@ export function BrandStatement() {
   return (
     <section className="relative bg-transparent py-20 sm:py-24 lg:py-28">
       <SectionAtmosphere variant="bloom" />
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>Since 2009</SectionLabel>
         </Reveal>
@@ -21,7 +21,7 @@ export function BrandStatement() {
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="mt-8 max-w-xl text-[15px] leading-relaxed text-cream-200/55">
+              <p className="mt-8 max-w-xl text-[15px] leading-relaxed text-cream-200">
                 The mechanism comes first. The frame and upholstery are built to honour it — never the other way
                 around.
               </p>

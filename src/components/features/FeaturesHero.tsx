@@ -163,7 +163,7 @@ export function FeaturesHero() {
 
       {/* No self-padding here — matches the navbar's own pill exactly (padding lives on the section
           above, like the navbar's header wrapper), so this edge lines up with the floating pill. */}
-      <div className="relative mx-auto max-w-7xl">
+      <div className="relative z-10 mx-auto max-w-7xl">
         {/* Cinematic image stage — atmospheric, not boxed: no border, shadow or rounded corners, and
             the photo dissolves into the page background on every edge, exactly like the Collections
             page hero's own product photograph treatment. */}
@@ -201,7 +201,7 @@ export function FeaturesHero() {
             className="pointer-events-none absolute left-[64%] top-[9%] hidden w-[188px] rounded-2xl border border-[#063B3D]/[0.14] bg-white/65 p-4 shadow-[0_25px_60px_-20px_rgba(6,59,61,0.28)] backdrop-blur-xl sm:block"
           >
             <div className="flex items-center justify-between">
-              <span className="text-[9px] font-medium uppercase tracking-widest text-[#315F62]/55">Climate Range</span>
+              <span className="text-[9px] font-medium uppercase tracking-widest text-ink-700">Climate Range</span>
               {!prefersReducedMotion && (
                 <motion.span
                   animate={{ opacity: [0.4, 1, 0.4] }}
@@ -212,7 +212,7 @@ export function FeaturesHero() {
             </div>
             <div className="mt-2 flex items-baseline gap-1.5">
               <span className="font-display text-2xl italic text-[#063B3D]">15°</span>
-              <span className="text-[#315F62]/50">—</span>
+              <span className="text-ink-700">—</span>
               <span className="font-display text-2xl italic text-[#169B9A]">35°C</span>
             </div>
             <div className="relative mt-3 h-1 overflow-hidden rounded-full bg-white/50">
@@ -225,7 +225,7 @@ export function FeaturesHero() {
                 />
               )}
             </div>
-            <div className="mt-2 flex items-center justify-between text-[8.5px] uppercase tracking-widest text-[#315F62]/55">
+            <div className="mt-2 flex items-center justify-between text-[8.5px] uppercase tracking-widest text-ink-700">
               <span>Cooling</span>
               <span>Heating</span>
             </div>
@@ -360,7 +360,7 @@ export function FeaturesHero() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1.1, ease: easeOut }}
-                className="mt-6 max-w-md text-[15px] leading-relaxed text-cream-200/70"
+                className="mt-6 max-w-md text-[15px] leading-relaxed text-cream-200"
               >
                 Comfort, motorized precision, smart control and climate technology — brought together in a single
                 piece of furniture, built to Climate Craft's own standard.
@@ -393,11 +393,11 @@ export function FeaturesHero() {
             <motion.div
               animate={prefersReducedMotion ? {} : { y: [0, 5, 0], opacity: [0.6, 1, 0.6] }}
               transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-[#063B3D]/[0.14] text-[#063B3D]/80 backdrop-blur-md"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-[#063B3D]/[0.14] text-ink-900 backdrop-blur-md"
             >
               <ChevronDown className="h-3.5 w-3.5" />
             </motion.div>
-            <span className="text-[9.5px] font-medium uppercase tracking-[0.2em] text-[#315F62]/60">
+            <span className="text-[9.5px] font-medium uppercase tracking-[0.2em] text-ink-700">
               Scroll to Discover
             </span>
           </motion.div>
@@ -408,7 +408,7 @@ export function FeaturesHero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.85, ease: easeOut }}
-          className="mt-6 border-t border-[#063B3D]/10 pt-6 sm:mt-8 sm:pt-7"
+          className="mt-6 border-t border-[#063B3D]/20 pt-6 sm:mt-8 sm:pt-7"
         >
           <div className="flex flex-wrap gap-2">
             {HERO_FEATURES.map((f, i) => {
@@ -432,7 +432,7 @@ export function FeaturesHero() {
                   className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-[11px] font-medium uppercase tracking-widest transition-all duration-300 ${
                     isActive
                       ? 'border-gold-400/60 bg-gold-400/10 text-gold-600'
-                      : 'border-[#063B3D]/10 text-[#315F62]/65 hover:border-[#063B3D]/20 hover:text-[#063B3D]'
+                      : 'border-[#063B3D]/20 text-ink-700 hover:border-[#063B3D]/20 hover:text-[#063B3D]'
                   }`}
                 >
                   <span className="font-display text-[10px] italic">{f.number}</span>
@@ -452,7 +452,7 @@ export function FeaturesHero() {
               className="mt-4 flex flex-wrap gap-x-6 gap-y-1.5"
             >
               {active.points.map((p) => (
-                <li key={p} className="flex items-center gap-2 text-[13px] text-[#315F62]/75">
+                <li key={p} className="flex items-center gap-2 text-[13px] text-ink-700">
                   <span className="h-1 w-1 flex-none rounded-full bg-gold-400" />
                   {p}
                 </li>

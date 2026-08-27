@@ -28,7 +28,7 @@ export function FinalCTA() {
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
-          <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-cream-200/70">
+          <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-cream-200">
             Every Climate Craft piece is engineered to order and quoted for your space — never sold off a shelf.
           </p>
         </Reveal>
@@ -52,7 +52,7 @@ export function FinalCTA() {
         </Reveal>
 
         <Reveal delay={0.3}>
-          <p className="mt-7 text-[12.5px] uppercase tracking-widest text-cream-200/60">
+          <p className="mt-7 text-[12.5px] uppercase tracking-widest text-cream-200">
             {contact.phoneDisplay} · {contact.email}
           </p>
         </Reveal>

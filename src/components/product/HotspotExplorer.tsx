@@ -52,7 +52,7 @@ export function HotspotExplorer({ images, hotspots, alt }: HotspotExplorerProps)
   return (
     <div
       ref={containerRef}
-      className="relative overflow-visible rounded-[28px] border border-[#0B3F42]/[0.10] bg-[#E8EFEC] shadow-[0_50px_120px_-45px_rgba(6,61,60,0.28)]"
+      className="relative overflow-visible rounded-[28px] border border-[#0B3F42]/[0.15] bg-[#E8EFEC] shadow-[0_50px_120px_-45px_rgba(6,61,60,0.28)]"
     >
       <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[28px] sm:aspect-[4/3] lg:aspect-[5/4]">
         <AnimatePresence mode="popLayout">
@@ -155,7 +155,7 @@ export function HotspotExplorer({ images, hotspots, alt }: HotspotExplorerProps)
                   className="rounded-2xl border border-gold-300/25 bg-white/85 p-4 shadow-[0_30px_60px_-20px_rgba(18,59,61,0.4)] backdrop-blur-xl"
                 >
                   <p className="font-display text-sm italic text-gold-600">{active.title}</p>
-                  <p className="mt-2 text-[12.5px] leading-relaxed text-cream-200/75">{active.description}</p>
+                  <p className="mt-2 text-[12.5px] leading-relaxed text-cream-200">{active.description}</p>
                 </motion.div>
               </div>
             </>

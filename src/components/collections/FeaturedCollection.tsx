@@ -43,7 +43,7 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
               {String(family.number).padStart(2, '0')}
             </span>
 
-            <div className="relative overflow-hidden rounded-[28px] border border-[#0B3F42]/[0.08] shadow-[0_40px_100px_-40px_rgba(6,61,60,0.28)] lg:col-span-7">
+            <div className="relative overflow-hidden rounded-[28px] border border-[#0B3F42]/[0.12] shadow-[0_40px_100px_-40px_rgba(6,61,60,0.28)] lg:col-span-7">
               <div className="aspect-[4/3] w-full sm:aspect-[16/10]">
                 <motion.img
                   key={featured.slug}
@@ -56,7 +56,7 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-              <span className="absolute left-6 top-6 section-label text-cream-100/90">Featured Collection</span>
+              <span className="absolute left-6 top-6 section-label text-cream-100">Featured Collection</span>
             </div>
 
             <div className="relative lg:col-span-5">
@@ -69,7 +69,7 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
               <h2 className="mt-5 font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl lg:text-[2.75rem]">
                 {family.label}
               </h2>
-              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200/70">
+              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200">
                 {FAMILY_DESCRIPTIONS[family.id]}
               </p>
               <button type="button" onClick={onExplore} className="btn-ghost group mt-8">

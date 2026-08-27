@@ -23,14 +23,14 @@ export function BusinessHours() {
   return (
     <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
       <SectionAtmosphere variant="bloom" />
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-6">
             <Reveal>
               <SectionLabel>Business Hours</SectionLabel>
             </Reveal>
 
-            <RevealGroup className="mt-6 divide-y divide-[#063B3D]/10 border-t border-[#063B3D]/10">
+            <RevealGroup className="mt-6 divide-y divide-[#063B3D]/10 border-t border-[#063B3D]/20">
               {DISPLAY_ORDER.map((index) => {
                 const entry = HOURS[index]
                 const isToday = index === today
@@ -38,12 +38,12 @@ export function BusinessHours() {
                   <RevealItem key={entry.day}>
                     <div className="flex items-center justify-between py-3.5">
                       <span
-                        className={`text-[14px] ${isToday ? 'font-medium text-gold-700' : 'text-[#315F62]/75'}`}
+                        className={`text-[14px] ${isToday ? 'font-medium text-gold-700' : 'text-ink-700'}`}
                       >
                         {entry.day}
                         {isToday && <span className="ml-2 text-[11px] uppercase tracking-widest">Today</span>}
                       </span>
-                      <span className={`text-[14px] ${isToday ? 'text-[#063B3D]' : 'text-[#315F62]/60'}`}>
+                      <span className={`text-[14px] ${isToday ? 'text-[#063B3D]' : 'text-ink-700'}`}>
                         {entry.hours}
                       </span>
                     </div>
@@ -64,13 +64,13 @@ export function BusinessHours() {
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-2 inline-block text-[12.5px] uppercase tracking-widest text-[#315F62]/60 transition-colors duration-300 hover:text-gold-700"
+                    className="mt-2 inline-block text-[12.5px] uppercase tracking-widest text-ink-700 transition-colors duration-300 hover:text-gold-700"
                   >
                     View on Google Maps →
                   </a>
                 </div>
               </div>
-              <p className="mt-6 max-w-sm border-t border-[#063B3D]/10 pt-6 text-[13.5px] leading-relaxed text-[#315F62]/60">
+              <p className="mt-6 max-w-sm border-t border-[#063B3D]/20 pt-6 text-[13.5px] leading-relaxed text-ink-700">
                 Trade partners are also welcome at our showrooms in {contact.showrooms}, by appointment.
               </p>
             </Reveal>

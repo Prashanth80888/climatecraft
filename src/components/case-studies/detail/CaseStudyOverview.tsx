@@ -16,7 +16,7 @@ export function CaseStudyOverview({ caseStudy }: { caseStudy: CaseStudy }) {
             <div className="lg:col-span-1" />
             <div className="lg:col-span-8">
               <Reveal delay={0.08}>
-                <p className="max-w-2xl text-[17px] leading-relaxed text-cream-200/75 sm:text-xl">
+                <p className="max-w-2xl text-[17px] leading-relaxed text-cream-200 sm:text-xl">
                   {caseStudy.overview}
                 </p>
               </Reveal>
@@ -37,7 +37,7 @@ export function CaseStudyOverview({ caseStudy }: { caseStudy: CaseStudy }) {
         <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="order-2 lg:order-1 lg:col-span-5">
             <Reveal delay={0.08}>
-              <p className="text-[17px] leading-relaxed text-cream-200/75 sm:text-xl">{caseStudy.overview}</p>
+              <p className="text-[17px] leading-relaxed text-cream-200 sm:text-xl">{caseStudy.overview}</p>
             </Reveal>
           </div>
 

@@ -23,7 +23,7 @@ export function ContactCTA() {
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
-          <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-cream-200/70">
+          <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-cream-200">
             Tell us what you're building, and we'll help you find the right Climate Craft configuration for the
             space.
           </p>

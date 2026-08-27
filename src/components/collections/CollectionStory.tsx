@@ -21,7 +21,7 @@ export function CollectionStory() {
       />
       <div className="grain-overlay opacity-20" />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
             <Reveal>
@@ -33,7 +33,7 @@ export function CollectionStory() {
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="mt-6 max-w-md text-[15px] leading-relaxed text-cream-200/70 sm:text-base">
+              <p className="mt-6 max-w-md text-[15px] leading-relaxed text-cream-200 sm:text-base">
                 A motor, a hinge, a hand-crank glide tuned to move without a sound. Around it, a hardwood frame, a
                 hand-tied suspension, and an upholstery chosen from a curated archive of fabrics — built by hand, to
                 order, for every collection on this page.
@@ -50,7 +50,7 @@ export function CollectionStory() {
           <div className="relative lg:col-span-6">
             <motion.div
               style={{ y: mainY }}
-              className="relative z-10 w-full overflow-hidden rounded-[28px] border border-[#0B3F42]/[0.08] shadow-[0_40px_100px_-38px_rgba(6,61,60,0.28)] lg:ml-auto lg:w-[86%]"
+              className="relative z-10 w-full overflow-hidden rounded-[28px] border border-[#0B3F42]/[0.12] shadow-[0_40px_100px_-38px_rgba(6,61,60,0.28)] lg:ml-auto lg:w-[86%]"
             >
               <div className="aspect-[4/3] w-full">
                 <img
@@ -65,7 +65,7 @@ export function CollectionStory() {
 
             <motion.div
               style={{ y: accentY }}
-              className="absolute -left-6 bottom-[-8%] z-0 hidden w-[42%] overflow-hidden rounded-[20px] border border-[#0B3F42]/[0.08] shadow-[0_35px_80px_-32px_rgba(6,61,60,0.25)] lg:block"
+              className="absolute -left-6 bottom-[-8%] z-0 hidden w-[42%] overflow-hidden rounded-[20px] border border-[#0B3F42]/[0.12] shadow-[0_35px_80px_-32px_rgba(6,61,60,0.25)] lg:block"
             >
               <div className="aspect-[4/5] w-full">
                 <img

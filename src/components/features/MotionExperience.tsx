@@ -62,7 +62,7 @@ export function MotionExperience() {
               <h2 className="mt-5 max-w-md font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
                 Reclining, <span className="italic text-teal-700">without a sound.</span>
               </h2>
-              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200/65">
+              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200">
                 A precision motor drives the reclining mechanism and leg rest on every Motorised Comfort piece —
                 quiet, direct and consistent, whichever angle you view it from.
               </p>
@@ -78,7 +78,7 @@ export function MotionExperience() {
                     className={`rounded-2xl border px-5 py-4 text-left transition-all duration-300 ${
                       i === index
                         ? 'border-gold-400/50 bg-gold-400/[0.06]'
-                        : 'border-[#063B3D]/10 bg-white/50 hover:border-[#063B3D]/[0.18]'
+                        : 'border-[#063B3D]/20 bg-white/50 hover:border-[#063B3D]/35'
                     }`}
                   >
                     <span className="font-display text-lg italic text-cream-100">{trait}</span>

@@ -112,13 +112,13 @@ export function Select({ id, value, onChange, groups, placeholder, invalid, desc
         aria-activedescendant={open && activeValue ? `${listId}-${activeValue}` : undefined}
         onClick={() => setOpen((o) => !o)}
         onKeyDown={onKeyDown}
-        className={`mt-2 flex w-full items-center justify-between gap-3 rounded-xl border bg-white/35 px-4 py-3 text-left text-[14px] outline-none transition-all duration-300 focus:border-gold-400/50 focus:bg-white/45 ${
+        className={`mt-2 flex w-full items-center justify-between gap-3 rounded-xl border bg-white/50 px-4 py-3 text-left text-[14px] outline-none transition-all duration-300 focus:border-gold-400/50 focus:bg-white/45 ${
           invalid ? 'border-gold-400/60' : 'border-ink-900/10'
-        } ${selected ? 'text-cream-100' : 'text-cream-200/55'}`}
+        } ${selected ? 'text-cream-100' : 'text-cream-200'}`}
       >
         <span className="truncate">{selected ? selected.label : placeholder}</span>
         <ChevronDown
-          className={`h-4 w-4 flex-none text-cream-200/50 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+          className={`h-4 w-4 flex-none text-cream-200 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
         />
       </button>
 
@@ -136,7 +136,7 @@ export function Select({ id, value, onChange, groups, placeholder, invalid, desc
             {groups.map((group, gi) => (
               <div key={group.label ?? gi}>
                 {group.label && (
-                  <p className="px-3 pb-1.5 pt-2.5 text-[10.5px] font-medium uppercase tracking-widest text-cream-200/55">
+                  <p className="px-3 pb-1.5 pt-2.5 text-[10.5px] font-medium uppercase tracking-widest text-cream-200">
                     {group.label}
                   </p>
                 )}
@@ -152,7 +152,7 @@ export function Select({ id, value, onChange, groups, placeholder, invalid, desc
                       onMouseEnter={() => setActiveValue(option.value)}
                       onClick={() => commit(option.value)}
                       className={`flex cursor-pointer items-center justify-between rounded-lg px-3 py-2.5 text-[13.5px] transition-colors duration-150 ${
-                        isActive ? 'bg-white/50 text-cream-100' : 'text-cream-200/80'
+                        isActive ? 'bg-white/50 text-cream-100' : 'text-cream-200'
                       }`}
                     >
                       <span className="truncate">{option.label}</span>

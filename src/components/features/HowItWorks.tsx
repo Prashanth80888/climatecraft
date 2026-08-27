@@ -57,7 +57,7 @@ function Step({ step, index }: { step: (typeof STEPS)[number]; index: number }) 
           transition={{ duration: 0.5, ease: easeOut }}
           className="flex h-14 w-14 items-center justify-center rounded-full border sm:h-16 sm:w-16"
         >
-          <Icon className={`h-5 w-5 transition-colors duration-500 ${inView ? 'text-gold-700' : 'text-[#315F62]/65'}`} strokeWidth={1.5} />
+          <Icon className={`h-5 w-5 transition-colors duration-500 ${inView ? 'text-gold-700' : 'text-ink-700'}`} strokeWidth={1.5} />
         </motion.span>
         {index < STEPS.length - 1 && (
           <span className="mt-2 h-full w-px flex-1 bg-gradient-to-b from-[#063B3D]/25 to-transparent" />
@@ -71,7 +71,7 @@ function Step({ step, index }: { step: (typeof STEPS)[number]; index: number }) 
       >
         <span className="font-display text-sm italic tabular-nums text-gold-700/80">{step.number}</span>
         <h3 className="mt-1 font-display text-2xl font-normal text-cream-100 sm:text-3xl">{step.title}</h3>
-        <p className="mt-3 text-[14.5px] leading-relaxed text-cream-200/65">{step.copy}</p>
+        <p className="mt-3 text-[14.5px] leading-relaxed text-cream-200">{step.copy}</p>
       </motion.div>
     </div>
   )
@@ -81,7 +81,7 @@ export function HowItWorks() {
   return (
     <section className="relative bg-transparent py-20 sm:py-24 lg:py-28">
       <SectionAtmosphere variant="wave" />
-      <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>How It Works</SectionLabel>
           <h2 className="mt-5 font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">

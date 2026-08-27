@@ -27,7 +27,7 @@ export function BrandPrinciples() {
   return (
     <section className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-24">
       <SectionAtmosphere variant="glow" />
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>What We Hold To</SectionLabel>
         </Reveal>
@@ -61,7 +61,7 @@ export function BrandPrinciples() {
                 >
                   {p.title}
                 </motion.h3>
-                <p className="relative mt-3 max-w-xs text-[14px] leading-relaxed text-cream-200/60">{p.copy}</p>
+                <p className="relative mt-3 max-w-xs text-[14px] leading-relaxed text-cream-200">{p.copy}</p>
               </motion.div>
             </RevealItem>
           ))}

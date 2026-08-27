@@ -18,7 +18,7 @@ export function ContactHero() {
       />
       <div className="grain-overlay opacity-[0.08]" />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -49,7 +49,7 @@ export function ContactHero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.75, ease: easeOut }}
-            className="mt-6 max-w-lg text-[16px] leading-relaxed text-cream-200/70"
+            className="mt-6 max-w-lg text-[16px] leading-relaxed text-cream-200"
           >
             Tell us what you're planning. We'll help you choose the right Climate Craft configuration, quantity and
             finish for your space.

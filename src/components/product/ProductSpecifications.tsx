@@ -24,7 +24,7 @@ export function ProductSpecifications({ product }: { product: HomeProduct }) {
   return (
     <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
       <SectionAtmosphere variant="wave" />
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>Specifications</SectionLabel>
         </Reveal>
@@ -35,7 +35,7 @@ export function ProductSpecifications({ product }: { product: HomeProduct }) {
         >
           {metrics.map((m) => (
             <RevealItem key={m.label} className="px-1 py-6 first:pl-0 sm:px-6 sm:first:pl-0">
-              <p className="text-[10.5px] uppercase tracking-widest text-cream-200/60">{m.label}</p>
+              <p className="text-[10.5px] uppercase tracking-widest text-cream-200">{m.label}</p>
               <p className="mt-2 font-display text-xl text-gold-700 sm:text-2xl">{m.value}</p>
             </RevealItem>
           ))}
@@ -44,7 +44,7 @@ export function ProductSpecifications({ product }: { product: HomeProduct }) {
         <Reveal delay={0.15}>
           <ul className="mt-10 grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2">
             {product.specifications.map((spec) => (
-              <li key={spec} className="flex items-start gap-3 text-[14px] leading-relaxed text-cream-200/70">
+              <li key={spec} className="flex items-start gap-3 text-[14px] leading-relaxed text-cream-200">
                 <span className="mt-2 h-1 w-1 flex-none rounded-full bg-gold-400/70" />
                 {spec}
               </li>

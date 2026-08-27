@@ -23,7 +23,7 @@ export function ProductCraftsmanship({ product }: { product: HomeProduct }) {
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200/70">
+              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200">
                 {product.category} — every {product.name} is upholstered by hand over a hardwood frame, with the
                 cushioning, stitching and silhouette shown here true to the piece you'll receive.
               </p>

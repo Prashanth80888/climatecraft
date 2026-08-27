@@ -34,7 +34,7 @@ function ProductCard({ product }: { product: HomeProduct }) {
       to={`/products/${product.slug}`}
       draggable={false}
       onMouseMove={onMouseMove}
-      className="group relative w-[270px] flex-none overflow-hidden rounded-[20px] border border-[#0B3F42]/[0.10] bg-[#F4F7F5] transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#159FA3]/35 hover:shadow-[0_28px_60px_-26px_rgba(6,61,60,0.26)] sm:w-[310px]"
+      className="group relative w-[270px] flex-none overflow-hidden rounded-[20px] border border-[#0B3F42]/[0.15] bg-[#F4F7F5] transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-[#073F40] hover:border-[#159FA3]/50 hover:shadow-[0_28px_60px_-26px_rgba(6,61,60,0.26)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 sm:w-[310px]"
     >
       {/* cursor-follow spotlight — subtle, gold-tinted, opacity-gated so it only exists on hover */}
       <div
@@ -56,33 +56,34 @@ function ProductCard({ product }: { product: HomeProduct }) {
           />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-canvas-aqua to-canvas px-6 text-center">
-            <Camera className="h-6 w-6 text-cream-200/60" strokeWidth={1.5} />
-            <span className="text-[10.5px] font-medium uppercase tracking-widest text-cream-200/55">
+            <Camera className="h-6 w-6 text-cream-200" strokeWidth={1.5} />
+            <span className="text-[10.5px] font-medium uppercase tracking-widest text-cream-200">
               Photography Pending
             </span>
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent transition-opacity duration-500" />
 
-        <span className="absolute left-4 top-4 font-display text-xs italic text-cream-100/75 tabular-nums transition-colors duration-500 group-hover:text-gold-600">
+        <span className="absolute left-4 top-4 font-display text-xs italic text-cream-100 tabular-nums transition-colors duration-500 group-hover:text-gold-600">
           {String(product.number).padStart(2, '0')} / {String(TOTAL).padStart(2, '0')}
         </span>
-        <span className="absolute right-4 top-4 text-[10px] font-medium uppercase tracking-widest text-cream-100/70">
+        <span className="absolute right-4 top-4 text-[10px] font-medium uppercase tracking-widest text-cream-100">
           {product.operation}
         </span>
       </div>
 
       <div className="relative border-t border-ink-900/[0.08] p-5 transition-transform duration-500 ease-out group-hover:-translate-y-0.5">
-        <h4 className="font-display text-lg text-cream-100 transition-colors duration-500 group-hover:text-gold-700">
+        <h4 className="font-display text-lg text-cream-100 transition-colors duration-500 group-hover:text-white">
           {product.name}
         </h4>
-        <p className="mt-0.5 text-[11px] uppercase tracking-widest text-cream-200/55">{product.category}</p>
-        <p className="mt-2 text-[12.5px] leading-relaxed text-cream-200/55">{product.teaser}</p>
+        <p className="mt-0.5 text-[11px] uppercase tracking-widest text-cream-200 transition-colors duration-500 group-hover:text-white/60">{product.category}</p>
+        <p className="mt-2 text-[12.5px] leading-relaxed text-cream-200 transition-colors duration-500 group-hover:text-white/70">{product.teaser}</p>
 
-        <span className="mt-4 inline-flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-widest text-gold-700/90 transition-all duration-500 group-hover:gap-2.5 group-hover:text-gold-600">
+        <span className="mt-4 inline-flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-widest text-gold-700/90 transition-all duration-500 group-hover:gap-2.5 group-hover:text-gold-400">
           View Product
           <ArrowUpRight className="h-3 w-3 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </span>
+        <span className="mt-3 block h-px w-0 bg-gold-400 transition-all duration-500 group-hover:w-full group-hover:bg-gold-400/60" />
       </div>
     </Link>
   )
@@ -227,7 +228,7 @@ export function Collections() {
           </h2>
         </Reveal>
         <Reveal delay={0.18}>
-          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-cream-200/70">
+          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-cream-200">
             Three families of motion furniture — Climate Smart, Motorised Comfort and Classic.
           </p>
         </Reveal>
@@ -241,12 +242,12 @@ export function Collections() {
           return (
             <div key={family.id}>
               <Reveal amount={0.15}>
-                <div className="mx-auto mb-6 flex max-w-7xl flex-wrap items-end justify-between gap-x-6 gap-y-2 border-b border-[#063B3D]/10 px-5 pb-4 sm:px-6 lg:px-8">
+                <div className="mx-auto mb-6 flex max-w-7xl flex-wrap items-end justify-between gap-x-6 gap-y-2 border-b border-[#063B3D]/20 px-5 pb-4 sm:px-6 lg:px-8">
                   <div>
                     <h3 className="font-display text-xl text-cream-100 sm:text-2xl">{family.label}</h3>
-                    <p className="mt-1 max-w-md text-[12.5px] leading-relaxed text-cream-200/60">{family.blurb}</p>
+                    <p className="mt-1 max-w-md text-[12.5px] leading-relaxed text-cream-200">{family.blurb}</p>
                   </div>
-                  <span className="text-[11px] uppercase tracking-widest text-cream-200/55 tabular-nums">
+                  <span className="text-[11px] uppercase tracking-widest text-cream-200 tabular-nums">
                     {String(family.number).padStart(2, '0')} / {String(PRODUCT_FAMILIES.length).padStart(2, '0')}
                   </span>
                 </div>

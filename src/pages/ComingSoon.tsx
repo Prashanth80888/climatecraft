@@ -13,7 +13,7 @@ export function ComingSoon({ title }: ComingSoonProps) {
     <main className="flex min-h-[70vh] flex-col items-center justify-center bg-transparent px-5 pt-32 text-center">
       <SectionLabel>Coming Soon</SectionLabel>
       <h1 className="mt-5 font-display text-4xl font-normal text-cream-100 sm:text-5xl">{title}</h1>
-      <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-cream-200/60">
+      <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-cream-200">
         This part of the Climate Craft site is being crafted. In the meantime, explore the collection on the home
         page.
       </p>

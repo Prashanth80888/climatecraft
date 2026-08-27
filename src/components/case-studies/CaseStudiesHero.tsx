@@ -33,7 +33,7 @@ export function CaseStudiesHero() {
       />
       <div className="grain-overlay opacity-[0.08]" />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -66,7 +66,7 @@ export function CaseStudiesHero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.85, ease: easeOut }}
-            className="mt-7 max-w-xl text-[16px] leading-relaxed text-cream-200/70 sm:text-[17px]"
+            className="mt-7 max-w-xl text-[16px] leading-relaxed text-cream-200 sm:text-[17px]"
           >
             From private interiors to media rooms and formal hospitality settings, explore how Climate Craft seating
             becomes part of the space — combining engineered motion, considered comfort and refined materials with
@@ -90,7 +90,7 @@ export function CaseStudiesHero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.5, ease: easeOut }}
-          className="mt-16 grid max-w-2xl grid-cols-3 gap-x-6 gap-y-8 border-t border-[#063B3D]/10 pt-8 sm:mt-20"
+          className="mt-16 grid max-w-2xl grid-cols-3 gap-x-6 gap-y-8 border-t border-[#063B3D]/20 pt-8 sm:mt-20"
         >
           {METRICS.map((m, i) => (
             <motion.div
@@ -100,7 +100,7 @@ export function CaseStudiesHero() {
               transition={{ duration: 0.6, delay: 1.65 + i * 0.1, ease: easeOut }}
             >
               <span className="block font-display text-3xl text-gold-700 sm:text-4xl">{m.value}</span>
-              <span className="mt-1.5 block text-[11px] uppercase tracking-widest text-[#315F62]/60">{m.label}</span>
+              <span className="mt-1.5 block text-[11px] uppercase tracking-widest text-ink-700">{m.label}</span>
             </motion.div>
           ))}
         </motion.div>

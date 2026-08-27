@@ -19,7 +19,7 @@ export function RecentWork() {
   return (
     <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
       <SectionAtmosphere variant="radial" />
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <Reveal>
             <SectionLabel>Recent Work</SectionLabel>
@@ -53,8 +53,8 @@ export function RecentWork() {
                   {study.category}
                 </p>
                 <h3 className="mt-1.5 font-display text-xl text-cream-100">{study.title}</h3>
-                <p className="mt-2 max-w-xs text-[13.5px] leading-relaxed text-cream-200/55">{study.summary}</p>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-medium uppercase tracking-widest text-[#315F62]/75 transition-colors duration-300 group-hover:text-gold-700">
+                <p className="mt-2 max-w-xs text-[13.5px] leading-relaxed text-cream-200">{study.summary}</p>
+                <span className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-medium uppercase tracking-widest text-ink-700 transition-colors duration-300 group-hover:text-gold-700">
                   View Case Study
                   <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>

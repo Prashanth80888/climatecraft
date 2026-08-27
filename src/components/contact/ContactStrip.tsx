@@ -32,7 +32,7 @@ const ITEMS = [
 
 export function ContactStrip() {
   return (
-    <section className="relative border-y border-[#063D3C]/[0.08] bg-white/35 py-10 backdrop-blur-sm sm:py-12">
+    <section className="relative border-y border-[#063D3C]/[0.08] bg-white/50 py-10 backdrop-blur-sm sm:py-12">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal amount={0.3}>
           <RevealGroup className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
@@ -41,7 +41,7 @@ export function ContactStrip() {
                 <>
                   <item.icon className="h-4 w-4 flex-none text-gold-700" strokeWidth={1.5} />
                   <div>
-                    <p className="text-[11px] font-medium uppercase tracking-widest text-[#315F62]/65">
+                    <p className="text-[11px] font-medium uppercase tracking-widest text-ink-700">
                       {item.label}
                     </p>
                     <p className="mt-1 text-[13.5px] leading-snug text-[#063B3D]">{item.value}</p>

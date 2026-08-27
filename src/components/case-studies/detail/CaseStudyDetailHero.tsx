@@ -26,14 +26,14 @@ export function CaseStudyDetailHero({ caseStudy }: { caseStudy: CaseStudy }) {
       />
       <div className="grain-overlay opacity-[0.08]" />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal amount={0.6}>
-          <nav className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200/60">
+          <nav className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200">
             <Link to="/case-studies" className="transition-colors duration-300 hover:text-gold-700">
               Case Studies
             </Link>
             <span>/</span>
-            <span className="text-cream-200/70">{caseStudy.category}</span>
+            <span className="text-cream-200">{caseStudy.category}</span>
             <span>/</span>
             <span className="text-cream-100">{caseStudy.title}</span>
           </nav>
@@ -65,7 +65,7 @@ export function CaseStudyDetailHero({ caseStudy }: { caseStudy: CaseStudy }) {
           </h1>
 
           <Reveal delay={0.3}>
-            <p className="mt-7 max-w-xl text-[16px] leading-relaxed text-cream-200/70 sm:text-[17px]">
+            <p className="mt-7 max-w-xl text-[16px] leading-relaxed text-cream-200 sm:text-[17px]">
               {caseStudy.summary}
             </p>
           </Reveal>
@@ -75,15 +75,15 @@ export function CaseStudyDetailHero({ caseStudy }: { caseStudy: CaseStudy }) {
           <Reveal delay={0.4} className="mt-12 sm:mt-14">
             <div className="flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-ink-900/10 pt-7">
               <div>
-                <p className="text-[10.5px] uppercase tracking-widest text-cream-200/60">Product</p>
+                <p className="text-[10.5px] uppercase tracking-widest text-cream-200">Product</p>
                 <p className="mt-1.5 text-[13.5px] text-cream-100">{product.name}</p>
               </div>
               <div>
-                <p className="text-[10.5px] uppercase tracking-widest text-cream-200/60">Operation</p>
+                <p className="text-[10.5px] uppercase tracking-widest text-cream-200">Operation</p>
                 <p className="mt-1.5 text-[13.5px] text-cream-100">{product.operation}</p>
               </div>
               <div>
-                <p className="text-[10.5px] uppercase tracking-widest text-cream-200/60">Seating</p>
+                <p className="text-[10.5px] uppercase tracking-widest text-cream-200">Seating</p>
                 <p className="mt-1.5 text-[13.5px] text-cream-100">
                   {product.seats} Seat{product.seats > 1 ? 's' : ''}
                 </p>
@@ -101,7 +101,7 @@ export function CaseStudyDetailHero({ caseStudy }: { caseStudy: CaseStudy }) {
           <motion.div
             animate={prefersReducedMotion ? {} : { y: [0, 5, 0], opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-ink-900/[0.14] text-cream-100/75"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-ink-900/[0.14] text-cream-100"
           >
             <ChevronDown className="h-3.5 w-3.5" />
           </motion.div>

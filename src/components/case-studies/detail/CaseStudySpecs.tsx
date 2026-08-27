@@ -31,7 +31,7 @@ export function CaseStudySpecs({ caseStudy }: { caseStudy: CaseStudy }) {
             >
               {details.map((d) => (
                 <RevealItem key={d.label} className="px-1 py-6 first:pl-0 sm:px-6 sm:first:pl-0">
-                  <p className="text-[10.5px] uppercase tracking-widest text-cream-200/60">{d.label}</p>
+                  <p className="text-[10.5px] uppercase tracking-widest text-cream-200">{d.label}</p>
                   <p className="mt-2 font-display text-lg text-gold-700 sm:text-xl">{d.value}</p>
                 </RevealItem>
               ))}

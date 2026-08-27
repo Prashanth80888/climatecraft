@@ -23,7 +23,7 @@ export function AboutCTA() {
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
-          <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-cream-200/70">
+          <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-cream-200">
             Climate Craft works with manufacturers, galleries, interior houses and trade partners — from a single
             bespoke piece to a full white-labelled range.
           </p>

@@ -25,14 +25,14 @@ export function ClimateTechnology() {
         style={{ background: 'linear-gradient(90deg, #2b9587 0%, transparent 50%, #f0a92c 100%)' }}
       />
 
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:px-8">
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:px-8">
         <div className="lg:col-span-6">
           <Reveal>
             <SectionLabel>Climate Technology</SectionLabel>
             <h2 className="mt-5 max-w-md font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
               Patented liquid cooling <span className="italic text-teal-700">& heating.</span>
             </h2>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200/65">
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200">
               Climate Smart pieces regulate their own temperature through the seat and back — precise, personal,
               and controlled entirely through the smart interface, remote or a voice command.
             </p>
@@ -65,7 +65,7 @@ export function ClimateTechnology() {
                 />
               </div>
 
-              <p className="mt-4 text-[12.5px] leading-relaxed text-cream-200/60">
+              <p className="mt-4 text-[12.5px] leading-relaxed text-cream-200">
                 A single continuous range — cooling on one end, heating on the other, adjusted in real time to suit
                 the room and the moment.
               </p>

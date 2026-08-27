@@ -29,7 +29,7 @@ export function ViewerModeSwitcher({ mode, onChange }: ViewerModeSwitcherProps) 
           className={`flex items-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-medium uppercase tracking-widest transition-all duration-300 ${
             mode === id
               ? 'bg-gold-400 text-ink-950 shadow-[0_8px_20px_-8px_rgba(22,155,154,0.6)]'
-              : 'text-cream-200/55 hover:text-cream-100'
+              : 'text-cream-200 hover:text-cream-100'
           }`}
         >
           <Icon className="h-3.5 w-3.5" strokeWidth={2} />

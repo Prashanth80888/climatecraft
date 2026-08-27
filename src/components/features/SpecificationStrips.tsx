@@ -37,7 +37,7 @@ export function SpecificationStrips() {
   return (
     <section className="relative bg-transparent py-20 sm:py-24 lg:py-28">
       <SectionAtmosphere variant="radial" />
-      <div className="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>By the Numbers</SectionLabel>
           <h2 className="mt-5 max-w-md font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
@@ -66,14 +66,14 @@ export function SpecificationStrips() {
                     <div className="flex items-baseline gap-5">
                       <span
                         className={`font-display text-sm italic tabular-nums transition-colors duration-300 ${
-                          isActive ? 'text-gold-700' : 'text-[#315F62]/65'
+                          isActive ? 'text-gold-700' : 'text-ink-700'
                         }`}
                       >
                         {row.number}
                       </span>
                       <span className="font-display text-xl text-cream-100 sm:text-2xl">{row.title}</span>
                     </div>
-                    <span className="text-[13px] font-medium uppercase tracking-widest text-[#315F62]/60">
+                    <span className="text-[13px] font-medium uppercase tracking-widest text-ink-700">
                       {row.value}
                     </span>
                   </motion.div>
@@ -82,7 +82,7 @@ export function SpecificationStrips() {
                     initial={false}
                     animate={{ height: isActive ? 'auto' : 0, opacity: isActive ? 1 : 0, marginTop: isActive ? 10 : 0 }}
                     transition={{ duration: 0.35 }}
-                    className="max-w-md overflow-hidden pl-[3.35rem] text-[13.5px] leading-relaxed text-[#315F62]/65"
+                    className="max-w-md overflow-hidden pl-[3.35rem] text-[13.5px] leading-relaxed text-ink-700"
                   >
                     {row.copy}
                   </motion.p>

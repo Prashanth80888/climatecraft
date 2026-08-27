@@ -17,14 +17,14 @@ export function CaseStudyChallengeApproach({ caseStudy }: { caseStudy: CaseStudy
             <h2 className="font-display text-2xl font-normal leading-tight text-cream-100 sm:text-3xl">
               The <span className="italic text-teal-700">Challenge</span>
             </h2>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200/70">{caseStudy.challenge}</p>
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200">{caseStudy.challenge}</p>
           </RevealItem>
 
           <RevealItem>
             <h2 className="font-display text-2xl font-normal leading-tight text-cream-100 sm:text-3xl">
               The <span className="italic text-teal-700">Approach</span>
             </h2>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200/70">{caseStudy.approach}</p>
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200">{caseStudy.approach}</p>
           </RevealItem>
         </RevealGroup>
       </div>

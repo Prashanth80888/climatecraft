@@ -19,7 +19,7 @@ export function EngineeringDetail() {
   return (
     <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
       <SectionAtmosphere variant="bloom" />
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>The Construction</SectionLabel>
         </Reveal>
@@ -28,14 +28,14 @@ export function EngineeringDetail() {
           {SPECS.map((spec) => (
             <RevealItem
               key={spec.label}
-              className={`group flex items-start gap-4 border-[#063B3D]/10 px-1 py-7 sm:px-6 ${spec.border}`}
+              className={`group flex items-start gap-4 border-[#063B3D]/20 px-1 py-7 sm:px-6 ${spec.border}`}
             >
               <spec.icon
                 className="h-5 w-5 flex-none text-gold-700 transition-transform duration-500 group-hover:scale-110"
                 strokeWidth={1.5}
               />
               <div>
-                <p className="text-[11px] uppercase tracking-widest text-[#315F62]/65">{spec.label}</p>
+                <p className="text-[11px] uppercase tracking-widest text-ink-700">{spec.label}</p>
                 <p className="mt-1.5 font-display text-base text-[#063B3D]">{spec.value}</p>
               </div>
             </RevealItem>

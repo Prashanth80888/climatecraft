@@ -19,7 +19,7 @@ export function CaseStudyCollection() {
   return (
     <section id="case-study-index" className="relative overflow-hidden bg-transparent py-20 sm:py-24 lg:py-28">
       <SectionAtmosphere variant="radial" />
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>The Studies</SectionLabel>
           <h2 className="mt-5 max-w-lg font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">

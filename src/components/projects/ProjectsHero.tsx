@@ -118,7 +118,7 @@ export function ProjectsHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 1.1, ease: easeOut }}
-          className="mt-8 max-w-lg text-[16px] leading-relaxed text-cream-200/60 sm:text-[17px]"
+          className="mt-8 max-w-lg text-[16px] leading-relaxed text-cream-200 sm:text-[17px]"
         >
           Explore how Climate Craft furniture shapes residential, media, formal and lounge environments —
           combining intelligent movement, climate technology and considered design.
@@ -145,7 +145,7 @@ export function ProjectsHero() {
           </a>
           <Link
             to="/contact"
-            className="group inline-flex items-center gap-2 rounded-full border border-[#063B3D]/[0.14] px-6 py-3.5 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-[#315F62]/80 transition-all duration-300 hover:border-[#063B3D]/20 hover:text-[#063B3D]"
+            className="group inline-flex items-center gap-2 rounded-full border border-[#063B3D]/[0.14] px-6 py-3.5 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-ink-700 transition-all duration-300 hover:border-[#063B3D]/20 hover:text-[#063B3D]"
           >
             <span>Discuss a Project</span>
             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -165,7 +165,7 @@ export function ProjectsHero() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 2.1 + i * 0.07, ease: easeOut }}
-              className="text-[11px] font-medium uppercase tracking-[0.15em] text-cream-200/55"
+              className="text-[11px] font-medium uppercase tracking-[0.15em] text-cream-200"
             >
               {label}
             </motion.span>
@@ -183,7 +183,7 @@ export function ProjectsHero() {
         <motion.div
           animate={prefersReducedMotion ? {} : { y: [0, 6, 0] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-[#063B3D]/10 text-[#063B3D]/80"
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-[#063B3D]/20 text-ink-900"
         >
           <ChevronDown className="h-4 w-4" />
         </motion.div>

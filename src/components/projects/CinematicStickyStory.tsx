@@ -60,7 +60,7 @@ export function CinematicStickyStory() {
                   </Reveal>
 
                   <Reveal delay={0.18}>
-                    <p className="text-[14.5px] leading-relaxed text-cream-200/55">
+                    <p className="text-[14.5px] leading-relaxed text-cream-200">
                       {chapter.copy}
                     </p>
                   </Reveal>

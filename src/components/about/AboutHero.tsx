@@ -24,7 +24,7 @@ export function AboutHero() {
       />
       <div className="grain-overlay opacity-[0.08]" />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -57,7 +57,7 @@ export function AboutHero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7, ease: easeOut }}
-            className="mt-7 max-w-xl text-[16px] leading-relaxed text-cream-200/70 sm:text-[17px]"
+            className="mt-7 max-w-xl text-[16px] leading-relaxed text-cream-200 sm:text-[17px]"
           >
             Precision-engineered motion furniture — designed around the mechanics of comfort.
           </motion.p>
@@ -66,7 +66,7 @@ export function AboutHero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.85, ease: easeOut }}
-            className="mt-4 max-w-xl text-[15px] leading-relaxed text-cream-200/55"
+            className="mt-4 max-w-xl text-[15px] leading-relaxed text-cream-200"
           >
             Climate Craft engineers motorized and manually operated recliners, sofas and modular seating, built
             around movement, comfort and craftsmanship rather than any one of them alone.
@@ -95,7 +95,7 @@ export function AboutHero() {
           transition={{ duration: 0.7, delay: 1.4, ease: easeOut }}
           className="mt-16 flex items-center gap-2.5 border-t border-ink-900/10 pt-6 sm:mt-20"
         >
-          <span className="text-[11px] uppercase tracking-widest text-cream-200/60">
+          <span className="text-[11px] uppercase tracking-widest text-cream-200">
             Est. 2009 · Antwerp, Belgium
           </span>
         </motion.div>

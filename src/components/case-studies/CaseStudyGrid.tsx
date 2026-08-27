@@ -54,7 +54,7 @@ const CaseStudyRow = forwardRef<HTMLDivElement, { caseStudy: CaseStudy; reversed
             {caseStudy.category}
           </p>
 
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200/65">{caseStudy.summary}</p>
+          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream-200">{caseStudy.summary}</p>
 
           <span className="mt-7 inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-widest text-gold-700">
             View Case Study

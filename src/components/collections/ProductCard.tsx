@@ -45,7 +45,7 @@ export function ProductCard({ product, total }: ProductCardProps) {
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       style={{ transform: 'perspective(1200px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))' }}
-      className="group relative block h-full overflow-hidden rounded-[22px] border border-[#0B3F42]/[0.10] bg-[#F4F7F5] transition-[border-color,box-shadow] duration-300 ease-out will-change-transform hover:border-[#159FA3]/40 hover:shadow-[0_32px_64px_-30px_rgba(6,61,60,0.28)]"
+      className="group relative block h-full overflow-hidden rounded-[22px] border border-[#0B3F42]/[0.15] bg-[#F4F7F5] transition-[border-color,box-shadow] duration-300 ease-out will-change-transform hover:border-[#159FA3]/40 hover:shadow-[0_32px_64px_-30px_rgba(6,61,60,0.28)]"
     >
       <div
         className="pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -73,8 +73,8 @@ export function ProductCard({ product, total }: ProductCardProps) {
           </motion.div>
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-canvas-aqua to-canvas px-6 text-center">
-            <Camera className="h-6 w-6 text-cream-200/60" strokeWidth={1.5} />
-            <span className="text-[10.5px] font-medium uppercase tracking-widest text-cream-200/55">
+            <Camera className="h-6 w-6 text-cream-200" strokeWidth={1.5} />
+            <span className="text-[10.5px] font-medium uppercase tracking-widest text-cream-200">
               Photography Pending
             </span>
           </div>
@@ -82,10 +82,10 @@ export function ProductCard({ product, total }: ProductCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent transition-all duration-500" />
 
         <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5">
-          <span className="font-display text-xs italic tabular-nums text-cream-100/75 transition-colors duration-500 group-hover:text-gold-600">
+          <span className="font-display text-xs italic tabular-nums text-cream-100 transition-colors duration-500 group-hover:text-gold-600">
             {String(product.number).padStart(2, '0')} / {String(total).padStart(2, '0')}
           </span>
-          <span className="text-[10px] font-medium uppercase tracking-widest text-cream-100/70">
+          <span className="text-[10px] font-medium uppercase tracking-widest text-cream-100">
             {product.operation}
           </span>
         </div>
@@ -95,8 +95,8 @@ export function ProductCard({ product, total }: ProductCardProps) {
             <h4 className="font-display text-lg text-cream-100 sm:text-xl">{product.name}</h4>
             <ArrowUpRight className="mt-1 h-4 w-4 flex-none -translate-x-1 translate-y-1 text-gold-700 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100" />
           </div>
-          <p className="mt-1 text-[11px] uppercase tracking-widest text-cream-200/60">{product.category}</p>
-          <p className="mt-1.5 max-w-xs text-[12.5px] leading-relaxed text-cream-200/60">{product.teaser}</p>
+          <p className="mt-1 text-[11px] uppercase tracking-widest text-cream-200">{product.category}</p>
+          <p className="mt-1.5 max-w-xs text-[12.5px] leading-relaxed text-cream-200">{product.teaser}</p>
           <span className="mt-3 block h-px w-8 bg-gold-400/40 transition-all duration-500 group-hover:w-14 group-hover:bg-gold-400/80" />
         </div>
       </div>

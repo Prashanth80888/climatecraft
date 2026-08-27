@@ -19,14 +19,14 @@ export function NotFoundPage() {
         <div className="grain-overlay opacity-[0.06]" />
 
         <div className="relative">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-ink-900/10 text-cream-200/55">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-ink-900/10 text-cream-200">
             <Search className="h-6 w-6" strokeWidth={1.5} />
           </div>
           <p className="mt-6 text-[11px] uppercase tracking-widest text-gold-700/70">404</p>
           <h1 className="mt-4 font-display text-4xl font-normal text-cream-100 sm:text-5xl">
             Page not found.
           </h1>
-          <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-cream-200/60">
+          <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-cream-200">
             The page you are looking for does not exist or has been moved. Explore our collection or get in touch.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">

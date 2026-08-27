@@ -57,12 +57,12 @@ export function ProductDetailPage() {
 
           <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <Reveal amount={0.6}>
-              <nav className="flex items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200/60">
+              <nav className="flex items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200">
                 <Link to="/collections" className="transition-colors duration-300 hover:text-gold-700">
                   Collections
                 </Link>
                 <span>/</span>
-                <span className="text-cream-200/70">{family.label}</span>
+                <span className="text-cream-200">{family.label}</span>
                 <span>/</span>
                 <span className="text-cream-100">{product.name}</span>
               </nav>
@@ -123,11 +123,11 @@ export function ProductDetailPage() {
                       {product.name}
                     </h1>
 
-                    <p className="mt-3 text-[13px] uppercase tracking-widest text-cream-200/50">{product.category}</p>
+                    <p className="mt-3 text-[13px] uppercase tracking-widest text-cream-200">{product.category}</p>
 
                     <span className="section-label mt-5 inline-flex">{product.operation}</span>
 
-                    <p className="mt-6 max-w-md text-[15px] leading-relaxed text-cream-200/70">
+                    <p className="mt-6 max-w-md text-[15px] leading-relaxed text-cream-200">
                       {product.description}
                     </p>
 
@@ -165,7 +165,7 @@ export function ProductDetailPage() {
       <div className="fixed bottom-6 left-6 z-40 hidden lg:block">
         <Link
           to="/collections"
-          className="group flex h-11 items-center gap-2 rounded-full border border-[#063B3D]/10 bg-white/80 px-4 text-[11px] font-medium uppercase tracking-widest text-[#315F62]/80 backdrop-blur-md transition-all duration-300 hover:border-[#169B9A]/65 hover:text-[#063B3D]"
+          className="group flex h-11 items-center gap-2 rounded-full border border-[#063B3D]/20 bg-white/80 px-4 text-[11px] font-medium uppercase tracking-widest text-ink-700 backdrop-blur-md transition-all duration-300 hover:border-[#169B9A]/65 hover:text-[#063B3D]"
         >
           <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" />
           All Collections

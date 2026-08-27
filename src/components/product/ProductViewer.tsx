@@ -96,8 +96,8 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
     >
       {images.length === 0 ? (
         <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-canvas-aqua to-canvas text-center">
-          <Camera className="h-7 w-7 text-cream-200/60" strokeWidth={1.5} />
-          <span className="text-[11px] font-medium uppercase tracking-widest text-cream-200/55">
+          <Camera className="h-7 w-7 text-cream-200" strokeWidth={1.5} />
+          <span className="text-[11px] font-medium uppercase tracking-widest text-cream-200">
             Photography Pending
           </span>
         </div>
@@ -150,7 +150,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
             transition={{ duration: 0.4 }}
             className="pointer-events-none absolute inset-x-0 bottom-5 z-10 flex justify-center"
           >
-            <span className="flex items-center gap-2 rounded-full border border-ink-900/[0.14] bg-white/60 px-4 py-2 text-[10.5px] font-medium uppercase tracking-widest text-cream-100/80 backdrop-blur-md">
+            <span className="flex items-center gap-2 rounded-full border border-ink-900/[0.14] bg-white/60 px-4 py-2 text-[10.5px] font-medium uppercase tracking-widest text-cream-100 backdrop-blur-md">
               <Move className="h-3.5 w-3.5 animate-pulse text-gold-600" strokeWidth={2} />
               Drag to explore
             </span>
@@ -177,7 +177,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
             <ChevronRight className="h-4 w-4" />
           </button>
 
-          <span className="absolute bottom-4 right-4 z-10 rounded-full border border-ink-900/10 bg-white/60 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream-100/70 backdrop-blur-md">
+          <span className="absolute bottom-4 right-4 z-10 rounded-full border border-ink-900/10 bg-white/60 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream-100 backdrop-blur-md">
             {String(index + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
           </span>
         </>
@@ -210,7 +210,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
 
   return (
     <div>
-      <div className="relative overflow-hidden rounded-[28px] border border-[#0B3F42]/[0.10] bg-[#E8EFEC] shadow-[0_50px_120px_-45px_rgba(6,61,60,0.28)]">
+      <div className="relative overflow-hidden rounded-[28px] border border-[#0B3F42]/[0.15] bg-[#E8EFEC] shadow-[0_50px_120px_-45px_rgba(6,61,60,0.28)]">
         {frame(false)}
       </div>
 

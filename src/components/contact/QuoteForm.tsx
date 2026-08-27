@@ -121,8 +121,8 @@ function buildWhatsAppMessage(values: FormValues): string {
 }
 
 const inputClass =
-  'mt-2 w-full rounded-xl border border-ink-900/10 bg-white/35 px-4 py-3 text-[14px] text-cream-100 placeholder:text-cream-200/50 outline-none transition-all duration-300 focus:border-gold-400/50 focus:bg-white/45'
-const labelClass = 'text-[11px] font-medium uppercase tracking-widest text-cream-200/60'
+  'mt-2 w-full rounded-xl border border-ink-900/10 bg-white/50 px-4 py-3 text-[14px] text-cream-100 placeholder:text-cream-200 outline-none transition-all duration-300 focus:border-gold-400/50 focus:bg-white/45'
+const labelClass = 'text-[11px] font-medium uppercase tracking-widest text-cream-200'
 const groupHeadingClass = 'text-[11px] font-semibold uppercase tracking-widest text-gold-700/70'
 
 function FieldError({ id, message }: { id: string; message?: string }) {
@@ -214,7 +214,7 @@ export function QuoteForm() {
         initial={{ opacity: 0, y: 12, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.6, ease: easeOut }}
-        className="relative overflow-hidden rounded-[24px] border border-ink-900/10 bg-white/30 p-8 text-center sm:p-10"
+        className="relative overflow-hidden rounded-[24px] border border-ink-900/10 bg-white/50 p-8 text-center sm:p-10"
       >
         <div
           className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/3 rounded-full opacity-[0.50] blur-[90px]"
@@ -249,22 +249,22 @@ export function QuoteForm() {
         </div>
 
         <h3 className="relative mt-6 font-display text-2xl text-cream-100 sm:text-3xl">Enquiry ready.</h3>
-        <p className="relative mx-auto mt-3 max-w-sm text-[14.5px] leading-relaxed text-cream-200/65">
+        <p className="relative mx-auto mt-3 max-w-sm text-[14.5px] leading-relaxed text-cream-200">
           Your enquiry has been prepared. WhatsApp will open so you can continue the conversation with Climate
           Craft.
         </p>
 
-        <div className="relative mx-auto mt-7 max-w-sm space-y-2.5 rounded-xl border border-ink-900/10 bg-white/30 p-5 text-left">
+        <div className="relative mx-auto mt-7 max-w-sm space-y-2.5 rounded-xl border border-ink-900/10 bg-white/50 p-5 text-left">
           <div className="flex items-center justify-between gap-4">
-            <span className="text-[11px] uppercase tracking-widest text-cream-200/60">Product / Collection</span>
+            <span className="text-[11px] uppercase tracking-widest text-cream-200">Product / Collection</span>
             <span className="text-[13px] text-cream-100">{productLabelFor(selection)}</span>
           </div>
           <div className="flex items-center justify-between gap-4">
-            <span className="text-[11px] uppercase tracking-widest text-cream-200/60">Project Type</span>
+            <span className="text-[11px] uppercase tracking-widest text-cream-200">Project Type</span>
             <span className="text-[13px] text-cream-100">{values.projectType}</span>
           </div>
           <div className="flex items-center justify-between gap-4">
-            <span className="text-[11px] uppercase tracking-widest text-cream-200/60">Quantity</span>
+            <span className="text-[11px] uppercase tracking-widest text-cream-200">Quantity</span>
             <span className="text-[13px] text-cream-100">{values.quantity}</span>
           </div>
         </div>
@@ -424,11 +424,11 @@ export function QuoteForm() {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: easeOut }}
-              className="mt-3 flex items-center justify-between rounded-xl border border-ink-900/10 bg-white/35 px-4 py-3"
+              className="mt-3 flex items-center justify-between rounded-xl border border-ink-900/10 bg-white/50 px-4 py-3"
             >
               <div>
                 <p className="text-[13.5px] text-cream-100">{selection.product.name}</p>
-                <p className="mt-0.5 text-[11px] uppercase tracking-widest text-cream-200/60">
+                <p className="mt-0.5 text-[11px] uppercase tracking-widest text-cream-200">
                   {selection.family?.label} · {selection.product.category}
                 </p>
               </div>

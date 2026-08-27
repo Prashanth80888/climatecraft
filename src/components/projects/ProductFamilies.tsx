@@ -34,7 +34,7 @@ export function ProductFamilies() {
           </h2>
         </Reveal>
         <Reveal delay={0.14}>
-          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-cream-200/55">
+          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-cream-200">
             The product family is chosen by the environment, not the other way around.
           </p>
         </Reveal>
@@ -44,7 +44,7 @@ export function ProductFamilies() {
             <RevealItem key={family.id}>
               <Link
                 to={`/collections#${family.id}`}
-                className="group relative flex flex-col overflow-hidden rounded-[24px] border border-[#0B3F42]/[0.10] bg-[#F4F7F5] transition-all duration-500 hover:border-[#159FA3]/40 hover:shadow-[0_28px_72px_-28px_rgba(6,61,60,0.26)]"
+                className="group relative flex flex-col overflow-hidden rounded-[24px] border border-[#0B3F42]/[0.15] bg-[#F4F7F5] transition-all duration-500 hover:border-[#159FA3]/40 hover:shadow-[0_28px_72px_-28px_rgba(6,61,60,0.26)]"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
@@ -54,7 +54,7 @@ export function ProductFamilies() {
                     className="h-full w-full object-cover transition-transform duration-[1000ms] ease-out group-hover:scale-[1.05]"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                  <span className="absolute left-4 top-4 rounded-full border border-ink-900/10 bg-white/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-cream-100/65 backdrop-blur-md">
+                  <span className="absolute left-4 top-4 rounded-full border border-ink-900/10 bg-white/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-cream-100 backdrop-blur-md">
                     {String(family.number).padStart(2, '0')} / 03
                   </span>
                 </div>
@@ -63,8 +63,8 @@ export function ProductFamilies() {
                   <h3 className="font-display text-xl text-cream-100 transition-colors duration-300 group-hover:text-gold-700">
                     {family.label}
                   </h3>
-                  <p className="mt-1 text-[12px] uppercase tracking-wide text-cream-200/55">{family.blurb}</p>
-                  <p className="mt-3 text-[13.5px] leading-relaxed text-cream-200/50">
+                  <p className="mt-1 text-[12px] uppercase tracking-wide text-cream-200">{family.blurb}</p>
+                  <p className="mt-3 text-[13.5px] leading-relaxed text-cream-200">
                     {FAMILY_APPLICATIONS[family.id]}
                   </p>
 

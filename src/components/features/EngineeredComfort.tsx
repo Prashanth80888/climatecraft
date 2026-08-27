@@ -87,7 +87,7 @@ export function EngineeredComfort() {
                 className={`block rounded-full border px-4 py-2 text-[11px] font-medium uppercase tracking-widest backdrop-blur-md transition-all duration-300 ${
                   active === c.id
                     ? 'scale-110 border-gold-300 bg-gold-400 text-ink-950'
-                    : 'border-ink-900/[0.14] bg-white/65 text-cream-200/75 hover:border-ink-900/25'
+                    : 'border-ink-900/[0.14] bg-white/65 text-cream-200 hover:border-ink-900/25'
                 }`}
               >
                 {c.label}

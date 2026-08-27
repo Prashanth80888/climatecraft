@@ -39,7 +39,7 @@ function Stat({
         {count}
         {suffix}
       </span>
-      <span className="mt-3 text-[11px] font-medium uppercase tracking-widest text-cream-200/55">{label}</span>
+      <span className="mt-3 text-[11px] font-medium uppercase tracking-widest text-cream-200">{label}</span>
     </div>
   )
 }
@@ -51,7 +51,7 @@ export function AboutStats() {
   return (
     <section className="relative bg-transparent py-16 sm:py-20">
       <SectionAtmosphere variant="ambient" />
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <div ref={ref} className="grid grid-cols-2 gap-x-6 gap-y-12 border-y border-ink-900/10 py-2 sm:grid-cols-4">
             {STATS.map((stat) => (

@@ -44,7 +44,7 @@ export function CollectionsHero() {
 
       <div className="grain-overlay opacity-30" />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>Climate Craft Collections</SectionLabel>
         </Reveal>
@@ -58,25 +58,25 @@ export function CollectionsHero() {
         </Reveal>
 
         <Reveal delay={0.2}>
-          <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-cream-200/70 sm:text-base">
+          <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-cream-200 sm:text-base">
             Precision mechanisms. Bespoke comfort. Timeless design — {PRODUCT_FAMILIES.length} collections of
             motorized and manually operated seating, each engineered in-house and upholstered by hand.
           </p>
         </Reveal>
 
         <Reveal delay={0.3}>
-          <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-[#063B3D]/10 pt-6">
+          <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-[#063B3D]/20 pt-6">
             <div className="flex items-baseline gap-2">
               <span className="font-display text-2xl text-gold-700">{PRODUCT_FAMILIES.length}</span>
-              <span className="text-[11px] uppercase tracking-widest text-[#315F62]/60">Collections</span>
+              <span className="text-[11px] uppercase tracking-widest text-ink-700">Collections</span>
             </div>
             <div className="flex items-baseline gap-2">
               <span className="font-display text-2xl text-gold-700">{HOME_PRODUCTS.length}</span>
-              <span className="text-[11px] uppercase tracking-widest text-[#315F62]/60">Pieces</span>
+              <span className="text-[11px] uppercase tracking-widest text-ink-700">Pieces</span>
             </div>
             <div className="flex items-baseline gap-2">
               <span className="font-display text-2xl italic text-[#169B9A]">MTO</span>
-              <span className="text-[11px] uppercase tracking-widest text-[#315F62]/60">Made to Order</span>
+              <span className="text-[11px] uppercase tracking-widest text-ink-700">Made to Order</span>
             </div>
           </div>
         </Reveal>

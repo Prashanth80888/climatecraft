@@ -25,7 +25,7 @@ export function ProjectPhilosophy() {
   return (
     <section className="relative bg-transparent py-20 sm:py-28 lg:py-36">
       <SectionAtmosphere variant="bloom" />
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>The Approach</SectionLabel>
         </Reveal>
@@ -38,7 +38,7 @@ export function ProjectPhilosophy() {
         </Reveal>
 
         <Reveal delay={0.14}>
-          <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-cream-200/65 sm:text-[17px]">
+          <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-cream-200 sm:text-[17px]">
             Climate Craft approaches each environment by considering how people actually sit, move, relax
             and interact with the space around them — not by applying a single solution to every room.
           </p>
@@ -49,7 +49,7 @@ export function ProjectPhilosophy() {
             <RevealItem key={need.title}>
               <div className="group">
                 <h3 className="font-display text-lg text-cream-100">{need.title}</h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-cream-200/55">{need.copy}</p>
+                <p className="mt-2 text-[14px] leading-relaxed text-cream-200">{need.copy}</p>
                 <span className="mt-4 block h-px w-6 bg-gold-400/25 transition-all duration-500 group-hover:w-10 group-hover:bg-gold-400/60" />
               </div>
             </RevealItem>

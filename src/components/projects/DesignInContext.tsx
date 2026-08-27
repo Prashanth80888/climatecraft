@@ -37,7 +37,7 @@ export function DesignInContext() {
             </Reveal>
 
             <Reveal delay={0.16}>
-              <p className="text-[15px] leading-relaxed text-cream-200/60">
+              <p className="text-[15px] leading-relaxed text-cream-200">
                 {DESIGN_CONTEXT.description}
               </p>
             </Reveal>
@@ -47,7 +47,7 @@ export function DesignInContext() {
                 {['Motorised movement', 'Climate control', 'Intuitive interaction'].map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.08] bg-white/35 px-3.5 py-1.5 text-[11px] text-cream-200/60"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.08] bg-white/50 px-3.5 py-1.5 text-[11px] text-cream-200"
                   >
                     <span className="h-1 w-1 rounded-full bg-gold-400/50" />
                     {tag}

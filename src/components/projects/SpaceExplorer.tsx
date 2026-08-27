@@ -46,7 +46,7 @@ function ExplorerCard({
 
           {/* Category badge */}
           <div className="absolute left-5 top-5">
-            <span className="inline-block rounded-full border border-[#063B3D]/10 bg-white/65 px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-[#063B3D]/80 backdrop-blur-md">
+            <span className="inline-block rounded-full border border-[#063B3D]/20 bg-white/65 px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-ink-900 backdrop-blur-md">
               {entry.category}
             </span>
           </div>
@@ -62,7 +62,7 @@ function ExplorerCard({
           <h3 className="mt-3 font-display text-2xl font-normal leading-tight text-cream-100 sm:text-[1.65rem]">
             {entry.title}
           </h3>
-          <p className="mt-4 text-[14.5px] leading-relaxed text-cream-200/60">
+          <p className="mt-4 text-[14.5px] leading-relaxed text-cream-200">
             {entry.description}
           </p>
         </div>
@@ -70,11 +70,11 @@ function ExplorerCard({
         <div className="space-y-4 border-t border-[#063B3D]/[0.08] pt-5">
           <div>
             <p className="text-[10.5px] font-medium uppercase tracking-[0.18em] text-[#169B9A]/90">Application</p>
-            <p className="mt-1.5 text-[13.5px] leading-relaxed text-[#315F62]/60">{entry.application}</p>
+            <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-700">{entry.application}</p>
           </div>
           <div>
             <p className="text-[10.5px] font-medium uppercase tracking-[0.18em] text-[#169B9A]/90">Design Intent</p>
-            <p className="mt-1.5 text-[13.5px] leading-relaxed text-[#315F62]/60">{entry.designIntent}</p>
+            <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-700">{entry.designIntent}</p>
           </div>
         </div>
 
@@ -82,7 +82,7 @@ function ExplorerCard({
           {entry.features.map((f) => (
             <span
               key={f}
-              className="inline-block rounded-full border border-[#063B3D]/[0.08] bg-white/40 px-3 py-1.5 text-[11px] text-[#315F62]/65"
+              className="inline-block rounded-full border border-[#063B3D]/[0.15] bg-white/65 px-3.5 py-1.5 text-[11px] text-ink-700"
             >
               {f}
             </span>
@@ -122,7 +122,7 @@ export function SpaceExplorer() {
           </h2>
         </Reveal>
         <Reveal delay={0.14}>
-          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-cream-200/55">
+          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-cream-200">
             Each project begins with the room. The furniture follows.
           </p>
         </Reveal>
@@ -172,7 +172,7 @@ export function SpaceExplorer() {
               .slice(0, 3)
               .map((entry) => (
                 <RevealItem key={entry.id}>
-                  <div className="group relative overflow-hidden rounded-[20px] border border-[#0B3F42]/[0.10] bg-[#F4F7F5] transition-all duration-500 hover:border-[#159FA3]/35 hover:shadow-[0_24px_56px_-24px_rgba(6,61,60,0.22)]">
+                  <div className="group relative overflow-hidden rounded-[20px] border border-[#0B3F42]/[0.15] bg-[#F4F7F5] transition-all duration-500 hover:border-[#159FA3]/35 hover:shadow-[0_24px_56px_-24px_rgba(6,61,60,0.22)]">
                     <div className="aspect-[4/3] overflow-hidden">
                       <img
                         src={projectImageAt(entry.id, 1)}
@@ -186,7 +186,7 @@ export function SpaceExplorer() {
                       <h4 className="mt-2 font-display text-lg text-[#063B3D] transition-colors duration-300 group-hover:text-gold-700">
                         {entry.title}
                       </h4>
-                      <p className="mt-2 text-[13px] leading-relaxed text-[#315F62]/65 line-clamp-2">{entry.description}</p>
+                      <p className="mt-2 text-[13px] leading-relaxed text-ink-700 line-clamp-2">{entry.description}</p>
                     </div>
                   </div>
                 </RevealItem>

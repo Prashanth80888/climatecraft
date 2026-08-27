@@ -31,7 +31,7 @@ export function CaseStudyCTA() {
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
-          <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-cream-200/70">
+          <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-cream-200">
             Every Climate Craft piece is engineered to order and quoted for your space — tell us about the room, and
             we'll help you find the right fit.
           </p>

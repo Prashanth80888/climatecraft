@@ -58,12 +58,12 @@ export function LegalPageLayout({ eyebrow, title, intro, sections }: LegalPageLa
                 </h1>
               </Reveal>
               <Reveal delay={0.16}>
-                <p className="mt-5 text-[11px] uppercase tracking-widest text-cream-200/60">
+                <p className="mt-5 text-[11px] uppercase tracking-widest text-cream-200">
                   Climate Craft · Last updated {LAST_UPDATED}
                 </p>
               </Reveal>
               <Reveal delay={0.22}>
-                <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-cream-200/65">{intro}</p>
+                <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-cream-200">{intro}</p>
               </Reveal>
             </div>
           </div>
@@ -72,7 +72,7 @@ export function LegalPageLayout({ eyebrow, title, intro, sections }: LegalPageLa
         <section className="relative bg-transparent pb-20 sm:pb-24 lg:pb-28">
           <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <div className="mb-10 lg:hidden">
-              <details className="group rounded-2xl border border-ink-900/10 bg-white/30 p-5">
+              <details className="group rounded-2xl border border-ink-900/10 bg-white/50 p-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 outline-none">
                   <span className="section-label !mb-0">On This Page</span>
                   <ChevronDown className="h-4 w-4 flex-none text-gold-700 transition-transform duration-300 group-open:rotate-180" />
@@ -80,7 +80,7 @@ export function LegalPageLayout({ eyebrow, title, intro, sections }: LegalPageLa
                 <ul className="mt-4 space-y-3">
                   {sections.map((s) => (
                     <li key={s.id}>
-                      <a href={`#${s.id}`} className="text-[13.5px] text-cream-200/65 hover:text-gold-700">
+                      <a href={`#${s.id}`} className="text-[13.5px] text-cream-200 hover:text-gold-700">
                         {s.title}
                       </a>
                     </li>
@@ -98,7 +98,7 @@ export function LegalPageLayout({ eyebrow, title, intro, sections }: LegalPageLa
                       <li key={s.id}>
                         <a
                           href={`#${s.id}`}
-                          className="block text-[13px] leading-snug text-cream-200/55 transition-colors duration-300 hover:text-gold-700"
+                          className="block text-[13px] leading-snug text-cream-200 transition-colors duration-300 hover:text-gold-700"
                         >
                           {s.title}
                         </a>
@@ -112,7 +112,7 @@ export function LegalPageLayout({ eyebrow, title, intro, sections }: LegalPageLa
                 {sections.map((s) => (
                   <div key={s.id} id={s.id} className="scroll-mt-32">
                     <h2 className="font-display text-2xl text-cream-100 sm:text-[1.75rem]">{s.title}</h2>
-                    <div className="mt-4 max-w-2xl space-y-4 text-[14.5px] leading-relaxed text-cream-200/70">
+                    <div className="mt-4 max-w-2xl space-y-4 text-[14.5px] leading-relaxed text-cream-200">
                       {s.body}
                     </div>
                   </div>
