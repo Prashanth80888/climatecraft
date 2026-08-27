@@ -118,11 +118,11 @@ export function FeatureExplorer() {
                   />
                 </AnimatePresence>
 
-                {/* Cinematic frost when a feature is selected */}
+                {/* Cinematic dimming when a feature is selected */}
                 <motion.div
-                  animate={{ opacity: active ? 0.55 : 0 }}
+                  animate={{ opacity: active ? 0.3 : 0 }}
                   transition={{ duration: 0.5 }}
-                  className="pointer-events-none absolute inset-0 bg-[#E5FEFF]"
+                  className="pointer-events-none absolute inset-0 bg-black"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
