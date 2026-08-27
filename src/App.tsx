@@ -20,21 +20,23 @@ function App() {
     <>
       <AtmosphereBackground />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/collections" element={<CollectionsPage />} />
-        <Route path="/features" element={<FeaturesPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/case-studies" element={<CaseStudiesPage />} />
-        <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/products/:slug" element={<ProductDetailPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-        <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
-        <Route path="/cookie-policy" element={<CookiePolicyPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <div className="relative z-10">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/collections" element={<CollectionsPage />} />
+          <Route path="/features" element={<FeaturesPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/products/:slug" element={<ProductDetailPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+          <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
     </>
   )
 }

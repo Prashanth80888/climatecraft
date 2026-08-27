@@ -11,7 +11,6 @@ import {
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { getProductBySlug } from '../../data/homeProducts'
 import { homeProductImage } from '../../lib/assets'
-import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
@@ -150,17 +149,6 @@ export function FeaturesHero() {
       ref={ref}
       className="relative w-full overflow-hidden bg-transparent px-4 pb-10 pt-32 sm:px-6 sm:pb-14 sm:pt-36 lg:pt-40"
     >
-      <SectionAtmosphere variant="glow" />
-      {/* Ambient depth behind the image — outside the photo, in the breathing space below the navbar. */}
-      <div
-        className="pointer-events-none absolute -top-10 left-1/2 h-[420px] w-[900px] -translate-x-1/2 opacity-[0.42] blur-[130px]"
-        style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 60%)' }}
-      />
-      <div
-        className="pointer-events-none absolute right-0 top-1/3 h-[320px] w-[320px] opacity-[0.1] blur-[110px]"
-        style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 70%)' }}
-      />
-
       {/* No self-padding here — matches the navbar's own pill exactly (padding lives on the section
           above, like the navbar's header wrapper), so this edge lines up with the floating pill. */}
       <div className="relative z-10 mx-auto max-w-7xl">
@@ -185,11 +173,9 @@ export function FeaturesHero() {
             </motion.div>
           </motion.div>
 
-          {/* Blend every edge into the page background — no visible photo boundary, front or edge. */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-canvas via-canvas/30 to-transparent" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-canvas/50 via-transparent to-transparent" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas/70 via-transparent to-transparent" />
-          <div className="grain-overlay opacity-[0.12]" />
+          {/* Blend edges softly into the page — reduced overlays keep the furniture visible. */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-canvas/60 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas/50 via-transparent to-transparent" />
 
           {/* Smart control panel — a small, honest visualization of the product's real climate range
               (no fabricated live reading), reading like a physical furniture controller rather than a
@@ -198,7 +184,7 @@ export function FeaturesHero() {
             initial={{ opacity: 0, y: 10, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.7, delay: 3.2, ease: easeOut }}
-            className="pointer-events-none absolute left-[64%] top-[9%] hidden w-[188px] rounded-2xl border border-[#063B3D]/[0.14] bg-white/65 p-4 shadow-[0_25px_60px_-20px_rgba(6,59,61,0.28)] backdrop-blur-xl sm:block"
+            className="pointer-events-auto absolute left-[64%] top-[9%] hidden w-[188px] rounded-2xl border border-white/60 bg-white/55 p-4 shadow-[0_25px_60px_-20px_rgba(6,59,61,0.18),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/80 hover:bg-white/70 hover:shadow-[0_30px_70px_-18px_rgba(6,59,61,0.24),inset_0_1px_0_rgba(255,255,255,0.9)] sm:block"
           >
             <div className="flex items-center justify-between">
               <span className="text-[9px] font-medium uppercase tracking-widest text-ink-700">Climate Range</span>
@@ -297,7 +283,7 @@ export function FeaturesHero() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: 6 }}
                           transition={{ duration: 0.3, ease: easeOut }}
-                          className="absolute right-full top-1/2 mr-2.5 -translate-y-1/2 whitespace-nowrap rounded-full border border-gold-300/30 bg-white/70 px-3 py-1.5 text-[10.5px] font-medium uppercase tracking-widest text-gold-600 backdrop-blur-md"
+                          className="absolute right-full top-1/2 mr-2.5 -translate-y-1/2 whitespace-nowrap rounded-full border border-white/60 bg-white/70 px-3 py-1.5 text-[10.5px] font-medium uppercase tracking-widest text-gold-600 shadow-[0_8px_20px_-8px_rgba(6,59,61,0.15)] backdrop-blur-md"
                         >
                           {f.title}
                         </motion.span>
@@ -305,13 +291,17 @@ export function FeaturesHero() {
                     </AnimatePresence>
                     <motion.span
                       animate={{
-                        scale: isActive ? 1.15 : 1,
-                        borderColor: isActive ? 'rgba(22,155,154,0.9)' : 'rgba(255,255,255,0.25)',
-                        backgroundColor: isActive ? 'rgba(22,155,154,0.95)' : 'rgba(255,255,255,0.85)',
-                        color: isActive ? '#0a0f0d' : 'rgba(244,240,231,0.75)',
+                        scale: isActive ? 1.12 : 1,
+                        borderColor: isActive ? 'rgba(22,155,154,0.9)' : 'rgba(255,255,255,0.35)',
+                        backgroundColor: isActive ? 'rgba(22,155,154,0.95)' : 'rgba(255,255,255,0.75)',
+                        boxShadow: isActive
+                          ? '0 8px 24px -6px rgba(22,155,154,0.45)'
+                          : '0 4px 12px -4px rgba(6,59,61,0.1)',
                       }}
-                      transition={{ duration: 0.4, ease: easeOut }}
+                      whileHover={{ scale: isActive ? 1.15 : 1.08 }}
+                      transition={{ duration: 0.35, ease: easeOut }}
                       className="flex h-7 w-7 items-center justify-center rounded-full border font-display text-[11px] italic backdrop-blur-md"
+                      style={{ color: isActive ? '#ffffff' : 'rgba(6,59,61,0.7)' }}
                     >
                       {f.number}
                     </motion.span>
@@ -341,7 +331,7 @@ export function FeaturesHero() {
                 </span>
               </motion.div>
 
-              <h1 className="mt-5 font-display text-4xl font-normal leading-[1.03] text-cream-100 sm:text-6xl lg:text-[4.2rem]">
+              <h1 className="mt-5 font-display text-4xl font-normal leading-[1.03] text-[#063B3D] sm:text-6xl lg:text-[4.2rem]">
                 {HEADLINE.map((line, i) => (
                   <span key={line} className="block overflow-hidden">
                     <motion.span
@@ -374,11 +364,11 @@ export function FeaturesHero() {
               >
                 <a
                   href="#feature-explorer"
-                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-teal-700 px-6 py-3.5 text-[12px] font-semibold uppercase tracking-widest text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_18px_40px_-16px_rgba(22,155,154,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_22px_48px_-14px_rgba(22,155,154,0.65)] active:scale-[0.97]"
+                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-teal-700 px-6 py-3.5 text-[12px] font-semibold uppercase tracking-widest text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_18px_40px_-16px_rgba(22,155,154,0.55)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-teal-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_22px_48px_-14px_rgba(22,155,154,0.65)] active:scale-[0.97]"
                 >
-                  <span className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/2 -skew-x-12 bg-white/40 opacity-0 transition-all duration-700 ease-out group-hover:left-full group-hover:opacity-100" />
+                  <span className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/2 -skew-x-12 bg-white/30 opacity-0 transition-all duration-700 ease-out group-hover:left-full group-hover:opacity-100" />
                   <span className="relative z-10">Explore Features</span>
-                  <ArrowUpRight className="relative z-10 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ArrowUpRight className="relative z-10 h-3.5 w-3.5 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               </motion.div>
             </div>
@@ -388,15 +378,11 @@ export function FeaturesHero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 2.5 }}
-            className="pointer-events-none absolute inset-x-0 bottom-6 flex flex-col items-center gap-2"
+            className="pointer-events-auto absolute inset-x-0 bottom-6 flex flex-col items-center gap-2"
           >
-            <motion.div
-              animate={prefersReducedMotion ? {} : { y: [0, 5, 0], opacity: [0.6, 1, 0.6] }}
-              transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-[#063B3D]/[0.14] text-ink-900 backdrop-blur-md"
-            >
+            <div className="flex h-8 w-8 items-center justify-center rounded-full border border-[#063B3D]/15 bg-white/40 text-ink-900 backdrop-blur-md transition-all duration-300 hover:border-teal-700/30 hover:bg-white/60">
               <ChevronDown className="h-3.5 w-3.5" />
-            </motion.div>
+            </div>
             <span className="text-[9.5px] font-medium uppercase tracking-[0.2em] text-ink-700">
               Scroll to Discover
             </span>
@@ -408,7 +394,7 @@ export function FeaturesHero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.85, ease: easeOut }}
-          className="mt-6 border-t border-[#063B3D]/20 pt-6 sm:mt-8 sm:pt-7"
+          className="mt-6 border-t border-[#063B3D]/15 pt-6 sm:mt-8 sm:pt-7"
         >
           <div className="flex flex-wrap gap-2">
             {HERO_FEATURES.map((f, i) => {
@@ -429,13 +415,13 @@ export function FeaturesHero() {
                   onFocus={() => activate(f.id)}
                   onBlur={scheduleResume}
                   aria-pressed={isActive}
-                  className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-[11px] font-medium uppercase tracking-widest transition-all duration-300 ${
+                  className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-[11px] font-medium uppercase tracking-widest transition-all duration-300 ease-out ${
                     isActive
-                      ? 'border-gold-400/60 bg-gold-400/10 text-gold-600'
-                      : 'border-[#063B3D]/20 text-ink-700 hover:border-[#063B3D]/20 hover:text-[#063B3D]'
+                      ? 'border-teal-700/40 bg-teal-700 text-white shadow-[0_8px_24px_-8px_rgba(22,155,154,0.4)]'
+                      : 'border-white/50 bg-white/40 text-ink-700 backdrop-blur-sm hover:-translate-y-0.5 hover:border-teal-700/25 hover:bg-white/60 hover:text-[#063B3D] hover:shadow-[0_8px_20px_-8px_rgba(6,59,61,0.12)]'
                   }`}
                 >
-                  <span className="font-display text-[10px] italic">{f.number}</span>
+                  <span className={`font-display text-[10px] italic ${isActive ? 'text-white/80' : 'text-gold-600'}`}>{f.number}</span>
                   {f.title}
                 </motion.button>
               )
