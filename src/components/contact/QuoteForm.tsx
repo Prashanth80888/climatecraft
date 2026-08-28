@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion'
 import {
   AlertCircle,
   ArrowRight,
-  CheckCircle2,
   MessageCircle,
   Pencil,
   Sparkles,
