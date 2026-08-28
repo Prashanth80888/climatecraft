@@ -1,4 +1,4 @@
-import { Route, Routes, useRoutes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { AtmosphereBackground } from './components/AtmosphereBackground'
 import { Navbar } from './components/Navbar'
 import { ScrollToTop } from './components/ScrollToTop'
@@ -36,23 +36,19 @@ function MainLayout() {
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
           <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </>
   )
 }
 
-function NotFoundLayout() {
-  return <NotFoundPage />
-}
-
 function App() {
-  const routes = useRoutes([
-    { path: '/', element: <MainLayout /> },
-    { path: '*', element: <NotFoundLayout /> },
-  ])
-
-  return routes
+  return (
+    <Routes>
+      <Route path="/*" element={<MainLayout />} />
+    </Routes>
+  )
 }
 
 export default App
