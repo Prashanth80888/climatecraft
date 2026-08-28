@@ -33,8 +33,8 @@ export function HomePage() {
     <>
       <main>
         <Hero />
-        <Mechanics />
         <Collections />
+        <Mechanics />
         <WhyClimateCraft />
         <Statistics />
         <Testimonials />

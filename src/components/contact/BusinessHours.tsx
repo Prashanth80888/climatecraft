@@ -1,49 +1,102 @@
-import { MapPin } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { MapPin, Clock, ArrowUpRight, Sparkles } from 'lucide-react'
 import { contact } from '../../lib/assets'
 import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { SectionLabel } from '../ui/SectionLabel'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 
-// Sunday-first to match Date.getDay() (0 = Sunday), displayed Monday-first below.
 const HOURS = [
-  { day: 'Sunday', hours: 'Closed' },
-  { day: 'Monday', hours: '09:00 — 18:00' },
-  { day: 'Tuesday', hours: '09:00 — 18:00' },
-  { day: 'Wednesday', hours: '09:00 — 18:00' },
-  { day: 'Thursday', hours: '09:00 — 18:00' },
-  { day: 'Friday', hours: '09:00 — 17:00' },
-  { day: 'Saturday', hours: 'By appointment' },
+  { day: 'Sunday', hours: 'Closed', openTime: null, closeTime: null },
+  { day: 'Monday', hours: '09:00 — 18:00', openTime: 9, closeTime: 18 },
+  { day: 'Tuesday', hours: '09:00 — 18:00', openTime: 9, closeTime: 18 },
+  { day: 'Wednesday', hours: '09:00 — 18:00', openTime: 9, closeTime: 18 },
+  { day: 'Thursday', hours: '09:00 — 18:00', openTime: 9, closeTime: 18 },
+  { day: 'Friday', hours: '09:00 — 17:00', openTime: 9, closeTime: 17 },
+  { day: 'Saturday', hours: 'By appointment', openTime: null, closeTime: null },
 ]
 
 const DISPLAY_ORDER = [1, 2, 3, 4, 5, 6, 0]
 
 export function BusinessHours() {
+  const [isOpenNow, setIsOpenNow] = useState(false)
   const today = new Date().getDay()
 
+  useEffect(() => {
+    const now = new Date()
+    const currentHour = now.getHours()
+    const todayData = HOURS[today]
+
+    if (todayData.openTime !== null && todayData.closeTime !== null) {
+      setIsOpenNow(currentHour >= todayData.openTime && currentHour < todayData.closeTime)
+    } else {
+      setIsOpenNow(false)
+    }
+  }, [today])
+
   return (
-    <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-24">
       <SectionAtmosphere variant="bloom" />
+
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
+
+          {/* Left Column: Business Hours Card */}
           <div className="lg:col-span-6">
             <Reveal>
-              <SectionLabel>Business Hours</SectionLabel>
+              <div className="flex items-center justify-between">
+                <SectionLabel>Business Hours</SectionLabel>
+
+                {/* Live Open Status Indicator */}
+                <div className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-medium uppercase tracking-wider backdrop-blur-md transition-all duration-300 ${isOpenNow
+                    ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-700'
+                    : 'border-gold-700/20 bg-gold-400/5 text-gold-700'
+                  }`}>
+                  <span className={`relative flex h-2 w-2`}>
+                    <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 ${isOpenNow ? 'bg-emerald-500' : 'bg-gold-700'
+                      }`} />
+                    <span className={`relative inline-flex h-2 w-2 rounded-full ${isOpenNow ? 'bg-emerald-500' : 'bg-gold-700'
+                      }`} />
+                  </span>
+                  {isOpenNow ? 'Open Right Now' : 'Closed Right Now'}
+                </div>
+              </div>
             </Reveal>
 
-            <RevealGroup className="mt-6 divide-y divide-[#063B3D]/10 border-t border-[#063B3D]/20">
+            {/* Hours List */}
+            <RevealGroup className="mt-6 rounded-2xl border border-[#063B3D]/10 bg-white/40 p-4 sm:p-6 backdrop-blur-md shadow-sm transition-all duration-300 hover:shadow-md">
               {DISPLAY_ORDER.map((index) => {
                 const entry = HOURS[index]
                 const isToday = index === today
+
                 return (
                   <RevealItem key={entry.day}>
-                    <div className="flex items-center justify-between py-3.5">
-                      <span
-                        className={`text-[14px] ${isToday ? 'font-medium text-gold-700' : 'text-ink-700'}`}
-                      >
-                        {entry.day}
-                        {isToday && <span className="ml-2 text-[11px] uppercase tracking-widest">Today</span>}
-                      </span>
-                      <span className={`text-[14px] ${isToday ? 'text-[#063B3D]' : 'text-ink-700'}`}>
+                    <div
+                      className={`group relative flex items-center justify-between rounded-xl px-4 py-3.5 transition-all duration-300 ${isToday
+                          ? 'bg-[#063B3D]/[0.06] shadow-inner'
+                          : 'hover:bg-[#063B3D]/[0.03]'
+                        }`}
+                    >
+                      {/* Active Day Highlight Indicator */}
+                      {isToday && (
+                        <span className="absolute left-0 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r-full bg-gold-700" />
+                      )}
+
+                      <div className="flex items-center gap-2.5">
+                        <Clock className={`h-4 w-4 transition-transform duration-300 group-hover:scale-110 ${isToday ? 'text-gold-700' : 'text-ink-700/40 group-hover:text-[#063B3D]'
+                          }`} />
+                        <span className={`text-[14px] transition-colors duration-200 ${isToday ? 'font-semibold text-[#063B3D]' : 'text-ink-700 group-hover:text-[#063B3D]'
+                          }`}>
+                          {entry.day}
+                        </span>
+                        {isToday && (
+                          <span className="ml-1.5 rounded bg-gold-700/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-gold-700">
+                            Today
+                          </span>
+                        )}
+                      </div>
+
+                      <span className={`text-[14px] font-mono tracking-tight transition-colors duration-200 ${isToday ? 'font-medium text-[#063B3D]' : 'text-ink-700/80 group-hover:text-[#063B3D]'
+                        }`}>
                         {entry.hours}
                       </span>
                     </div>
@@ -53,28 +106,46 @@ export function BusinessHours() {
             </RevealGroup>
           </div>
 
-          <div className="lg:col-span-6">
+          {/* Right Column: Studio Information Card */}
+          <div className="flex flex-col justify-between lg:col-span-6">
             <Reveal delay={0.1}>
               <SectionLabel>The Studio</SectionLabel>
-              <div className="mt-6 flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 flex-none text-gold-700" strokeWidth={1.5} />
-                <div>
-                  <p className="text-[15px] leading-relaxed text-[#063B3D]">{contact.address}</p>
-                  <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-2 inline-block text-[12.5px] uppercase tracking-widest text-ink-700 transition-colors duration-300 hover:text-gold-700"
-                  >
-                    View on Google Maps →
-                  </a>
+
+              <div className="group relative mt-6 overflow-hidden rounded-2xl border border-[#063B3D]/10 bg-white/40 p-6 sm:p-8 backdrop-blur-md shadow-sm transition-all duration-300 hover:border-[#063B3D]/20 hover:shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-gold-700/10 text-gold-700 transition-colors duration-300 group-hover:bg-gold-700 group-hover:text-white">
+                    <MapPin className="h-5 w-5" strokeWidth={1.75} />
+                  </div>
+                  <div>
+                    <h4 className="text-[16px] font-semibold text-[#063B3D]">Headquarters</h4>
+                    <p className="mt-1.5 text-[15px] leading-relaxed text-[#063B3D]/80">{contact.address}</p>
+
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group/btn mt-5 inline-flex items-center gap-2 text-[12.5px] font-medium uppercase tracking-widest text-[#063B3D] transition-colors duration-300 hover:text-gold-700"
+                    >
+                      <span>Get Directions</span>
+                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Showroom Callout Box */}
+                <div className="mt-8 border-t border-[#063B3D]/10 pt-6">
+                  <div className="flex items-start gap-3 rounded-xl bg-[#063B3D]/5 p-4">
+                    <Sparkles className="mt-0.5 h-4 w-4 flex-none text-gold-700" />
+                    <p className="text-[13.5px] leading-relaxed text-ink-700">
+                      Trade partners are welcome at our showrooms in{' '}
+                      <span className="font-semibold text-[#063B3D]">{contact.showrooms}</span>, strictly by appointment.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <p className="mt-6 max-w-sm border-t border-[#063B3D]/20 pt-6 text-[13.5px] leading-relaxed text-ink-700">
-                Trade partners are also welcome at our showrooms in {contact.showrooms}, by appointment.
-              </p>
             </Reveal>
           </div>
+
         </div>
       </div>
     </section>

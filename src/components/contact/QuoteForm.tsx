@@ -1,7 +1,18 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { AlertCircle, ArrowRight, MessageCircle, Pencil } from 'lucide-react'
+import {
+  AlertCircle,
+  ArrowRight,
+  CheckCircle2,
+  MessageCircle,
+  Pencil,
+  Sparkles,
+  User,
+  Mail,
+  Building2,
+  Phone
+} from 'lucide-react'
 import { HOME_PRODUCTS, PRODUCT_FAMILIES, getProductBySlug } from '../../data/homeProducts'
 import { whatsappHref } from '../../lib/assets'
 import { Select, type SelectGroup } from './Select'
@@ -21,7 +32,14 @@ const PROJECT_TYPES = [
 
 const QUANTITY_OPTIONS = ['1', '2–5', '6–10', '11–25', '26–50', '50+', 'Not sure yet']
 
-const TIMELINE_OPTIONS = ['As soon as possible', 'Within 1 month', '1–3 months', '3–6 months', '6+ months', 'Just exploring']
+const TIMELINE_OPTIONS = [
+  'As soon as possible',
+  'Within 1 month',
+  '1–3 months',
+  '3–6 months',
+  '6+ months',
+  'Just exploring',
+]
 
 const FAMILY_PRODUCTS = PRODUCT_FAMILIES.map((family) => ({
   family,
@@ -120,10 +138,13 @@ function buildWhatsAppMessage(values: FormValues): string {
   return lines.join('\n')
 }
 
+const inputContainerClass =
+  'relative group mt-2 rounded-xl border border-ink-900/10 bg-white/40 backdrop-blur-md transition-all duration-300 focus-within:border-gold-400 focus-within:bg-white/70 focus-within:shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:border-ink-900/20'
+
 const inputClass =
-  'mt-2 w-full rounded-xl border border-ink-900/10 bg-white/50 px-4 py-3 text-[14px] text-cream-100 placeholder:text-cream-200 outline-none transition-all duration-300 focus:border-gold-400/50 focus:bg-white/45'
-const labelClass = 'text-[11px] font-medium uppercase tracking-widest text-cream-200'
-const groupHeadingClass = 'text-[11px] font-semibold uppercase tracking-widest text-gold-700/70'
+  'w-full rounded-xl bg-transparent px-4 py-3 pl-11 text-[14px] text-cream-100 placeholder:text-cream-200/60 outline-none transition-colors'
+
+const labelClass = 'text-[11px] font-medium uppercase tracking-widest text-cream-200 flex items-center gap-1.5'
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   return (
@@ -135,7 +156,7 @@ function FieldError({ id, message }: { id: string; message?: string }) {
           animate={{ opacity: 1, y: 0, height: 'auto' }}
           exit={{ opacity: 0, y: -4, height: 0 }}
           transition={{ duration: 0.25, ease: easeOut }}
-          className="mt-1.5 flex items-center gap-1.5 overflow-hidden text-[12px] text-gold-700"
+          className="mt-1.5 flex items-center gap-1.5 overflow-hidden text-[12px] font-medium text-amber-600"
         >
           <AlertCircle className="h-3.5 w-3.5 flex-none" />
           {message}
@@ -211,71 +232,82 @@ export function QuoteForm() {
   if (phase === 'success' && lastUrl) {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 12, scale: 0.98 }}
+        initial={{ opacity: 0, y: 16, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.6, ease: easeOut }}
-        className="relative overflow-hidden rounded-[24px] border border-ink-900/10 bg-white/50 p-8 text-center sm:p-10"
+        className="relative overflow-hidden rounded-[28px] border border-[#063B3D]/15 bg-white/40 p-8 text-center shadow-2xl backdrop-blur-xl sm:p-12"
       >
         <div
-          className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/3 rounded-full opacity-[0.50] blur-[90px]"
-          style={{ background: 'radial-gradient(circle, #f0a92c 0%, #53c9c5 55%, transparent 75%)' }}
+          className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-60 blur-[100px]"
+          style={{ background: 'radial-gradient(circle, #f0a92c 0%, #53c9c5 60%, transparent 80%)' }}
         />
 
-        <div className="relative mx-auto flex h-16 w-16 items-center justify-center">
+        <div className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gold-400/10 backdrop-blur-md">
           <svg viewBox="0 0 52 52" className="h-16 w-16">
             <motion.circle
               cx="26"
               cy="26"
-              r="24"
+              r="23"
               fill="none"
-              stroke="#f0a92c"
-              strokeWidth="1.5"
+              stroke="#D4AF37"
+              strokeWidth="2"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: 1 }}
               transition={{ duration: 0.6, ease: easeOut }}
             />
             <motion.path
-              d="M15 27l7 7 15-15"
+              d="M16 27l7 7 14-14"
               fill="none"
-              stroke="#f0a92c"
-              strokeWidth="2.5"
+              stroke="#D4AF37"
+              strokeWidth="3"
               strokeLinecap="round"
               strokeLinejoin="round"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.45, ease: easeOut }}
+              transition={{ duration: 0.5, delay: 0.4, ease: easeOut }}
             />
           </svg>
         </div>
 
-        <h3 className="relative mt-6 font-display text-2xl text-cream-100 sm:text-3xl">Enquiry ready.</h3>
-        <p className="relative mx-auto mt-3 max-w-sm text-[14.5px] leading-relaxed text-cream-200">
-          Your enquiry has been prepared. WhatsApp will open so you can continue the conversation with Climate
-          Craft.
+        <h3 className="relative mt-6 font-display text-3xl font-medium tracking-tight text-cream-100 sm:text-4xl">
+          Enquiry Prepared
+        </h3>
+        <p className="relative mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-cream-200">
+          We have generated your customized specification sheet. WhatsApp is ready to launch so you can finalize your request with our design specialists.
         </p>
 
-        <div className="relative mx-auto mt-7 max-w-sm space-y-2.5 rounded-xl border border-ink-900/10 bg-white/50 p-5 text-left">
-          <div className="flex items-center justify-between gap-4">
-            <span className="text-[11px] uppercase tracking-widest text-cream-200">Product / Collection</span>
-            <span className="text-[13px] text-cream-100">{productLabelFor(selection)}</span>
+        {/* Summary Card */}
+        <div className="relative mx-auto mt-8 max-w-md space-y-3 rounded-2xl border border-ink-900/10 bg-white/60 p-6 text-left shadow-sm backdrop-blur-md">
+          <div className="flex items-center justify-between border-b border-ink-900/5 pb-2.5">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-cream-200">Collection</span>
+            <span className="text-[13.5px] font-medium text-cream-100">{productLabelFor(selection)}</span>
           </div>
-          <div className="flex items-center justify-between gap-4">
-            <span className="text-[11px] uppercase tracking-widest text-cream-200">Project Type</span>
-            <span className="text-[13px] text-cream-100">{values.projectType}</span>
+          <div className="flex items-center justify-between border-b border-ink-900/5 pb-2.5">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-cream-200">Project Type</span>
+            <span className="text-[13.5px] font-medium text-cream-100">{values.projectType}</span>
           </div>
-          <div className="flex items-center justify-between gap-4">
-            <span className="text-[11px] uppercase tracking-widest text-cream-200">Quantity</span>
-            <span className="text-[13px] text-cream-100">{values.quantity}</span>
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-cream-200">Quantity</span>
+            <span className="text-[13.5px] font-medium text-cream-100">{values.quantity}</span>
           </div>
         </div>
 
-        <div className="relative mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a href={lastUrl} target="_blank" rel="noreferrer" className="group btn-primary">
-            Continue on WhatsApp
+        <div className="relative mt-9 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href={lastUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="group inline-flex items-center gap-2.5 rounded-xl bg-teal-700 px-6 py-3.5 text-[14px] font-medium text-white shadow-lg shadow-teal-700/20 transition-all duration-300 hover:bg-teal-600 hover:shadow-teal-700/30 active:scale-[0.98]"
+          >
+            <span>Continue on WhatsApp</span>
             <MessageCircle className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
           </a>
-          <button type="button" onClick={() => setPhase('idle')} className="group btn-outline">
-            Edit enquiry
+          <button
+            type="button"
+            onClick={() => setPhase('idle')}
+            className="group inline-flex items-center gap-2 rounded-xl border border-ink-900/20 bg-white/50 px-5 py-3.5 text-[14px] font-medium text-cream-100 backdrop-blur-md transition-all duration-300 hover:border-ink-900/40 hover:bg-white/80"
+          >
+            <span>Edit enquiry</span>
             <Pencil className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" />
           </button>
         </div>
@@ -284,48 +316,60 @@ export function QuoteForm() {
   }
 
   return (
-    <form noValidate onSubmit={handleSubmit} className="space-y-8">
+    <form noValidate onSubmit={handleSubmit} className="relative space-y-10">
+      {/* Group 1: Personal Info */}
       <div className="space-y-6">
-        <p className={groupHeadingClass}>Personal Information</p>
+        <div className="flex items-center gap-2">
+          <Sparkles className="h-4 w-4 text-gold-700" />
+          <h4 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-700">
+            01. Contact Details
+          </h4>
+        </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div>
             <label htmlFor="name" className={labelClass}>
               Full Name *
             </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              autoComplete="name"
-              placeholder="Your full name"
-              required
-              value={values.name}
-              onChange={(e) => update('name', e.target.value)}
-              className={inputClass}
-              aria-invalid={Boolean(errors.name)}
-              aria-describedby={errors.name ? 'name-error' : undefined}
-            />
+            <div className={inputContainerClass}>
+              <User className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-cream-200 transition-colors group-focus-within:text-gold-700" />
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                placeholder="Alex Morgan"
+                required
+                value={values.name}
+                onChange={(e) => update('name', e.target.value)}
+                className={inputClass}
+                aria-invalid={Boolean(errors.name)}
+                aria-describedby={errors.name ? 'name-error' : undefined}
+              />
+            </div>
             <FieldError id="name-error" message={errors.name} />
           </div>
 
           <div>
             <label htmlFor="email" className={labelClass}>
-              Email *
+              Email Address *
             </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              placeholder="you@company.com"
-              required
-              value={values.email}
-              onChange={(e) => update('email', e.target.value)}
-              className={inputClass}
-              aria-invalid={Boolean(errors.email)}
-              aria-describedby={errors.email ? 'email-error' : undefined}
-            />
+            <div className={inputContainerClass}>
+              <Mail className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-cream-200 transition-colors group-focus-within:text-gold-700" />
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                placeholder="alex@studio.com"
+                required
+                value={values.email}
+                onChange={(e) => update('email', e.target.value)}
+                className={inputClass}
+                aria-invalid={Boolean(errors.email)}
+                aria-describedby={errors.email ? 'email-error' : undefined}
+              />
+            </div>
             <FieldError id="email-error" message={errors.email} />
           </div>
         </div>
@@ -333,43 +377,55 @@ export function QuoteForm() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div>
             <label htmlFor="company" className={labelClass}>
-              Company
+              Company / Studio
             </label>
-            <input
-              id="company"
-              name="company"
-              type="text"
-              autoComplete="organization"
-              placeholder="Studio, gallery or business name"
-              value={values.company}
-              onChange={(e) => update('company', e.target.value)}
-              className={inputClass}
-            />
+            <div className={inputContainerClass}>
+              <Building2 className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-cream-200 transition-colors group-focus-within:text-gold-700" />
+              <input
+                id="company"
+                name="company"
+                type="text"
+                autoComplete="organization"
+                placeholder="Architectural Design Co."
+                value={values.company}
+                onChange={(e) => update('company', e.target.value)}
+                className={inputClass}
+              />
+            </div>
           </div>
 
           <div>
             <label htmlFor="phone" className={labelClass}>
-              Phone
+              Phone Number
             </label>
-            <input
-              id="phone"
-              name="phone"
-              type="tel"
-              autoComplete="tel"
-              placeholder="+91 00000 00000"
-              value={values.phone}
-              onChange={(e) => update('phone', e.target.value)}
-              className={inputClass}
-              aria-invalid={Boolean(errors.phone)}
-              aria-describedby={errors.phone ? 'phone-error' : undefined}
-            />
+            <div className={inputContainerClass}>
+              <Phone className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-cream-200 transition-colors group-focus-within:text-gold-700" />
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                placeholder="+91 98765 43210"
+                value={values.phone}
+                onChange={(e) => update('phone', e.target.value)}
+                className={inputClass}
+                aria-invalid={Boolean(errors.phone)}
+                aria-describedby={errors.phone ? 'phone-error' : undefined}
+              />
+            </div>
             <FieldError id="phone-error" message={errors.phone} />
           </div>
         </div>
       </div>
 
+      {/* Group 2: Project Info */}
       <div className="space-y-6 border-t border-ink-900/10 pt-8">
-        <p className={groupHeadingClass}>Project Information</p>
+        <div className="flex items-center gap-2">
+          <Sparkles className="h-4 w-4 text-gold-700" />
+          <h4 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-700">
+            02. Project Specifications
+          </h4>
+        </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div>
@@ -421,18 +477,20 @@ export function QuoteForm() {
 
           {selection.kind === 'product' && selection.product && (
             <motion.div
-              initial={{ opacity: 0, y: 6 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: easeOut }}
-              className="mt-3 flex items-center justify-between rounded-xl border border-ink-900/10 bg-white/50 px-4 py-3"
+              className="mt-3 flex items-center justify-between rounded-xl border border-gold-400/30 bg-gold-400/5 px-4 py-3 backdrop-blur-md"
             >
               <div>
-                <p className="text-[13.5px] text-cream-100">{selection.product.name}</p>
-                <p className="mt-0.5 text-[11px] uppercase tracking-widest text-cream-200">
+                <p className="text-[13.5px] font-semibold text-cream-100">{selection.product.name}</p>
+                <p className="mt-0.5 text-[11px] uppercase tracking-wider text-cream-200">
                   {selection.family?.label} · {selection.product.category}
                 </p>
               </div>
-              <span className="section-label !gap-0 text-[10px]">{selection.product.operation}</span>
+              <span className="rounded-full bg-gold-400/20 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gold-700">
+                {selection.product.operation}
+              </span>
             </motion.div>
           )}
         </div>
@@ -451,46 +509,57 @@ export function QuoteForm() {
         </div>
       </div>
 
+      {/* Group 3: Scope Details */}
       <div className="space-y-6 border-t border-ink-900/10 pt-8">
-        <p className={groupHeadingClass}>Project Details</p>
+        <div className="flex items-center gap-2">
+          <Sparkles className="h-4 w-4 text-gold-700" />
+          <h4 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-700">
+            03. Customizations & Notes
+          </h4>
+        </div>
 
         <div>
           <label htmlFor="message" className={labelClass}>
-            Tell us about your project
+            Tell us about your space & finishes
           </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
-            placeholder="Tell us about the space, preferred configuration, finish direction, quantity, timeline or anything else we should know."
-            value={values.message}
-            onChange={(e) => update('message', e.target.value)}
-            className={`${inputClass} resize-none`}
-          />
+          <div className="group relative mt-2 rounded-xl border border-ink-900/10 bg-white/40 backdrop-blur-md transition-all duration-300 focus-within:border-gold-400 focus-within:bg-white/70 focus-within:shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:border-ink-900/20">
+            <textarea
+              id="message"
+              name="message"
+              rows={4}
+              placeholder="Tell us about the space, preferred configuration, finish direction, quantity, timeline or anything else we should know."
+              value={values.message}
+              onChange={(e) => update('message', e.target.value)}
+              className="w-full resize-none bg-transparent p-4 text-[14px] text-cream-100 placeholder:text-cream-200/60 outline-none"
+            />
+          </div>
         </div>
       </div>
 
-      <button
+      {/* Submit Action */}
+      <motion.button
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
         type="submit"
         disabled={phase === 'submitting'}
-        className="group btn-primary w-full justify-center disabled:cursor-wait disabled:opacity-70 sm:w-auto"
+        className="relative flex w-full items-center justify-center gap-3 rounded-xl bg-gold-400 py-4 font-semibold uppercase tracking-widest text-ink-950 shadow-lg shadow-gold-400/20 transition-all duration-300 hover:bg-gold-500 hover:shadow-gold-400/30 disabled:cursor-wait disabled:opacity-70 sm:w-auto sm:px-10"
       >
         {phase === 'submitting' ? (
           <>
             <motion.span
-              className="h-3.5 w-3.5 rounded-full border-[1.5px] border-ink-950/40 border-t-ink-950"
+              className="h-4 w-4 rounded-full border-2 border-ink-950/30 border-t-ink-950"
               animate={{ rotate: 360 }}
               transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
             />
-            Preparing your enquiry
+            <span>Preparing Specification...</span>
           </>
         ) : (
           <>
-            Request Quote
+            <span>Request Quote</span>
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </>
         )}
-      </button>
+      </motion.button>
     </form>
   )
 }

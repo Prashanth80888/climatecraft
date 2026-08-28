@@ -1,51 +1,53 @@
 import { motion } from 'framer-motion'
-import { ArrowDown, ArrowRight } from 'lucide-react'
+import { ArrowDown, ArrowRight, Sparkles, Thermometer, Mic, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
-const HEADLINE = ['Makers of', 'motion.']
+const HEADLINE = ['Crafting climate.', 'Engineered luxury.']
 
-// Deliberately typography-led — no large photograph. The hero has to
-// communicate the brand in the first few seconds through voice and
-// hierarchy alone, the same discipline already used on Case Studies.
 export function AboutHero() {
   return (
-    <section className="relative w-full overflow-hidden bg-transparent pb-16 pt-36 sm:pb-20 sm:pt-40 lg:pb-24 lg:pt-48">
+    <section className="relative w-full overflow-hidden bg-transparent pb-16 pt-36 sm:pb-24 sm:pt-40 lg:pb-28 lg:pt-48">
       <SectionAtmosphere variant="bloom" />
+
+      {/* Layered Ambient Light & Glow Effects */}
       <div
-        className="pointer-events-none absolute -top-16 left-1/2 h-[440px] w-[820px] -translate-x-1/2 opacity-[0.40] blur-[140px]"
-        style={{ background: 'radial-gradient(ellipse, #53c9c5 0%, transparent 65%)' }}
+        className="pointer-events-none absolute -top-20 left-1/2 h-[520px] w-[900px] -translate-x-1/2 opacity-[0.5] blur-[150px]"
+        style={{ background: 'radial-gradient(ellipse, #169B9A 0%, #063B3D 45%, transparent 70%)' }}
       />
       <div
-        className="pointer-events-none absolute -right-24 top-1/3 h-[320px] w-[320px] opacity-[0.1] blur-[120px]"
-        style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 70%)' }}
+        className="pointer-events-none absolute -right-20 top-1/4 h-[400px] w-[400px] opacity-[0.22] blur-[120px]"
+        style={{ background: 'radial-gradient(circle, #D4AF37 0%, transparent 70%)' }}
       />
-      <div className="grain-overlay opacity-[0.08]" />
+      <div className="grain-overlay opacity-[0.05]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
+          {/* Atelier Badge Tagline */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: easeOut }}
-            className="flex items-center gap-2.5"
+            transition={{ duration: 0.7, delay: 0.15, ease: easeOut }}
+            whileHover={{ scale: 1.03 }}
+            className="inline-flex cursor-default items-center gap-2.5 rounded-full border border-white/60 bg-white/80 px-4 py-1.5 shadow-[0_10px_30px_-10px_rgba(6,59,61,0.15)] backdrop-blur-xl transition-all duration-300 hover:border-gold-400/50 hover:bg-white"
           >
-            <span className="h-px w-6 bg-gold-400" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-gold-700">
-              The Atelier · Climate Craft
+            <Sparkles className="h-3.5 w-3.5 text-gold-600 animate-pulse" />
+            <span className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#063B3D]">
+              The Atelier · Climate Craft Innovation
             </span>
           </motion.div>
 
-          <h1 className="mt-6 font-display text-5xl font-normal leading-[1.04] text-cream-100 sm:text-6xl lg:text-7xl">
+          {/* Main Headline */}
+          <h1 className="mt-8 font-display text-5xl font-semibold leading-[1.03] tracking-tight text-[#063B3D] sm:text-6xl lg:text-[4.75rem]">
             {HEADLINE.map((line, i) => (
               <span key={line} className="block overflow-hidden">
                 <motion.span
                   initial={{ y: '110%' }}
                   animate={{ y: '0%' }}
-                  transition={{ duration: 1, delay: 0.35 + i * 0.13, ease: easeOut }}
-                  className={`block ${i === 1 ? 'italic text-teal-700' : ''}`}
+                  transition={{ duration: 1, delay: 0.3 + i * 0.15, ease: easeOut }}
+                  className={`block ${i === 1 ? 'italic text-teal-700 font-normal drop-shadow-xs' : ''}`}
                 >
                   {line}
                 </motion.span>
@@ -53,50 +55,118 @@ export function AboutHero() {
             ))}
           </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7, ease: easeOut }}
-            className="mt-7 max-w-xl text-[16px] leading-relaxed text-cream-200 sm:text-[17px]"
-          >
-            Precision-engineered motion furniture — designed around the mechanics of comfort.
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.85, ease: easeOut }}
-            className="mt-4 max-w-xl text-[15px] leading-relaxed text-cream-200"
-          >
-            Climate Craft engineers motorized and manually operated recliners, sofas and modular seating, built
-            around movement, comfort and craftsmanship rather than any one of them alone.
-          </motion.p>
-
+          {/* Core Subtitles */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.1, ease: easeOut }}
-            className="mt-9 flex flex-wrap items-center gap-4"
+            transition={{ duration: 0.8, delay: 0.65, ease: easeOut }}
+            className="mt-8 space-y-4 rounded-3xl border border-white/40 bg-white/30 p-6 backdrop-blur-md shadow-[0_20px_50px_-20px_rgba(6,59,61,0.08)]"
           >
-            <a href="#process" className="group btn-primary">
-              Explore Our Process
-              <ArrowDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-y-0.5" />
-            </a>
-            <Link to="/collections" className="group btn-outline">
-              View Collection
-              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </Link>
+            <p className="max-w-xl text-[16.5px] font-medium leading-relaxed text-[#063B3D]/90 sm:text-[18px]">
+              Bespoke motion furniture powered by intelligent climate regulation and active thermal dynamics — designed around the purest mechanics of personal comfort.
+            </p>
+            <p className="max-w-xl text-[14.5px] font-normal leading-relaxed text-ink-700">
+              Climate Craft engineers motorized climate recliners, thermal sofas, and modular seating, seamlessly integrating heating, liquid cooling, and voice control into hand-upholstered artistry.
+            </p>
+          </motion.div>
+
+          {/* Smart Feature Pills with Floating Micro-Animations */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.85, ease: easeOut }}
+            className="mt-7 flex flex-wrap items-center gap-3"
+          >
+            <motion.div
+              whileHover={{ y: -2, scale: 1.02 }}
+              className="inline-flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-md"
+            >
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-gold-500/15">
+                <Thermometer className="h-3.5 w-3.5 text-gold-600" />
+              </div>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#063B3D]">
+                Liquid Cooling & Heating
+              </span>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -2, scale: 1.02 }}
+              className="inline-flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-md"
+            >
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-teal-500/15">
+                <Mic className="h-3.5 w-3.5 text-teal-700" />
+              </div>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#063B3D]">
+                Voice Automation
+              </span>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -2, scale: 1.02 }}
+              className="inline-flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-md"
+            >
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#063B3D]/10">
+                <ShieldCheck className="h-3.5 w-3.5 text-[#063B3D]" />
+              </div>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#063B3D]">
+                Patented Technology
+              </span>
+            </motion.div>
+          </motion.div>
+
+          {/* Luxury Interactive Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.0, ease: easeOut }}
+            className="mt-10 flex flex-wrap items-center gap-5"
+          >
+            {/* Primary Action Button */}
+            <motion.a
+              href="#process"
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.25, ease: easeOut }}
+              className="group relative inline-flex items-center gap-3.5 overflow-hidden rounded-full bg-[#063B3D] px-8 py-4 text-xs font-extrabold uppercase tracking-[0.18em] text-white shadow-[0_20px_40px_-15px_rgba(6,59,61,0.4)] transition-all duration-300 hover:bg-[#169B9A] hover:shadow-[0_25px_50px_-12px_rgba(22,155,154,0.5)]"
+            >
+              {/* Subtle Light Flare on Hover */}
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
+              <span className="relative z-10">Explore Our Process</span>
+              <ArrowDown className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
+            </motion.a>
+
+            {/* Secondary Action Button */}
+            <motion.div
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.25, ease: easeOut }}
+            >
+              <Link
+                to="/collections"
+                className="group inline-flex items-center gap-3.5 rounded-full border border-[#063B3D]/25 bg-white/80 px-8 py-4 text-xs font-extrabold uppercase tracking-[0.18em] text-[#063B3D] shadow-[0_10px_30px_-15px_rgba(0,0,0,0.08)] backdrop-blur-xl transition-all duration-300 hover:border-gold-500 hover:bg-[#063B3D] hover:text-white hover:shadow-[0_20px_40px_-15px_rgba(6,59,61,0.3)]"
+              >
+                <span>View Collection</span>
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
 
+        {/* Footer Meta Details */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.4, ease: easeOut }}
-          className="mt-16 flex items-center gap-2.5 border-t border-ink-900/10 pt-6 sm:mt-20"
+          transition={{ duration: 0.7, delay: 1.25, ease: easeOut }}
+          className="mt-20 flex items-center justify-between border-t border-[#063B3D]/15 pt-6"
         >
-          <span className="text-[11px] uppercase tracking-widest text-cream-200">
-            Est. 2009 · Antwerp, Belgium
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-teal-600 animate-ping" />
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[#063B3D]/80">
+              Est. 2009 · Antwerp, Belgium
+            </span>
+          </div>
+          <span className="text-[11px] font-bold uppercase tracking-widest text-gold-700">
+            Handcrafted Engineering
           </span>
         </motion.div>
       </div>

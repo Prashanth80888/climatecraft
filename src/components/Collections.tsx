@@ -213,6 +213,13 @@ function MarqueeRow({ products, dur, dir: direction }: { products: HomeProduct[]
 }
 
 export function Collections() {
+  // Row order: Classic (was 3rd) → Motorised Comfort (was 2nd) → Climate Smart (was 1st)
+  const orderedFamilies = [
+    PRODUCT_FAMILIES.find((f) => f.id === 'classic')!,
+    PRODUCT_FAMILIES.find((f) => f.id === 'motorised-comfort')!,
+    PRODUCT_FAMILIES.find((f) => f.id === 'climate-smart')!,
+  ]
+
   return (
     <section id="collections" className="relative overflow-hidden bg-transparent py-16 sm:py-24 lg:py-32">
       <SectionAtmosphere variant="bloom" />
@@ -229,13 +236,13 @@ export function Collections() {
         </Reveal>
         <Reveal delay={0.18}>
           <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-cream-200">
-            Three families of motion furniture — Climate Smart, Motorised Comfort and Classic.
+            Three families of motion furniture — Classic, Motorised Comfort and Climate Smart.
           </p>
         </Reveal>
       </div>
 
       <div className="mt-14 flex flex-col gap-14 sm:mt-20 sm:gap-16">
-        {PRODUCT_FAMILIES.map((family) => {
+        {orderedFamilies.map((family) => {
           const products = HOME_PRODUCTS.filter((p) => p.familyId === family.id)
           const config = ROW_CONFIG[family.id]
 

@@ -1,33 +1,90 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, Quote } from 'lucide-react'
-import testimonialsData from '../data/testimonials.json'
-import type { Testimonial } from '../types'
+import { ArrowLeft, ArrowRight, Quote, Star } from 'lucide-react'
 import { SectionLabel } from './ui/SectionLabel'
 import { Reveal } from './ui/Reveal'
 import { SectionAtmosphere } from './ui/SectionAtmosphere'
 
-const testimonials = testimonialsData as Testimonial[]
+export interface Testimonial {
+  q: string
+  mono: string
+  n: string
+  r: string
+  location: string
+}
+
+// Custom Testimonials with Karnataka names
+const karnatakaTestimonials: Testimonial[] = [
+  {
+    q: "The climate-control seating made an extraordinary difference in our Bengaluru residence. The craftsmanship and voice automation feel truly world-class.",
+    mono: "UH",
+    n: "Uday Hegde",
+    r: "Principal Interior Architect",
+    location: "Bengaluru, Karnataka",
+  },
+  {
+    q: "Integrating Climate Craft into our penthouse project in Mangaluru was seamless. The precision motorized reclining and thermal features are unmatched.",
+    mono: "NB",
+    n: "Nitin Bhat",
+    r: "Luxury Residential Designer",
+    location: "Mangaluru, Karnataka",
+  },
+  {
+    q: "Uncompromising quality. The temperature customization and hand-stitched leather work exceeded our client's expectations completely.",
+    mono: "KK",
+    n: "Kartik Kulkarni",
+    r: "Design Lead, Kulkarni Studios",
+    location: "Hubballi, Karnataka",
+  },
+  {
+    q: "A masterpiece of engineering and comfort. The voice commands work flawlessly, making it the focal point of the entire living room.",
+    mono: "SR",
+    n: "Sharath Rao",
+    r: "Executive Homeowner",
+    location: "Mysuru, Karnataka",
+  },
+  {
+    q: "Exceptional elegance combined with modern technology. It delivers effortless temperature control without compromising on luxury aesthetics.",
+    mono: "AN",
+    n: "Ananya Nayak",
+    r: "Architectural Consultant",
+    location: "Udupi, Karnataka",
+  },
+]
+
 const AUTOPLAY_MS = 5000
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="relative flex min-h-[280px] flex-col overflow-hidden rounded-3xl border border-[#063B3D]/20 bg-white/60 p-8 transition-all duration-500 hover:border-[#169B9A]/50 hover:shadow-[0_25px_60px_-20px_rgba(6,59,61,0.22)] sm:min-h-[260px] sm:p-10">
-      <Quote className="h-6 w-6 flex-none text-gold-600/70" strokeWidth={1.5} />
+    <div className="relative flex min-h-[300px] flex-col justify-between overflow-hidden rounded-[28px] border border-white/80 bg-white/75 p-8 shadow-[0_30px_70px_-25px_rgba(6,59,61,0.22)] backdrop-blur-md transition-all duration-500 hover:border-teal-500/40 hover:bg-white/90 hover:shadow-[0_40px_90px_-20px_rgba(6,59,61,0.3)] sm:min-h-[280px] sm:p-10">
+      {/* Decorative Quote Icon & Star Rating */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-1">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="h-4 w-4 fill-gold-500 text-gold-500" />
+          ))}
+        </div>
+        <Quote className="h-7 w-7 text-gold-600/60" strokeWidth={1.5} />
+      </div>
 
-      <p className="mt-5 font-display text-lg font-normal italic leading-relaxed text-cream-100 sm:text-xl">
-        {testimonial.q}
+      <p className="mt-6 font-display text-lg font-normal italic leading-relaxed text-[#063B3D] sm:text-xl">
+        "{testimonial.q}"
       </p>
 
-      <div className="mt-auto flex items-center gap-4 pt-7">
-        <div className="flex h-11 w-11 flex-none items-center justify-center rounded-full border border-gold-400/30 bg-gradient-to-br from-gold-500/15 via-teal-600/15 to-transparent font-display text-sm text-gold-600">
-          {testimonial.mono}
+      <div className="mt-8 flex items-center justify-between border-t border-[#063B3D]/10 pt-6">
+        <div className="flex items-center gap-4">
+          <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full border border-gold-400/40 bg-gradient-to-br from-gold-500/20 via-teal-600/20 to-transparent font-display text-base font-semibold text-[#063B3D] shadow-inner">
+            {testimonial.mono}
+          </div>
+          <div>
+            <p className="text-base font-semibold text-[#063B3D]">{testimonial.n}</p>
+            <p className="text-xs font-medium text-ink-700">{testimonial.r}</p>
+          </div>
         </div>
-        <div>
-          <p className="text-sm font-medium text-cream-100">{testimonial.n}</p>
-          <p className="text-[12.5px] text-cream-200">{testimonial.r}</p>
-        </div>
+        <span className="hidden rounded-full border border-[#063B3D]/15 bg-white/80 px-3 py-1 text-[11px] font-semibold text-teal-800 shadow-2xs sm:inline-block">
+          {testimonial.location}
+        </span>
       </div>
     </div>
   )
@@ -39,10 +96,13 @@ export function Testimonials() {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const pausedRef = useRef(false)
 
-  const goTo = useCallback((next: number) => {
-    setDirection(next > index || (index === testimonials.length - 1 && next === 0) ? 1 : -1)
-    setIndex(((next % testimonials.length) + testimonials.length) % testimonials.length)
-  }, [index])
+  const goTo = useCallback(
+    (next: number) => {
+      setDirection(next > index || (index === karnatakaTestimonials.length - 1 && next === 0) ? 1 : -1)
+      setIndex(((next % karnatakaTestimonials.length) + karnatakaTestimonials.length) % karnatakaTestimonials.length)
+    },
+    [index]
+  )
 
   const next = useCallback(() => goTo(index + 1), [goTo, index])
   const prev = useCallback(() => goTo(index - 1), [goTo, index])
@@ -66,8 +126,10 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="relative overflow-hidden bg-transparent py-16 sm:py-24 lg:py-32">
       <SectionAtmosphere variant="glow" />
+
+      {/* Ambient Background Radial Glow */}
       <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 opacity-[0.40] blur-[110px]"
+        className="pointer-events-none absolute left-1/2 top-0 h-[450px] w-[750px] -translate-x-1/2 opacity-[0.45] blur-[120px]"
         style={{ background: 'radial-gradient(ellipse, #f0a92c 0%, transparent 70%)' }}
       />
 
@@ -76,14 +138,14 @@ export function Testimonials() {
           <SectionLabel>What They Say</SectionLabel>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="mt-5 max-w-md font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
+          <h2 className="mt-5 max-w-md font-display text-3xl font-semibold leading-[1.1] text-[#063B3D] sm:text-4xl lg:text-[2.75rem]">
             Trusted by designers. Chosen for a reason.
           </h2>
         </Reveal>
 
         <Reveal delay={0.2}>
           <div
-            className="mt-12 max-w-2xl"
+            className="mt-12 max-w-3xl"
             onMouseEnter={() => (pausedRef.current = true)}
             onMouseLeave={() => (pausedRef.current = false)}
           >
@@ -93,19 +155,21 @@ export function Testimonials() {
                   key={index}
                   layout
                   custom={direction}
-                  initial={{ opacity: 0, x: direction * 24 }}
+                  initial={{ opacity: 0, x: direction * 28 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: direction * -24 }}
-                  transition={{ duration: 0.5, ease: easeOut }}
+                  exit={{ opacity: 0, x: direction * -28 }}
+                  transition={{ duration: 0.55, ease: easeOut }}
                 >
-                  <TestimonialCard testimonial={testimonials[index]} />
+                  <TestimonialCard testimonial={karnatakaTestimonials[index]} />
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            <div className="mt-6 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                {testimonials.map((t, i) => (
+            {/* Controls Bar */}
+            <div className="mt-8 flex items-center justify-between">
+              {/* Pagination Dots */}
+              <div className="flex items-center gap-2.5">
+                {karnatakaTestimonials.map((t, i) => (
                   <button
                     key={t.n}
                     type="button"
@@ -114,13 +178,13 @@ export function Testimonials() {
                       restart()
                     }}
                     aria-label={`Go to testimonial ${i + 1}`}
-                    className={`h-1.5 rounded-full transition-all duration-500 ${
-                      i === index ? 'w-8 bg-gold-400' : 'w-1.5 bg-ink-900/40 hover:bg-ink-900/60'
-                    }`}
+                    className={`h-2 rounded-full transition-all duration-500 ${i === index ? 'w-8 bg-[#063B3D]' : 'w-2 bg-[#063B3D]/25 hover:bg-[#063B3D]/50'
+                      }`}
                   />
                 ))}
               </div>
 
+              {/* Prev / Next Buttons */}
               <div className="flex items-center gap-3">
                 <button
                   type="button"
@@ -129,7 +193,7 @@ export function Testimonials() {
                     restart()
                   }}
                   aria-label="Previous testimonial"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-cream-100/30 text-cream-100 transition-all duration-300 hover:border-teal-500/75 hover:bg-white/40 hover:text-gold-700"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#063B3D]/20 bg-white/80 text-[#063B3D] shadow-xs backdrop-blur-md transition-all duration-300 hover:border-gold-500 hover:bg-[#063B3D] hover:text-white"
                 >
                   <ArrowLeft className="h-4 w-4" />
                 </button>
@@ -140,7 +204,7 @@ export function Testimonials() {
                     restart()
                   }}
                   aria-label="Next testimonial"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-cream-100/30 text-cream-100 transition-all duration-300 hover:border-teal-500/75 hover:bg-white/40 hover:text-gold-700"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#063B3D]/20 bg-white/80 text-[#063B3D] shadow-xs backdrop-blur-md transition-all duration-300 hover:border-gold-500 hover:bg-[#063B3D] hover:text-white"
                 >
                   <ArrowRight className="h-4 w-4" />
                 </button>
