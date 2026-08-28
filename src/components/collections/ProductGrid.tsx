@@ -13,14 +13,22 @@ const container = {
 
 const item = {
   hidden: { opacity: 0, y: 28, scale: 0.98 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.65, ease: easeOut } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.65, ease: easeOut },
+  },
 }
 
 interface ProductGridProps {
   family: ProductFamily
 }
 
-export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(function ProductGrid({ family }, ref) {
+export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(function ProductGrid(
+  { family },
+  ref,
+) {
   const products = HOME_PRODUCTS.filter((p) => p.familyId === family.id)
 
   return (
@@ -38,7 +46,7 @@ export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(function
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div className="inline-flex items-center gap-2.5 rounded-full border border-[#063B3D]/15 bg-white/80 px-4 py-2 shadow-xs backdrop-blur-md">
             <span className="h-2 w-2 rounded-full bg-gold-400 animate-pulse" />
-            <SectionLabel className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#063B3D]">
+            <SectionLabel>
               All Pieces in {family.label}
             </SectionLabel>
           </div>

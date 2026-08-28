@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { MouseEvent } from 'react'
 import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 

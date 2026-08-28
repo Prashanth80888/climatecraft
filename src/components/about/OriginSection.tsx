@@ -56,7 +56,7 @@ export function OriginSection() {
             {/* Micro Feature Interactive Cards */}
             <Reveal delay={0.15}>
               <div className="mt-8 space-y-3.5 border-t border-[#063B3D]/15 pt-6">
-                {FEATURES.map((item, index) => {
+                {FEATURES.map((item) => {
                   const IconComp = item.icon
                   return (
                     <motion.div

@@ -115,7 +115,7 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
                   {String(family.number).padStart(2, '0')} / {String(PRODUCT_FAMILIES.length).padStart(2, '0')}
                 </span>
                 <div className="inline-flex items-center rounded-full border border-[#063B3D]/15 bg-white/80 px-3 py-1 shadow-2xs backdrop-blur-md">
-                  <SectionLabel className="text-[11px] font-bold text-[#063B3D]">
+                  <SectionLabel>
                     {String(products.length).padStart(2, '0')} {products.length === 1 ? 'Piece' : 'Pieces'}
                   </SectionLabel>
                 </div>

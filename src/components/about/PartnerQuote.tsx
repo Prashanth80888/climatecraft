@@ -70,12 +70,6 @@ export function PartnerQuote() {
                   </p>
                 </div>
               </div>
-
-              {testimonial.location && (
-                <span className="rounded-full border border-[#063B3D]/15 bg-white/90 px-4 py-1.5 text-xs font-bold text-teal-800 shadow-2xs">
-                  {testimonial.location}
-                </span>
-              )}
             </div>
           </motion.div>
         </Reveal>
