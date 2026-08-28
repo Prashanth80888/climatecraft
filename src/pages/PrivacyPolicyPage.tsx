@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { LegalPageLayout, LegalList, type LegalSection } from '../components/legal/LegalPageLayout'
 import { business, registeredAddress } from '../data/siteConfig'
 import { contact } from '../lib/assets'
-import { Footer } from '../components/Footer'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
 const SECTIONS: LegalSection[] = [

@@ -1,7 +1,6 @@
 import { LegalPageLayout, LegalList, type LegalSection } from '../components/legal/LegalPageLayout'
 import { business } from '../data/siteConfig'
 import { contact } from '../lib/assets'
-import { Footer } from '../components/Footer'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
 const SECTIONS: LegalSection[] = [
