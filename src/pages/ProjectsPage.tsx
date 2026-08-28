@@ -6,7 +6,7 @@ import { CinematicStickyStory } from '../components/projects/CinematicStickyStor
 import { DesignInContext } from '../components/projects/DesignInContext'
 import { ProductFamilies } from '../components/projects/ProductFamilies'
 import { SpaceProcess } from '../components/projects/SpaceProcess'
-import { ProjectsCTA } from '../components/projects/ProjectsCTA'
+import { FinalCTA } from '../components/FinalCTA'
 import { Footer } from '../components/Footer'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
@@ -30,7 +30,7 @@ export function ProjectsPage() {
         <DesignInContext />
         <ProductFamilies />
         <SpaceProcess />
-        <ProjectsCTA />
+        <FinalCTA />
       </main>
       <Footer />
     </>

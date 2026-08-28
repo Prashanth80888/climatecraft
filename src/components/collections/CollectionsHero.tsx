@@ -1,12 +1,15 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { HOME_PRODUCTS, PRODUCT_FAMILIES } from '../../data/homeProducts'
 import { homeProductImage } from '../../lib/assets'
 import { SectionLabel } from '../ui/SectionLabel'
 import { Reveal } from '../ui/Reveal'
 
+const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
+
 export function CollectionsHero() {
   const sectionRef = useRef<HTMLElement>(null)
+  const prefersReducedMotion = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
   const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '10%'])
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.05])
@@ -18,11 +21,26 @@ export function CollectionsHero() {
       ref={sectionRef}
       className="relative overflow-hidden bg-transparent px-5 pb-16 pt-32 sm:px-6 sm:pb-20 sm:pt-36 lg:pt-40"
     >
+      {/* Ambient background bloom — gives the section real depth instead of a
+          flat backdrop, gold behind the text, breathing teal behind the image. */}
+      <div className="pointer-events-none absolute inset-0">
+        <div
+          className="absolute -left-24 top-10 h-[480px] w-[480px] opacity-[0.22] blur-[150px]"
+          style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 65%)' }}
+        />
+        <motion.div
+          animate={prefersReducedMotion ? {} : { opacity: [0.18, 0.3, 0.18] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute right-[6%] top-[8%] h-[520px] w-[460px] blur-[160px]"
+          style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 65%)' }}
+        />
+      </div>
+
       <div className="relative z-10 mx-auto max-w-7xl lg:px-8">
-        <div className="flex min-h-[70vh] flex-col gap-12 lg:min-h-[80vh] lg:flex-row lg:items-center lg:gap-20">
+        <div className="flex min-h-[70vh] flex-col gap-12 lg:min-h-[80vh] lg:flex-row lg:items-stretch lg:gap-20">
 
           {/* ── Left: Typography ─────────────────────────────────────────── */}
-          <div className="flex-1 lg:max-w-[55%]">
+          <div className="flex flex-1 flex-col justify-center lg:max-w-[55%]">
             <Reveal>
               <SectionLabel>Climate Craft Collections</SectionLabel>
             </Reveal>
@@ -31,12 +49,21 @@ export function CollectionsHero() {
               <h1 className="mt-7 max-w-xl font-display text-[2.6rem] font-normal leading-[1.05] text-[#063B3D] sm:text-6xl lg:text-[4.25rem]">
                 Engineered motion.
                 <br />
-                <span className="italic text-teal-700">Considered comfort.</span>
+                <span className="relative inline-block italic text-teal-700">
+                  Considered comfort.
+                  <motion.span
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 1, delay: 0.9, ease: easeOut }}
+                    style={{ transformOrigin: 'left' }}
+                    className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-gradient-to-r from-gold-400 via-gold-300 to-transparent"
+                  />
+                </span>
               </h1>
             </Reveal>
 
             <Reveal delay={0.2}>
-              <p className="mt-7 max-w-[540px] text-[15px] leading-[1.7] text-cream-200 sm:text-base">
+              <p className="mt-7 max-w-[540px] text-[15px] leading-[1.7] text-ink-700 sm:text-base">
                 Precision mechanisms. Bespoke comfort. Timeless design — {PRODUCT_FAMILIES.length} collections of
                 motorized and manually operated seating, each engineered in-house and upholstered by hand.
               </p>
@@ -44,18 +71,21 @@ export function CollectionsHero() {
 
             <Reveal delay={0.3}>
               <div className="mt-12 flex items-center gap-x-10 gap-y-4 border-t border-[#063B3D]/15 pt-7 sm:gap-x-12">
-                <div className="flex flex-col gap-1">
-                  <span className="font-display text-3xl text-gold-700">{PRODUCT_FAMILIES.length}</span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-ink-700">Collections</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-display text-3xl text-gold-700">{HOME_PRODUCTS.length}</span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-ink-700">Pieces</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-display text-3xl italic text-[#169B9A]">MTO</span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-ink-700">Made to Order</span>
-                </div>
+                {[
+                  { value: String(PRODUCT_FAMILIES.length), label: 'Collections', accent: false },
+                  { value: String(HOME_PRODUCTS.length), label: 'Pieces', accent: false },
+                  { value: 'MTO', label: 'Made to Order', accent: true },
+                ].map((stat) => (
+                  <div key={stat.label} className="group flex cursor-default flex-col gap-1">
+                    <span
+                      className={`font-display text-3xl transition-transform duration-300 ease-out group-hover:-translate-y-0.5 ${stat.accent ? 'italic text-[#169B9A]' : 'text-gold-700'
+                        }`}
+                    >
+                      {stat.value}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-ink-700">{stat.label}</span>
+                  </div>
+                ))}
               </div>
             </Reveal>
           </div>
@@ -63,16 +93,81 @@ export function CollectionsHero() {
           {/* ── Right: Hero Image ────────────────────────────────────────── */}
           <motion.div
             style={{ y: imageY, scale: imageScale }}
-            className="relative w-full flex-1 lg:max-w-[45%]"
+            className="relative mx-auto flex w-full max-w-[420px] flex-1 flex-col lg:mx-0 lg:max-w-[45%]"
           >
-            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl sm:aspect-[4/5] lg:aspect-[3/4]">
-              <img
-                src={homeProductImage(heroProduct.slug)}
-                alt={heroProduct.name}
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#063B3D]/8 via-transparent to-transparent" />
-            </div>
+            {/* Soft glow sitting behind the whole frame — the main thing that
+                makes the image read as "lifted" off the page rather than flat. */}
+            <div
+              className="pointer-events-none absolute -inset-6 -z-10 rounded-[40px] opacity-70 blur-3xl"
+              style={{ background: 'radial-gradient(closest-side, rgba(22,155,154,0.28), transparent)' }}
+            />
+
+            {/* Thin offset outline behind the frame — a simple, reliable depth
+                cue (no 3D transforms) that reads as a deliberate framing device. */}
+            <div className="pointer-events-none absolute -inset-3 -z-10 rounded-[32px] border border-white/60" />
+
+            <Reveal delay={0.25} className="group flex flex-1 flex-col">
+              <div className="relative aspect-[3/4] w-full flex-1 overflow-hidden rounded-[26px] border border-white/70 shadow-[0_40px_90px_-28px_rgba(6,59,61,0.35)] transition-shadow duration-500 ease-out group-hover:shadow-[0_55px_120px_-24px_rgba(6,59,61,0.45)] sm:aspect-[4/5] lg:aspect-auto lg:min-h-[520px]">
+                <img
+                  src={homeProductImage(heroProduct.slug)}
+                  alt={heroProduct.name}
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#063B3D]/55 via-[#063B3D]/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
+
+                {/* Corner accent brackets — a small cinematic framing detail */}
+                <span className="pointer-events-none absolute left-5 top-5 h-6 w-6 rounded-tl-lg border-l border-t border-white/70" />
+                <span className="pointer-events-none absolute right-5 top-5 h-6 w-6 rounded-tr-lg border-r border-t border-white/70" />
+
+                {/* Floating glass badge naming the featured piece — grounds the
+                    image with real product context instead of a bare photo.
+                    Proper entrance animation + a tactile hover state, since this
+                    had regressed to a static div with no motion at all. */}
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.7, ease: easeOut }}
+                  whileHover={{ y: -3, scale: 1.02 }}
+                  className="absolute bottom-5 left-5 right-5 flex cursor-default items-center justify-between gap-3 rounded-2xl border border-white/50 bg-white/55 px-4 py-3 backdrop-blur-md transition-colors duration-300 ease-out hover:border-white/80 hover:bg-white/75 hover:shadow-[0_18px_40px_-16px_rgba(6,59,61,0.35)] sm:bottom-6 sm:left-6 sm:right-6"
+                >
+                  <div className="min-w-0">
+                    <span className="block text-[9.5px] font-medium uppercase tracking-widest text-gold-700">
+                      Featured Piece
+                    </span>
+                    <span className="mt-0.5 block truncate font-display text-base italic text-[#063B3D]">
+                      {heroProduct.name}
+                    </span>
+                  </div>
+                  <span className="relative flex h-2 w-2 flex-none">
+                    {!prefersReducedMotion && (
+                      <motion.span
+                        animate={{ opacity: [0.7, 0, 0.7], scale: [1, 2.2, 1] }}
+                        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+                        className="absolute inset-0 rounded-full bg-teal-400"
+                      />
+                    )}
+                    <span className="relative h-2 w-2 rounded-full bg-teal-500" />
+                  </span>
+                </motion.div>
+              </div>
+            </Reveal>
+
+            {/* Overlapping detail card — a small, confident accent that spills
+                outside the image frame rather than everything staying neatly
+                boxed in, giving the composition more presence. */}
+            <motion.div
+              initial={{ opacity: 0, x: -16, y: 16 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.75, ease: easeOut }}
+              whileHover={{ y: -4, scale: 1.03 }}
+              className="absolute -bottom-6 -left-5 hidden cursor-default rounded-2xl border border-white/60 bg-white/70 px-4 py-3 shadow-[0_24px_50px_-18px_rgba(6,59,61,0.3)] backdrop-blur-md transition-all duration-300 ease-out hover:border-teal-700/25 hover:bg-white/90 hover:shadow-[0_30px_64px_-16px_rgba(6,59,61,0.4)] sm:-left-8 sm:block"
+            >
+              <span className="block text-[9.5px] font-medium uppercase tracking-widest text-teal-700">
+                Since Frame to Fabric
+              </span>
+              <span className="mt-0.5 block font-display text-lg italic text-[#063B3D]">Hand-finished</span>
+            </motion.div>
           </motion.div>
         </div>
       </div>

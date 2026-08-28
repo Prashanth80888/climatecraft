@@ -1,6 +1,7 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useRoutes } from 'react-router-dom'
 import { AtmosphereBackground } from './components/AtmosphereBackground'
 import { Navbar } from './components/Navbar'
+import { ScrollToTop } from './components/ScrollToTop'
 import { HomePage } from './pages/HomePage'
 import { CollectionsPage } from './pages/CollectionsPage'
 import { ProductDetailPage } from './pages/ProductDetailPage'
@@ -15,12 +16,13 @@ import { TermsAndConditionsPage } from './pages/TermsAndConditionsPage'
 import { CookiePolicyPage } from './pages/CookiePolicyPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
-function App() {
+function MainLayout() {
   return (
     <>
       <AtmosphereBackground />
       <Navbar />
       <div className="relative z-10">
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/collections" element={<CollectionsPage />} />
@@ -34,11 +36,23 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
           <Route path="/cookie-policy" element={<CookiePolicyPage />} />
-          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </>
   )
+}
+
+function NotFoundLayout() {
+  return <NotFoundPage />
+}
+
+function App() {
+  const routes = useRoutes([
+    { path: '/', element: <MainLayout /> },
+    { path: '*', element: <NotFoundLayout /> },
+  ])
+
+  return routes
 }
 
 export default App

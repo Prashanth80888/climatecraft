@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { LegalPageLayout, LegalList, type LegalSection } from '../components/legal/LegalPageLayout'
 import { business, registeredAddress } from '../data/siteConfig'
 import { contact } from '../lib/assets'
+import { Footer } from '../components/Footer'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
 const SECTIONS: LegalSection[] = [
@@ -186,11 +187,13 @@ export function PrivacyPolicyPage() {
   )
 
   return (
-    <LegalPageLayout
-      eyebrow="Legal"
-      title="Privacy Policy"
-      intro="What this website collects when you get in touch, why, and how it's used."
-      sections={SECTIONS}
-    />
+    <>
+      <LegalPageLayout
+        eyebrow="Legal"
+        title="Privacy Policy"
+        intro="What this website collects when you get in touch, why, and how it's used."
+        sections={SECTIONS}
+      />
+    </>
   )
 }

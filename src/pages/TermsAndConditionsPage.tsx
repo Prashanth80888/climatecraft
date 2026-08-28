@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { LegalPageLayout, type LegalSection } from '../components/legal/LegalPageLayout'
 import { business } from '../data/siteConfig'
 import { contact } from '../lib/assets'
+import { Footer } from '../components/Footer'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
 const SECTIONS: LegalSection[] = [
@@ -248,11 +249,13 @@ export function TermsAndConditionsPage() {
   )
 
   return (
-    <LegalPageLayout
-      eyebrow="Legal"
-      title="Terms & Conditions"
-      intro="The terms that govern your use of this website, our products, quotations and services."
-      sections={SECTIONS}
-    />
+    <>
+      <LegalPageLayout
+        eyebrow="Legal"
+        title="Terms & Conditions"
+        intro="The terms that govern your use of this website, our products, quotations and services."
+        sections={SECTIONS}
+      />
+    </>
   )
 }

@@ -1,6 +1,7 @@
 import { LegalPageLayout, LegalList, type LegalSection } from '../components/legal/LegalPageLayout'
 import { business } from '../data/siteConfig'
 import { contact } from '../lib/assets'
+import { Footer } from '../components/Footer'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
 const SECTIONS: LegalSection[] = [
@@ -148,11 +149,13 @@ export function CookiePolicyPage() {
   )
 
   return (
-    <LegalPageLayout
-      eyebrow="Legal"
-      title="Cookie Policy"
-      intro="A transparent summary of what cookies this website uses and — more importantly — what it doesn't."
-      sections={SECTIONS}
-    />
+    <>
+      <LegalPageLayout
+        eyebrow="Legal"
+        title="Cookie Policy"
+        intro="A transparent summary of what cookies this website uses and — more importantly — what it doesn't."
+        sections={SECTIONS}
+      />
+    </>
   )
 }

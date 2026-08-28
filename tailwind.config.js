@@ -93,7 +93,25 @@ export default {
         'marquee-rtl': 'marquee-rtl 40s linear infinite',
         shimmer: 'shimmer 3s ease-in-out infinite',
       },
+      textShadow: {
+        xs: '0 1px 1px rgba(6,59,61,0.12)',
+        sm: '0 1px 2px rgba(6,59,61,0.15), 0 2px 4px rgba(6,59,61,0.08)',
+        DEFAULT: '0 2px 4px rgba(6,59,61,0.18), 0 4px 8px rgba(6,59,61,0.12)',
+        lg: '0 4px 8px rgba(6,59,61,0.2), 0 8px 16px rgba(6,59,61,0.15)',
+        none: 'none',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const textShadows = {
+        '.text-shadow-xs': { textShadow: '0 1px 1px rgba(6,59,61,0.12)' },
+        '.text-shadow-sm': { textShadow: '0 1px 2px rgba(6,59,61,0.15), 0 2px 4px rgba(6,59,61,0.08)' },
+        '.text-shadow': { textShadow: '0 2px 4px rgba(6,59,61,0.18), 0 4px 8px rgba(6,59,61,0.12)' },
+        '.text-shadow-lg': { textShadow: '0 4px 8px rgba(6,59,61,0.2), 0 8px 16px rgba(6,59,61,0.15)' },
+        '.text-shadow-none': { textShadow: 'none' },
+      }
+      addUtilities(textShadows)
+    },
+  ],
 }

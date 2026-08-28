@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeft, Search } from 'lucide-react'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
-import { Footer } from '../components/Footer'
 
 export function NotFoundPage() {
   useDocumentMeta(
@@ -40,7 +39,6 @@ export function NotFoundPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

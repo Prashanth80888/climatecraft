@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Cog } from 'lucide-react'
 import { brand } from '../lib/assets'
 import { SectionLabel } from './ui/SectionLabel'
 import { Reveal } from './ui/Reveal'
@@ -25,7 +25,7 @@ export function Mechanics() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.play().catch(() => {})
+          video.play().catch(() => { })
         } else {
           video.pause()
         }
@@ -49,14 +49,40 @@ export function Mechanics() {
           <SectionLabel>How We Build</SectionLabel>
         </Reveal>
 
-        <div className="mt-7 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
+        {/* Full-width animated line — sits above the headline, spanning the same
+            width as the rest of the section's content (mx-auto max-w-7xl, same
+            as everything else here, so it lines up edge-to-edge with the video
+            below rather than an arbitrary width). A soft gradient sweep travels
+            across it continuously, echoing the "quiet mechanism" motion theme. */}
+        <div className="relative mt-8 h-px w-full overflow-hidden rounded-full bg-[#063B3D]/10 sm:mt-10">
+          <motion.div
+            className="absolute inset-y-0 w-1/3"
+            style={{
+              background: 'linear-gradient(90deg, transparent 0%, rgba(22,155,154,0.9) 50%, transparent 100%)',
+            }}
+            animate={{ left: ['-33%', '100%'] }}
+            transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.6 }}
+          />
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center lg:gap-8 sm:mt-10">
           <div className="lg:col-span-7">
-            <h2 className="font-display text-[2.4rem] font-normal leading-[1.08] text-ink-900 sm:text-5xl lg:text-[3.4rem]">
+            {/* Small accent mark above the headline — a quiet, on-brand flourish
+                that gives the left column its own visual anchor, matching the
+                weight the icon badge gives the right-side card. */}
+            <Reveal y={12}>
+              <span className="mb-5 flex items-center gap-2.5">
+                <span className="h-px w-8 bg-gradient-to-r from-gold-500 to-gold-500/0" />
+                <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
+              </span>
+            </Reveal>
+
+            <h2 className="font-display text-[2.4rem] font-normal leading-[1.08] text-[#04211F] drop-shadow-[0_1px_2px_rgba(255,255,255,0.55)] sm:text-5xl lg:text-[3.4rem]">
               <Reveal y={20}>
                 <span className="block">We engineer the quiet mechanics of</span>
               </Reveal>
               <Reveal y={20} delay={0.12}>
-                <span className="block italic text-teal-400">comfort —</span>
+                <span className="block italic text-teal-700">comfort —</span>
               </Reveal>
               <Reveal y={20} delay={0.24}>
                 <span className="block">then wrap them in fabric.</span>
@@ -64,49 +90,73 @@ export function Mechanics() {
             </h2>
           </div>
 
-          <div className="flex flex-col justify-end lg:col-span-5">
+          {/* Right side — now a proper glass card instead of bare text, matching
+              the premium card language used elsewhere on the site: soft
+              translucent panel, icon badge, hover lift + glow, subtle corner bloom.
+              lg:items-center on the grid parent above vertically centers this
+              card against the headline column, so both sit on the same middle
+              line instead of the headline riding higher than the card. */}
+          <div className="flex flex-col justify-center lg:col-span-5">
             <Reveal delay={0.2}>
-              <p className="text-[15px] leading-relaxed text-ink-700 sm:text-base">
-                Every Climate Craft piece begins as a mechanism: a motor, a hinge, a hand-crank glide tuned to move
-                without a sound. Around it we build a hardwood frame, a hand-tied suspension, and an upholstery you
-                choose from a curated archive of fabrics.
-              </p>
-              <p className="mt-4 text-[15px] leading-relaxed text-ink-700 sm:text-base">
-                We supply manufacturers, galleries and interior houses who need seating that performs as beautifully
-                as it sits.
-              </p>
-              <a
-                href="#why-climate-craft"
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.querySelector('#why-climate-craft')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-                className="btn-ghost group mt-6"
-              >
-                Learn About Our Process
-                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
+              <div className="group relative overflow-hidden rounded-3xl border border-white/55 bg-white/40 p-7 backdrop-blur-md transition-all duration-500 ease-out hover:-translate-y-1 hover:border-teal-700/25 hover:bg-white/60 hover:shadow-[0_30px_70px_-28px_rgba(6,59,61,0.3)] sm:p-8">
+                <div
+                  className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full opacity-0 blur-2xl transition-opacity duration-500 ease-out group-hover:opacity-60"
+                  style={{ background: 'radial-gradient(circle, rgba(22,155,154,0.35) 0%, transparent 72%)' }}
+                />
+
+                <span className="relative flex h-11 w-11 items-center justify-center rounded-full border border-teal-700/20 bg-white/70 text-teal-700 shadow-[0_8px_20px_-10px_rgba(6,59,61,0.2)] transition-all duration-500 ease-out group-hover:scale-110 group-hover:border-teal-700/40 group-hover:bg-teal-700 group-hover:text-white">
+                  <Cog className="h-5 w-5" strokeWidth={1.75} />
+                </span>
+
+                <p className="relative mt-5 text-[15px] leading-relaxed text-[#0C302F] sm:text-base">
+                  Every Climate Craft piece begins as a mechanism: a motor, a hinge, a hand-crank glide tuned to move
+                  without a sound. Around it we build a hardwood frame, a hand-tied suspension, and an upholstery you
+                  choose from a curated archive of fabrics.
+                </p>
+                <p className="relative mt-4 text-[15px] leading-relaxed text-[#0C302F] sm:text-base">
+                  We supply manufacturers, galleries and interior houses who need seating that performs as beautifully
+                  as it sits.
+                </p>
+
+                <span className="relative mt-5 block h-px w-6 bg-gold-400/40 transition-all duration-500 ease-out group-hover:w-12 group-hover:bg-gold-400" />
+
+                <a
+                  href="#why-climate-craft"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    document.querySelector('#why-climate-craft')?.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                  className="btn-ghost group/link relative mt-6 inline-flex items-center gap-2"
+                >
+                  Learn About Our Process
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
+                </a>
+              </div>
             </Reveal>
           </div>
         </div>
 
         <Reveal delay={0.3} y={0}>
           <div className="mx-auto mt-10 flex flex-col items-center gap-2 sm:mt-14">
-            <span className="h-10 w-px bg-gradient-to-b from-transparent to-gold-400/50" />
-            <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
+            <span className="h-10 w-px bg-gradient-to-b from-transparent to-gold-500/60" />
+            <motion.span
+              animate={{ scale: [1, 1.4, 1], opacity: [0.6, 1, 0.6] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+              className="h-1.5 w-1.5 rounded-full bg-gold-500"
+            />
           </div>
         </Reveal>
 
         <motion.div
           ref={visualRef}
           style={{ scale: visualScale, opacity: visualOpacity, y: visualY }}
-          className="relative mt-6 sm:mt-8"
+          className="group relative mt-6 sm:mt-8"
         >
-          <div className="relative overflow-hidden rounded-[28px] border border-white/80 shadow-[0_50px_120px_-40px_rgba(6,59,61,0.35)] sm:rounded-[36px]">
+          <div className="relative overflow-hidden rounded-[28px] border border-white/80 shadow-[0_50px_120px_-40px_rgba(6,59,61,0.35)] transition-shadow duration-500 group-hover:shadow-[0_60px_140px_-30px_rgba(6,59,61,0.45)] sm:rounded-[36px]">
             <div className="aspect-[16/10] w-full sm:aspect-[16/9]">
               <video
                 ref={videoRef}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 src={brand.mechanicsVideo}
                 poster={brand.mechanicsPoster}
                 muted

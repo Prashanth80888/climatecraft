@@ -11,7 +11,7 @@ import { AboutProcess } from '../components/about/AboutProcess'
 import { RecentWork } from '../components/about/RecentWork'
 import { PartnerQuote } from '../components/about/PartnerQuote'
 import { AboutFAQ } from '../components/about/AboutFAQ'
-import { AboutCTA } from '../components/about/AboutCTA'
+import { FinalCTA } from '../components/FinalCTA'
 import { Footer } from '../components/Footer'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
@@ -44,7 +44,7 @@ export function AboutPage() {
         <RecentWork />
         <PartnerQuote />
         <AboutFAQ />
-        <AboutCTA />
+        <FinalCTA />
       </main>
       <Footer />
     </>

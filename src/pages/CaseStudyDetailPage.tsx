@@ -13,7 +13,7 @@ import { CaseStudySpecs } from '../components/case-studies/detail/CaseStudySpecs
 import { CaseStudyOutcome } from '../components/case-studies/detail/CaseStudyOutcome'
 import { CaseStudyRelatedStudies } from '../components/case-studies/detail/CaseStudyRelatedStudies'
 import { RelatedProducts } from '../components/product/RelatedProducts'
-import { CaseStudyCTA } from '../components/case-studies/CaseStudyCTA'
+import { FinalCTA } from '../components/FinalCTA'
 import { Footer } from '../components/Footer'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import { ComingSoon } from './ComingSoon'
@@ -50,7 +50,7 @@ export function CaseStudyDetailPage() {
         <CaseStudyOutcome caseStudy={caseStudy} />
         <RelatedProducts products={relatedProducts} />
         <CaseStudyRelatedStudies caseStudies={relatedCaseStudies} />
-        <CaseStudyCTA />
+        <FinalCTA />
       </main>
       <Footer />
     </>

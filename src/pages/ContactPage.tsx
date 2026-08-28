@@ -4,7 +4,6 @@ import { ContactStrip } from '../components/contact/ContactStrip'
 import { QuoteForm } from '../components/contact/QuoteForm'
 import { ContactPanel } from '../components/contact/ContactPanel'
 import { BusinessHours } from '../components/contact/BusinessHours'
-import { ContactCTA } from '../components/contact/ContactCTA'
 import { SectionLabel } from '../components/ui/SectionLabel'
 import { Reveal } from '../components/ui/Reveal'
 import { Footer } from '../components/Footer'
@@ -52,7 +51,6 @@ export function ContactPage() {
         </section>
 
         <BusinessHours />
-        <ContactCTA />
       </main>
       <Footer />
     </>

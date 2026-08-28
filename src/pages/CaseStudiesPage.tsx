@@ -1,7 +1,7 @@
 import { CaseStudiesHero } from '../components/case-studies/CaseStudiesHero'
 import { CaseStudyCollection } from '../components/case-studies/CaseStudyCollection'
 import { CaseStudyExplorer } from '../components/case-studies/CaseStudyExplorer'
-import { CaseStudyCTA } from '../components/case-studies/CaseStudyCTA'
+import { FinalCTA } from '../components/FinalCTA'
 import { Footer } from '../components/Footer'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
@@ -17,7 +17,7 @@ export function CaseStudiesPage() {
         <CaseStudiesHero />
         <CaseStudyCollection />
         <CaseStudyExplorer />
-        <CaseStudyCTA />
+        <FinalCTA />
       </main>
       <Footer />
     </>
