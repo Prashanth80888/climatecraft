@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
-import { Mic, Thermometer } from 'lucide-react'
+import { Mic, Droplets } from 'lucide-react'
 import { HOME_PRODUCTS, PRODUCT_FAMILIES } from '../../data/homeProducts'
 import { SectionLabel } from '../ui/SectionLabel'
 import { Reveal } from '../ui/Reveal'
@@ -10,7 +10,12 @@ const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 export function CollectionsHero() {
   const sectionRef = useRef<HTMLElement>(null)
   const prefersReducedMotion = useReducedMotion()
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  })
+
   const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '10%'])
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.05])
 
@@ -25,13 +30,28 @@ export function CollectionsHero() {
       <div className="pointer-events-none absolute inset-0">
         <div
           className="absolute -left-24 top-10 h-[480px] w-[480px] opacity-[0.22] blur-[150px]"
-          style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 65%)' }}
+          style={{
+            background:
+              'radial-gradient(circle, #f0a92c 0%, transparent 65%)',
+          }}
         />
+
         <motion.div
-          animate={prefersReducedMotion ? {} : { opacity: [0.18, 0.3, 0.18] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          animate={
+            prefersReducedMotion
+              ? {}
+              : { opacity: [0.18, 0.3, 0.18] }
+          }
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
           className="absolute right-[6%] top-[8%] h-[520px] w-[460px] blur-[160px]"
-          style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 65%)' }}
+          style={{
+            background:
+              'radial-gradient(circle, #53c9c5 0%, transparent 65%)',
+          }}
         />
       </div>
 
@@ -46,14 +66,18 @@ export function CollectionsHero() {
 
             <Reveal delay={0.1}>
               <h1 className="mt-7 max-w-xl font-display text-[2.6rem] font-normal leading-[1.05] text-[#063B3D] sm:text-6xl lg:text-[4.25rem]">
-                Thermal intelligence.
+                Liquid climate
                 <br />
                 <span className="relative inline-block italic text-teal-700">
-                  Voice-controlled luxury.
+                  control intelligence.
                   <motion.span
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
-                    transition={{ duration: 1, delay: 0.9, ease: easeOut }}
+                    transition={{
+                      duration: 1,
+                      delay: 0.9,
+                      ease: easeOut,
+                    }}
                     style={{ transformOrigin: 'left' }}
                     className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-gradient-to-r from-gold-400 via-gold-300 to-transparent"
                   />
@@ -63,24 +87,60 @@ export function CollectionsHero() {
 
             <Reveal delay={0.2}>
               <p className="mt-7 max-w-[540px] text-[15px] leading-[1.7] text-ink-700 sm:text-base">
-                Intelligent climate regulation. Voice-activated ergonomics. Bespoke luxury — {PRODUCT_FAMILIES.length} collections of smart-thermal seating engineered with active temperature control and hand-upholstered precision.
+                A smarter way to experience comfort — using a
+                water-based liquid climate system engineered to
+                intelligently manage the temperature around you.
+                Combined with voice control and precision-crafted
+                seating, every detail is designed around your comfort.
               </p>
             </Reveal>
 
             {/* Smart Feature Pills */}
             <Reveal delay={0.25}>
               <div className="mt-6 flex flex-wrap items-center gap-3">
+
+                {/* Liquid Climate Control */}
                 <div className="inline-flex items-center gap-2 rounded-full border border-[#063B3D]/15 bg-white/70 px-3.5 py-1.5 shadow-xs backdrop-blur-md">
-                  <Thermometer className="h-4 w-4 text-gold-600" />
-                  <span className="text-[11px] font-semibold tracking-wider text-[#063B3D] uppercase">
-                    Active Climate Control
+                  <Droplets className="h-4 w-4 text-teal-600" />
+
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#063B3D]">
+                    Liquid Climate Control
                   </span>
                 </div>
+
+                {/* Voice Recognition */}
                 <div className="inline-flex items-center gap-2 rounded-full border border-[#063B3D]/15 bg-white/70 px-3.5 py-1.5 shadow-xs backdrop-blur-md">
                   <Mic className="h-4 w-4 text-teal-600" />
-                  <span className="text-[11px] font-semibold tracking-wider text-[#063B3D] uppercase">
+
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#063B3D]">
                     Voice Recognition
                   </span>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Highlight Statement */}
+            <Reveal delay={0.28}>
+              <div className="mt-7 max-w-[540px] rounded-2xl border border-teal-700/10 bg-white/45 px-5 py-4 backdrop-blur-md">
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-teal-700/10 text-teal-700">
+                    <Droplets className="h-4 w-4" />
+                  </span>
+
+                  <div>
+                    <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-teal-700">
+                      The Climate Craft Difference
+                    </span>
+
+                    <p className="mt-1.5 text-sm leading-relaxed text-[#063B3D]">
+                      Intelligent comfort flows through the seat —
+                      <span className="font-semibold">
+                        {' '}
+                        using plain water as the medium for liquid climate
+                        control.
+                      </span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -88,18 +148,39 @@ export function CollectionsHero() {
             <Reveal delay={0.3}>
               <div className="mt-10 flex items-center gap-x-10 gap-y-4 border-t border-[#063B3D]/15 pt-7 sm:gap-x-12">
                 {[
-                  { value: String(PRODUCT_FAMILIES.length), label: 'Collections', accent: false },
-                  { value: String(HOME_PRODUCTS.length), label: 'Pieces', accent: false },
-                  { value: 'MTO', label: 'Made to Order', accent: true },
+                  {
+                    value: String(PRODUCT_FAMILIES.length),
+                    label: 'Collections',
+                    accent: false,
+                  },
+                  {
+                    value: String(HOME_PRODUCTS.length),
+                    label: 'Pieces',
+                    accent: false,
+                  },
+                  {
+                    value: 'MTO',
+                    label: 'Made to Order',
+                    accent: true,
+                  },
                 ].map((stat) => (
-                  <div key={stat.label} className="group flex cursor-default flex-col gap-1">
+                  <div
+                    key={stat.label}
+                    className="group flex cursor-default flex-col gap-1"
+                  >
                     <span
-                      className={`font-display text-3xl transition-transform duration-300 ease-out group-hover:-translate-y-0.5 ${stat.accent ? 'italic text-[#169B9A]' : 'text-gold-700'
-                        }`}
+                      className={`font-display text-3xl transition-transform duration-300 ease-out group-hover:-translate-y-0.5 ${
+                        stat.accent
+                          ? 'italic text-[#169B9A]'
+                          : 'text-gold-700'
+                      }`}
                     >
                       {stat.value}
                     </span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-ink-700">{stat.label}</span>
+
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-ink-700">
+                      {stat.label}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -114,7 +195,10 @@ export function CollectionsHero() {
             {/* Soft Glow */}
             <div
               className="pointer-events-none absolute -inset-6 -z-10 rounded-[40px] opacity-70 blur-3xl"
-              style={{ background: 'radial-gradient(closest-side, rgba(22,155,154,0.28), transparent)' }}
+              style={{
+                background:
+                  'radial-gradient(closest-side, rgba(22,155,154,0.28), transparent)',
+              }}
             />
 
             {/* Accent Frame Line */}
@@ -122,6 +206,7 @@ export function CollectionsHero() {
 
             <Reveal delay={0.25} className="group flex flex-1 flex-col">
               <div className="relative aspect-[3/4] w-full flex-1 overflow-hidden rounded-[26px] border border-white/70 shadow-[0_40px_90px_-28px_rgba(6,59,61,0.35)] transition-shadow duration-500 ease-out group-hover:shadow-[0_55px_120px_-24px_rgba(6,59,61,0.45)] sm:aspect-[4/5] lg:aspect-auto lg:min-h-[520px]">
+
                 <img
                   src="/images/DSC05004.png"
                   alt={heroProduct.name}
@@ -135,19 +220,23 @@ export function CollectionsHero() {
                 <span className="pointer-events-none absolute left-5 top-5 h-6 w-6 rounded-tl-lg border-l border-t border-white/70" />
                 <span className="pointer-events-none absolute right-5 top-5 h-6 w-6 rounded-tr-lg border-r border-t border-white/70" />
 
-                {/* Top Badge: Voice Command Active Indicator */}
-                <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-10 pointer-events-none">
+                {/* Top Badge */}
+                <div className="absolute left-5 right-5 top-5 z-10 flex items-center justify-between pointer-events-none">
                   <div className="flex items-center gap-2 rounded-full border border-white/30 bg-black/30 px-3 py-1 text-[10px] font-medium tracking-wider text-white backdrop-blur-md">
-                    <Mic className="h-3 w-3 text-teal-300 animate-pulse" />
-                    <span>Voice Command Ready</span>
+                    <Droplets className="h-3 w-3 text-teal-300" />
+                    <span>Liquid Climate Intelligence</span>
                   </div>
                 </div>
 
-                {/* Floating Glass Badge for Hero Product */}
+                {/* Floating Glass Badge */}
                 <motion.div
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.7, ease: easeOut }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.7,
+                    ease: easeOut,
+                  }}
                   whileHover={{ y: -3, scale: 1.02 }}
                   className="absolute bottom-5 left-5 right-5 flex cursor-default items-center justify-between gap-3 rounded-2xl border border-white/50 bg-white/60 px-4 py-3 backdrop-blur-md transition-colors duration-300 ease-out hover:border-white/80 hover:bg-white/80 hover:shadow-[0_18px_40px_-16px_rgba(6,59,61,0.35)] sm:bottom-6 sm:left-6 sm:right-6"
                 >
@@ -155,18 +244,28 @@ export function CollectionsHero() {
                     <span className="block text-[9.5px] font-medium uppercase tracking-widest text-gold-700">
                       Featured Piece
                     </span>
+
                     <span className="mt-0.5 block truncate font-display text-base italic text-[#063B3D]">
                       {heroProduct.name}
                     </span>
                   </div>
+
                   <span className="relative flex h-2 w-2 flex-none">
                     {!prefersReducedMotion && (
                       <motion.span
-                        animate={{ opacity: [0.7, 0, 0.7], scale: [1, 2.2, 1] }}
-                        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+                        animate={{
+                          opacity: [0.7, 0, 0.7],
+                          scale: [1, 2.2, 1],
+                        }}
+                        transition={{
+                          duration: 2.2,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                        }}
                         className="absolute inset-0 rounded-full bg-teal-400"
                       />
                     )}
+
                     <span className="relative h-2 w-2 rounded-full bg-teal-500" />
                   </span>
                 </motion.div>
@@ -177,14 +276,21 @@ export function CollectionsHero() {
             <motion.div
               initial={{ opacity: 0, x: -16, y: 16 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.75, ease: easeOut }}
+              transition={{
+                duration: 0.7,
+                delay: 0.75,
+                ease: easeOut,
+              }}
               whileHover={{ y: -4, scale: 1.03 }}
               className="absolute -bottom-6 -left-5 hidden cursor-default rounded-2xl border border-white/60 bg-white/80 px-4 py-3 shadow-[0_24px_50px_-18px_rgba(6,59,61,0.3)] backdrop-blur-md transition-all duration-300 ease-out hover:border-teal-700/25 hover:bg-white/95 hover:shadow-[0_30px_64px_-16px_rgba(6,59,61,0.4)] sm:-left-8 sm:block"
             >
               <span className="block text-[9.5px] font-bold uppercase tracking-widest text-teal-700">
-                Climate Craft Engine
+                Liquid Climate Control
               </span>
-              <span className="mt-0.5 block font-display text-lg italic text-[#063B3D]">Auto-Temperature</span>
+
+              <span className="mt-0.5 block font-display text-lg italic text-[#063B3D]">
+                Water-Based Intelligence
+              </span>
             </motion.div>
           </motion.div>
         </div>

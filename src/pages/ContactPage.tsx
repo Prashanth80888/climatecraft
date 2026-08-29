@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react'
 import { ContactHero } from '../components/contact/ContactHero'
 import { ContactStrip } from '../components/contact/ContactStrip'
@@ -35,9 +36,10 @@ export function ContactPage() {
                 <Reveal>
                   <SectionLabel>Start Your Quote</SectionLabel>
                   <h2 className="mt-5 max-w-md font-display text-3xl font-normal leading-[1.1] text-cream-100 sm:text-4xl">
-                    Tell us about <span className="italic text-teal-700">your project.</span>
+                    Request your <span className="italic text-teal-700">personalized quote.</span>
                   </h2>
                 </Reveal>
+
                 <div className="mt-10">
                   <QuoteForm />
                 </div>
@@ -52,7 +54,9 @@ export function ContactPage() {
 
         <BusinessHours />
       </main>
+
       <Footer />
     </>
   )
 }
+

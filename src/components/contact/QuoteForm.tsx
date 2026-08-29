@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -183,6 +184,7 @@ export function QuoteForm() {
     timeline: '',
     message: '',
   })
+
   const [errors, setErrors] = useState<FormErrors>({})
   const [phase, setPhase] = useState<'idle' | 'submitting' | 'success'>('idle')
   const [lastUrl, setLastUrl] = useState<string | null>(null)
@@ -271,11 +273,11 @@ export function QuoteForm() {
         <h3 className="relative mt-6 font-display text-3xl font-medium tracking-tight text-cream-100 sm:text-4xl">
           Enquiry Prepared
         </h3>
+
         <p className="relative mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-cream-200">
           We have generated your customized specification sheet. WhatsApp is ready to launch so you can finalize your request with our design specialists.
         </p>
 
-        {/* Summary Card */}
         <div className="relative mx-auto mt-8 max-w-md space-y-3 rounded-2xl border border-ink-900/10 bg-white/60 p-6 text-left shadow-sm backdrop-blur-md">
           <div className="flex items-center justify-between border-b border-ink-900/5 pb-2.5">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-cream-200">Collection</span>
@@ -301,6 +303,7 @@ export function QuoteForm() {
             <span>Continue on WhatsApp</span>
             <MessageCircle className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
           </a>
+
           <button
             type="button"
             onClick={() => setPhase('idle')}
@@ -316,7 +319,6 @@ export function QuoteForm() {
 
   return (
     <form noValidate onSubmit={handleSubmit} className="relative space-y-10">
-      {/* Group 1: Personal Info */}
       <div className="space-y-6">
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-gold-700" />
@@ -337,7 +339,7 @@ export function QuoteForm() {
                 name="name"
                 type="text"
                 autoComplete="name"
-                placeholder="Alex Morgan"
+                placeholder="Likith S"
                 required
                 value={values.name}
                 onChange={(e) => update('name', e.target.value)}
@@ -360,7 +362,7 @@ export function QuoteForm() {
                 name="email"
                 type="email"
                 autoComplete="email"
-                placeholder="alex@studio.com"
+                placeholder="likith@studio.com"
                 required
                 value={values.email}
                 onChange={(e) => update('email', e.target.value)}
@@ -417,7 +419,6 @@ export function QuoteForm() {
         </div>
       </div>
 
-      {/* Group 2: Project Info */}
       <div className="space-y-6 border-t border-ink-900/10 pt-8">
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-gold-700" />
@@ -508,7 +509,6 @@ export function QuoteForm() {
         </div>
       </div>
 
-      {/* Group 3: Scope Details */}
       <div className="space-y-6 border-t border-ink-900/10 pt-8">
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-gold-700" />
@@ -519,14 +519,14 @@ export function QuoteForm() {
 
         <div>
           <label htmlFor="message" className={labelClass}>
-            Tell us about your space & finishes
+            Share any requirements with us
           </label>
           <div className="group relative mt-2 rounded-xl border border-ink-900/10 bg-white/40 backdrop-blur-md transition-all duration-300 focus-within:border-gold-400 focus-within:bg-white/70 focus-within:shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:border-ink-900/20">
             <textarea
               id="message"
               name="message"
               rows={4}
-              placeholder="Tell us about the space, preferred configuration, finish direction, quantity, timeline or anything else we should know."
+              placeholder="Tell us about your requirements, preferred configuration, finish direction, quantity, timeline or anything else we should know."
               value={values.message}
               onChange={(e) => update('message', e.target.value)}
               className="w-full resize-none bg-transparent p-4 text-[14px] text-cream-100 placeholder:text-cream-200/60 outline-none"
@@ -535,7 +535,6 @@ export function QuoteForm() {
         </div>
       </div>
 
-      {/* Submit Action */}
       <motion.button
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.99 }}
@@ -562,3 +561,4 @@ export function QuoteForm() {
     </form>
   )
 }
+
