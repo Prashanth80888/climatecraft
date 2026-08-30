@@ -1,162 +1,293 @@
-import { useCallback, useRef } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
+import { ArrowDown, ArrowRight, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion'
-import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react'
 import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 const HEADLINE_LINES = [
-  { text: 'Spaces designed around', accent: false },
-  { text: 'how comfort is experienced.', accent: true },
+  { text: 'Where intelligent seating', accent: false },
+  { text: 'becomes part of the space.', accent: true },
 ]
 
-const INDICATORS = [
-  'Residential',
-  'Media Room',
-  'Formal Lounge',
-  'Fireside',
-  'Window Suite',
+const SUPPORTING_TEXT =
+  'Real projects. Real spaces. Real requirements. Climate Craft engineers intelligent seating environments — combining premium reclining, liquid-based climate control, voice-activated smart controls and luxury upholstery around the way each space is actually lived.'
+
+const TECHNOLOGIES = [
+  {
+    number: '01',
+    value: '15°C',
+    label: 'Cooling',
+    description: 'Liquid climate control',
+  },
+  {
+    number: '02',
+    value: '35°C',
+    label: 'Heating',
+    description: 'Controlled comfort range',
+  },
+  {
+    number: '03',
+    value: '3',
+    label: 'Ways to Control',
+    description: 'Voice · Touch · Remote',
+  },
 ]
 
-// Small, honest supporting stats — reinforces premium positioning without
-// claiming anything unverifiable; wording kept generic/qualitative on purpose.
-const STATS = [
-  { value: '4', label: 'Space Types' },
-  { value: '360°', label: 'Design Review' },
-  { value: '1:1', label: 'Bespoke Fit' },
+const PROJECT_TYPES = [
+  'Private Interiors',
+  'Media Rooms',
+  'Hospitality',
 ]
 
 export function ProjectsHero() {
-  const sectionRef = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = useReducedMotion()
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
 
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '12%'])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
-
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20, mass: 0.6 })
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20, mass: 0.6 })
-
-  // Separate, gentler spring for the floating stat card so it drifts opposite
-  // the spotlight — adds real depth instead of everything moving in lockstep.
-  const cardX = useTransform(springX, (v) => v * -0.4)
-  const cardY = useTransform(springY, (v) => v * -0.4)
-
-  const onMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (prefersReducedMotion) return
-      const rect = e.currentTarget.getBoundingClientRect()
-      const px = (e.clientX - rect.left) / rect.width - 0.5
-      const py = (e.clientY - rect.top) / rect.height - 0.5
-      mouseX.set(px * 24)
-      mouseY.set(py * 16)
-    },
-    [prefersReducedMotion, mouseX, mouseY],
-  )
-
-  const onMouseLeave = useCallback(() => {
-    mouseX.set(0)
-    mouseY.set(0)
-  }, [mouseX, mouseY])
+  const scrollToProjects = () => {
+    document
+      .querySelector('#case-studies')
+      ?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <section
-      ref={sectionRef}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-      className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-transparent pt-40 sm:pt-44 lg:pt-48"
+      className="
+        relative
+        w-full
+        overflow-hidden
+        bg-transparent
+        pb-16
+        pt-36
+        sm:pb-20
+        sm:pt-40
+        lg:pb-24
+        lg:pt-48
+      "
     >
-      <SectionAtmosphere variant="glow" />
+      <SectionAtmosphere variant="bloom" />
 
-      {/* Ambient background atmosphere — deepened with a third, cooler bloom and
-          a faint rotating conic wash for more dimensionality than two static orbs. */}
-      <div className="pointer-events-none absolute inset-0">
-        <div
-          className="absolute left-[12%] top-[15%] h-[600px] w-[700px] opacity-[0.28] blur-[180px]"
-          style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 65%)' }}
-        />
-        <div
-          className="absolute bottom-[8%] right-[8%] h-[450px] w-[550px] opacity-[0.25] blur-[150px]"
-          style={{ background: 'radial-gradient(circle, #53c9c5 0%, transparent 65%)' }}
-        />
+      {/* ================================================================
+          BACKGROUND ATMOSPHERE
+      ================================================================= */}
+
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+
+        {/* Gold ambient glow */}
         <motion.div
-          animate={prefersReducedMotion ? {} : { opacity: [0.14, 0.24, 0.14] }}
-          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute right-[22%] top-[4%] h-[380px] w-[380px] blur-[130px]"
-          style={{ background: 'radial-gradient(circle, #0F7776 0%, transparent 68%)' }}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: prefersReducedMotion
+              ? 0.22
+              : [0.18, 0.27, 0.18],
+          }}
+          transition={
+            prefersReducedMotion
+              ? { duration: 0.5 }
+              : {
+                  duration: 9,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }
+          }
+          className="
+            absolute
+            -left-40
+            -top-32
+            h-[500px]
+            w-[700px]
+            rounded-full
+            blur-[150px]
+          "
+          style={{
+            background:
+              'radial-gradient(ellipse, #f0a92c 0%, transparent 68%)',
+          }}
         />
 
-        {/* Fine grid — a quiet architectural/blueprint cue that reads as "engineered
-            spaces" without any imagery, fading out toward the edges. */}
+        {/* Teal ambient glow */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: prefersReducedMotion
+              ? 0.18
+              : [0.14, 0.24, 0.14],
+          }}
+          transition={
+            prefersReducedMotion
+              ? { duration: 0.5 }
+              : {
+                  duration: 11,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: 1,
+                }
+          }
+          className="
+            absolute
+            -bottom-48
+            -right-40
+            h-[620px]
+            w-[620px]
+            rounded-full
+            blur-[170px]
+          "
+          style={{
+            background:
+              'radial-gradient(circle, #53c9c5 0%, transparent 68%)',
+          }}
+        />
+
+        {/* Central atmosphere */}
         <div
-          className="absolute inset-0 opacity-[0.05]"
+          className="
+            absolute
+            left-1/2
+            top-[35%]
+            h-[450px]
+            w-[680px]
+            -translate-x-1/2
+            rounded-full
+            opacity-[0.08]
+            blur-[150px]
+          "
+          style={{
+            background:
+              'radial-gradient(ellipse, #0F7776 0%, transparent 70%)',
+          }}
+        />
+
+        {/* Very subtle architectural grid */}
+        <div
+          className="
+            absolute
+            inset-0
+            opacity-[0.025]
+          "
           style={{
             backgroundImage:
               'linear-gradient(#063B3D 1px, transparent 1px), linear-gradient(90deg, #063B3D 1px, transparent 1px)',
-            backgroundSize: '64px 64px',
-            maskImage: 'radial-gradient(ellipse 70% 60% at 50% 35%, black 0%, transparent 75%)',
-            WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 35%, black 0%, transparent 75%)',
+            backgroundSize: '72px 72px',
+            maskImage:
+              'radial-gradient(ellipse 75% 65% at 50% 38%, black 0%, transparent 82%)',
+            WebkitMaskImage:
+              'radial-gradient(ellipse 75% 65% at 50% 38%, black 0%, transparent 82%)',
           }}
         />
+
+        <div className="grain-overlay opacity-[0.07]" />
       </div>
 
-      {/* Cursor-following spotlight */}
-      {!prefersReducedMotion && (
-        <motion.div
-          className="pointer-events-none absolute inset-0 z-[1]"
-          style={{ x: mouseX, y: mouseY }}
-        >
-          <div
-            className="absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.20] blur-[120px]"
-            style={{ background: 'radial-gradient(circle, #f0a92c 0%, transparent 60%)' }}
-          />
-        </motion.div>
-      )}
+      {/* ================================================================
+          CONTENT
+      ================================================================= */}
 
-      <motion.div
-        style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-5 sm:px-6 lg:px-8"
-      >
-        <div className="grid grid-cols-1 items-center gap-y-12 lg:grid-cols-[1.35fr_0.65fr] lg:gap-x-10">
-          <div>
-            {/* Eyebrow — now a small glass pill instead of a bare line + label,
-                matching the premium chip language used elsewhere on the site. */}
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+
+        <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-12 lg:gap-16">
+
+          {/* ============================================================
+              LEFT CONTENT
+          ============================================================ */}
+
+          <div className="lg:col-span-7">
+
+            {/* Eyebrow */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.35, ease: easeOut }}
-              className="inline-flex items-center gap-2.5 rounded-full border border-white/50 bg-white/40 py-1.5 pl-2.5 pr-4 backdrop-blur-md"
+              initial={{
+                opacity: 0,
+                y: 12,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.7,
+                delay: 0.15,
+                ease: easeOut,
+              }}
+              className="flex items-center gap-2.5"
             >
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold-400/90 text-ink-950">
-                <Sparkles className="h-3 w-3" strokeWidth={2.25} />
-              </span>
-              <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold-700">
-                Projects &amp; Spaces
+              <motion.span
+                initial={{ width: 0 }}
+                animate={{ width: 28 }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.35,
+                  ease: easeOut,
+                }}
+                className="h-px bg-gold-400"
+              />
+
+              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-gold-700">
+                Climate Craft Projects
               </span>
             </motion.div>
 
-            {/* Headline — line-by-line reveal, now with a soft animated underline
-                sweeping in beneath the accent line for a more finished, editorial feel. */}
-            <h1 className="mt-8 max-w-4xl font-display text-[clamp(2.4rem,6.5vw,5rem)] font-normal leading-[1.03] tracking-[-0.01em] text-cream-100">
-              {HEADLINE_LINES.map((line, i) => (
-                <span key={line.text} className="block overflow-hidden">
+            {/* Main heading */}
+            <h1
+              className="
+                mt-6
+                max-w-4xl
+                font-display
+                text-5xl
+                font-normal
+                leading-[1.04]
+                tracking-[-0.015em]
+                text-cream-100
+                sm:text-6xl
+                lg:text-7xl
+              "
+            >
+              {HEADLINE_LINES.map((line, index) => (
+                <span
+                  key={line.text}
+                  className="block overflow-hidden"
+                >
                   <motion.span
-                    initial={{ y: '115%' }}
-                    animate={{ y: '0%' }}
-                    transition={{ duration: 1.1, delay: 0.55 + i * 0.15, ease: easeOut }}
-                    className={`relative inline-block ${line.accent ? 'italic text-teal-700' : ''}`}
+                    initial={{
+                      y: '110%',
+                      opacity: 0,
+                    }}
+                    animate={{
+                      y: '0%',
+                      opacity: 1,
+                    }}
+                    transition={{
+                      duration: 1,
+                      delay: 0.35 + index * 0.14,
+                      ease: easeOut,
+                    }}
+                    className={`relative block ${
+                      line.accent
+                        ? 'italic text-teal-700'
+                        : ''
+                    }`}
                   >
                     {line.text}
+
                     {line.accent && (
                       <motion.span
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
-                        transition={{ duration: 1, delay: 1.3, ease: easeOut }}
-                        style={{ transformOrigin: 'left' }}
-                        className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-gradient-to-r from-gold-400 via-gold-300 to-transparent"
+                        transition={{
+                          duration: 0.9,
+                          delay: 1.05,
+                          ease: easeOut,
+                        }}
+                        className="
+                          absolute
+                          -bottom-1
+                          left-0
+                          h-[2px]
+                          w-[92%]
+                          origin-left
+                          rounded-full
+                          bg-gradient-to-r
+                          from-gold-400
+                          via-gold-300
+                          to-transparent
+                        "
                       />
                     )}
                   </motion.span>
@@ -164,156 +295,595 @@ export function ProjectsHero() {
               ))}
             </h1>
 
-            {/* Supporting paragraph */}
+            {/* Supporting copy */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 1.1, ease: easeOut }}
-              className="mt-8 max-w-lg text-[16px] leading-relaxed text-cream-200 sm:text-[17px]"
+              initial={{
+                opacity: 0,
+                y: 14,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.85,
+                ease: easeOut,
+              }}
+              className="
+                mt-7
+                max-w-2xl
+                text-[16px]
+                leading-relaxed
+                text-cream-200
+                sm:text-[17px]
+              "
             >
-              Explore how Climate Craft furniture shapes residential, media, formal and lounge environments —
-              combining intelligent movement, climate technology and considered design.
+              {SUPPORTING_TEXT}
             </motion.p>
 
-            {/* CTAs — primary button now has a magnetic-feeling lift with a richer
-                sheen and glow, secondary gains a filled hover state instead of just
-                a border color shift. */}
+            {/* Project types */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.5, ease: easeOut }}
-              className="mt-10 flex flex-wrap items-center gap-4"
+              initial={{
+                opacity: 0,
+                y: 12,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 1.05,
+                ease: easeOut,
+              }}
+              className="
+                mt-7
+                flex
+                flex-wrap
+                items-center
+                gap-y-2
+              "
             >
-              <a
-                href="#space-explorer"
-                className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full bg-teal-700 px-7 py-4 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_20px_50px_-16px_rgba(22,155,154,0.55)] transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:bg-teal-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_30px_64px_-14px_rgba(22,155,154,0.7)] active:scale-[0.97]"
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.querySelector('#space-explorer')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-              >
-                <span className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/2 -skew-x-12 bg-white/40 opacity-0 transition-all duration-700 ease-out group-hover:left-full group-hover:opacity-100" />
-                <span className="relative z-10">Explore Spaces</span>
-                <ArrowRight className="relative z-10 h-3.5 w-3.5 transition-transform duration-300 ease-out group-hover:translate-x-1" />
-              </a>
-              <Link
-                to="/contact"
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[#063B3D]/[0.14] px-6 py-3.5 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-ink-700 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#063B3D]/0 hover:text-white"
-              >
-                <span className="absolute inset-0 -z-10 scale-x-0 bg-[#063B3D] transition-transform duration-400 ease-out origin-left group-hover:scale-x-100" />
-                <span>Discuss a Project</span>
-                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 ease-out group-hover:translate-x-0.5" />
-              </Link>
+              {PROJECT_TYPES.map((type, index) => (
+                <div
+                  key={type}
+                  className="flex items-center"
+                >
+                  <motion.span
+                    whileHover={{
+                      y: -2,
+                    }}
+                    transition={{
+                      duration: 0.2,
+                    }}
+                    className="
+                      cursor-default
+                      px-3
+                      text-[10px]
+                      font-medium
+                      uppercase
+                      tracking-[0.16em]
+                      text-cream-200
+                      transition-colors
+                      duration-300
+                      hover:text-teal-700
+                      first:pl-0
+                    "
+                  >
+                    {type}
+                  </motion.span>
+
+                  {index < PROJECT_TYPES.length - 1 && (
+                    <span className="h-1 w-1 rounded-full bg-gold-400/70" />
+                  )}
+                </div>
+              ))}
             </motion.div>
 
-            {/* Space application indicators — now separated by fine dot dividers
-                for a tighter, more considered rhythm than raw gaps. */}
+            {/* Buttons */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 2 }}
-              className="mt-16 flex flex-wrap items-center gap-x-0 gap-y-3 border-t border-[#063B3D]/[0.08] pt-7 sm:mt-20"
+              initial={{
+                opacity: 0,
+                y: 14,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 1.25,
+                ease: easeOut,
+              }}
+              className="
+                mt-9
+                flex
+                flex-wrap
+                items-center
+                gap-4
+              "
             >
-              {INDICATORS.map((label, i) => (
-                <span key={label} className="flex items-center">
-                  <motion.span
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 2.1 + i * 0.07, ease: easeOut }}
-                    className="cursor-default px-3.5 text-[11px] font-medium uppercase tracking-[0.15em] text-cream-200 transition-colors duration-300 first:pl-0 hover:text-teal-700"
-                  >
-                    {label}
-                  </motion.span>
-                  {i < INDICATORS.length - 1 && (
-                    <span className="h-1 w-1 flex-none rounded-full bg-[#063B3D]/15" />
-                  )}
+              <button
+                type="button"
+                onClick={scrollToProjects}
+                className="
+                  group
+                  relative
+                  inline-flex
+                  items-center
+                  gap-2.5
+                  overflow-hidden
+                  rounded-full
+                  bg-teal-700
+                  px-7
+                  py-4
+                  text-[11px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.18em]
+                  text-white
+                  shadow-[0_20px_50px_-16px_rgba(22,155,154,0.5)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:bg-teal-800
+                  hover:shadow-[0_28px_60px_-15px_rgba(22,155,154,0.65)]
+                  active:translate-y-0
+                  active:scale-[0.98]
+                "
+              >
+                <span
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-y-0
+                    -left-1/2
+                    w-1/2
+                    -skew-x-12
+                    bg-white/30
+                    opacity-0
+                    transition-all
+                    duration-700
+                    group-hover:left-full
+                    group-hover:opacity-100
+                  "
+                />
+
+                <span className="relative z-10">
+                  Explore Projects
                 </span>
-              ))}
+
+                <ArrowDown
+                  className="
+                    relative
+                    z-10
+                    h-3.5
+                    w-3.5
+                    transition-transform
+                    duration-300
+                    group-hover:translate-y-1
+                  "
+                />
+              </button>
+
+              <Link
+                to="/contact"
+                className="
+                  group
+                  relative
+                  inline-flex
+                  items-center
+                  gap-2
+                  overflow-hidden
+                  rounded-full
+                  border
+                  border-[#063B3D]/[0.15]
+                  px-6
+                  py-3.5
+                  text-[11px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.18em]
+                  text-ink-700
+                  transition-all
+                  duration-300
+                  hover:-translate-y-0.5
+                  hover:border-[#063B3D]
+                  hover:text-white
+                "
+              >
+                <span
+                  className="
+                    absolute
+                    inset-0
+                    -z-10
+                    origin-left
+                    scale-x-0
+                    bg-[#063B3D]
+                    transition-transform
+                    duration-400
+                    group-hover:scale-x-100
+                  "
+                />
+
+                <span>
+                  Discuss a Project
+                </span>
+
+                <ArrowRight
+                  className="
+                    h-3.5
+                    w-3.5
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-1
+                  "
+                />
+              </Link>
             </motion.div>
           </div>
 
-          {/* Floating glass stat card — desktop only. Adds visual weight on the
-              right side of the hero (previously empty), drifts gently opposite the
-              cursor spotlight, and reinforces premium/bespoke positioning with
-              honest, non-numeric-claim stats. */}
-          <motion.div
-            style={{ x: cardX, y: cardY }}
-            initial={{ opacity: 0, y: 30, scale: 0.94 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1, delay: 1.2, ease: easeOut }}
-            className="relative hidden lg:block"
-          >
-            <div className="relative overflow-hidden rounded-[28px] border border-white/55 bg-white/40 p-7 shadow-[0_40px_90px_-30px_rgba(6,59,61,0.35)] backdrop-blur-xl">
-              <div
-                className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-70 blur-2xl"
-                style={{ background: 'radial-gradient(circle, rgba(240,169,44,0.35) 0%, transparent 72%)' }}
-              />
-              <span className="relative text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-700">
-                Every Project Starts With
-              </span>
-              <p className="relative mt-3 font-display text-xl italic leading-snug text-[#063B3D]">
-                A conversation about how the space is actually used.
-              </p>
+          {/* ============================================================
+              RIGHT — INFORMATION PANEL
+          ============================================================ */}
 
-              <div className="relative mt-7 grid grid-cols-3 gap-3 border-t border-[#063B3D]/10 pt-5">
-                {STATS.map((s, i) => (
-                  <motion.div
-                    key={s.label}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 1.7 + i * 0.1, ease: easeOut }}
-                  >
-                    <div className="font-display text-xl italic text-teal-700">{s.value}</div>
-                    <div className="mt-1 text-[9.5px] font-medium uppercase leading-tight tracking-widest text-ink-700">
-                      {s.label}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: 25,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{
+              duration: 0.9,
+              delay: 0.95,
+              ease: easeOut,
+            }}
+            className="
+              relative
+              lg:col-span-5
+              lg:pt-8
+            "
+          >
+            {/* Decorative vertical line */}
+            <motion.div
+              initial={{
+                height: 0,
+              }}
+              animate={{
+                height: '100%',
+              }}
+              transition={{
+                duration: 1,
+                delay: 1.25,
+                ease: easeOut,
+              }}
+              className="
+                absolute
+                -left-7
+                top-8
+                hidden
+                w-px
+                bg-gradient-to-b
+                from-gold-400/0
+                via-gold-400/50
+                to-teal-700/0
+                lg:block
+              "
+            />
+
+            {/* Intro label */}
+            <div className="mb-5 flex items-center gap-2">
+              <Sparkles className="h-3.5 w-3.5 text-gold-700" />
+
+              <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-gold-700">
+                Engineered Comfort
+              </span>
             </div>
 
-            {/* Small orbiting accent ring behind the card for extra depth */}
-            {!prefersReducedMotion && (
-              <motion.div
-                aria-hidden
-                animate={{ rotate: 360 }}
-                transition={{ duration: 50, repeat: Infinity, ease: 'linear' }}
-                className="pointer-events-none absolute -inset-6 -z-10"
-              >
-                <svg viewBox="0 0 100 100" className="h-full w-full">
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="48"
-                    fill="none"
-                    stroke="rgba(22,155,154,0.25)"
-                    strokeWidth="0.5"
-                    strokeDasharray="0.4 6"
-                    strokeLinecap="round"
+            {/* Technology cards */}
+            <div className="space-y-3">
+              {TECHNOLOGIES.map((item, index) => (
+                <motion.div
+                  key={item.number}
+                  initial={{
+                    opacity: 0,
+                    y: 15,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    duration: 0.65,
+                    delay: 1.2 + index * 0.12,
+                    ease: easeOut,
+                  }}
+                  whileHover={{
+                    x: 5,
+                    transition: {
+                      duration: 0.25,
+                    },
+                  }}
+                  className="
+                    group
+                    relative
+                    overflow-hidden
+                    rounded-[20px]
+                    border
+                    border-white/60
+                    bg-white/45
+                    p-5
+                    shadow-[0_18px_45px_-28px_rgba(6,59,61,0.38)]
+                    backdrop-blur-xl
+                    transition-all
+                    duration-300
+                    hover:border-teal-700/25
+                    hover:bg-white/65
+                    hover:shadow-[0_25px_55px_-25px_rgba(6,59,61,0.42)]
+                  "
+                >
+                  {/* Hover highlight */}
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-0
+                      bg-gradient-to-r
+                      from-teal-700/[0.04]
+                      via-transparent
+                      to-gold-400/[0.05]
+                      opacity-0
+                      transition-opacity
+                      duration-300
+                      group-hover:opacity-100
+                    "
                   />
-                </svg>
-              </motion.div>
-            )}
+
+                  <div className="relative flex items-start gap-4">
+
+                    {/* Number */}
+                    <div
+                      className="
+                        flex
+                        h-8
+                        w-8
+                        flex-none
+                        items-center
+                        justify-center
+                        rounded-full
+                        border
+                        border-[#063B3D]/10
+                        bg-white/55
+                        font-display
+                        text-[11px]
+                        italic
+                        text-gold-700
+                        transition-all
+                        duration-300
+                        group-hover:border-gold-400/50
+                        group-hover:bg-gold-400/10
+                      "
+                    >
+                      {item.number}
+                    </div>
+
+                    {/* Content */}
+                    <div className="min-w-0 flex-1">
+
+                      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+
+                        <span
+                          className="
+                            font-display
+                            text-2xl
+                            italic
+                            leading-none
+                            text-teal-700
+                            transition-transform
+                            duration-300
+                            group-hover:translate-x-0.5
+                          "
+                        >
+                          {item.value}
+                        </span>
+
+                        <span
+                          className="
+                            text-[9px]
+                            font-semibold
+                            uppercase
+                            tracking-[0.14em]
+                            text-[#063B3D]
+                          "
+                        >
+                          {item.label}
+                        </span>
+
+                      </div>
+
+                      <p
+                        className="
+                          mt-2
+                          text-[10px]
+                          leading-relaxed
+                          text-[#416A6C]
+                        "
+                      >
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {/* Hover arrow */}
+                    <ArrowRight
+                      className="
+                        mt-1
+                        h-3.5
+                        w-3.5
+                        flex-none
+                        text-teal-700/0
+                        transition-all
+                        duration-300
+                        group-hover:translate-x-0.5
+                        group-hover:text-teal-700/70
+                      "
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* ==========================================================
+                INFORMATION STATEMENT
+            ========================================================== */}
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 1.65,
+                ease: easeOut,
+              }}
+              className="
+                relative
+                mt-5
+                overflow-hidden
+                rounded-[22px]
+                border
+                border-[#063B3D]/10
+                bg-[#063B3D]/[0.045]
+                p-5
+                transition-all
+                duration-300
+                hover:bg-[#063B3D]/[0.065]
+              "
+            >
+              <div className="relative">
+
+                <p
+                  className="
+                    font-display
+                    text-xl
+                    font-normal
+                    leading-[1.2]
+                    text-[#063B3D]
+                  "
+                >
+                  Intelligent comfort,
+                  <span className="italic text-teal-700">
+                    {' '}designed around the room.
+                  </span>
+                </p>
+
+                <p
+                  className="
+                    mt-3
+                    text-[10px]
+                    leading-relaxed
+                    text-[#416A6C]
+                  "
+                >
+                  Every project considers the space, the people using it,
+                  and how technology should become part of the experience
+                  rather than interrupt it.
+                </p>
+
+              </div>
+            </motion.div>
           </motion.div>
         </div>
-      </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 2.6 }}
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
-      >
+        {/* ================================================================
+            BOTTOM SCROLL INDICATOR
+        ================================================================= */}
+
         <motion.div
-          animate={prefersReducedMotion ? {} : { y: [0, 6, 0] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-          whileHover={{ scale: 1.15 }}
-          className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-[#063B3D]/20 bg-white/30 text-ink-900 backdrop-blur-sm transition-colors duration-300 hover:border-teal-700/40 hover:bg-white/50"
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          transition={{
+            duration: 0.8,
+            delay: 2,
+            ease: easeOut,
+          }}
+          className="
+            mt-14
+            flex
+            justify-center
+            sm:mt-16
+          "
         >
-          <ChevronDown className="h-4 w-4" />
+          <button
+            type="button"
+            onClick={scrollToProjects}
+            className="group flex flex-col items-center gap-2"
+          >
+            <span
+              className="
+                text-[8px]
+                font-semibold
+                uppercase
+                tracking-[0.2em]
+                text-ink-700
+                transition-colors
+                duration-300
+                group-hover:text-teal-700
+              "
+            >
+              Discover the projects
+            </span>
+
+            <motion.span
+              animate={
+                prefersReducedMotion
+                  ? {}
+                  : {
+                      y: [0, 5, 0],
+                    }
+              }
+              transition={{
+                duration: 2.2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="
+                flex
+                h-9
+                w-9
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-[#063B3D]/15
+                bg-white/35
+                text-[#063B3D]
+                backdrop-blur-sm
+                transition-all
+                duration-300
+                group-hover:border-teal-700/40
+                group-hover:bg-white/60
+                group-hover:text-teal-700
+              "
+            >
+              <ArrowDown className="h-3.5 w-3.5" />
+            </motion.span>
+          </button>
         </motion.div>
-      </motion.div>
+
+      </div>
     </section>
   )
 }

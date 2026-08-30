@@ -6,7 +6,11 @@ import { SectionLabel } from '../ui/SectionLabel'
 import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 
-const FEATURED_SLUGS = ['the-parlour', 'quiet-study', 'screening-room']
+const FEATURED_SLUGS = [
+  'smart-recliner-for-senior-citizens-india',
+  'smart-recliner-for-post-workout-recovery',
+  'home-theatre-recliner-india',
+]
 
 export function RecentWork() {
   const studies = FEATURED_SLUGS.map(getCaseStudyBySlug).filter(

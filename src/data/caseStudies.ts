@@ -8,6 +8,13 @@
 // verified capability from the product catalogue (src/data/homeProducts.ts) —
 // never invented.
 
+// NOTE ON SLUGS: each record's `slug` is the REAL, client-supplied case-study
+// slug and is the ONLY value changed from the original room-based set — the
+// slug maps 1:1 (by listing order) to the matching detail object in
+// src/data/caseStudyDetail.ts (see getCaseStudyDetailBySlug). All display
+// content, card teasers and gallery photography below are intentionally left
+// untouched: the Case Studies list page was not redesigned or re-authored.
+
 import { getProductBySlug, type HomeProduct } from './homeProducts'
 
 export interface TechCapability {
@@ -38,7 +45,7 @@ const images = (slug: string, count: number) => Array.from({ length: count }, (_
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    slug: 'city-view-retreat',
+    slug: 'smart-recliner-for-software-engineers-india',
     number: 1,
     category: 'Residential',
     title: 'City View Retreat',
@@ -66,10 +73,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     outcome:
       'At full recline, the leg rest clears the window ledge and the side table beside it, so the chair holds this exact placement rather than needing to be repositioned each time it’s used.',
     relatedProductSlugs: ['craft-motion', 'climate-craft-signature'],
-    relatedCaseStudySlugs: ['quiet-study', 'morning-room'],
+    relatedCaseStudySlugs: ['smart-recliner-for-post-workout-recovery', 'smart-recliner-for-pregnant-women-india'],
   },
   {
-    slug: 'fireside-nook',
+    slug: 'smart-recliner-for-new-homeowners-india',
     number: 2,
     category: 'Residential',
     title: 'Fireside Nook',
@@ -90,10 +97,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     outcome:
       'The control housing sits low enough on the armrest that the console surface behind the chair stays fully usable, even with the seat fully reclined.',
     relatedProductSlugs: ['craft-motion', 'climate-craft-signature'],
-    relatedCaseStudySlugs: ['morning-room', 'quiet-study'],
+    relatedCaseStudySlugs: ['smart-recliner-for-pregnant-women-india', 'smart-recliner-for-post-workout-recovery'],
   },
   {
-    slug: 'morning-room',
+    slug: 'smart-recliner-for-pregnant-women-india',
     number: 3,
     category: 'Residential',
     title: 'Morning Room',
@@ -115,10 +122,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     outcome:
       'Upright, the chair’s profile holds its line against the paneled wall the same way the room’s other furniture does — the mechanism only becomes visible once the seat reclines.',
     relatedProductSlugs: ['craft-motion', 'climate-craft-signature'],
-    relatedCaseStudySlugs: ['city-view-retreat', 'the-parlour'],
+    relatedCaseStudySlugs: ['smart-recliner-for-software-engineers-india', 'smart-recliner-for-senior-citizens-india'],
   },
   {
-    slug: 'quiet-study',
+    slug: 'smart-recliner-for-post-workout-recovery',
     number: 4,
     category: 'Workspace',
     title: 'Quiet Study',
@@ -141,10 +148,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     outcome:
       'The quilted stitching and headrest accent read clearly whether the chair is upright at a desk-adjacent position or fully reclined — the detailing doesn’t disappear into the fabric at any stage.',
     relatedProductSlugs: ['craft-motion', 'climate-craft-signature'],
-    relatedCaseStudySlugs: ['fireside-nook', 'screening-room'],
+    relatedCaseStudySlugs: ['smart-recliner-for-new-homeowners-india', 'home-theatre-recliner-india'],
   },
   {
-    slug: 'reading-corner',
+    slug: 'luxury-home-furniture-india',
     number: 5,
     category: 'Residential',
     title: 'Reading Corner',
@@ -165,10 +172,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     outcome:
       'One seat is shown fully reclined while the other stays upright — that independence is the point of placing two single recliners together, rather than a shared reclining sofa.',
     relatedProductSlugs: ['craft-motion-duo', 'climate-craft-duo'],
-    relatedCaseStudySlugs: ['morning-room', 'window-light-suite'],
+    relatedCaseStudySlugs: ['smart-recliner-for-pregnant-women-india', 'smart-recliner-for-medical-industry-india'],
   },
   {
-    slug: 'screening-room',
+    slug: 'home-theatre-recliner-india',
     number: 6,
     category: 'Media & Entertainment',
     title: 'Screening Room',
@@ -194,10 +201,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     outcome:
       'The side bolsters keep their shape at full recline, so the chair’s silhouette reads the same reclined as it does upright — nothing about its presence changes once it’s in use.',
     relatedProductSlugs: ['craft-motion', 'climate-craft-signature'],
-    relatedCaseStudySlugs: ['quiet-study', 'reading-corner'],
+    relatedCaseStudySlugs: ['smart-recliner-for-post-workout-recovery', 'luxury-home-furniture-india'],
   },
   {
-    slug: 'the-parlour',
+    slug: 'smart-recliner-for-senior-citizens-india',
     number: 7,
     category: 'Hospitality',
     title: 'The Parlour',
@@ -222,10 +229,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     outcome:
       'With one seat shown fully reclined and the others upright, the sofa still reads as a single, symmetrical piece from across the room — the recline doesn’t break the formality of the frame.',
     relatedProductSlugs: ['craft-motion-grand', 'climate-craft-grand'],
-    relatedCaseStudySlugs: ['window-light-suite', 'morning-room'],
+    relatedCaseStudySlugs: ['smart-recliner-for-medical-industry-india', 'smart-recliner-for-pregnant-women-india'],
   },
   {
-    slug: 'window-light-suite',
+    slug: 'smart-recliner-for-medical-industry-india',
     number: 8,
     category: 'Hospitality',
     title: 'Window Light Suite',
@@ -246,7 +253,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     outcome:
       'The reclined seat’s leg rest extends fully without reaching the window behind it, so the sofa can be used at any position in this exact placement, without rearranging the room.',
     relatedProductSlugs: ['craft-motion-grand', 'climate-craft-grand'],
-    relatedCaseStudySlugs: ['the-parlour', 'reading-corner'],
+    relatedCaseStudySlugs: ['smart-recliner-for-senior-citizens-india', 'luxury-home-furniture-india'],
   },
 ]
 

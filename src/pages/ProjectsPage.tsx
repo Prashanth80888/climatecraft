@@ -1,19 +1,19 @@
 import { useEffect } from 'react'
 import { ProjectsHero } from '../components/projects/ProjectsHero'
-import { ProjectPhilosophy } from '../components/projects/ProjectPhilosophy'
-import { SpaceExplorer } from '../components/projects/SpaceExplorer'
-import { CinematicStickyStory } from '../components/projects/CinematicStickyStory'
-import { DesignInContext } from '../components/projects/DesignInContext'
-import { ProductFamilies } from '../components/projects/ProductFamilies'
-import { SpaceProcess } from '../components/projects/SpaceProcess'
-import { FinalCTA } from '../components/FinalCTA'
+import { ProjectCaseStudy } from '../components/projects/ProjectCaseStudy'
+import { TechnologyShowcase } from '../components/projects/TechnologyShowcase'
+import { ProjectProcess } from '../components/projects/ProjectProcess'
+import { WhyDifferent } from '../components/projects/WhyDifferent'
+import { ApplicationsSection } from '../components/projects/ApplicationsSection'
+import { ProjectsCTA } from '../components/projects/ProjectsCTA'
 import { Footer } from '../components/Footer'
+import { PROJECT_CASE_STUDIES } from '../data/projects'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
 export function ProjectsPage() {
   useDocumentMeta(
-    'Climate Craft Projects & Spaces | Motion Furniture Applications',
-    'See how Climate Craft motion furniture is applied across residential, hospitality, healthcare and commercial spaces.',
+    'Projects & Case Studies — Climate Craft',
+    'Explore Climate Craft projects where premium seating, liquid-based climate control, smart reclining and intelligent controls are engineered around real spaces and real comfort requirements.'
   )
 
   useEffect(() => {
@@ -24,13 +24,16 @@ export function ProjectsPage() {
     <>
       <main>
         <ProjectsHero />
-        <ProjectPhilosophy />
-        <SpaceExplorer />
-        <CinematicStickyStory />
-        <DesignInContext />
-        <ProductFamilies />
-        <SpaceProcess />
-        <FinalCTA />
+        <section id="case-studies" className="relative">
+          {PROJECT_CASE_STUDIES.map((project, index) => (
+            <ProjectCaseStudy key={project.id} project={project} index={index} />
+          ))}
+        </section>
+        <TechnologyShowcase />
+        <ProjectProcess />
+        <WhyDifferent />
+        <ApplicationsSection />
+        <ProjectsCTA />
       </main>
       <Footer />
     </>

@@ -453,3 +453,23 @@
 .cc-reveal {
   animation: cc-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* ── Case Study Detail pages (scoped) ────────────────────────────────────────
+   All rules here live under `.case-study-detail` and can never affect the
+   Home, Collections, Product, Features, Projects, Case Studies index, About
+   or Contact pages. Guards only against edge cases that are specific to the
+   detail layout (long specification values, tight columns). */
+
+.case-study-detail {
+  overflow-wrap: break-word;
+}
+
+.case-study-detail .csd-column {
+  min-width: 0;
+}
+
+@media (max-width: 639px) {
+  .case-study-detail .csd-spec-value {
+    text-wrap: balance;
+  }
+}

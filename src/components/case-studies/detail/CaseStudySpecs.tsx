@@ -1,61 +1,43 @@
-import type { CaseStudy } from '../../../data/caseStudies'
-import { getCaseStudyProjectDetails } from '../../../data/caseStudies'
+import type { CaseStudyDetail } from '../../../data/caseStudyDetail'
 import { SectionLabel } from '../../ui/SectionLabel'
 import { Reveal, RevealGroup, RevealItem } from '../../ui/Reveal'
 
-// A clean specification panel — every field here is verified against the
-// related product's real data (src/data/homeProducts.ts) via
-// getCaseStudyProjectDetails, never a per-project statistic invented for this
-// page (see master brief §6/§7). Fields that don't apply to a given product
-// family (e.g. Climate Control on a non-climate piece) are simply absent.
-export function CaseStudySpecs({ caseStudy }: { caseStudy: CaseStudy }) {
-  const details = getCaseStudyProjectDetails(caseStudy)
-  const image = caseStudy.gallery[1]
-
-  if (details.length === 0) return null
-
+export function CaseStudySpecs({ caseStudy }: { caseStudy: CaseStudyDetail }) {
   return (
-    <section className="relative overflow-hidden bg-canvas-deep/25 py-16 sm:py-20 lg:py-24">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-canvas-soft via-canvas-aqua/30 to-canvas" />
+    <section aria-labelledby="csd-spec-title" className="relative">
+      <Reveal>
+        <SectionLabel>Specifications</SectionLabel>
+        <h2 id="csd-spec-title" className="mt-4 font-display text-2xl font-normal leading-[1.15] text-cream-100 sm:text-3xl">
+          {caseStudy.specificationTitle}
+        </h2>
+      </Reveal>
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        <Reveal>
-          <SectionLabel>Project Details</SectionLabel>
-        </Reveal>
-
-        <div className={`mt-8 grid grid-cols-1 gap-10 ${image ? 'lg:grid-cols-12 lg:gap-12' : ''}`}>
-          <div className={image ? 'lg:col-span-6' : ''}>
-            <RevealGroup
-              className="grid grid-cols-2 divide-y divide-white/10 border-y border-ink-900/10 sm:grid-cols-3 sm:divide-y-0 sm:divide-x"
-              stagger={0.06}
+      <RevealGroup
+        className="mt-8 overflow-hidden rounded-[26px] border border-white/70 bg-white/50 shadow-[0_40px_90px_-45px_rgba(18,59,61,0.3),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-md"
+        stagger={0.07}
+      >
+        {caseStudy.specifications.map((spec, i) => (
+          <RevealItem key={spec.label}>
+            <div
+              className={`group/csd grid grid-cols-1 gap-1.5 px-7 py-5 transition-colors duration-300 hover:bg-white/40 sm:grid-cols-12 sm:items-baseline sm:gap-6 sm:px-8 sm:py-6 ${
+                i > 0 ? 'border-t border-white/50' : ''
+              }`}
             >
-              {details.map((d) => (
-                <RevealItem key={d.label} className="px-1 py-6 first:pl-0 sm:px-6 sm:first:pl-0">
-                  <p className="text-[10.5px] uppercase tracking-widest text-cream-200">{d.label}</p>
-                  <p className="mt-2 font-display text-lg text-gold-700 sm:text-xl">{d.value}</p>
-                </RevealItem>
-              ))}
-            </RevealGroup>
-          </div>
-
-          {image && (
-            <div className="lg:col-span-6">
-              <Reveal delay={0.14}>
-                <div className="overflow-hidden rounded-[24px] border border-white/70 shadow-[0_50px_120px_-50px_rgba(18,59,61,0.38)]">
-                  <div className="aspect-[4/5] w-full sm:aspect-[16/12]">
-                    <img
-                      src={image}
-                      alt={`${caseStudy.title} — a verified detail angle`}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </div>
-              </Reveal>
+              <div className="sm:col-span-5">
+                <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-widest text-cream-200">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold-500 transition-transform duration-300 group-hover/csd:scale-150" aria-hidden="true" />
+                  {spec.label}
+                </p>
+              </div>
+              <div className="sm:col-span-7">
+                <p className="csd-spec-value font-display text-[15px] leading-snug text-cream-100 sm:text-[17px]">
+                  {spec.value}
+                </p>
+              </div>
             </div>
-          )}
-        </div>
-      </div>
+          </RevealItem>
+        ))}
+      </RevealGroup>
     </section>
   )
 }

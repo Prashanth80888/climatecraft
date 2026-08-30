@@ -13,7 +13,7 @@ import { Reveal } from '../ui/Reveal'
 // fabricated before/after imagery. Desktop gets the sticky scroll version;
 // mobile/tablet gets a plain sequential version (see §25) — no scroll-linked
 // stickiness, since that pattern doesn't translate to a touch viewport.
-const FEATURED_SLUG = 'the-parlour'
+const FEATURED_SLUG = 'smart-recliner-for-senior-citizens-india'
 
 const STAGES = [
   {
