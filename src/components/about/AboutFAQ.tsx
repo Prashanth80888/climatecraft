@@ -58,6 +58,42 @@ const FAQ_CATEGORIES: FAQCategory[] = [
         q: 'Why should I choose a smart recliner and sofa?',
         a: 'It offers personalized comfort, advanced technology, and flexible seating options with integrated heating and cooling temperature control features that fit well in modern homes.',
       },
+      {
+        q: 'What is a 2-seater recliner?',
+        a: 'A 2-seater recliner is a sofa-style recliner designed for two people with reclining comfort and optional heating and cooling temperature control technology.',
+      },
+      {
+        q: 'What is a 3-seater recliner?',
+        a: 'A 3-seater recliner is a larger recliner sofa designed for three people with enhanced heating and cooling comfort options.',
+      },
+      {
+        q: 'What is the difference between a 2-seater and 3-seater recliner?',
+        a: 'The main difference is seating capacity, size, and heating and cooling comfort distribution across seats.',
+      },
+      {
+        q: 'Which is better for a small living room: 2-seater or 3-seater?',
+        a: 'A 2-seater recliner is usually better for smaller rooms and can still include heating and cooling comfort features.',
+      },
+      {
+        q: 'Which is better for families: 2-seater or 3-seater?',
+        a: 'A 3-seater recliner is usually better for families with multi-seat heating and cooling comfort technology.',
+      },
+      {
+        q: 'Can I use a recliner in a living room?',
+        a: 'Yes. Recliners are commonly used with heating and cooling comfort systems.',
+      },
+      {
+        q: 'Are recliners suitable for home theatres?',
+        a: 'Yes. They are ideal for home theatres with advanced heating and cooling temperature control comfort.',
+      },
+      {
+        q: 'Are recliners good for daily use?',
+        a: 'Yes. They are designed for daily use with heating and cooling comfort support.',
+      },
+      {
+        q: 'Do recliners come in manual and electric options?',
+        a: 'Yes. Electric versions support heating and cooling technology integration.',
+      },
     ],
   },
 
@@ -87,6 +123,42 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       {
         q: 'Is it suitable for work-from-home breaks?',
         a: 'Yes. It provides a relaxing space with heating and cooling comfort technology for work breaks.',
+      },
+      {
+        q: 'Are recliners comfortable for long sitting hours?',
+        a: 'Yes. They provide comfort with heating and cooling temperature control support.',
+      },
+      {
+        q: 'Can a recliner help me relax after work?',
+        a: 'Yes. It offers relaxation with heating and cooling comfort technology.',
+      },
+      {
+        q: 'Can I watch TV comfortably on a recliner?',
+        a: 'Yes. It is ideal for TV viewing with heating and cooling comfort settings.',
+      },
+      {
+        q: 'Can a recliner be used for reading?',
+        a: 'Yes. It offers comfort with climate-controlled heating and cooling technology.',
+      },
+      {
+        q: 'Is a recliner good for elderly people?',
+        a: 'Yes. It provides comfort with heating and cooling temperature control features.',
+      },
+      {
+        q: 'Can a recliner be used for guests?',
+        a: 'Yes. It is suitable for guests with heating and cooling comfort support.',
+      },
+      {
+        q: 'Can I sleep on a recliner?',
+        a: 'Yes. It supports naps with heating and cooling comfort technology.',
+      },
+      {
+        q: 'Is a recliner better than a normal sofa?',
+        a: 'Yes. It offers more comfort with heating and cooling smart technology.',
+      },
+      {
+        q: 'Does a recliner provide back support?',
+        a: 'Yes. It provides support along with heating and cooling comfort features.',
       },
     ],
   },
@@ -138,6 +210,38 @@ const FAQ_CATEGORIES: FAQCategory[] = [
         q: 'What is the cooling temperature range?',
         a: 'Smart models can provide advanced cooling technology down to 15°C.',
       },
+      {
+        q: 'What is a voice-controlled recliner?',
+        a: 'It responds to commands including heating and cooling adjustments.',
+      },
+      {
+        q: 'What is a touchscreen recliner?',
+        a: 'It allows control of heating and cooling temperature settings.',
+      },
+      {
+        q: 'What is a remote-controlled recliner?',
+        a: 'It allows control of heating and cooling comfort features.',
+      },
+      {
+        q: 'What is liquid-based temperature technology in a recliner?',
+        a: 'It uses liquid circulation for advanced heating and cooling comfort.',
+      },
+      {
+        q: 'Does the recliner use fans for cooling?',
+        a: 'No. It uses liquid-based cooling and heating technology.',
+      },
+      {
+        q: 'Can the recliner cool the seating surface?',
+        a: 'Yes. It cools up to 15°C using advanced cooling technology.',
+      },
+      {
+        q: 'Can the recliner heat the seating surface?',
+        a: 'Yes. It heats up to 35°C using heating technology.',
+      },
+      {
+        q: 'What is the advantage of smart controls in a recliner?',
+        a: 'They allow easy adjustment of heating and cooling comfort settings.',
+      },
     ],
   },
 
@@ -168,6 +272,14 @@ const FAQ_CATEGORIES: FAQCategory[] = [
         q: 'Is it suitable for a reading corner?',
         a: 'Yes. It is ideal for creating a comfortable reading space with temperature-controlled heating and cooling comfort.',
       },
+      {
+        q: 'Are recliners available in modern designs?',
+        a: 'Yes. Many include smart heating and cooling technology.',
+      },
+      {
+        q: 'Can a recliner improve my home interior?',
+        a: 'Yes. It enhances interiors with advanced heating and cooling comfort systems.',
+      },
     ],
   },
 
@@ -193,6 +305,22 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       {
         q: 'Will it match modern interiors?',
         a: 'Yes. It is designed to complement contemporary interiors with advanced heating and cooling smart technology.',
+      },
+      {
+        q: 'Are recliners durable?',
+        a: 'Yes. They are durable with heating and cooling system integration.',
+      },
+      {
+        q: 'Are recliners easy to maintain?',
+        a: 'Yes. They are easy to maintain including heating and cooling components.',
+      },
+      {
+        q: 'Can recliner upholstery be cleaned easily?',
+        a: 'Yes. It is easy to clean even with heating and cooling systems.',
+      },
+      {
+        q: 'Are premium recliners worth the price?',
+        a: 'Yes. They include advanced heating and cooling comfort technology.',
       },
     ],
   },
@@ -231,6 +359,26 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       {
         q: 'Does the motor require maintenance?',
         a: 'No. Maintenance is not required, including for heating and cooling integrated systems.',
+      },
+      {
+        q: 'How do I choose the right recliner?',
+        a: 'Consider comfort, size, and heating and cooling technology features.',
+      },
+      {
+        q: 'Should I buy a 2-seater or 3-seater recliner?',
+        a: 'Choose based on space and heating and cooling comfort needs.',
+      },
+      {
+        q: 'Is a 2-seater recliner good for couples?',
+        a: 'Yes. It can include heating and cooling comfort features.',
+      },
+      {
+        q: 'Is a 3-seater recliner good for families?',
+        a: 'Yes. It offers multi-seat heating and cooling comfort.',
+      },
+      {
+        q: 'Why should I choose a smart recliner over a normal recliner?',
+        a: 'Because it offers heating and cooling temperature control technology along with smart features.',
       },
     ],
   },
@@ -312,7 +460,11 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       },
       {
         q: 'Can heating and cooling features help with body pain?',
-        a: 'The heating and cooling features provide temperature-controlled comfort that may help users relax and manage everyday discomfort.',
+        a: 'Yes. Heating can help relax stiff muscles, while cooling can help reduce inflammation and body heat discomfort.',
+      },
+      {
+        q: 'Is a smart recliner good for stress relief?',
+        a: 'Yes. The combination of comfort seating, temperature control, and relaxation positioning helps reduce stress and mental fatigue.',
       },
     ],
   },
@@ -345,9 +497,7 @@ function FAQAccordion({
     >
       <button
         type="button"
-        onClick={() =>
-          setOpenQuestion(isOpen ? null : questionId)
-        }
+        onClick={() => setOpenQuestion(isOpen ? null : questionId)}
         aria-expanded={isOpen}
         className="flex w-full items-center justify-between gap-5 p-5 text-left outline-none sm:p-6"
       >
@@ -529,9 +679,7 @@ export function AboutFAQ() {
   const toggleCategory = (categoryId: string) => {
     setOpenQuestion(null)
 
-    setOpenCategory((prev) =>
-      prev === categoryId ? null : categoryId,
-    )
+    setOpenCategory((prev) => (prev === categoryId ? null : categoryId))
   }
 
   return (
@@ -554,23 +702,19 @@ export function AboutFAQ() {
       <div
         className="pointer-events-none absolute right-[8%] top-[15%] h-[260px] w-[260px] rounded-full opacity-[0.13] blur-[100px]"
         style={{
-          background:
-            'radial-gradient(circle, #D4AF37 0%, transparent 70%)',
+          background: 'radial-gradient(circle, #D4AF37 0%, transparent 70%)',
         }}
       />
 
       <div className="grain-overlay opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
-
         {/* Header */}
         <Reveal>
           <div className="flex items-center gap-2">
             <HelpCircle className="h-4 w-4 text-gold-600" />
 
-            <SectionLabel>
-              Frequently Asked
-            </SectionLabel>
+            <SectionLabel>Frequently Asked</SectionLabel>
           </div>
 
           <div className="mt-4 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
@@ -619,7 +763,6 @@ export function AboutFAQ() {
         {/* Bottom Support Card */}
         <Reveal delay={0.3}>
           <div className="relative mt-10 overflow-hidden rounded-[24px] border border-white/80 bg-white/65 p-5 shadow-[0_18px_45px_-25px_rgba(6,59,61,0.2)] backdrop-blur-xl sm:p-6">
-
             {/* Decorative Glow */}
             <div
               className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full opacity-20 blur-3xl"
@@ -630,7 +773,6 @@ export function AboutFAQ() {
             />
 
             <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-
               <div className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-gold-500/15">
                 <Mail className="h-5 w-5 text-gold-700" />
               </div>

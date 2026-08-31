@@ -47,7 +47,7 @@ export function CaseStudiesHero() {
             </span>
           </motion.div>
 
-          <h1 className="mt-6 font-display text-5xl font-normal leading-[1.04] text-cream-100 sm:text-6xl lg:text-7xl">
+          <h1 className="mt-5 font-display text-3xl font-normal leading-[1.04] text-cream-100 sm:mt-6 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
             {HEADLINE.map((line, i) => (
               <span key={line} className="block overflow-hidden">
                 <motion.span
@@ -66,7 +66,7 @@ export function CaseStudiesHero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.85, ease: easeOut }}
-            className="mt-7 max-w-xl text-[16px] leading-relaxed text-cream-200 sm:text-[17px]"
+            className="mt-5 max-w-xl text-[14px] leading-relaxed text-cream-200 sm:mt-7 sm:text-[16px] lg:text-[17px]"
           >
             From private interiors to media rooms and formal hospitality settings, explore how Climate Craft seating
             becomes part of the space — combining engineered motion, considered comfort and refined materials with
@@ -90,7 +90,7 @@ export function CaseStudiesHero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.5, ease: easeOut }}
-          className="mt-16 grid max-w-2xl grid-cols-3 gap-x-6 gap-y-8 border-t border-[#063B3D]/20 pt-8 sm:mt-20"
+          className="mt-12 grid max-w-2xl grid-cols-3 gap-x-4 gap-y-6 border-t border-[#063B3D]/20 pt-6 sm:mt-16 sm:gap-x-6 sm:gap-y-8 sm:pt-8 lg:mt-20"
         >
           {METRICS.map((m, i) => (
             <motion.div
@@ -99,8 +99,8 @@ export function CaseStudiesHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.65 + i * 0.1, ease: easeOut }}
             >
-              <span className="block font-display text-3xl text-gold-700 sm:text-4xl">{m.value}</span>
-              <span className="mt-1.5 block text-[11px] uppercase tracking-widest text-ink-700">{m.label}</span>
+              <span className="block font-display text-2xl text-gold-700 sm:text-3xl lg:text-4xl">{m.value}</span>
+              <span className="mt-1 block text-[10px] uppercase tracking-widest text-ink-700 sm:mt-1.5 sm:text-[11px]">{m.label}</span>
             </motion.div>
           ))}
         </motion.div>

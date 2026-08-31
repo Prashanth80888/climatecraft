@@ -98,7 +98,7 @@ export function Hero() {
         which only "happened" to clear the navbar when content height + viewport
         height lined up; on shorter viewports that assumption silently broke.
       */}
-      <div className="h-28 flex-none sm:h-32 lg:h-36" />
+      <div className="h-24 flex-none sm:h-32 lg:h-36" />
 
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
@@ -113,7 +113,7 @@ export function Hero() {
           Motion Furniture · Est. 2009
         </motion.span>
 
-        <h1 className="max-w-3xl font-display text-[13vw] font-normal leading-[0.98] tracking-[-0.01em] text-white sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.25rem]">
+        <h1 className="max-w-3xl font-display text-[11.5vw] font-normal leading-[0.98] tracking-[-0.01em] text-white sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.25rem]">
           {headline.map((line, i) => (
             <motion.span
               key={line.text}
@@ -131,7 +131,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={introComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.9, delay: 0.95, ease: easeOut }}
-          className="mt-7 max-w-md text-[15px] leading-relaxed text-white/75 sm:text-base"
+          className="mt-6 max-w-md text-[14px] leading-relaxed text-white/75 sm:mt-7 sm:text-base"
         >
           Motorized and manually operated seating, engineered in-house and upholstered by hand — built for the
           manufacturers and galleries who set the standard.
@@ -153,7 +153,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={introComplete ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1, delay: 1.35 }}
-          className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-ink-900/10 pt-6 sm:mt-14 lg:gap-x-10"
+          className="mt-10 flex flex-wrap gap-x-5 gap-y-2 border-t border-ink-900/10 pt-5 sm:mt-12 sm:gap-x-8 sm:gap-y-3 sm:pt-6 lg:mt-14 lg:gap-x-10"
         >
           {trustMarks.map((mark) => (
             <span key={mark} className="text-[10.5px] font-medium uppercase tracking-widest text-white/55">

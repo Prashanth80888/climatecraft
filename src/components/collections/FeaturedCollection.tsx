@@ -121,11 +121,11 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
                 </div>
               </div>
 
-              <h2 className="mt-5 font-display text-3xl font-semibold leading-[1.1] text-[#063B3D] sm:text-4xl lg:text-[2.75rem]">
+              <h2 className="mt-4 font-display text-2xl font-semibold leading-[1.1] text-[#063B3D] sm:mt-5 sm:text-3xl lg:text-4xl lg:text-[2.75rem]">
                 {family.label}
               </h2>
 
-              <p className="mt-5 max-w-md text-[15px] font-normal leading-relaxed text-ink-700">
+              <p className="mt-4 max-w-md text-[14px] font-normal leading-relaxed text-ink-700 sm:mt-5 sm:text-[15px]">
                 {FAMILY_DESCRIPTIONS[family.id]}
               </p>
 
@@ -135,7 +135,7 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
                 onClick={onExplore}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group mt-8 inline-flex items-center gap-3 rounded-full border border-[#063B3D]/20 bg-white/80 px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-[#063B3D] shadow-xs backdrop-blur-md transition-all duration-300 hover:border-gold-400 hover:bg-[#063B3D] hover:text-white hover:shadow-lg hover:shadow-[#063B3D]/20"
+                className="group mt-6 inline-flex items-center gap-2.5 rounded-full border border-[#063B3D]/20 bg-white/80 px-5 py-3 text-[11px] font-bold uppercase tracking-widest text-[#063B3D] shadow-xs backdrop-blur-md transition-all duration-300 hover:border-gold-400 hover:bg-[#063B3D] hover:text-white hover:shadow-lg hover:shadow-[#063B3D]/20 sm:mt-8 sm:gap-3 sm:px-6 sm:py-3.5 sm:text-xs"
               >
                 <span>Explore the Collection</span>
                 <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />

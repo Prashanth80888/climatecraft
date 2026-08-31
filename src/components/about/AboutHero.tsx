@@ -40,7 +40,7 @@ export function AboutHero() {
           </motion.div>
 
           {/* Main Headline */}
-          <h1 className="mt-8 font-display text-5xl font-semibold leading-[1.03] tracking-tight text-[#063B3D] sm:text-6xl lg:text-[4.75rem]">
+          <h1 className="mt-6 font-display text-3xl font-semibold leading-[1.03] tracking-tight text-[#063B3D] sm:mt-8 sm:text-4xl md:text-5xl lg:text-6xl lg:text-[4.75rem]">
             {HEADLINE.map((line, i) => (
               <span key={line} className="block overflow-hidden">
                 <motion.span
@@ -60,12 +60,12 @@ export function AboutHero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.65, ease: easeOut }}
-            className="mt-8 space-y-4 rounded-3xl border border-white/40 bg-white/30 p-6 backdrop-blur-md shadow-[0_20px_50px_-20px_rgba(6,59,61,0.08)]"
+            className="mt-6 space-y-3 rounded-2xl border border-white/40 bg-white/30 p-4 backdrop-blur-md shadow-[0_20px_50px_-20px_rgba(6,59,61,0.08)] sm:mt-8 sm:space-y-4 sm:rounded-3xl sm:p-6"
           >
-            <p className="max-w-xl text-[16.5px] font-medium leading-relaxed text-[#063B3D]/90 sm:text-[18px]">
+            <p className="max-w-xl text-[14px] font-medium leading-relaxed text-[#063B3D]/90 sm:text-[16.5px] lg:text-[18px]">
               Bespoke motion furniture powered by intelligent climate regulation and active thermal dynamics — designed around the purest mechanics of personal comfort.
             </p>
-            <p className="max-w-xl text-[14.5px] font-normal leading-relaxed text-ink-700">
+            <p className="max-w-xl text-[13px] font-normal leading-relaxed text-ink-700 sm:text-[14.5px]">
               Climate Craft engineers motorized climate recliners, thermal sofas, and modular seating, seamlessly integrating heating, liquid cooling, and voice control into hand-upholstered artistry.
             </p>
           </motion.div>
@@ -75,11 +75,11 @@ export function AboutHero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.85, ease: easeOut }}
-            className="mt-7 flex flex-wrap items-center gap-3"
+            className="mt-6 flex flex-wrap items-center gap-2 sm:mt-7 sm:gap-3"
           >
             <motion.div
               whileHover={{ y: -2, scale: 1.02 }}
-              className="inline-flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-md"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/80 bg-white/90 px-3 py-1.5 shadow-sm backdrop-blur-md sm:rounded-2xl sm:gap-2.5 sm:px-4 sm:py-2"
             >
               <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-gold-500/15">
                 <Thermometer className="h-3.5 w-3.5 text-gold-600" />
@@ -91,7 +91,7 @@ export function AboutHero() {
 
             <motion.div
               whileHover={{ y: -2, scale: 1.02 }}
-              className="inline-flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-md"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/80 bg-white/90 px-3 py-1.5 shadow-sm backdrop-blur-md sm:rounded-2xl sm:gap-2.5 sm:px-4 sm:py-2"
             >
               <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-teal-500/15">
                 <Mic className="h-3.5 w-3.5 text-teal-700" />
@@ -103,7 +103,7 @@ export function AboutHero() {
 
             <motion.div
               whileHover={{ y: -2, scale: 1.02 }}
-              className="inline-flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-md"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/80 bg-white/90 px-3 py-1.5 shadow-sm backdrop-blur-md sm:rounded-2xl sm:gap-2.5 sm:px-4 sm:py-2"
             >
               <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#063B3D]/10">
                 <ShieldCheck className="h-3.5 w-3.5 text-[#063B3D]" />
@@ -119,7 +119,7 @@ export function AboutHero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.0, ease: easeOut }}
-            className="mt-10 flex flex-wrap items-center gap-5"
+            className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10 sm:gap-5"
           >
             {/* Primary Action Button */}
             <motion.a
@@ -127,7 +127,7 @@ export function AboutHero() {
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.25, ease: easeOut }}
-              className="group relative inline-flex items-center gap-3.5 overflow-hidden rounded-full bg-[#063B3D] px-8 py-4 text-xs font-extrabold uppercase tracking-[0.18em] text-white shadow-[0_20px_40px_-15px_rgba(6,59,61,0.4)] transition-all duration-300 hover:bg-[#169B9A] hover:shadow-[0_25px_50px_-12px_rgba(22,155,154,0.5)]"
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#063B3D] px-6 py-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-white shadow-[0_20px_40px_-15px_rgba(6,59,61,0.4)] transition-all duration-300 hover:bg-[#169B9A] hover:shadow-[0_25px_50px_-12px_rgba(22,155,154,0.5)] sm:px-8 sm:py-4 sm:text-xs"
             >
               {/* Subtle Light Flare on Hover */}
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
@@ -143,7 +143,7 @@ export function AboutHero() {
             >
               <Link
                 to="/collections"
-                className="group inline-flex items-center gap-3.5 rounded-full border border-[#063B3D]/25 bg-white/80 px-8 py-4 text-xs font-extrabold uppercase tracking-[0.18em] text-[#063B3D] shadow-[0_10px_30px_-15px_rgba(0,0,0,0.08)] backdrop-blur-xl transition-all duration-300 hover:border-gold-500 hover:bg-[#063B3D] hover:text-white hover:shadow-[0_20px_40px_-15px_rgba(6,59,61,0.3)]"
+                className="group inline-flex items-center gap-3 rounded-full border border-[#063B3D]/25 bg-white/80 px-6 py-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#063B3D] shadow-[0_10px_30px_-15px_rgba(0,0,0,0.08)] backdrop-blur-xl transition-all duration-300 hover:border-gold-500 hover:bg-[#063B3D] hover:text-white hover:shadow-[0_20px_40px_-15px_rgba(6,59,61,0.3)] sm:px-8 sm:py-4 sm:text-xs sm:gap-3.5"
               >
                 <span>View Collection</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -157,7 +157,7 @@ export function AboutHero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.25, ease: easeOut }}
-          className="mt-20 flex items-center justify-between border-t border-[#063B3D]/15 pt-6"
+          className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-[#063B3D]/15 pt-5 sm:mt-20 sm:gap-4 sm:pt-6"
         >
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-teal-600 animate-ping" />

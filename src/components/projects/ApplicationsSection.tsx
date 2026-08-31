@@ -30,7 +30,7 @@ export function ApplicationsSection() {
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start lg:gap-20">
+        <div className="grid grid-cols-1 gap-10 sm:gap-12 lg:grid-cols-12 lg:items-start lg:gap-20">
 
           {/* =========================================================
               LEFT — INTRODUCTION
@@ -43,7 +43,7 @@ export function ApplicationsSection() {
               </Reveal>
 
               <Reveal delay={0.08}>
-                <h2 className="mt-5 max-w-sm font-display text-3xl font-normal leading-[1.08] text-cream-100 sm:text-4xl lg:text-[2.8rem]">
+                <h2 className="mt-4 max-w-sm font-display text-2xl font-normal leading-[1.08] text-cream-100 sm:mt-5 sm:text-3xl lg:text-4xl lg:text-[2.8rem]">
                   Where intelligent seating{' '}
                   <span className="italic text-teal-700">
                     belongs.
@@ -52,7 +52,7 @@ export function ApplicationsSection() {
               </Reveal>
 
               <Reveal delay={0.14}>
-                <p className="mt-6 max-w-sm text-[15px] leading-[1.75] text-cream-200">
+                <p className="mt-5 max-w-sm text-[14px] leading-[1.75] text-cream-200 sm:mt-6 sm:text-[15px]">
                   Climate Craft projects span residential, hospitality and
                   dedicated entertainment spaces — anywhere comfort,
                   technology and design converge.
@@ -70,7 +70,7 @@ export function ApplicationsSection() {
               </Reveal>
 
               {/* CTA */}
-              <Reveal delay={0.26} className="mt-9">
+              <Reveal delay={0.26} className="mt-7 sm:mt-9">
                 <a
                   href="/case-studies"
                   onClick={(event) => {
@@ -166,7 +166,7 @@ function ApplicationCard({
       whileHover={{ y: -5 }}
       className="group relative h-full"
     >
-      <div className="relative h-full overflow-hidden rounded-[22px] border border-[#063B3D]/10 bg-white/35 p-6 backdrop-blur-xl transition-all duration-500 sm:p-7 hover:border-teal-700/30 hover:bg-white/55 hover:shadow-[0_20px_50px_-25px_rgba(6,59,61,0.25)]">
+      <div className="relative h-full overflow-hidden rounded-[18px] border border-[#063B3D]/10 bg-white/35 p-5 backdrop-blur-xl transition-all duration-500 sm:rounded-[22px] sm:p-6 md:p-7 hover:border-teal-700/30 hover:bg-white/55 hover:shadow-[0_20px_50px_-25px_rgba(6,59,61,0.25)]">
 
         {/* Hover glow */}
         <div
@@ -188,7 +188,7 @@ function ApplicationCard({
 
         {/* Main title */}
         <div className="relative mt-7">
-          <h3 className="font-display text-[21px] font-normal leading-tight text-[#063B3D] transition-transform duration-500 group-hover:translate-x-1 sm:text-[23px]">
+          <h3 className="font-display text-lg font-normal leading-tight text-[#063B3D] transition-transform duration-500 group-hover:translate-x-1 sm:text-[21px] md:text-[23px]">
             {application.label}
           </h3>
 

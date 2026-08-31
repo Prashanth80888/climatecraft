@@ -39,7 +39,7 @@ export function BrandPrinciples() {
                 initial="rest"
                 whileHover="hover"
                 animate="rest"
-                className="group relative border-ink-900/10 px-1 py-9 sm:border-l sm:px-7 sm:first:border-l-0"
+                className="group relative border-ink-900/10 px-1 py-7 sm:border-l sm:px-7 sm:py-9 sm:first:border-l-0"
               >
                 <motion.div
                   variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}

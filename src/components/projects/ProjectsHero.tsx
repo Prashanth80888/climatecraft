@@ -183,7 +183,7 @@ export function ProjectsHero() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
-        <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-12 lg:gap-16">
+        <div className="grid grid-cols-1 items-start gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-16">
 
           {/* ============================================================
               LEFT CONTENT
@@ -227,16 +227,18 @@ export function ProjectsHero() {
             {/* Main heading */}
             <h1
               className="
-                mt-6
+                mt-5
                 max-w-4xl
                 font-display
-                text-5xl
+                text-3xl
                 font-normal
                 leading-[1.04]
                 tracking-[-0.015em]
                 text-cream-100
-                sm:text-6xl
-                lg:text-7xl
+                sm:text-4xl
+                md:text-5xl
+                lg:text-6xl
+                xl:text-7xl
               "
             >
               {HEADLINE_LINES.map((line, index) => (
@@ -311,12 +313,14 @@ export function ProjectsHero() {
                 ease: easeOut,
               }}
               className="
-                mt-7
+                mt-5
                 max-w-2xl
-                text-[16px]
+                text-[14px]
                 leading-relaxed
                 text-cream-200
-                sm:text-[17px]
+                sm:mt-7
+                sm:text-[16px]
+                lg:text-[17px]
               "
             >
               {SUPPORTING_TEXT}
@@ -397,11 +401,12 @@ export function ProjectsHero() {
                 ease: easeOut,
               }}
               className="
-                mt-9
+                mt-7
                 flex
                 flex-wrap
                 items-center
-                gap-4
+                gap-3
+                sm:gap-4
               "
             >
               <button
@@ -416,9 +421,12 @@ export function ProjectsHero() {
                   overflow-hidden
                   rounded-full
                   bg-teal-700
-                  px-7
-                  py-4
-                  text-[11px]
+                  px-6
+                  py-3
+                  text-[10px]
+                  sm:px-7
+                  sm:py-4
+                  sm:text-[11px]
                   font-semibold
                   uppercase
                   tracking-[0.18em]
@@ -479,9 +487,12 @@ export function ProjectsHero() {
                   rounded-full
                   border
                   border-[#063B3D]/[0.15]
-                  px-6
-                  py-3.5
-                  text-[11px]
+                  px-5
+                  py-3
+                  text-[10px]
+                  sm:px-6
+                  sm:py-3.5
+                  sm:text-[11px]
                   font-semibold
                   uppercase
                   tracking-[0.18em]
@@ -616,7 +627,8 @@ export function ProjectsHero() {
                     border
                     border-white/60
                     bg-white/45
-                    p-5
+                    p-4
+                  sm:p-5
                     shadow-[0_18px_45px_-28px_rgba(6,59,61,0.38)]
                     backdrop-blur-xl
                     transition-all

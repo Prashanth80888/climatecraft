@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, ArrowUpRight, Camera } from 'lucide-react'
-import { HOME_PRODUCTS, PRODUCT_FAMILIES, type HomeProduct } from '../data/homeProducts'
+import { HOME_PRODUCTS, type HomeProduct } from '../data/homeProducts'
 import { homeProductImage } from '../lib/assets'
 import { SectionLabel } from './ui/SectionLabel'
 import { SectionAtmosphere } from './ui/SectionAtmosphere'
@@ -11,11 +11,11 @@ import { Reveal } from './ui/Reveal'
 const TOTAL = HOME_PRODUCTS.length
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
-const ROW_CONFIG: Record<string, { dur: number; dir: 'ltr' | 'rtl' }> = {
-  'climate-smart': { dur: 26, dir: 'ltr' },
-  'motorised-comfort': { dur: 30, dir: 'rtl' },
-  classic: { dur: 34, dir: 'ltr' },
-}
+const SEAT_ROWS: { label: string; blurb: string; seats: 1 | 2 | 3; dur: number; dir: 'ltr' | 'rtl' }[] = [
+  { label: 'Single Seater', blurb: 'Individual recliners designed for personal comfort.', seats: 1, dur: 28, dir: 'ltr' },
+  { label: 'Two Seater', blurb: 'Shared seating that brings comfort to two.', seats: 2, dur: 32, dir: 'rtl' },
+  { label: 'Three Seater', blurb: 'Spacious sofas for the whole living room.', seats: 3, dur: 36, dir: 'ltr' },
+]
 
 function ProductCard({ product }: { product: HomeProduct }) {
   const cardRef = useRef<HTMLAnchorElement>(null)
@@ -34,7 +34,7 @@ function ProductCard({ product }: { product: HomeProduct }) {
       to={`/products/${product.slug}`}
       draggable={false}
       onMouseMove={onMouseMove}
-      className="group relative w-[270px] flex-none overflow-hidden rounded-[20px] border border-[#0B3F42]/[0.15] bg-[#F4F7F5] transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-[#073F40] hover:border-[#159FA3]/50 hover:shadow-[0_28px_60px_-26px_rgba(6,61,60,0.26)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 sm:w-[310px]"
+      className="group relative w-[155px] flex-none overflow-hidden rounded-[14px] border border-[#0B3F42]/[0.15] bg-[#F4F7F5] transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-[#073F40] hover:border-[#159FA3]/50 hover:shadow-[0_28px_60px_-26px_rgba(6,61,60,0.26)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 sm:w-[260px] md:w-[280px] lg:w-[310px] sm:rounded-[18px] lg:rounded-[20px]"
     >
       {/* cursor-follow spotlight — subtle, gold-tinted, opacity-gated so it only exists on hover */}
       <div
@@ -64,26 +64,26 @@ function ProductCard({ product }: { product: HomeProduct }) {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent transition-opacity duration-500" />
 
-        <span className="absolute left-4 top-4 font-display text-xs italic text-cream-100 tabular-nums transition-colors duration-500 group-hover:text-gold-600">
+        <span className="absolute left-2.5 top-2.5 font-display text-[10px] italic text-cream-100 tabular-nums transition-colors duration-500 group-hover:text-gold-600 sm:left-4 sm:top-4 sm:text-xs">
           {String(product.number).padStart(2, '0')} / {String(TOTAL).padStart(2, '0')}
         </span>
-        <span className="absolute right-4 top-4 text-[10px] font-medium uppercase tracking-widest text-cream-100">
+        <span className="absolute right-2.5 top-2.5 text-[8px] font-medium uppercase tracking-widest text-cream-100 sm:right-4 sm:top-4 sm:text-[10px]">
           {product.operation}
         </span>
       </div>
 
-      <div className="relative border-t border-ink-900/[0.08] p-5 transition-transform duration-500 ease-out group-hover:-translate-y-0.5">
-        <h4 className="font-display text-lg text-cream-100 transition-colors duration-500 group-hover:text-white">
+      <div className="relative border-t border-ink-900/[0.08] p-3 transition-transform duration-500 ease-out group-hover:-translate-y-0.5 sm:p-4 lg:p-5">
+        <h4 className="font-display text-sm text-cream-100 transition-colors duration-500 group-hover:text-white sm:text-base lg:text-lg">
           {product.name}
         </h4>
-        <p className="mt-0.5 text-[11px] uppercase tracking-widest text-cream-200 transition-colors duration-500 group-hover:text-white/60">{product.category}</p>
-        <p className="mt-2 text-[12.5px] leading-relaxed text-cream-200 transition-colors duration-500 group-hover:text-white/70">{product.teaser}</p>
+        <p className="mt-0.5 text-[9px] uppercase tracking-widest text-cream-200 transition-colors duration-500 group-hover:text-white/60 sm:text-[10px] lg:text-[11px]">{product.category}</p>
+        <p className="mt-1.5 hidden text-[11px] leading-relaxed text-cream-200 transition-colors duration-500 group-hover:text-white/70 sm:block lg:mt-2 lg:text-[12.5px]">{product.teaser}</p>
 
-        <span className="mt-4 inline-flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-widest text-gold-700/90 transition-all duration-500 group-hover:gap-2.5 group-hover:text-gold-400">
+        <span className="mt-2.5 inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-widest text-gold-700/90 transition-all duration-500 group-hover:gap-2.5 group-hover:text-gold-400 sm:mt-3 lg:mt-4 sm:text-[10px] lg:text-[10.5px]">
           View Product
-          <ArrowUpRight className="h-3 w-3 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <ArrowUpRight className="h-2.5 w-2.5 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-3 sm:w-3" />
         </span>
-        <span className="mt-3 block h-px w-0 bg-gold-400 transition-all duration-500 group-hover:w-full group-hover:bg-gold-400/60" />
+        <span className="mt-2 block h-px w-0 bg-gold-400 transition-all duration-500 group-hover:w-full group-hover:bg-gold-400/60 sm:mt-3" />
       </div>
     </Link>
   )
@@ -200,10 +200,7 @@ function MarqueeRow({ products, dur, dir: direction }: { products: HomeProduct[]
       onPointerLeave={endDrag}
       onPointerCancel={endDrag}
     >
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-canvas via-canvas/50 to-transparent sm:w-32" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-canvas via-canvas/50 to-transparent sm:w-32" />
-
-      <div ref={trackRef} className="flex w-max cursor-grab select-none gap-6 pb-2 active:cursor-grabbing sm:gap-7">
+      <div ref={trackRef} className="flex w-max cursor-grab select-none gap-3 pb-2 active:cursor-grabbing sm:gap-5 md:gap-6 lg:gap-7">
         {sequence.map((product, i) => (
           <ProductCard key={`${product.id}-${i}`} product={product} />
         ))}
@@ -213,59 +210,51 @@ function MarqueeRow({ products, dur, dir: direction }: { products: HomeProduct[]
 }
 
 export function Collections() {
-  // Row order: Classic (was 3rd) → Motorised Comfort (was 2nd) → Climate Smart (was 1st)
-  const orderedFamilies = [
-    PRODUCT_FAMILIES.find((f) => f.id === 'classic')!,
-    PRODUCT_FAMILIES.find((f) => f.id === 'motorised-comfort')!,
-    PRODUCT_FAMILIES.find((f) => f.id === 'climate-smart')!,
-  ]
-
   return (
     <section id="collections" className="relative overflow-hidden bg-transparent py-16 sm:py-24 lg:py-32">
       <SectionAtmosphere variant="bloom" />
-      <div className="mx-auto max-w-7xl px-5 text-center sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>
             <span className="mx-auto">Curated for Every Space</span>
           </SectionLabel>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="mx-auto mt-5 max-w-xl font-display text-4xl font-normal text-cream-100 sm:text-5xl">
+          <h2 className="mx-auto mt-4 max-w-xl font-display text-3xl font-normal text-cream-100 sm:text-4xl lg:text-5xl sm:mt-5">
             Explore our collections
           </h2>
         </Reveal>
         <Reveal delay={0.18}>
-          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-cream-200">
+          <p className="mx-auto mt-3 max-w-lg text-[14px] leading-relaxed text-cream-200 sm:text-[15px] sm:mt-4">
             Three families of motion furniture — Classic, Motorised Comfort and Climate Smart.
           </p>
         </Reveal>
       </div>
 
-      <div className="mt-14 flex flex-col gap-14 sm:mt-20 sm:gap-16">
-        {orderedFamilies.map((family) => {
-          const products = HOME_PRODUCTS.filter((p) => p.familyId === family.id)
-          const config = ROW_CONFIG[family.id]
+      <div className="mt-10 flex flex-col gap-10 sm:mt-14 sm:gap-14 lg:mt-16 lg:gap-16">
+        {SEAT_ROWS.map((row, idx) => {
+          const products = HOME_PRODUCTS.filter((p) => p.seats === row.seats)
 
           return (
-            <div key={family.id}>
+            <div key={row.seats}>
               <Reveal amount={0.15}>
-                <div className="mx-auto mb-6 flex max-w-7xl flex-wrap items-end justify-between gap-x-6 gap-y-2 border-b border-[#063B3D]/20 px-5 pb-4 sm:px-6 lg:px-8">
+                <div className="mx-auto mb-4 flex max-w-7xl flex-wrap items-end justify-between gap-x-4 gap-y-2 border-b border-[#063B3D]/20 px-4 pb-3 sm:mb-6 sm:px-6 sm:pb-4 lg:px-8">
                   <div>
-                    <h3 className="font-display text-xl text-cream-100 sm:text-2xl">{family.label}</h3>
-                    <p className="mt-1 max-w-md text-[12.5px] leading-relaxed text-cream-200">{family.blurb}</p>
+                    <h3 className="font-display text-lg text-cream-100 sm:text-xl lg:text-2xl">{row.label}</h3>
+                    <p className="mt-1 max-w-md text-[11px] leading-relaxed text-cream-200 sm:text-[12.5px]">{row.blurb}</p>
                   </div>
-                  <span className="text-[11px] uppercase tracking-widest text-cream-200 tabular-nums">
-                    {String(family.number).padStart(2, '0')} / {String(PRODUCT_FAMILIES.length).padStart(2, '0')}
+                  <span className="text-[10px] uppercase tracking-widest text-cream-200 tabular-nums sm:text-[11px]">
+                    {String(idx + 1).padStart(2, '0')} / {String(SEAT_ROWS.length).padStart(2, '0')}
                   </span>
                 </div>
               </Reveal>
-              <MarqueeRow products={products} dur={config.dur} dir={config.dir} />
+              <MarqueeRow products={products} dur={row.dur} dir={row.dir} />
             </div>
           )
         })}
       </div>
 
-      <div className="mx-auto mt-12 max-w-7xl px-5 sm:px-6 lg:px-8 sm:mt-16">
+      <div className="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8 sm:mt-12 lg:mt-16">
         <Reveal>
           <a
             href="#final-cta"

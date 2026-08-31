@@ -99,7 +99,7 @@ export function AboutProcess() {
 
       {/* Main Ambient Glow */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/3 h-[500px] w-[850px] -translate-x-1/2 -translate-y-1/2 opacity-[0.35] blur-[150px]"
+        className="pointer-events-none absolute -left-40 top-1/3 h-[300px] w-[500px] -translate-y-1/2 opacity-[0.25] blur-[120px] sm:h-[500px] sm:w-[850px] sm:opacity-[0.35] sm:blur-[150px]"
         style={{
           background:
             'radial-gradient(ellipse, #169B9A 0%, #063B3D 50%, transparent 75%)',
@@ -108,7 +108,7 @@ export function AboutProcess() {
 
       {/* Gold Ambient Glow */}
       <div
-        className="pointer-events-none absolute right-10 bottom-1/4 h-[350px] w-[350px] opacity-[0.18] blur-[120px]"
+        className="pointer-events-none absolute bottom-1/4 right-10 h-[350px] w-[350px] opacity-[0.18] blur-[120px]"
         style={{
           background:
             'radial-gradient(circle, #D4AF37 0%, transparent 70%)',
@@ -138,14 +138,14 @@ export function AboutProcess() {
             </SectionLabel>
           </div>
 
-          <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-[1.08] tracking-tight text-[#063B3D] sm:text-5xl lg:text-6xl">
+          <h2 className="mt-4 max-w-2xl font-display text-3xl font-semibold leading-[1.08] tracking-tight text-[#063B3D] sm:text-4xl  lg:text-6xl">
             From mechanism{' '}
             <span className="italic font-normal text-teal-700">
               to made.
             </span>
           </h2>
 
-          <p className="mt-4 max-w-xl text-[16px] font-normal leading-relaxed text-ink-700">
+          <p className="mt-4 max-w-xl text-[14px] font-normal leading-relaxed text-ink-700 sm:text-[16px]">
             A transparent four-phase journey uniting precision thermal
             engineering with traditional European furniture artistry.
           </p>
@@ -271,14 +271,14 @@ export function AboutProcess() {
                       duration: 0.4,
                       ease: easeOut,
                     }}
-                    className="group relative overflow-hidden rounded-[30px] border border-white/65 bg-white/30 p-8 shadow-[0_30px_80px_-25px_rgba(6,59,61,0.28)] backdrop-blur-[28px] backdrop-saturate-150 sm:p-10"
+                    className="group relative overflow-hidden rounded-[30px] border border-white/70 bg-white/40 p-8 shadow-[0_30px_80px_-25px_rgba(6,59,61,0.28)] backdrop-blur-[28px] backdrop-saturate-150 sm:p-10"
                   >
 
                     {/* Glass Inner Border */}
-                    <div className="pointer-events-none absolute inset-[1px] rounded-[29px] border border-white/40" />
+                    <div className="pointer-events-none absolute inset-[1px] rounded-[29px] border border-white/50" />
 
                     {/* Glass Reflection */}
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/40 to-transparent opacity-80" />
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/50 to-transparent opacity-80" />
 
                     {/* Teal Internal Glow */}
                     <div
@@ -312,35 +312,35 @@ export function AboutProcess() {
                     </div>
 
                     {/* CARD HEADER */}
-                    <div className="relative z-10 flex items-center justify-between">
+                    <div className="relative z-10 flex items-center justify-between gap-4">
 
-                      {/* White Phase Label */}
-                      <span className="inline-flex items-center gap-2 rounded-full border border-white/45 bg-white/15 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-md">
-                        <Sparkles className="h-3.5 w-3.5 text-gold-300" />
+                      {/* Phase Label */}
+                      <span className="inline-flex items-center gap-2 rounded-full border border-[#063B3D]/15 bg-white/55 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#063B3D] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-md">
+                        <Sparkles className="h-3.5 w-3.5 text-gold-600" />
                         {s.label}
                       </span>
 
                       {/* Step Number */}
-                      <span className="font-display text-4xl font-bold italic text-white/25">
+                      <span className="font-display text-4xl font-bold italic text-[#063B3D]/15">
                         #{s.step}
                       </span>
                     </div>
 
-                    {/* MAIN TITLE — WHITE */}
-                    <h3 className="relative z-10 mt-6 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                    {/* MAIN TITLE */}
+                    <h3 className="relative z-10 mt-6 font-display text-3xl font-semibold tracking-tight text-[#063B3D] sm:text-4xl">
                       {s.title}
                     </h3>
 
-                    {/* DESCRIPTION — SOFT WHITE */}
-                    <p className="relative z-10 mt-4 max-w-2xl text-[16px] font-normal leading-relaxed text-white/90">
+                    {/* DESCRIPTION */}
+                    <p className="relative z-10 mt-4 max-w-2xl text-[16px] font-normal leading-relaxed text-[#315F61]">
                       {s.copy}
                     </p>
 
                     {/* HIGHLIGHTS */}
-                    <div className="relative z-10 mt-8 border-t border-white/30 pt-6">
+                    <div className="relative z-10 mt-8 border-t border-[#063B3D]/15 pt-6">
 
-                      {/* Heading — WHITE */}
-                      <h4 className="text-xs font-bold uppercase tracking-widest text-white">
+                      {/* Heading */}
+                      <h4 className="text-xs font-bold uppercase tracking-widest text-[#063B3D]">
                         Phase Highlights & Deliverables
                       </h4>
 
@@ -348,9 +348,9 @@ export function AboutProcess() {
                         {s.highlights.map((item) => (
                           <div
                             key={item}
-                            className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-[#063B3D]/30 px-3.5 py-2 text-xs font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_6px_18px_-12px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-300 hover:border-white/50 hover:bg-[#063B3D]/45"
+                            className="inline-flex items-center gap-2 rounded-xl border border-[#063B3D]/15 bg-white/55 px-3.5 py-2 text-xs font-semibold text-[#063B3D] shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_6px_18px_-12px_rgba(0,0,0,0.25)] backdrop-blur-md transition-all duration-300 hover:border-teal-700/35 hover:bg-white/75"
                           >
-                            <CheckCircle2 className="h-3.5 w-3.5 text-teal-200" />
+                            <CheckCircle2 className="h-3.5 w-3.5 flex-none text-teal-700" />
                             <span>{item}</span>
                           </div>
                         ))}
@@ -358,17 +358,17 @@ export function AboutProcess() {
                     </div>
 
                     {/* ACTION FOOTER */}
-                    <div className="relative z-10 mt-10 flex items-center justify-between gap-4 rounded-2xl border border-white/30 bg-[#063B3D]/20 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] backdrop-blur-xl sm:p-5">
+                    <div className="relative z-10 mt-10 flex flex-col items-start justify-between gap-4 rounded-2xl border border-[#063B3D]/15 bg-white/45 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] backdrop-blur-xl sm:flex-row sm:items-center sm:p-5">
 
-                      {/* Footer Text — WHITE */}
-                      <span className="text-xs font-medium text-white/85">
+                      {/* Footer Text */}
+                      <span className="text-xs font-medium leading-relaxed text-[#315F61]">
                         Need custom specifications for your project?
                       </span>
 
-                      {/* Gold CTA */}
+                      {/* CTA */}
                       <a
                         href="mailto:contact@climatecraft.com"
-                        className="group/link inline-flex shrink-0 items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-300 transition-colors hover:text-white"
+                        className="group/link inline-flex shrink-0 items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#9A741D] transition-colors hover:text-[#063B3D]"
                       >
                         <span>Inquire Now</span>
 
@@ -377,7 +377,7 @@ export function AboutProcess() {
                     </div>
 
                     {/* Bottom Glass Highlight */}
-                    <div className="pointer-events-none absolute bottom-0 left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
+                    <div className="pointer-events-none absolute bottom-0 left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
                   </motion.div>
                 )
               })}

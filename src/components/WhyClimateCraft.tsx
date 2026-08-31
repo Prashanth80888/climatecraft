@@ -42,12 +42,12 @@ export function WhyClimateCraft() {
               <SectionLabel>Why Climate Craft</SectionLabel>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="mt-5 font-display text-4xl font-normal leading-[1.08] text-cream-100 sm:text-5xl">
+              <h2 className="mt-4 font-display text-3xl font-normal leading-[1.08] text-cream-100 sm:mt-5 sm:text-4xl lg:text-5xl">
                 Engineered with purpose.
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-cream-200">
+              <p className="mt-4 max-w-sm text-[14px] leading-relaxed text-cream-200 sm:mt-5">
                 Every mechanism, every seam, every material is chosen for one reason — to move beautifully for years
                 to come.
               </p>

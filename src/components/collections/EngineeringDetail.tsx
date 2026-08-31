@@ -28,7 +28,7 @@ export function EngineeringDetail() {
           {SPECS.map((spec) => (
             <RevealItem
               key={spec.label}
-              className={`group flex items-start gap-4 border-[#063B3D]/20 px-1 py-7 sm:px-6 ${spec.border}`}
+              className={`group flex items-start gap-3 border-[#063B3D]/20 px-1 py-6 sm:gap-4 sm:px-6 sm:py-7 ${spec.border}`}
             >
               <spec.icon
                 className="h-5 w-5 flex-none text-gold-700 transition-transform duration-500 group-hover:scale-110"

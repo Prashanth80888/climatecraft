@@ -32,7 +32,7 @@ export function WhyDifferent() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* Header + comparison */}
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="grid grid-cols-1 gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-16">
           {/* LEFT — Editorial introduction */}
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-32">
@@ -41,13 +41,13 @@ export function WhyDifferent() {
               </Reveal>
 
               <Reveal delay={0.08}>
-                <h2 className="mt-5 max-w-sm font-display text-3xl font-normal leading-[1.08] text-cream-100 sm:text-4xl lg:text-[2.8rem]">
+                <h2 className="mt-4 max-w-sm font-display text-2xl font-normal leading-[1.08] text-cream-100 sm:mt-5 sm:text-3xl lg:text-4xl lg:text-[2.8rem]">
                   {WHY_DIFFERENT.headline}
                 </h2>
               </Reveal>
 
               <Reveal delay={0.14}>
-                <p className="mt-5 max-w-sm text-[15px] leading-[1.75] text-cream-200">
+                <p className="mt-4 max-w-sm text-[14px] leading-[1.75] text-cream-200 sm:mt-5 sm:text-[15px]">
                   {WHY_DIFFERENT.subheadline}
                 </p>
               </Reveal>
@@ -196,7 +196,7 @@ function ComparisonRow({
         className="pointer-events-none absolute inset-y-0 left-0 w-[2px] origin-top bg-gradient-to-b from-gold-400 via-teal-700 to-transparent"
       />
 
-      <div className="grid grid-cols-1 gap-5 px-5 py-6 sm:grid-cols-[1fr_44px_1fr] sm:items-center sm:gap-5 sm:px-6 sm:py-7">
+      <div className="grid grid-cols-1 gap-4 px-4 py-5 sm:grid-cols-[1fr_44px_1fr] sm:items-center sm:gap-5 sm:px-6 sm:py-7">
         {/* Traditional */}
         <div className="relative min-w-0">
           <span className="mb-2 block font-display text-[10px] tracking-[0.16em] text-ink-900/25">
@@ -272,7 +272,7 @@ function DifferentiatorCallout() {
       {/* Decorative border */}
       <div className="pointer-events-none absolute inset-[1px] rounded-[29px] border border-white/45" />
 
-      <div className="relative grid gap-10 p-7 sm:p-10 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-12 lg:p-12">
+      <div className="relative grid gap-8 p-5 sm:gap-10 sm:p-7 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-12 lg:p-12">
         {/* Icon */}
         <motion.div
           whileHover={{ rotate: 8, scale: 1.06 }}
@@ -292,7 +292,7 @@ function DifferentiatorCallout() {
             <span className="h-px w-10 bg-gradient-to-r from-teal-700/30 to-transparent" />
           </div>
 
-          <h3 className="mt-3 font-display text-2xl font-normal leading-[1.12] text-cream-100 sm:text-3xl lg:text-[2.15rem]">
+          <h3 className="mt-3 font-display text-xl font-normal leading-[1.12] text-cream-100 sm:text-2xl lg:text-3xl lg:text-[2.15rem]">
             Personal climate,
             <br />
             <span className="italic text-teal-700">
@@ -300,7 +300,7 @@ function DifferentiatorCallout() {
             </span>
           </h3>
 
-          <p className="mt-4 max-w-3xl text-[14.5px] leading-[1.75] text-cream-200 sm:text-[15px]">
+          <p className="mt-3 max-w-3xl text-[13px] leading-[1.75] text-cream-200 sm:mt-4 sm:text-[14.5px] lg:text-[15px]">
             Traditional seating stops at cushioning and recline. Climate Craft
             continues into intelligent temperature control — liquid-based,
             precisely zoned (15°C–35°C), controlled by voice, touchscreen or
@@ -309,7 +309,7 @@ function DifferentiatorCallout() {
           </p>
 
           {/* Feature pills */}
-          <div className="mt-7 flex flex-wrap gap-2.5">
+          <div className="mt-5 flex flex-wrap gap-2 sm:mt-7 sm:gap-2.5">
             {features.map((item, i) => (
               <motion.span
                 key={item}

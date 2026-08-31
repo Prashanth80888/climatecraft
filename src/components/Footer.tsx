@@ -118,7 +118,7 @@ export function Footer() {
           KEEPING THE ORIGINAL 4-COLUMN ALIGNMENT
           ============================================================ */}
 
-      <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
 
         <Reveal amount={0.2}>
 

@@ -1,11 +1,18 @@
-import { useRef } from 'react'
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { Mic, Droplets } from 'lucide-react'
 import { HOME_PRODUCTS, PRODUCT_FAMILIES } from '../../data/homeProducts'
 import { SectionLabel } from '../ui/SectionLabel'
 import { Reveal } from '../ui/Reveal'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
+
+const HERO_SLIDES = [
+  { slug: 'craft-motion', image: '/images/products/craft-motion/01.png', name: 'Craft Motion', label: 'Motorised Comfort' },
+  { slug: 'craft-classic', image: '/images/products/craft-classic/01.png', name: 'Craft Classic', label: 'Classic' },
+  { slug: 'climate-craft-signature', image: '/images/products/climate-craft-signature/01.png', name: 'Climate Craft | Signature', label: 'Climate Smart' },
+] as const
 
 export function CollectionsHero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -19,7 +26,14 @@ export function CollectionsHero() {
   const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '10%'])
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.05])
 
-  const heroProduct = HOME_PRODUCTS[0]
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
 
   return (
     <section
@@ -65,7 +79,7 @@ export function CollectionsHero() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <h1 className="mt-7 max-w-xl font-display text-[2.6rem] font-normal leading-[1.05] text-[#063B3D] sm:text-6xl lg:text-[4.25rem]">
+              <h1 className="mt-5 max-w-xl font-display text-[2rem] font-normal leading-[1.05] text-[#063B3D] sm:mt-7 sm:text-[2.6rem] lg:text-6xl lg:text-[4.25rem]">
                 Liquid climate
                 <br />
                 <span className="relative inline-block italic text-teal-700">
@@ -86,7 +100,7 @@ export function CollectionsHero() {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <p className="mt-7 max-w-[540px] text-[15px] leading-[1.7] text-ink-700 sm:text-base">
+              <p className="mt-5 max-w-[540px] text-[14px] leading-[1.7] text-ink-700 sm:mt-7 sm:text-[15px] lg:text-base">
                 A smarter way to experience comfort — using a
                 water-based liquid climate system engineered to
                 intelligently manage the temperature around you.
@@ -207,11 +221,24 @@ export function CollectionsHero() {
             <Reveal delay={0.25} className="group flex flex-1 flex-col">
               <div className="relative aspect-[3/4] w-full flex-1 overflow-hidden rounded-[26px] border border-white/70 shadow-[0_40px_90px_-28px_rgba(6,59,61,0.35)] transition-shadow duration-500 ease-out group-hover:shadow-[0_55px_120px_-24px_rgba(6,59,61,0.45)] sm:aspect-[4/5] lg:aspect-auto lg:min-h-[520px]">
 
-                <img
-                  src="/images/DSC05004.png"
-                  alt={heroProduct.name}
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-                />
+                <Link
+                  to={`/products/${HERO_SLIDES[currentSlide].slug}`}
+                  className="absolute inset-0"
+                  aria-label={`View ${HERO_SLIDES[currentSlide].name}`}
+                >
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentSlide}
+                      src={HERO_SLIDES[currentSlide].image}
+                      alt={HERO_SLIDES[currentSlide].name}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1, ease: 'easeInOut' }}
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  </AnimatePresence>
+                </Link>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#063B3D]/65 via-[#063B3D]/15 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
@@ -238,7 +265,7 @@ export function CollectionsHero() {
                     ease: easeOut,
                   }}
                   whileHover={{ y: -3, scale: 1.02 }}
-                  className="absolute bottom-5 left-5 right-5 flex cursor-default items-center justify-between gap-3 rounded-2xl border border-white/50 bg-white/60 px-4 py-3 backdrop-blur-md transition-colors duration-300 ease-out hover:border-white/80 hover:bg-white/80 hover:shadow-[0_18px_40px_-16px_rgba(6,59,61,0.35)] sm:bottom-6 sm:left-6 sm:right-6"
+                  className="pointer-events-none absolute bottom-5 left-5 right-5 flex cursor-default items-center justify-between gap-3 rounded-2xl border border-white/50 bg-white/60 px-4 py-3 backdrop-blur-md transition-colors duration-300 ease-out hover:border-white/80 hover:bg-white/80 hover:shadow-[0_18px_40px_-16px_rgba(6,59,61,0.35)] sm:bottom-6 sm:left-6 sm:right-6"
                 >
                   <div className="min-w-0">
                     <span className="block text-[9.5px] font-medium uppercase tracking-widest text-gold-700">
@@ -246,7 +273,7 @@ export function CollectionsHero() {
                     </span>
 
                     <span className="mt-0.5 block truncate font-display text-base italic text-[#063B3D]">
-                      {heroProduct.name}
+                      {HERO_SLIDES[currentSlide].name}
                     </span>
                   </div>
 

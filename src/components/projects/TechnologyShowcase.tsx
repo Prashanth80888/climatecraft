@@ -273,21 +273,34 @@ function ClimateRangeItem({
       }}
       className="group/range flex flex-col items-center text-center"
     >
-      {/* Circle */}
+      {/* Interactive temperature circle */}
       <motion.div
         whileHover={{
-          scale: 1.05,
-          y: -4,
+          scale: 1.08,
+          y: -7,
+          rotate: isCooling ? -1 : 1,
         }}
-        transition={{
-          duration: 0.35,
-          ease: easeOut,
-        }}
-        className="relative h-32 w-32 sm:h-36 sm:w-36"
+        whileTap={{ scale: 0.98 }}
+        transition={{ duration: 0.35, ease: easeOut }}
+        className={`relative h-36 w-36 sm:h-44 sm:w-44 ${
+          isCooling
+            ? 'drop-shadow-[0_18px_45px_rgba(22,155,154,0.18)]'
+            : 'drop-shadow-[0_18px_45px_rgba(240,169,44,0.18)]'
+        }`}
       >
-        {/* Outer glow */}
-        <div
-          className={`absolute inset-3 rounded-full opacity-0 blur-xl transition-opacity duration-500 group-hover/range:opacity-30 ${
+        {/* Animated outer glow */}
+        <motion.div
+          animate={{
+            scale: [0.94, 1.06, 0.94],
+            opacity: [0.18, 0.34, 0.18],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay,
+          }}
+          className={`absolute inset-2 rounded-full blur-2xl ${
             isCooling ? 'bg-teal-700' : 'bg-gold-400'
           }`}
         />
@@ -309,25 +322,19 @@ function ClimateRangeItem({
             strokeWidth="2"
           />
 
+          {/* Animated progress ring */}
           <motion.circle
             cx="60"
             cy="60"
             r="52"
             fill="none"
             stroke={isCooling ? '#169B9A' : '#F0A92C'}
-            strokeWidth="3"
+            strokeWidth="3.5"
             strokeLinecap="round"
             strokeDasharray="326.7"
-            initial={{
-              strokeDashoffset: 326.7,
-            }}
-            whileInView={{
-              strokeDashoffset: 81.7,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.5,
-            }}
+            initial={{ strokeDashoffset: 326.7 }}
+            whileInView={{ strokeDashoffset: 81.7 }}
+            viewport={{ once: true, amount: 0.5 }}
             transition={{
               duration: 1.5,
               delay: delay + 0.2,
@@ -336,34 +343,85 @@ function ClimateRangeItem({
           />
         </svg>
 
-        {/* Center glass */}
-        <div className="absolute inset-[13px] flex items-center justify-center rounded-full border border-white/70 bg-white/55 shadow-inner backdrop-blur-xl">
-          <Icon
-            className={`h-9 w-9 ${
-              isCooling ? 'text-teal-700' : 'text-gold-600'
-            }`}
-            strokeWidth={1.35}
-          />
-        </div>
+        {/* Center glass + animated icon */}
+        <motion.div
+          whileHover={{ scale: 1.06 }}
+          className="absolute inset-[13px] flex items-center justify-center rounded-full border border-white/70 bg-white/60 shadow-inner backdrop-blur-xl"
+        >
+          <motion.div
+            animate={{
+              y: [0, -2, 0],
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              duration: 2.8,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay,
+            }}
+          >
+            <Icon
+              className={`h-10 w-10 sm:h-11 sm:w-11 ${
+                isCooling ? 'text-teal-700' : 'text-gold-600'
+              }`}
+              strokeWidth={1.35}
+            />
+          </motion.div>
+        </motion.div>
       </motion.div>
 
-      {/* Temperature */}
-      <div className="mt-5 font-display text-4xl font-medium tracking-tight text-[#063B3D] sm:text-5xl">
+      {/* Large animated temperature */}
+      <motion.div
+        animate={{
+          opacity: [0.86, 1, 0.86],
+          y: [0, -2, 0],
+        }}
+        transition={{
+          duration: 2.8,
+          repeat: Infinity,
+          ease: 'easeInOut',
+          delay,
+        }}
+        className={`mt-5 font-display text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl ${
+          isCooling ? 'text-teal-700' : 'text-gold-700'
+        }`}
+      >
         {temperature}
-      </div>
+      </motion.div>
 
       {/* Label */}
       <div
-        className={`mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] ${
+        className={`mt-2 text-[12px] font-bold uppercase tracking-[0.22em] sm:text-[13px] ${
           isCooling ? 'text-teal-700' : 'text-gold-700'
         }`}
       >
         {label}
       </div>
 
-      <p className="mt-3 max-w-xs text-[12.5px] leading-[1.7] text-ink-700">
+      <p className="mt-3 max-w-xs text-[13px] leading-[1.7] text-ink-700 sm:text-[13.5px]">
         {description}
       </p>
+
+      {/* Animated active-zone indicator */}
+      <motion.div
+        className={`mt-4 flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.18em] ${
+          isCooling ? 'text-teal-700/75' : 'text-gold-700/80'
+        }`}
+        animate={{ opacity: [0.55, 1, 0.55] }}
+        transition={{
+          duration: 2.2,
+          repeat: Infinity,
+          ease: 'easeInOut',
+          delay: delay + 0.4,
+        }}
+      >
+        <span
+          className={`h-1.5 w-1.5 rounded-full ${
+            isCooling ? 'bg-teal-700' : 'bg-gold-500'
+          }`}
+        />
+        {isCooling ? 'Active cooling zone' : 'Active heating zone'}
+      </motion.div>
     </motion.div>
   )
 }

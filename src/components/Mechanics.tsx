@@ -102,7 +102,7 @@ export function Mechanics() {
               </span>
             </Reveal>
 
-            <h2 className="font-display text-[2rem] font-normal leading-[1.08] text-[#04211F] drop-shadow-[0_1px_2px_rgba(255,255,255,0.55)] sm:text-[2.8rem] lg:text-[3rem]">
+            <h2 className="font-display text-[1.65rem] font-normal leading-[1.08] text-[#04211F] drop-shadow-[0_1px_2px_rgba(255,255,255,0.55)] sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3rem]">
               <Reveal y={15}>
                 <span className="block">
                   Intelligent
@@ -123,7 +123,7 @@ export function Mechanics() {
             </h2>
 
             <Reveal y={15} delay={0.28}>
-              <p className="mt-5 max-w-md text-sm leading-relaxed text-[#0C302F]/75 sm:text-[15px]">
+              <p className="mt-4 max-w-md text-[13px] leading-relaxed text-[#0C302F]/75 sm:mt-5 sm:text-sm lg:text-[15px]">
                 Climate Craft brings together climate control, voice and
                 remote operation, and smooth electric movement to create a
                 more effortless seating experience.
@@ -175,7 +175,7 @@ export function Mechanics() {
                     </span>
 
                     <div>
-                      <h4 className="text-[13px] font-semibold text-[#063B3D]">
+                      <h4 className="text-[18px] font-semibold leading-tight text-[#063B3D] sm:text-[18px] lg:text-[19px]">
                         Climate Control
                       </h4>
 
@@ -195,7 +195,7 @@ export function Mechanics() {
                     </span>
 
                     <div>
-                      <h4 className="text-[13px] font-semibold text-[#063B3D]">
+                      <h4 className="text-[18px] font-semibold leading-tight text-[#063B3D] sm:text-[18px] lg:text-[19px]">
                         Voice Control
                       </h4>
 
@@ -215,7 +215,7 @@ export function Mechanics() {
                     </span>
 
                     <div>
-                      <h4 className="text-[13px] font-semibold text-[#063B3D]">
+                      <h4 className="text-[18px] font-semibold leading-tight text-[#063B3D] sm:text-[18px] lg:text-[19px]">
                         Remote Control
                       </h4>
 
@@ -235,7 +235,7 @@ export function Mechanics() {
                     </span>
 
                     <div>
-                      <h4 className="text-[13px] font-semibold text-[#063B3D]">
+                      <h4 className="text-[18px] font-semibold leading-tight text-[#063B3D] sm:text-[18px] lg:text-[19px]">
                         Quiet Electric Motor
                       </h4>
 

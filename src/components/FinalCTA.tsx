@@ -39,7 +39,7 @@ export function FinalCTA() {
       <div className="grain-overlay opacity-20" />
 
       {/* Content */}
-      <div className="relative mx-auto max-w-4xl px-5 py-20 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+      <div className="relative mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-8 lg:py-28">
         <Reveal>
           <div className="flex justify-center">
             <SectionLabel>
@@ -49,7 +49,7 @@ export function FinalCTA() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <h2 className="mt-5 font-display text-3xl font-normal leading-[1.1] text-white sm:text-4xl lg:text-[3rem]">
+          <h2 className="mt-4 font-display text-2xl font-normal leading-[1.1] text-white sm:mt-5 sm:text-3xl lg:text-4xl lg:text-[3rem]">
             Let's configure your{' '}
             <span className="relative inline-block italic text-[#F3C96B]">
               next piece.
@@ -59,7 +59,7 @@ export function FinalCTA() {
         </Reveal>
 
         <Reveal delay={0.16}>
-          <p className="mx-auto mt-5 max-w-xl text-[15px] leading-7 text-white/85 sm:text-base">
+          <p className="mx-auto mt-4 max-w-xl text-[14px] leading-7 text-white/85 sm:mt-5 sm:text-base">
             Every Climate Craft piece is engineered to order and quoted for
             your space — never sold off a shelf.
           </p>
@@ -67,7 +67,7 @@ export function FinalCTA() {
 
         {/* CTA Buttons */}
         <Reveal delay={0.24}>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:mt-9 sm:flex-row sm:gap-4">
             {/* Request Quote */}
             <Link
               to="/contact"

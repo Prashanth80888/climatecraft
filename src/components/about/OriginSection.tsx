@@ -44,11 +44,11 @@ export function OriginSection() {
                 <SectionLabel>The Origin</SectionLabel>
               </div>
 
-              <h2 className="mt-5 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-[#063B3D] sm:text-5xl lg:text-[2.85rem]">
+              <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.08] tracking-tight text-[#063B3D] sm:mt-5 sm:text-4xl lg:text-5xl lg:text-[2.85rem]">
                 A mechanism, <span className="italic font-normal text-teal-700">then a chair.</span>
               </h2>
 
-              <p className="mt-5 text-[16px] font-normal leading-relaxed text-ink-700 sm:text-[17px]">
+              <p className="mt-4 text-[14px] font-normal leading-relaxed text-ink-700 sm:mt-5 sm:text-[16px] lg:text-[17px]">
                 Climate Craft was founded in 2009 in Antwerp, Belgium — still the address every piece is engineered from today. The company was built on a simple ordering of priorities: <strong className="font-semibold text-[#063B3D]">the mechanism comes first</strong>, and everything else is crafted to honour it.
               </p>
             </Reveal>
@@ -101,17 +101,17 @@ export function OriginSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#063B3D]/60 via-transparent to-transparent opacity-80" />
 
                   {/* Location Floating Badge Overlay */}
-                  <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full border border-white/40 bg-white/85 px-4 py-2 shadow-lg backdrop-blur-md">
-                    <MapPin className="h-4 w-4 text-teal-700 animate-bounce" />
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#063B3D]">
+                  <div className="absolute bottom-4 left-4 flex items-center gap-1.5 rounded-full border border-white/40 bg-white/85 px-3 py-1.5 shadow-lg backdrop-blur-md sm:bottom-5 sm:left-5 sm:gap-2 sm:px-4 sm:py-2">
+                    <MapPin className="h-3.5 w-3.5 text-teal-700 animate-bounce sm:h-4 sm:w-4" />
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#063B3D] sm:text-xs">
                       Antwerp, Belgium · Est. 2009
                     </span>
                   </div>
 
                   {/* Quality Seal Floating Pill */}
-                  <div className="absolute top-5 right-5 flex items-center gap-1.5 rounded-full border border-gold-400/50 bg-[#063B3D]/80 px-3.5 py-1.5 shadow-md backdrop-blur-md">
-                    <Sparkles className="h-3.5 w-3.5 text-gold-400" />
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white">
+                  <div className="absolute top-4 right-4 flex items-center gap-1 rounded-full border border-gold-400/50 bg-[#063B3D]/80 px-2.5 py-1 shadow-md backdrop-blur-md sm:top-5 sm:right-5 sm:gap-1.5 sm:px-3.5 sm:py-1.5">
+                    <Sparkles className="h-3 w-3 text-gold-400 sm:h-3.5 sm:w-3.5" />
+                    <span className="text-[9px] font-bold uppercase tracking-widest text-white sm:text-[10px]">
                       Patented Motion
                     </span>
                   </div>

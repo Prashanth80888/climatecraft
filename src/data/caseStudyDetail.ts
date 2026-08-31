@@ -114,6 +114,10 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
           ],
         },
       },
+      {
+        heading: 'Suitable Products',
+        body: 'Smart Electric Recliner, Smart Two-Seater Recliner, Smart Three-Seater Recliner, Manual Recliner.',
+      },
     ],
     sidebarTitle: 'Project Summary',
     sidebarStats: [
@@ -142,6 +146,22 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       {
         q: 'What electrical requirements for home office setup?',
         a: 'Standard 220V/240V Indian domestic wall sockets (5A).',
+      },
+      {
+        q: 'Is this recliner suitable for software engineers?',
+        a: 'Yes. It is a good fit for people who spend long hours at a desk and want a premium comfort seat at home.',
+      },
+      {
+        q: 'Does it work well for work-from-home setups?',
+        a: 'Yes. It works well as a relaxation seat inside a home office, living room, or apartment.',
+      },
+      {
+        q: 'Does it use fan-based cooling?',
+        a: 'No. It uses patented liquid-based temperature pad technology instead of blower-style cooling.',
+      },
+      {
+        q: 'Can it be controlled easily?',
+        a: 'Yes. It can be controlled through voice commands, touchscreen, and remote.',
       },
     ],
   },
@@ -182,6 +202,10 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
           'It is the absolute centerpiece of our new home. Coming back from work and switching on the active cooling feature makes every evening feel like a resort stay,',
         attribution: 'says Ananya.',
       },
+      {
+        heading: 'Suitable Products',
+        body: 'Smart Electric Recliner, Smart Two-Seater Recliner, Smart Three-Seater Recliner, Manual Recliner.',
+      },
     ],
     sidebarTitle: 'Whitefield Apartment',
     sidebarStats: [
@@ -204,6 +228,22 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       {
         q: 'Can both seats operate at different temperatures simultaneously?',
         a: 'Yes, all Climate Craft multi-seat sofas feature independent thermal loops.',
+      },
+      {
+        q: 'Is this product suitable for new homeowners?',
+        a: 'Yes. It is designed for people who want one premium piece that improves the look and comfort of a newly set-up home.',
+      },
+      {
+        q: 'Does it work well in apartments?',
+        a: 'Yes. It is suitable for modern apartments, especially living rooms where design and comfort both matter.',
+      },
+      {
+        q: 'Does it use fan-based cooling?',
+        a: 'No. It uses patented liquid-based temperature pad technology instead of blower-style cooling.',
+      },
+      {
+        q: 'Can it be controlled easily?',
+        a: 'Yes. It can be operated through voice commands, a touchscreen, and a remote.',
       },
     ],
   },
@@ -241,6 +281,10 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       {
         heading: "Mother's Experience",
         quote: 'The power-lift feature and subtle cooling made my late trimester and early nursing weeks infinitely easier.',
+      },
+      {
+        heading: 'Products Featured',
+        body: 'Smart Electric Recliner, Smart Two-Seater Recliner, Smart Three-Seater Recliner, Manual Recliner.',
       },
     ],
     sidebarTitle: 'Koramangala Nursery',
@@ -301,6 +345,10 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       {
         heading: 'Athlete Testimonial',
         quote: 'Using the 16°C cooling setting immediately after a long humid run reduces my recovery time drastically.',
+      },
+      {
+        heading: 'Products Featured',
+        body: 'Smart Electric Recliner, Smart Two-Seater Recliner, Smart Three-Seater Recliner, Manual Recliner.',
       },
     ],
     sidebarTitle: 'Indiranagar Recovery Suite',
@@ -363,6 +411,14 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
         quote: 'Climate Craft gave us the rare combination of haute couture furniture design and genuine high-technology.',
         attribution: 'Lead architect Rajesh Menon.',
       },
+      {
+        heading: 'Ideal Applications',
+        body: 'Luxury villas, Premium apartments, Penthouses, Designer living rooms, Home theatres, Executive lounges, Private entertainment spaces, Smart homes, High-end hospitality projects.',
+      },
+      {
+        heading: 'Products Available',
+        body: 'Smart Electric Recliner, Smart Two-Seater Recliner, Smart Three-Seater Recliner, Manual Recliner.',
+      },
     ],
     sidebarTitle: 'Jayanagar Villa',
     sidebarStats: [
@@ -385,6 +441,22 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       {
         q: 'Do you integrate with home automation systems like Crestron or Control4?',
         a: 'Yes, via Wi-Fi/Zigbee APIs.',
+      },
+      {
+        q: 'Is this furniture suitable for luxury homes?',
+        a: 'Yes. It is designed for homeowners who want premium aesthetics combined with advanced comfort technology.',
+      },
+      {
+        q: 'Does the cooling system use fans?',
+        a: 'No. It uses patented liquid-based temperature pad technology instead of fan-based cooling systems.',
+      },
+      {
+        q: 'Can it be integrated into modern smart homes?',
+        a: 'Yes. Voice control, touchscreen operation, and remote functionality complement contemporary smart home environments.',
+      },
+      {
+        q: 'Is it suitable for everyday use?',
+        a: 'Yes. The recliners are designed for daily relaxation, entertainment, reading, and family gatherings.',
       },
     ],
   },
@@ -423,6 +495,14 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
         heading: 'Homeowner Review',
         quote: 'The silent motors and temperature regulation completely change the movie watching experience.',
       },
+      {
+        heading: 'Ideal Applications',
+        body: 'Home theatres, Luxury apartments, Villas, Media rooms, Entertainment lounges, Premium living rooms, Private cinemas, High-end interior projects.',
+      },
+      {
+        heading: 'Products Available',
+        body: 'Smart Electric Recliner, Smart Two-Seater Recliner, Smart Three-Seater Recliner, Manual Recliner.',
+      },
     ],
     sidebarTitle: 'Dollars Colony Cinema',
     sidebarStats: [
@@ -445,6 +525,22 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       {
         q: 'Can the cupholders keep beverages chilled?',
         a: 'Yes, Peltier armrest cupholders maintain 8°C.',
+      },
+      {
+        q: 'Is this recliner suitable for a home theatre?',
+        a: 'Yes. It is designed for extended entertainment sessions with reclining, temperature control, and multiple control options.',
+      },
+      {
+        q: 'Does the cooling system use fans?',
+        a: 'No. It uses patented liquid-based temperature pad technology instead of fan-based cooling.',
+      },
+      {
+        q: 'Can every family member adjust the settings?',
+        a: 'Yes. Temperature and reclining preferences can be adjusted using the touchscreen, remote, or voice commands.',
+      },
+      {
+        q: 'Can this be installed in custom home theatre projects?',
+        a: 'Yes. The recliners are suitable for dedicated home theatres, media rooms, and luxury entertainment spaces.',
       },
     ],
   },
@@ -484,6 +580,14 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
         quote: 'My father has regained his full independence in the living room.',
         attribution: 'Daughter Sunitha.',
       },
+      {
+        heading: 'Ideal Users',
+        body: 'Senior citizens, Retired professionals, Parents, Grandparents, Luxury homeowners, Home theatre enthusiasts, Readers, Television viewers, Professionals seeking premium home comfort, Anyone looking for advanced smart furniture.',
+      },
+      {
+        heading: 'Products Available',
+        body: 'Smart Electric Recliner, Smart Two-Seater Smart Sofa, Smart Three-Seater Smart Sofa, Manual Recliner.',
+      },
     ],
     sidebarTitle: 'Sadashivanagar Residence',
     sidebarStats: [
@@ -506,6 +610,22 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       {
         q: 'Is the remote easy for elderly users?',
         a: 'Simplified two-button tactile controllers with soft glow backlighting.',
+      },
+      {
+        q: 'Is this recliner suitable for senior citizens?',
+        a: 'Yes. Its voice control, remote operation, touchscreen interface, and smooth reclining are designed to make everyday use simple and convenient.',
+      },
+      {
+        q: 'Does the cooling system use fans or air blowers?',
+        a: 'No. It uses a patented liquid-based temperature pad technology instead of fan-based cooling.',
+      },
+      {
+        q: 'What temperatures does it support?',
+        a: 'The system provides adjustable cooling down to 15°C and heating up to 35°C.',
+      },
+      {
+        q: 'Can multiple family members use it?',
+        a: 'Yes. Temperature and reclining preferences can be adjusted easily for different users.',
       },
     ],
   },
@@ -545,6 +665,10 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
         quote: 'The Climate Craft lounge chairs have transformed our VIP waiting suite into a world-class environment.',
         attribution: 'Dr. Suresh Rao, Managing Director.',
       },
+      {
+        heading: 'Products Featured',
+        body: 'Smart Electric Recliner, Smart Two-Seater Recliner, Smart Three-Seater Recliner, Manual Recliner.',
+      },
     ],
     sidebarTitle: 'Cunningham Road Clinic',
     sidebarStats: [
@@ -567,6 +691,22 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       {
         q: 'Do you offer commercial warranties?',
         a: '5-year commercial warranties covering motors, liquid thermal modules, and structural frames.',
+      },
+      {
+        q: 'Is this recliner suitable for clinics and hospitals?',
+        a: 'Yes. It is suitable for premium healthcare spaces that want a more comfortable and modern seating experience.',
+      },
+      {
+        q: 'Does it use fan-based cooling?',
+        a: 'No. It uses patented liquid-based temperature pad technology instead of blower-style cooling.',
+      },
+      {
+        q: 'Can it be used in waiting areas?',
+        a: 'Yes. It is suitable for waiting areas, lounges, and private consultation spaces.',
+      },
+      {
+        q: 'Does it require complicated operation?',
+        a: 'No. It can be controlled using voice commands, a touchscreen, or a remote.',
       },
     ],
   },

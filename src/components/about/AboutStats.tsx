@@ -9,7 +9,7 @@ import { Reveal } from '../ui/Reveal'
 // the Footer's copyright line, the fabric count from a real client testimonial
 // already live on Collections, and the product family count from the product data.
 // Nothing here is a marketing estimate.
-const FOUNDING_YEAR = 2009
+const FOUNDING_YEAR = 2020
 const ARCHIVE_FABRIC_COUNT = 2000
 
 const STATS = [
@@ -44,8 +44,8 @@ function Stat({
   const count = useCountUp(value, active)
 
   return (
-    <div className="flex flex-col items-start border-t border-ink-900/10 px-1 py-9 first:border-t-0 sm:border-t-0 sm:border-l sm:px-7 sm:py-2 sm:first:border-l-0">
-      <span className="font-display text-5xl tabular-nums text-gold-700 sm:text-6xl">
+    <div className="flex flex-col items-start border-t border-ink-900/10 px-1 py-7 first:border-t-0 sm:border-t-0 sm:border-l sm:px-7 sm:py-2 sm:first:border-l-0">
+      <span className="font-display text-4xl tabular-nums text-gold-700 sm:text-5xl lg:text-6xl">
         {count}
         {suffix}
       </span>

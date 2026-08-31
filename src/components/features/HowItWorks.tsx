@@ -46,7 +46,7 @@ function Step({ step, index }: { step: (typeof STEPS)[number]; index: number }) 
   const Icon = step.icon
 
   return (
-    <div ref={ref} className="relative flex items-start gap-6 py-8 sm:gap-8 sm:py-10">
+    <div ref={ref} className="relative flex items-start gap-4 py-6 sm:gap-6 sm:py-8 lg:gap-8 lg:py-10">
       <div className="relative flex flex-none flex-col items-center">
         <motion.span
           animate={{
@@ -55,7 +55,7 @@ function Step({ step, index }: { step: (typeof STEPS)[number]; index: number }) 
             scale: inView ? 1.08 : 1,
           }}
           transition={{ duration: 0.5, ease: easeOut }}
-          className="flex h-14 w-14 items-center justify-center rounded-full border sm:h-16 sm:w-16"
+          className="flex h-12 w-12 items-center justify-center rounded-full border sm:h-14 sm:w-14 lg:h-16 lg:w-16"
         >
           <Icon className={`h-5 w-5 transition-colors duration-500 ${inView ? 'text-gold-700' : 'text-ink-700'}`} strokeWidth={1.5} />
         </motion.span>
@@ -70,8 +70,8 @@ function Step({ step, index }: { step: (typeof STEPS)[number]; index: number }) 
         className="max-w-lg pb-2"
       >
         <span className="font-display text-sm italic tabular-nums text-gold-700/80">{step.number}</span>
-        <h3 className="mt-1 font-display text-2xl font-normal text-cream-100 sm:text-3xl">{step.title}</h3>
-        <p className="mt-3 text-[14.5px] leading-relaxed text-cream-200">{step.copy}</p>
+        <h3 className="mt-1 font-display text-xl font-normal text-cream-100 sm:text-2xl lg:text-3xl">{step.title}</h3>
+        <p className="mt-2 text-[13px] leading-relaxed text-cream-200 sm:mt-3 sm:text-[14.5px]">{step.copy}</p>
       </motion.div>
     </div>
   )

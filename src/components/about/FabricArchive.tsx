@@ -45,15 +45,15 @@ export function FabricArchive() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#063B3D]/70 via-transparent to-transparent opacity-85" />
 
                   {/* Top Floating Badge */}
-                  <div className="absolute top-5 left-5 flex items-center gap-2 rounded-full border border-white/40 bg-[#063B3D]/80 px-4 py-1.5 shadow-md backdrop-blur-md">
-                    <Palette className="h-3.5 w-3.5 text-gold-400" />
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-white">
+                  <div className="absolute top-4 left-4 flex items-center gap-1.5 rounded-full border border-white/40 bg-[#063B3D]/80 px-3 py-1 shadow-md backdrop-blur-md sm:top-5 sm:left-5 sm:gap-2 sm:px-4 sm:py-1.5">
+                    <Palette className="h-3 w-3 text-gold-400 sm:h-3.5 sm:w-3.5" />
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-white sm:text-[11px]">
                       2,000+ Curated Specs
                     </span>
                   </div>
 
                   {/* Bottom Image Caption Badge */}
-                  <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-2xl border border-white/30 bg-white/85 p-4 shadow-lg backdrop-blur-md">
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-white/30 bg-white/85 p-3 shadow-lg backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-5 sm:rounded-2xl sm:p-4">
                     <div>
                       <p className="text-xs font-bold text-[#063B3D]">Digital Twin Calibration</p>
                       <p className="text-[11px] font-medium text-ink-700">100% Color-Accurate Rendering</p>
@@ -75,11 +75,11 @@ export function FabricArchive() {
                 <SectionLabel>The Fabric Archive</SectionLabel>
               </div>
 
-              <h2 className="mt-5 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-[#063B3D] sm:text-5xl lg:text-[2.85rem]">
+              <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.08] tracking-tight text-[#063B3D] sm:mt-5 sm:text-4xl lg:text-5xl lg:text-[2.85rem]">
                 Two thousand fabrics, <span className="italic font-normal text-teal-700">digitised.</span>
               </h2>
 
-              <p className="mt-5 text-[16px] font-normal leading-relaxed text-ink-700 sm:text-[17px]">
+              <p className="mt-4 text-[14px] font-normal leading-relaxed text-ink-700 sm:mt-5 sm:text-[16px] lg:text-[17px]">
                 A master curated archive spanning bouclé, velvet, mohair, and performance weaves. Color-matched and high-resolution digitised so partners can specify with absolute confidence before a single piece is cut. Every Climate Craft order is tailored individually from it — never held as stock.
               </p>
             </Reveal>
@@ -104,7 +104,7 @@ export function FabricArchive() {
               <motion.div
                 whileHover={{ y: -2 }}
                 transition={{ duration: 0.2 }}
-                className="relative mt-8 overflow-hidden rounded-2xl border border-white/90 bg-white/85 p-6 shadow-[0_15px_35px_-10px_rgba(6,59,61,0.15)] backdrop-blur-xl"
+                className="relative mt-6 overflow-hidden rounded-xl border border-white/90 bg-white/85 p-4 shadow-[0_15px_35px_-10px_rgba(6,59,61,0.15)] backdrop-blur-xl sm:mt-8 sm:rounded-2xl sm:p-6"
               >
                 {/* Top Accent Strip */}
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#063B3D] via-[#169B9A] to-gold-400" />

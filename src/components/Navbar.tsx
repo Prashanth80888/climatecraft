@@ -53,10 +53,10 @@ export function Navbar() {
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.9, ease: easeOut, delay: 0.15 }}
-        className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 sm:pt-6"
+        className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-6"
       >
           <div
-          className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border px-5 py-3 transition-all duration-500 sm:px-7 sm:py-3.5 ${
+          className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border px-4 py-2.5 transition-all duration-500 sm:px-7 sm:py-3.5 ${
             scrolled
               ? 'border-white/75 bg-white/72 shadow-[0_24px_60px_-24px_rgba(6,61,60,0.22),inset_0_1px_0_rgba(255,255,255,0.92)] backdrop-blur-[24px] saturate-[145%]'
               : 'border-white/60 bg-white/50 shadow-[0_12px_40px_-20px_rgba(6,61,60,0.16),inset_0_1px_0_rgba(255,255,255,0.88)] backdrop-blur-[22px] saturate-[135%]'
@@ -68,7 +68,7 @@ export function Navbar() {
               alt="Climate Craft"
               className="h-9 w-9 object-contain transition-transform duration-500 group-hover:scale-105 sm:h-10 sm:w-10"
             />
-            <span className="font-display text-[18px] tracking-[0.01em] text-ink-900 sm:text-xl">
+            <span className="font-display text-[16px] tracking-[0.01em] text-ink-900 sm:text-xl">
               Climate Craft
             </span>
           </Link>
@@ -128,7 +128,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -12, scale: 0.98 }}
               transition={{ duration: 0.35, ease: easeOut }}
-              className="mx-auto mt-2 max-w-7xl overflow-hidden rounded-3xl border border-white/65 bg-white/82 p-3 shadow-[0_36px_80px_-28px_rgba(18,59,61,0.28),inset_0_1px_0_rgba(255,255,255,0.88)] backdrop-blur-2xl lg:hidden"
+              className="mx-auto mt-2 max-w-7xl overflow-hidden rounded-3xl border border-white/65 bg-white/82 p-2.5 shadow-[0_36px_80px_-28px_rgba(18,59,61,0.28),inset_0_1px_0_rgba(255,255,255,0.88)] backdrop-blur-2xl sm:p-3 lg:hidden"
             >
               <nav className="flex flex-col">
                 {NAV_LINKS.map((link, i) => (
@@ -138,7 +138,7 @@ export function Navbar() {
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.35, delay: i * 0.04 }}
-                    className={`border-b border-ink-900/[0.08] px-4 py-3.5 text-sm uppercase tracking-widest transition-colors duration-300 last:border-b-0 hover:text-teal-800 ${
+                    className={`border-b border-ink-900/[0.08] px-4 py-3 text-sm uppercase tracking-widest transition-colors duration-300 last:border-b-0 hover:text-teal-800 sm:py-3.5 ${
                       location.pathname === link.to ? 'text-teal-800' : 'text-ink-700'
                     }`}
                   >

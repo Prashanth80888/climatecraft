@@ -5,9 +5,9 @@ import { Reveal } from './ui/Reveal'
 import { SectionAtmosphere } from './ui/SectionAtmosphere'
 
 const STATS = [
-  { value: 15, suffix: '+', label: 'Years of Craft' },
-  { value: 300, suffix: '+', label: 'Bespoke Projects' },
-  { value: 10, suffix: 'K+', label: 'Pieces Delivered' },
+  { value: 6, suffix: '+', label: 'Years of Craft' },
+  { value: 100, suffix: '+', label: 'Bespoke Projects' },
+  { value: 5, suffix: 'K+', label: 'Pieces Delivered' },
 ]
 
 function Stat({
@@ -24,8 +24,8 @@ function Stat({
   const count = useCountUp(value, active)
 
   return (
-    <div className="flex flex-col items-center border-t border-ink-900/10 px-4 py-9 text-center first:border-t-0 sm:border-t-0 sm:border-l sm:py-11 sm:first:border-l-0">
-      <span className="font-display text-4xl tabular-nums text-gold-700 sm:text-5xl">
+    <div className="flex flex-col items-center border-t border-ink-900/10 px-3 py-7 text-center first:border-t-0 sm:border-t-0 sm:border-l sm:px-4 sm:py-9 sm:first:border-l-0 lg:py-11">
+      <span className="font-display text-3xl tabular-nums text-gold-700 sm:text-4xl lg:text-5xl">
         {count}
         {suffix}
       </span>

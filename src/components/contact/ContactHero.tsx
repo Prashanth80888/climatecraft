@@ -59,7 +59,7 @@ export function ContactHero() {
           </motion.div>
 
           {/* Staggered Letter Reveal Headline with Glow on Hover */}
-          <h1 className="mt-6 font-display text-4xl font-normal leading-[1.06] text-cream-100 sm:text-5xl lg:text-6xl select-none">
+          <h1 className="mt-5 font-display text-3xl font-normal leading-[1.06] text-cream-100 sm:mt-6 sm:text-4xl md:text-5xl lg:text-6xl select-none">
             {/* First Line */}
             <span className="block overflow-hidden py-1">
               <span className="inline-block">
@@ -108,7 +108,7 @@ export function ContactHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.1, ease: customEase }}
-            className="mt-6 max-w-lg text-[16px] leading-relaxed text-cream-200/90"
+            className="mt-5 max-w-lg text-[14px] leading-relaxed text-cream-200/90 sm:mt-6 sm:text-[16px]"
           >
             Tell us what you're planning. We'll help you choose the right{' '}
             <span className="relative inline-block font-medium text-cream-100 underline decoration-teal-700/50 decoration-2 underline-offset-4 transition-colors duration-300 hover:text-teal-400 hover:decoration-teal-400">
