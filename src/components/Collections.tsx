@@ -48,7 +48,11 @@ function ProductCard({ product }: { product: HomeProduct }) {
       <div className="relative aspect-[4/5] overflow-hidden bg-[#E8EFEC]">
         {product.imageCount > 0 ? (
           <img
-            src={homeProductImage(product.slug)}
+            src={
+              product.slug === 'climate-craft-signature'
+                ? '/images/DSC04872.png'
+                : homeProductImage(product.slug)
+            }
             alt={product.name}
             draggable={false}
             loading="lazy"
@@ -62,11 +66,13 @@ function ProductCard({ product }: { product: HomeProduct }) {
             </span>
           </div>
         )}
+
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent transition-opacity duration-500" />
 
         <span className="absolute left-2.5 top-2.5 font-display text-[10px] italic text-cream-100 tabular-nums transition-colors duration-500 group-hover:text-gold-600 sm:left-4 sm:top-4 sm:text-xs">
           {String(product.number).padStart(2, '0')} / {String(TOTAL).padStart(2, '0')}
         </span>
+
         <span className="absolute right-2.5 top-2.5 text-[8px] font-medium uppercase tracking-widest text-cream-100 sm:right-4 sm:top-4 sm:text-[10px]">
           {product.operation}
         </span>
@@ -76,22 +82,38 @@ function ProductCard({ product }: { product: HomeProduct }) {
         <h4 className="font-display text-sm text-cream-100 transition-colors duration-500 group-hover:text-white sm:text-base lg:text-lg">
           {product.name}
         </h4>
-        <p className="mt-0.5 text-[9px] uppercase tracking-widest text-cream-200 transition-colors duration-500 group-hover:text-white/60 sm:text-[10px] lg:text-[11px]">{product.category}</p>
-        <p className="mt-1.5 hidden text-[11px] leading-relaxed text-cream-200 transition-colors duration-500 group-hover:text-white/70 sm:block lg:mt-2 lg:text-[12.5px]">{product.teaser}</p>
+
+        <p className="mt-0.5 text-[9px] uppercase tracking-widest text-cream-200 transition-colors duration-500 group-hover:text-white/60 sm:text-[10px] lg:text-[11px]">
+          {product.category}
+        </p>
+
+        <p className="mt-1.5 hidden text-[11px] leading-relaxed text-cream-200 transition-colors duration-500 group-hover:text-white/70 sm:block lg:mt-2 lg:text-[12.5px]">
+          {product.teaser}
+        </p>
 
         <span className="mt-2.5 inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-widest text-gold-700/90 transition-all duration-500 group-hover:gap-2.5 group-hover:text-gold-400 sm:mt-3 lg:mt-4 sm:text-[10px] lg:text-[10.5px]">
           View Product
           <ArrowUpRight className="h-2.5 w-2.5 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-3 sm:w-3" />
         </span>
+
         <span className="mt-2 block h-px w-0 bg-gold-400 transition-all duration-500 group-hover:w-full group-hover:bg-gold-400/60 sm:mt-3" />
       </div>
     </Link>
   )
 }
 
-function MarqueeRow({ products, dur, dir: direction }: { products: HomeProduct[]; dur: number; dir: 'ltr' | 'rtl' }) {
+function MarqueeRow({
+  products,
+  dur,
+  dir: direction,
+}: {
+  products: HomeProduct[]
+  dur: number
+  dir: 'ltr' | 'rtl'
+}) {
   const rowRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
+
   const stateRef = useRef({
     position: 0,
     hovered: false,
@@ -113,22 +135,30 @@ function MarqueeRow({ products, dur, dir: direction }: { products: HomeProduct[]
     const track = trackRef.current
     const row = rowRef.current
     if (!track || !row) return
+
     const state = stateRef.current
 
     const measure = () => {
       state.setWidth = track.scrollWidth / repeat
+
       // Guarantee at least ~2.2x the viewport width of content per copy-cycle so
       // the wrap point is always off-screen, regardless of monitor width.
       if (row.clientWidth > 0 && state.setWidth * 1.8 < row.clientWidth && repeat < 8) {
         setRepeat((r) => r + 2)
       }
     }
+
     measure()
+
     const ro = new ResizeObserver(measure)
     ro.observe(track)
     ro.observe(row)
 
-    const io = new IntersectionObserver(([entry]) => (state.visible = entry.isIntersecting), { threshold: 0.01 })
+    const io = new IntersectionObserver(
+      ([entry]) => (state.visible = entry.isIntersecting),
+      { threshold: 0.01 },
+    )
+
     io.observe(row)
 
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -140,7 +170,13 @@ function MarqueeRow({ products, dur, dir: direction }: { products: HomeProduct[]
       const dt = Math.min((now - last) / 1000, 0.05)
       last = now
 
-      if (!state.hovered && !state.dragging && state.visible && !prefersReduced && state.setWidth > 0) {
+      if (
+        !state.hovered &&
+        !state.dragging &&
+        state.visible &&
+        !prefersReduced &&
+        state.setWidth > 0
+      ) {
         const speed = state.setWidth / dur
         state.position -= dir * speed * dt
 
@@ -149,12 +185,14 @@ function MarqueeRow({ products, dur, dir: direction }: { products: HomeProduct[]
 
         track.style.transform = `translate3d(${state.position}px,0,0)`
       }
+
       raf = requestAnimationFrame(tick)
     }
 
     if (dir === -1) state.position = -state.setWidth
 
     raf = requestAnimationFrame(tick)
+
     return () => {
       cancelAnimationFrame(raf)
       ro.disconnect()
@@ -173,9 +211,13 @@ function MarqueeRow({ products, dur, dir: direction }: { products: HomeProduct[]
   const onPointerMove = (e: React.PointerEvent) => {
     const state = stateRef.current
     if (!state.dragging) return
+
     const delta = e.clientX - state.startX
     state.position = state.startPosition + delta
-    if (trackRef.current) trackRef.current.style.transform = `translate3d(${state.position}px,0,0)`
+
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translate3d(${state.position}px,0,0)`
+    }
   }
 
   const endDrag = () => {
@@ -200,7 +242,10 @@ function MarqueeRow({ products, dur, dir: direction }: { products: HomeProduct[]
       onPointerLeave={endDrag}
       onPointerCancel={endDrag}
     >
-      <div ref={trackRef} className="flex w-max cursor-grab select-none gap-3 pb-2 active:cursor-grabbing sm:gap-5 md:gap-6 lg:gap-7">
+      <div
+        ref={trackRef}
+        className="flex w-max cursor-grab select-none gap-3 pb-2 active:cursor-grabbing sm:gap-5 md:gap-6 lg:gap-7"
+      >
         {sequence.map((product, i) => (
           <ProductCard key={`${product.id}-${i}`} product={product} />
         ))}
@@ -211,19 +256,25 @@ function MarqueeRow({ products, dur, dir: direction }: { products: HomeProduct[]
 
 export function Collections() {
   return (
-    <section id="collections" className="relative overflow-hidden bg-transparent py-16 sm:py-24 lg:py-32">
+    <section
+      id="collections"
+      className="relative overflow-hidden bg-transparent py-16 sm:py-24 lg:py-32"
+    >
       <SectionAtmosphere variant="bloom" />
+
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <Reveal>
           <SectionLabel>
             <span className="mx-auto">Curated for Every Space</span>
           </SectionLabel>
         </Reveal>
+
         <Reveal delay={0.1}>
           <h2 className="mx-auto mt-4 max-w-xl font-display text-3xl font-normal text-cream-100 sm:text-4xl lg:text-5xl sm:mt-5">
             Explore our collections
           </h2>
         </Reveal>
+
         <Reveal delay={0.18}>
           <p className="mx-auto mt-3 max-w-lg text-[14px] leading-relaxed text-cream-200 sm:text-[15px] sm:mt-4">
             Three families of motion furniture — Classic, Motorised Comfort and Climate Smart.
@@ -240,15 +291,27 @@ export function Collections() {
               <Reveal amount={0.15}>
                 <div className="mx-auto mb-4 flex max-w-7xl flex-wrap items-end justify-between gap-x-4 gap-y-2 border-b border-[#063B3D]/20 px-4 pb-3 sm:mb-6 sm:px-6 sm:pb-4 lg:px-8">
                   <div>
-                    <h3 className="font-display text-lg text-cream-100 sm:text-xl lg:text-2xl">{row.label}</h3>
-                    <p className="mt-1 max-w-md text-[11px] leading-relaxed text-cream-200 sm:text-[12.5px]">{row.blurb}</p>
+                    <h3 className="font-display text-lg text-cream-100 sm:text-xl lg:text-2xl">
+                      {row.label}
+                    </h3>
+
+                    <p className="mt-1 max-w-md text-[11px] leading-relaxed text-cream-200 sm:text-[12.5px]">
+                      {row.blurb}
+                    </p>
                   </div>
+
                   <span className="text-[10px] uppercase tracking-widest text-cream-200 tabular-nums sm:text-[11px]">
-                    {String(idx + 1).padStart(2, '0')} / {String(SEAT_ROWS.length).padStart(2, '0')}
+                    {String(idx + 1).padStart(2, '0')} /{' '}
+                    {String(SEAT_ROWS.length).padStart(2, '0')}
                   </span>
                 </div>
               </Reveal>
-              <MarqueeRow products={products} dur={row.dur} dir={row.dir} />
+
+              <MarqueeRow
+                products={products}
+                dur={row.dur}
+                dir={row.dir}
+              />
             </div>
           )
         })}
@@ -260,11 +323,14 @@ export function Collections() {
             href="#final-cta"
             onClick={(e) => {
               e.preventDefault()
-              document.querySelector('#final-cta')?.scrollIntoView({ behavior: 'smooth' })
+              document
+                .querySelector('#final-cta')
+                ?.scrollIntoView({ behavior: 'smooth' })
             }}
             className="btn-ghost group"
           >
             Request a bespoke configuration
+
             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </Reveal>
