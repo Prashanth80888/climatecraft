@@ -1,4 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import type { ElementType, ReactNode } from 'react'
 import {
   MapPin,
   Users,
@@ -181,7 +183,8 @@ export function ProjectCaseStudy({
                   text-[#063B3D]
                   backdrop-blur-md
                   transition-colors
-                  hover:bg-white/70
+                  hover:border-[#063B3D]/30
+                  hover:bg-[#063B3D]/10
                 "
               >
                 {project.category}
@@ -213,7 +216,7 @@ export function ProjectCaseStudy({
           </Reveal>
 
           {/* ============================================================
-              META STRIP WITH ENHANCED BLUR & SHADOW
+              META STRIP
           ============================================================ */}
 
           <Reveal
@@ -233,7 +236,7 @@ export function ProjectCaseStudy({
                 backdrop-blur-xl
                 transition-all
                 duration-500
-                hover:border-white/80
+                hover:border-[#063B3D]/20
                 hover:shadow-[0_30px_80px_-25px_rgba(6,59,61,0.42)]
                 sm:grid-cols-4
               "
@@ -293,7 +296,8 @@ export function ProjectCaseStudy({
             "
           >
 
-            {/* LEFT — TEXT THAT BELONGS BESIDE THE IMAGES */}
+            {/* LEFT — TEXT */}
+
             <RevealItem
               className={`
                 lg:col-span-5
@@ -303,6 +307,7 @@ export function ProjectCaseStudy({
               <div className="space-y-12 lg:space-y-14">
 
                 {/* CHALLENGE */}
+
                 <InfoBlock
                   number="01"
                   label="The Challenge"
@@ -314,6 +319,7 @@ export function ProjectCaseStudy({
                 </InfoBlock>
 
                 {/* REQUIREMENTS */}
+
                 <InfoBlock
                   number="02"
                   label="Requirements"
@@ -355,7 +361,7 @@ export function ProjectCaseStudy({
                           p-1.5
                           transition-all
                           duration-300
-                          hover:bg-white/10
+                          hover:bg-[#063B3D]/10
                         "
                       >
                         <span
@@ -399,6 +405,7 @@ export function ProjectCaseStudy({
                 </InfoBlock>
 
                 {/* EXISTING EQUIPMENT */}
+
                 {project.existingEquipment &&
                   project.existingEquipment.length > 0 && (
                     <InfoBlock
@@ -448,7 +455,8 @@ export function ProjectCaseStudy({
               </div>
             </RevealItem>
 
-            {/* RIGHT — COMPLETE IMAGE STORY WITH ANIMATIONS */}
+            {/* RIGHT — IMAGE STORY */}
+
             <RevealItem
               className={`
                 lg:col-span-7
@@ -457,7 +465,8 @@ export function ProjectCaseStudy({
             >
               <div className="space-y-6">
 
-                {/* HERO */}
+                {/* HERO IMAGE */}
+
                 <RevealItem>
                   <ProjectImage
                     src={project.images.hero}
@@ -469,32 +478,26 @@ export function ProjectCaseStudy({
                 </RevealItem>
 
                 {/* SUPPORTING IMAGES */}
+
                 <RevealItem>
                   <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+
                     <ProjectImage
                       src={project.images.environment}
                       alt={`${project.title} - environment view`}
                       label="Environment"
+                      showLabel={false}
                     />
 
                     <ProjectImage
                       src={project.images.detail}
                       alt={`${project.title} - detail view`}
                       label="Detail"
+                      showLabel={false}
                     />
+
                   </div>
                 </RevealItem>
-
-                {/* CONFIGURATION IMAGE */}
-                {project.images.configuration && (
-                  <RevealItem>
-                    <ProjectImage
-                      src={project.images.configuration}
-                      alt={`${project.title} - configuration view`}
-                      label="Seating Configuration"
-                    />
-                  </RevealItem>
-                )}
 
               </div>
             </RevealItem>
@@ -528,6 +531,7 @@ export function ProjectCaseStudy({
             >
 
               {/* Decorative background movement */}
+
               <motion.div
                 aria-hidden="true"
                 className="
@@ -587,7 +591,8 @@ export function ProjectCaseStudy({
 
               <div className="relative z-10">
 
-                {/* SOLUTION — FULL WIDTH */}
+                {/* SOLUTION */}
+
                 <div className="grid gap-8 lg:grid-cols-[0.28fr_1fr] lg:gap-14">
                   <InfoBlock
                     number="03"
@@ -606,121 +611,180 @@ export function ProjectCaseStudy({
 
                 <div className="my-12 h-px bg-[#063B3D]/10 lg:my-14" />
 
-                {/* INSTALLED CONFIGURATION — FULL WIDTH */}
+                {/* INSTALLED CONFIGURATION */}
+
                 <InfoBlock
                   number="04"
                   label="Installed Configuration"
                 >
                   <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {project.installedSeating.map((seat) => (
-                      <motion.div
+                      <Link
                         key={seat.slug}
-                        initial={
-                          prefersReducedMotion
-                            ? false
-                            : {
-                                opacity: 0,
-                                y: 18,
-                              }
-                        }
-                        whileInView={{
-                          opacity: 1,
-                          y: 0,
-                        }}
-                        viewport={{
-                          once: true,
-                          amount: 0.25,
-                        }}
-                        transition={{
-                          duration: 0.55,
-                          ease: easeOut,
-                        }}
-                        whileHover={{
-                          y: -6,
-                          scale: 1.01,
-                        }}
+                        to={`/products/${seat.slug}`}
                         className="
-                          group
-                          relative
-                          overflow-hidden
+                          block
+                          cursor-pointer
                           rounded-[20px]
-                          border
-                          border-white/50
-                          bg-white/[0.12]
-                          p-3
-                          shadow-[0_18px_45px_-30px_rgba(6,59,61,0.38)]
-                          backdrop-blur-lg
-                          transition-all
-                          duration-300
-                          hover:border-teal-700/40
-                          hover:bg-white/60
-                          hover:shadow-xl
+                          focus-visible:outline
+                          focus-visible:outline-2
+                          focus-visible:outline-offset-2
+                          focus-visible:outline-gold-400
                         "
+                        aria-label={`View ${seat.name} product details`}
                       >
-                        <div className="flex items-center gap-3.5">
-                          <div
-                            className="
-                              relative
-                              h-[68px]
-                              w-[68px]
-                              flex-none
-                              overflow-hidden
-                              rounded-[14px]
-                              border
-                              border-white/55
-                            "
-                          >
-                            <img
-                              src={seat.image}
-                              alt={seat.name}
-                              loading="lazy"
+                        <motion.div
+                          initial={
+                            prefersReducedMotion
+                              ? false
+                              : {
+                                  opacity: 0,
+                                  y: 18,
+                                }
+                          }
+                          whileInView={{
+                            opacity: 1,
+                            y: 0,
+                          }}
+                          viewport={{
+                            once: true,
+                            amount: 0.25,
+                          }}
+                          transition={{
+                            duration: 0.55,
+                            ease: easeOut,
+                          }}
+                          whileHover={{
+                            y: -6,
+                            scale: 1.01,
+                          }}
+                          whileTap={{
+                            scale: 0.985,
+                          }}
+                          className="
+                            group
+                            relative
+                            overflow-hidden
+                            rounded-[20px]
+                            border
+                            border-white/50
+                            bg-white/[0.12]
+                            p-3
+                            shadow-[0_18px_45px_-30px_rgba(6,59,61,0.38)]
+                            backdrop-blur-lg
+                            transition-all
+                            duration-300
+                            hover:border-teal-700/40
+                            hover:bg-[#063B3D]/10
+                            hover:shadow-xl
+                          "
+                        >
+                          <div className="flex items-center gap-3.5">
+
+                            <div
                               className="
-                                h-full
-                                w-full
-                                object-cover
-                                object-center
-                                transition-transform
-                                duration-700
-                                ease-out
-                                group-hover:scale-115
+                                relative
+                                h-[68px]
+                                w-[68px]
+                                flex-none
+                                overflow-hidden
+                                rounded-[14px]
+                                border
+                                border-white/55
+                              "
+                            >
+                              <img
+                                src={seat.image}
+                                alt={seat.name}
+                                loading="lazy"
+                                draggable={false}
+                                className="
+                                  h-full
+                                  w-full
+                                  object-cover
+                                  object-center
+                                  transition-transform
+                                  duration-700
+                                  ease-out
+                                  group-hover:scale-110
+                                "
+                              />
+
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent transition-opacity duration-300 group-hover:opacity-60" />
+                            </div>
+
+                            <div className="min-w-0 flex-1">
+                              <h4
+                                className="
+                                  font-display
+                                  text-[16px]
+                                  leading-tight
+                                  text-cream-100
+                                  transition-colors
+                                  duration-300
+                                  group-hover:text-gold-400
+                                "
+                              >
+                                {seat.name}
+                              </h4>
+
+                              <p
+                                className="
+                                  mt-1
+                                  text-[11px]
+                                  leading-relaxed
+                                  text-cream-200
+                                  transition-colors
+                                  duration-300
+                                  group-hover:text-cream-100
+                                "
+                              >
+                                {seat.seats} seat
+                                {seat.seats > 1 ? 's' : ''} · Climate Smart family
+                              </p>
+                            </div>
+
+                            <ArrowRight
+                              className="
+                                mr-1
+                                h-4
+                                w-4
+                                flex-none
+                                text-teal-700/40
+                                transition-all
+                                duration-300
+                                group-hover:translate-x-1.5
+                                group-hover:text-gold-400
                               "
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                           </div>
 
-                          <div className="min-w-0 flex-1">
-                            <h4 className="font-display text-[16px] leading-tight text-cream-100 transition-colors group-hover:text-teal-900">
-                              {seat.name}
-                            </h4>
-
-                            <p className="mt-1 text-[11px] leading-relaxed text-cream-200 group-hover:text-teal-800">
-                              {seat.seats} seat
-                              {seat.seats > 1 ? 's' : ''} · Climate Smart family
-                            </p>
-                          </div>
-
-                          <ArrowRight
+                          <span
+                            aria-hidden="true"
                             className="
-                              mr-1
-                              h-4
-                              w-4
-                              flex-none
-                              text-teal-700/0
+                              pointer-events-none
+                              absolute
+                              bottom-0
+                              left-3
+                              h-[2px]
+                              w-0
+                              rounded-full
+                              bg-gold-400
                               transition-all
-                              duration-300
-                              group-hover:translate-x-1.5
-                              group-hover:text-teal-700
+                              duration-500
+                              group-hover:w-[calc(100%-24px)]
                             "
                           />
-                        </div>
-                      </motion.div>
+                        </motion.div>
+                      </Link>
                     ))}
                   </div>
                 </InfoBlock>
 
                 <div className="my-12 h-px bg-[#063B3D]/10 lg:my-14" />
 
-                {/* EXPERIENCE — FULL WIDTH */}
+                {/* EXPERIENCE */}
+
                 <div className="grid gap-8 lg:grid-cols-[0.28fr_1fr] lg:gap-14">
                   <InfoBlock
                     number="06"
@@ -738,7 +802,8 @@ export function ProjectCaseStudy({
 
                 <div className="my-12 h-px bg-[#063B3D]/10 lg:my-14" />
 
-                {/* OUTCOMES — FULL WIDTH */}
+                {/* OUTCOMES */}
+
                 <InfoBlock
                   number="07"
                   label="Observed Outcomes"
@@ -788,7 +853,7 @@ export function ProjectCaseStudy({
                           transition-all
                           duration-300
                           hover:border-gold-400/40
-                          hover:bg-white/[0.18]
+                          hover:bg-[#063B3D]/10
                           hover:shadow-lg
                         "
                       >
@@ -830,6 +895,7 @@ export function ProjectCaseStudy({
                 </InfoBlock>
 
                 {/* FOOTER CAPTION */}
+
                 <RevealItem>
                   <div
                     className="
@@ -894,7 +960,7 @@ function InfoBlock({
   number: string
   label: string
   title?: string
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <motion.div
@@ -904,7 +970,6 @@ function InfoBlock({
       transition={{ duration: 0.55, ease: easeOut }}
       className="group relative"
     >
-
       <div className="mb-4 flex items-center gap-3">
 
         <span
@@ -977,7 +1042,7 @@ function InfoBlock({
 }
 
 /* ==========================================================================
-   IMAGE COMPONENT WITH Dynamic Zoom & Overlay Transitions
+   IMAGE COMPONENT
 ============================================================================ */
 
 function ProjectImage({
@@ -986,12 +1051,14 @@ function ProjectImage({
   label,
   eager = false,
   large = false,
+  showLabel = true,
 }: {
   src: string
   alt: string
   label: string
   eager?: boolean
   large?: boolean
+  showLabel?: boolean
 }) {
   return (
     <motion.div
@@ -1036,6 +1103,7 @@ function ProjectImage({
           src={src}
           alt={alt}
           loading={eager ? 'eager' : 'lazy'}
+          draggable={false}
           className="
             h-full
             w-full
@@ -1050,6 +1118,7 @@ function ProjectImage({
       </div>
 
       {/* Image gradients */}
+
       <div
         className="
           pointer-events-none
@@ -1080,6 +1149,7 @@ function ProjectImage({
       <div className="grain-overlay pointer-events-none absolute inset-0 opacity-[0.05]" />
 
       {/* Dynamic Corner frame animation */}
+
       <div
         className="
           pointer-events-none
@@ -1101,44 +1171,47 @@ function ProjectImage({
       />
 
       {/* Label */}
-      <div
-        className="
-          absolute
-          bottom-5
-          left-5
-          flex
-          items-center
-          gap-2
-          rounded-full
-          border
-          border-white/30
-          bg-black/30
-          px-3.5
-          py-2
-          backdrop-blur-md
-          transition-all
-          duration-300
-          group-hover:border-gold-400/50
-          group-hover:bg-black/50
-          group-hover:shadow-lg
-        "
-      >
-        <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-ping" />
 
-        <span
+      {showLabel && (
+        <div
           className="
-            text-[9px]
-            font-medium
-            uppercase
-            tracking-[0.18em]
-            text-white/90
-            transition-colors
-            group-hover:text-white
+            absolute
+            bottom-5
+            left-5
+            flex
+            items-center
+            gap-2
+            rounded-full
+            border
+            border-white/30
+            bg-black/30
+            px-3.5
+            py-2
+            backdrop-blur-md
+            transition-all
+            duration-300
+            group-hover:border-gold-400/50
+            group-hover:bg-black/50
+            group-hover:shadow-lg
           "
         >
-          {label}
-        </span>
-      </div>
+          <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-ping" />
+
+          <span
+            className="
+              text-[9px]
+              font-medium
+              uppercase
+              tracking-[0.18em]
+              text-white/90
+              transition-colors
+              group-hover:text-white
+            "
+          >
+            {label}
+          </span>
+        </div>
+      )}
     </motion.div>
   )
 }
@@ -1152,14 +1225,14 @@ function MetaItem({
   label,
   value,
 }: {
-  icon: React.ElementType
+  icon: ElementType
   label: string
   value: string
 }) {
   return (
     <motion.div
       whileHover={{
-        backgroundColor: 'rgba(255,255,255,0.25)',
+        backgroundColor: 'rgba(6,59,61,0.08)',
       }}
       transition={{
         duration: 0.25,
@@ -1226,7 +1299,7 @@ function MetaItem({
             leading-tight
             text-cream-100
             transition-colors
-            group-hover:text-white
+            group-hover:text-[#063B3D]
           "
         >
           {value}

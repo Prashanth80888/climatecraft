@@ -12,9 +12,9 @@ const TOTAL = HOME_PRODUCTS.length
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 const SEAT_ROWS: { label: string; blurb: string; seats: 1 | 2 | 3; dur: number; dir: 'ltr' | 'rtl' }[] = [
-  { label: 'Single Seater', blurb: 'Individual recliners designed for personal comfort.', seats: 1, dur: 28, dir: 'ltr' },
-  { label: 'Two Seater', blurb: 'Shared seating that brings comfort to two.', seats: 2, dur: 32, dir: 'rtl' },
-  { label: 'Three Seater', blurb: 'Spacious sofas for the whole living room.', seats: 3, dur: 36, dir: 'ltr' },
+  { label: ' Climate Signature', blurb: 'Climate Signature · Single Seater', seats: 1, dur: 28, dir: 'ltr' },
+  { label: ' Climate Duo', blurb: 'Climate Duo · Two Seater', seats: 2, dur: 32, dir: 'rtl' },
+  { label: 'Climate Grand', blurb: 'Climate Grand · Three Seater', seats: 3, dur: 36, dir: 'ltr' },
 ]
 
 function ProductCard({ product }: { product: HomeProduct }) {

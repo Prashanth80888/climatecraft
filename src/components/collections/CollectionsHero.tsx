@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import {
+  motion,
+  AnimatePresence,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from 'framer-motion'
 import { Mic, Droplets } from 'lucide-react'
 import { HOME_PRODUCTS, PRODUCT_FAMILIES } from '../../data/homeProducts'
 import { SectionLabel } from '../ui/SectionLabel'
@@ -9,9 +15,24 @@ import { Reveal } from '../ui/Reveal'
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 const HERO_SLIDES = [
-  { slug: 'craft-motion', image: '/images/products/craft-motion/01.png', name: 'Craft Motion', label: 'Motorised Comfort' },
-  { slug: 'craft-classic', image: '/images/products/craft-classic/01.png', name: 'Craft Classic', label: 'Classic' },
-  { slug: 'climate-craft-signature', image: '/images/products/climate-craft-signature/01.png', name: 'Climate Craft | Signature', label: 'Climate Smart' },
+  {
+    slug: 'craft-motion',
+    image: '/images/products/craft-motion/01.png',
+    name: 'Craft Motion',
+    label: 'Motorised Comfort',
+  },
+  {
+    slug: 'craft-classic',
+    image: '/images/products/craft-classic/01.png',
+    name: 'Craft Classic',
+    label: 'Classic',
+  },
+  {
+    slug: 'climate-craft-signature',
+    image: '/images/products/climate-craft-signature/01.png',
+    name: 'Climate Craft | Signature',
+    label: 'Climate Smart',
+  },
 ] as const
 
 export function CollectionsHero() {
@@ -32,6 +53,7 @@ export function CollectionsHero() {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)
     }, 5000)
+
     return () => clearInterval(timer)
   }, [])
 
@@ -221,9 +243,10 @@ export function CollectionsHero() {
             <Reveal delay={0.25} className="group flex flex-1 flex-col">
               <div className="relative aspect-[3/4] w-full flex-1 overflow-hidden rounded-[26px] border border-white/70 shadow-[0_40px_90px_-28px_rgba(6,59,61,0.35)] transition-shadow duration-500 ease-out group-hover:shadow-[0_55px_120px_-24px_rgba(6,59,61,0.45)] sm:aspect-[4/5] lg:aspect-auto lg:min-h-[520px]">
 
+                {/* Each image is linked to its own exact product detail page */}
                 <Link
                   to={`/products/${HERO_SLIDES[currentSlide].slug}`}
-                  className="absolute inset-0"
+                  className="group/image absolute inset-0 z-[1] cursor-pointer"
                   aria-label={`View ${HERO_SLIDES[currentSlide].name}`}
                 >
                   <AnimatePresence mode="wait">
@@ -234,28 +257,43 @@ export function CollectionsHero() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 1, ease: 'easeInOut' }}
-                      className="absolute inset-0 h-full w-full object-cover"
+                      transition={{
+                        duration: 1,
+                        ease: 'easeInOut',
+                      }}
+                      whileHover={{
+                        scale: 1.035,
+                      }}
+                      className="absolute inset-0 h-full w-full cursor-pointer object-cover transition-transform duration-700 ease-out"
                     />
                   </AnimatePresence>
+
+                  {/* Subtle image hover overlay */}
+                  <div className="pointer-events-none absolute inset-0 bg-white/0 transition-colors duration-500 group-hover/image:bg-white/[0.04]" />
+
+                  {/* View Details Cursor Hint */}
+                  <div className="pointer-events-none absolute bottom-24 right-5 flex translate-y-2 items-center gap-2 rounded-full border border-white/40 bg-black/30 px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-white opacity-0 backdrop-blur-md transition-all duration-500 group-hover/image:translate-y-0 group-hover/image:opacity-100 sm:bottom-28 sm:right-6">
+                    View Details
+                  </div>
                 </Link>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#063B3D]/65 via-[#063B3D]/15 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
+                {/* Image Overlay */}
+                <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-[#063B3D]/65 via-[#063B3D]/15 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-br from-white/10 via-transparent to-transparent" />
 
                 {/* Corner Accent Brackets */}
-                <span className="pointer-events-none absolute left-5 top-5 h-6 w-6 rounded-tl-lg border-l border-t border-white/70" />
-                <span className="pointer-events-none absolute right-5 top-5 h-6 w-6 rounded-tr-lg border-r border-t border-white/70" />
+                <span className="pointer-events-none absolute left-5 top-5 z-[3] h-6 w-6 rounded-tl-lg border-l border-t border-white/70" />
+                <span className="pointer-events-none absolute right-5 top-5 z-[3] h-6 w-6 rounded-tr-lg border-r border-t border-white/70" />
 
                 {/* Top Badge */}
-                <div className="absolute left-5 right-5 top-5 z-10 flex items-center justify-between pointer-events-none">
+                <div className="pointer-events-none absolute left-5 right-5 top-5 z-10 flex items-center justify-between">
                   <div className="flex items-center gap-2 rounded-full border border-white/30 bg-black/30 px-3 py-1 text-[10px] font-medium tracking-wider text-white backdrop-blur-md">
                     <Droplets className="h-3 w-3 text-teal-300" />
                     <span>Liquid Climate Intelligence</span>
                   </div>
                 </div>
 
-                {/* Floating Glass Badge */}
+                {/* Featured Piece Card */}
                 <motion.div
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -265,7 +303,7 @@ export function CollectionsHero() {
                     ease: easeOut,
                   }}
                   whileHover={{ y: -3, scale: 1.02 }}
-                  className="pointer-events-none absolute bottom-5 left-5 right-5 flex cursor-default items-center justify-between gap-3 rounded-2xl border border-white/50 bg-white/60 px-4 py-3 backdrop-blur-md transition-colors duration-300 ease-out hover:border-white/80 hover:bg-white/80 hover:shadow-[0_18px_40px_-16px_rgba(6,59,61,0.35)] sm:bottom-6 sm:left-6 sm:right-6"
+                  className="pointer-events-none absolute bottom-5 left-5 right-5 z-20 flex cursor-default items-center justify-between gap-3 rounded-2xl border border-white/50 bg-white/80 px-4 py-3 shadow-[0_18px_40px_-16px_rgba(6,59,61,0.35)] backdrop-blur-md transition-colors duration-300 ease-out hover:border-white/80 hover:bg-white/90 sm:bottom-6 sm:left-6 sm:right-6"
                 >
                   <div className="min-w-0">
                     <span className="block text-[9.5px] font-medium uppercase tracking-widest text-gold-700">
@@ -298,27 +336,6 @@ export function CollectionsHero() {
                 </motion.div>
               </div>
             </Reveal>
-
-            {/* Floating Accent Detail Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -16, y: 16 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{
-                duration: 0.7,
-                delay: 0.75,
-                ease: easeOut,
-              }}
-              whileHover={{ y: -4, scale: 1.03 }}
-              className="absolute -bottom-6 -left-5 hidden cursor-default rounded-2xl border border-white/60 bg-white/80 px-4 py-3 shadow-[0_24px_50px_-18px_rgba(6,59,61,0.3)] backdrop-blur-md transition-all duration-300 ease-out hover:border-teal-700/25 hover:bg-white/95 hover:shadow-[0_30px_64px_-16px_rgba(6,59,61,0.4)] sm:-left-8 sm:block"
-            >
-              <span className="block text-[9.5px] font-bold uppercase tracking-widest text-teal-700">
-                Liquid Climate Control
-              </span>
-
-              <span className="mt-0.5 block font-display text-lg italic text-[#063B3D]">
-                Water-Based Intelligence
-              </span>
-            </motion.div>
           </motion.div>
         </div>
       </div>

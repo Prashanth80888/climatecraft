@@ -345,7 +345,7 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Integrated cup holders',
       'No climate-control technology',
     ],
-    imageCount: 2,
+    imageCount: 4,
     hotspots: [
       {
         id: 'control',
@@ -396,7 +396,7 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Ergonomic back, seat and leg support',
       '2-year warranty',
     ],
-    imageCount: 1,
+    imageCount: 4,
     hotspots: [
       {
         id: 'control',

@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import { AtmosphereBackground } from './components/AtmosphereBackground'
 import { Navbar } from './components/Navbar'
 import { ScrollToTop } from './components/ScrollToTop'
+import { FloatingWhatsApp } from './components/FloatingWhatsApp'
 import { HomePage } from './pages/HomePage'
 import { CollectionsPage } from './pages/CollectionsPage'
 import { ProductDetailPage } from './pages/ProductDetailPage'
@@ -39,6 +40,7 @@ function MainLayout() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
+      <FloatingWhatsApp />
     </>
   )
 }

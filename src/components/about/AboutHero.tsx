@@ -162,7 +162,7 @@ export function AboutHero() {
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-teal-600 animate-ping" />
             <span className="text-[11px] font-bold uppercase tracking-widest text-[#063B3D]/80">
-              Est. 2009 · Antwerp, Belgium
+              Est. 2009 · Bengaluru Karnataka
             </span>
           </div>
           <span className="text-[11px] font-bold uppercase tracking-widest text-gold-700">

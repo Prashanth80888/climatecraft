@@ -31,6 +31,42 @@ function getActualCaseStudyImage(caseStudy: CaseStudyDetail): string | undefined
   return originalCaseStudy?.gallery?.[0]
 }
 
+/**
+ * Product detail page for each case study hero image.
+ *
+ * These paths are intentionally mapped by the REAL case-study slug
+ * so the correct product page opens for each individual case study.
+ */
+const CASE_STUDY_PRODUCT_PATHS: Record<string, string> = {
+  'smart-recliner-for-software-engineers-india':
+    '/products/craft-classic-duo',
+
+  'smart-recliner-for-new-homeowners-india':
+    '/products/craft-motion',
+
+  'smart-recliner-for-pregnant-women-india':
+    '/products/climate-craft-signature',
+
+  'smart-recliner-for-post-workout-recovery':
+    '/products/craft-classic',
+
+  'luxury-home-furniture-india':
+    '/products/climate-craft-duo',
+
+  'home-theatre-recliner-india':
+    '/products/craft-motion',
+
+  'smart-recliner-for-senior-citizens-india':
+    '/products/craft-classic-grand',
+
+  'smart-recliner-for-medical-industry-india':
+    '/products/craft-motion-grand',
+}
+
+function getProductDetailPath(caseStudy: CaseStudyDetail): string | undefined {
+  return CASE_STUDY_PRODUCT_PATHS[caseStudy.slug]
+}
+
 export function CaseStudyDetailHero({
   caseStudy,
   index,
@@ -41,13 +77,17 @@ export function CaseStudyDetailHero({
   const words = caseStudy.title.split(' ')
 
   /**
-   * IMPORTANT:
    * Do NOT use caseStudy.heroImage here.
    *
-   * The original CASE_STUDIES mapping contains the actual images
-   * associated with each case study.
+   * The original CASE_STUDIES mapping contains the actual
+   * case-study-specific hero image.
    */
   const actualHeroImage = getActualCaseStudyImage(caseStudy)
+
+  /**
+   * Resolve the exact product detail page for this case study.
+   */
+  const productDetailPath = getProductDetailPath(caseStudy)
 
   return (
     <section className="relative overflow-hidden bg-transparent pb-16 pt-32 sm:pb-20 sm:pt-36 lg:pb-24 lg:pt-44">
@@ -213,11 +253,25 @@ export function CaseStudyDetailHero({
                     }}
                     className="aspect-[4/3] w-full sm:aspect-[16/11]"
                   >
-                    <img
-                      src={actualHeroImage}
-                      alt={`${caseStudy.title} Climate Craft installation`}
-                      className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.04]"
-                    />
+                    {productDetailPath ? (
+                      <Link
+                        to={productDetailPath}
+                        aria-label={`View product details for ${caseStudy.title}`}
+                        className="block h-full w-full cursor-pointer"
+                      >
+                        <img
+                          src={actualHeroImage}
+                          alt={`${caseStudy.title} Climate Craft installation`}
+                          className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.04]"
+                        />
+                      </Link>
+                    ) : (
+                      <img
+                        src={actualHeroImage}
+                        alt={`${caseStudy.title} Climate Craft installation`}
+                        className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out"
+                      />
+                    )}
                   </motion.div>
 
                   <div className="pointer-events-none absolute inset-0 rounded-[28px] bg-gradient-to-t from-[#063B3D]/20 via-transparent to-transparent" />

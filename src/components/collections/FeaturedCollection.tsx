@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowDown, Sparkles } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { HOME_PRODUCTS, PRODUCT_FAMILIES, type ProductFamily } from '../../data/homeProducts'
 import { homeProductImage } from '../../lib/assets'
 import { SectionLabel } from '../ui/SectionLabel'
@@ -24,8 +25,14 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
   const products = HOME_PRODUCTS.filter((p) => p.familyId === family.id)
 
   // Explicitly select Climate Craft Duo for the climate-smart family if present
-  const duoProduct = products.find((p) => p.slug.includes('climate-craft-duo') || p.name.toLowerCase().includes('duo'))
-  const featured = family.id === 'climate-smart' && duoProduct ? duoProduct : products[0]
+  const duoProduct = products.find(
+    (p) =>
+      p.slug.includes('climate-craft-duo') ||
+      p.name.toLowerCase().includes('duo'),
+  )
+
+  const featured =
+    family.id === 'climate-smart' && duoProduct ? duoProduct : products[0]
 
   return (
     <section className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-24">
@@ -60,23 +67,33 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[22px] sm:aspect-[16/10]">
                 {featured && (
-                  <motion.img
-                    key={featured.slug}
-                    initial={{ scale: 1.08, opacity: 0.8 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 1.1, ease: easeOut }}
-                    src={homeProductImage(featured.slug)}
-                    alt={featured.name}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-                  />
+                  <Link
+                    to={`/products/${featured.slug}`}
+                    className="group/image absolute inset-0 z-[1] cursor-pointer"
+                    aria-label={`View ${featured.name}`}
+                  >
+                    <motion.img
+                      key={featured.slug}
+                      initial={{ scale: 1.08, opacity: 0.8 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 1.1, ease: easeOut }}
+                      src={homeProductImage(featured.slug)}
+                      alt={featured.name}
+                      className="h-full w-full cursor-pointer object-cover transition-transform duration-700 ease-out group-hover/image:scale-[1.05]"
+                    />
+
+                    {/* Subtle Image Hover Effect */}
+                    <div className="pointer-events-none absolute inset-0 bg-white/0 transition-colors duration-500 group-hover/image:bg-white/[0.04]" />
+                  </Link>
                 )}
 
                 {/* High-Contrast Gradient Scrim */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#042021]/80 via-[#063B3D]/15 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-[#042021]/80 via-[#063B3D]/15 to-transparent" />
 
                 {/* Top Glass Badge */}
-                <div className="absolute left-5 top-5 z-10 flex items-center gap-2 rounded-full border border-white/30 bg-black/35 px-3.5 py-1.5 backdrop-blur-md">
+                <div className="pointer-events-none absolute left-5 top-5 z-10 flex items-center gap-2 rounded-full border border-white/30 bg-black/35 px-3.5 py-1.5 backdrop-blur-md">
                   <Sparkles className="h-3.5 w-3.5 text-gold-400" />
+
                   <span className="text-[10px] font-bold uppercase tracking-widest text-white">
                     Featured Collection
                   </span>
@@ -88,16 +105,18 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="absolute bottom-5 left-5 right-5 z-10 flex items-center justify-between rounded-xl border border-white/40 bg-white/70 p-3.5 backdrop-blur-md transition-all duration-300 group-hover:bg-white/90"
+                    className="pointer-events-none absolute bottom-5 left-5 right-5 z-10 flex items-center justify-between rounded-xl border border-white/40 bg-white/70 p-3.5 backdrop-blur-md transition-all duration-300 group-hover:bg-white/90"
                   >
                     <div>
                       <span className="block text-[9.5px] font-bold uppercase tracking-widest text-gold-700">
                         Highlight Design
                       </span>
+
                       <span className="font-display text-base italic text-[#063B3D]">
                         {featured.name}
                       </span>
                     </div>
+
                     {featured.operation && (
                       <span className="rounded-full bg-[#063B3D] px-3 py-1 text-[10px] font-semibold text-white">
                         {featured.operation}
@@ -112,11 +131,14 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
             <div className="relative lg:col-span-5">
               <div className="flex items-center gap-4">
                 <span className="font-display text-sm italic tabular-nums font-semibold text-gold-700">
-                  {String(family.number).padStart(2, '0')} / {String(PRODUCT_FAMILIES.length).padStart(2, '0')}
+                  {String(family.number).padStart(2, '0')} /{' '}
+                  {String(PRODUCT_FAMILIES.length).padStart(2, '0')}
                 </span>
+
                 <div className="inline-flex items-center rounded-full border border-[#063B3D]/15 bg-white/80 px-3 py-1 shadow-2xs backdrop-blur-md">
                   <SectionLabel>
-                    {String(products.length).padStart(2, '0')} {products.length === 1 ? 'Piece' : 'Pieces'}
+                    {String(products.length).padStart(2, '0')}{' '}
+                    {products.length === 1 ? 'Piece' : 'Pieces'}
                   </SectionLabel>
                 </div>
               </div>
@@ -138,6 +160,7 @@ export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProp
                 className="group mt-6 inline-flex items-center gap-2.5 rounded-full border border-[#063B3D]/20 bg-white/80 px-5 py-3 text-[11px] font-bold uppercase tracking-widest text-[#063B3D] shadow-xs backdrop-blur-md transition-all duration-300 hover:border-gold-400 hover:bg-[#063B3D] hover:text-white hover:shadow-lg hover:shadow-[#063B3D]/20 sm:mt-8 sm:gap-3 sm:px-6 sm:py-3.5 sm:text-xs"
               >
                 <span>Explore the Collection</span>
+
                 <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
               </motion.button>
             </div>
