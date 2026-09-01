@@ -2,8 +2,11 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const WHATSAPP_NUMBER = '917619343762'
-const WHATSAPP_MESSAGE = 'Hello Climate Craft, I would like to know more about your products.'
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
+const WHATSAPP_MESSAGE =
+  'Hello Climate Craft, I would like to know more about your products.'
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  WHATSAPP_MESSAGE,
+)}`
 
 const whatsappEasing: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
@@ -23,7 +26,6 @@ function WhatsAppIcon({ className }: { className?: string }) {
 
 export function FloatingWhatsApp() {
   const [labelVisible, setLabelVisible] = useState(false)
-  const [hovered, setHovered] = useState(false)
 
   const openWhatsApp = () => {
     window.open(WHATSAPP_URL, '_blank', 'noopener,noreferrer')
@@ -40,8 +42,6 @@ export function FloatingWhatsApp() {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 12, scale: 0.94 }}
             transition={{ duration: 0.28, ease: whatsappEasing }}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
             className="glass mr-3 hidden cursor-pointer items-center gap-2 rounded-full px-4 py-2.5 text-[11px] font-semibold uppercase tracking-widest text-ink-800 hover:text-teal-800 sm:inline-flex"
           >
             <span className="text-teal-700">
@@ -56,14 +56,8 @@ export function FloatingWhatsApp() {
         type="button"
         onClick={openWhatsApp}
         aria-label="Chat with Climate Craft on WhatsApp"
-        onMouseEnter={() => {
-          setHovered(true)
-          setLabelVisible(true)
-        }}
-        onMouseLeave={() => {
-          setHovered(false)
-          setLabelVisible(false)
-        }}
+        onMouseEnter={() => setLabelVisible(true)}
+        onMouseLeave={() => setLabelVisible(false)}
         onFocus={() => setLabelVisible(true)}
         onBlur={() => setLabelVisible(false)}
         className="group relative flex h-14 w-14 items-center justify-center rounded-full text-white shadow-[0_18px_44px_-14px_rgba(22,155,154,0.55)] transition-transform duration-300 ease-out hover:scale-105 active:scale-95 sm:h-14 sm:w-14 md:h-14 md:w-14"
