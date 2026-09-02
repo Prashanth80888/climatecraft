@@ -51,7 +51,8 @@ function ProductCard({ product }: { product: HomeProduct }) {
             src={homeProductImage(product.slug)}
             alt={product.name}
             draggable={false}
-            loading="lazy"
+            loading="eager"
+            decoding="async"
             className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.07]"
           />
         ) : (

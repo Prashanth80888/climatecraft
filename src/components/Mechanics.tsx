@@ -37,7 +37,7 @@ export function Mechanics() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.play().catch(() => {})
+          video.play().catch(() => { })
         } else {
           video.pause()
         }
@@ -92,7 +92,7 @@ export function Mechanics() {
 
         {/* Main content */}
         <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-10 lg:grid-cols-12 lg:items-center lg:gap-10">
-          
+
           {/* LEFT — COMPACT INTRO */}
           <div className="lg:col-span-5">
             <Reveal y={10}>
@@ -298,6 +298,8 @@ export function Mechanics() {
             scale: visualScale,
             opacity: visualOpacity,
             y: visualY,
+            transform: 'translateZ(0)',
+            willChange: 'transform, opacity',
           }}
           className="group relative mt-5 sm:mt-7"
         >
@@ -322,7 +324,11 @@ export function Mechanics() {
 
             {/* Decorative ring */}
             <motion.div
-              style={{ rotate: ringRotate }}
+              style={{
+                rotate: ringRotate,
+                transform: 'translateZ(0)',
+                willChange: 'transform',
+              }}
               className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full border border-gold-400/25 sm:h-52 sm:w-52"
             />
 
@@ -330,11 +336,13 @@ export function Mechanics() {
 
             {/* Video caption */}
             <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1 p-6 sm:p-10">
-              <span className="section-label text-white/90">
+              {/* Keep the short two-line heading on mobile.
+                  The supporting section label remains available on desktop. */}
+              <span className="section-label hidden text-white/90 sm:block">
                 Precision in Motion
               </span>
 
-              <h3 className="mt-1 max-w-xl font-display text-2xl italic text-white sm:text-3xl">
+              <h3 className="mt-0 max-w-xl font-display text-2xl italic text-white sm:mt-1 sm:text-3xl">
                 Quiet technology. Effortless comfort.
               </h3>
 

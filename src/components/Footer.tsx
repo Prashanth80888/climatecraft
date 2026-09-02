@@ -145,6 +145,8 @@ export function Footer() {
                   <img
                     src={brand.logo}
                     alt="Climate Craft"
+                    loading="lazy"
+                    decoding="async"
                     className="relative z-10 h-9 w-9 object-contain transition-all duration-500 ease-out group-hover/brand:scale-110 group-hover/brand:-rotate-3"
                   />
 
