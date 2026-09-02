@@ -283,9 +283,9 @@ export function Collections() {
         {SEAT_ROWS.map((row, idx) => {
           let products = HOME_PRODUCTS.filter((p) => p.seats === row.seats)
 
-          // Replace the removed Duo Two-Seater with an existing Single-Seater ('classic') in the second row.
+          // Replace the removed Duo Two-Seater with the new Climate Craft Signature Single-Seater in the second row.
           if (row.seats === 2) {
-            const singleSeaterReplacement = HOME_PRODUCTS.find((p) => p.id === 'classic')
+            const singleSeaterReplacement = HOME_PRODUCTS.find((p) => p.id === 'signature-new')
             if (singleSeaterReplacement) {
               products = [singleSeaterReplacement, ...products]
             }

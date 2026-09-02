@@ -426,10 +426,10 @@ export function EngineeredComfort() {
                     top: `${concept.y}%`,
                   }}
                   className={`absolute z-40 -translate-y-1/2 -translate-x-1/2 ${concept.id === 'craft' || concept.id === 'material'
-                      ? 'max-sm:translate-x-[calc(-50%+24px)]'
-                      : concept.id === 'motion' || concept.id === 'climate'
-                        ? 'max-sm:translate-x-[calc(-50%-24px)]'
-                        : ''
+                    ? 'max-sm:translate-x-[calc(-50%+24px)]'
+                    : concept.id === 'motion' || concept.id === 'climate'
+                      ? 'max-sm:translate-x-[calc(-50%-24px)]'
+                      : ''
                     }`}
                   onMouseEnter={() => openConcept(concept.id)}
                   onMouseLeave={closeConcept}

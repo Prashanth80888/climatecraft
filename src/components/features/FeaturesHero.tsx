@@ -46,7 +46,7 @@ const HOTSPOTS: Hotspot[] = [
     pinX: 25,
     pinY: 52,
     cardPosition: 'top-right',
-    previewImage: '/images/screen.JPG',
+    previewImage: '/images/screen.jpg',
   },
   {
     id: 'recline',
@@ -57,7 +57,7 @@ const HOTSPOTS: Hotspot[] = [
     pinX: 18,
     pinY: 62,
     cardPosition: 'bottom-left',
-    previewImage: '/images/recline control.JPG',
+    previewImage: '/images/recline control.jpg',
   },
 ]
 
