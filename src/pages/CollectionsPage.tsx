@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react'
-import { PRODUCT_FAMILIES } from '../data/homeProducts'
+import { MessageCircle } from 'lucide-react'
+import { HOME_PRODUCTS, PRODUCT_FAMILIES } from '../data/homeProducts'
+import { whatsappHref } from '../lib/assets'
 import { CollectionsHero } from '../components/collections/CollectionsHero'
 import { CategoryNav } from '../components/collections/CategoryNav'
 import { FeaturedCollection } from '../components/collections/FeaturedCollection'
@@ -10,6 +12,9 @@ import { FinalCTA } from '../components/FinalCTA'
 import { Footer } from '../components/Footer'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
+const CLASSIC_GRAND_ONLY = HOME_PRODUCTS.filter((p) => p.slug === 'craft-classic-grand')
+const CLIMATE_SMART_PRODUCTS = HOME_PRODUCTS.filter((p) => p.name.includes('Climate Craft'))
+
 export function CollectionsPage() {
   useDocumentMeta(
     'Luxury Recliner Collections | Climate Craft',
@@ -19,17 +24,73 @@ export function CollectionsPage() {
   const gridRef = useRef<HTMLDivElement>(null)
 
   const activeFamily = PRODUCT_FAMILIES[active]
+  const isMotorised = activeFamily.id === 'motorised-comfort'
+  const isClassic = activeFamily.id === 'classic'
+  const isClimateSmart = activeFamily.id === 'climate-smart'
+
+  const filteredProducts = isClassic
+    ? CLASSIC_GRAND_ONLY
+    : isClimateSmart
+      ? CLIMATE_SMART_PRODUCTS
+      : HOME_PRODUCTS.filter((p) => p.familyId === activeFamily.id)
 
   return (
     <>
       <main>
         <CollectionsHero />
-        <CategoryNav active={active} onChange={setActive} />
-        <FeaturedCollection
-          family={activeFamily}
-          onExplore={() => gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+        <CategoryNav 
+          active={active} 
+          onChange={setActive} 
+          productCounts={{ 
+            'climate-smart': CLIMATE_SMART_PRODUCTS.length,
+            'classic': CLASSIC_GRAND_ONLY.length,
+            'motorised-comfort': 0
+          }} 
         />
-        <ProductGrid ref={gridRef} family={activeFamily} />
+
+        {isMotorised ? (
+          <section className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-24">
+            <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
+              <div className="h-[450px] w-[700px] rounded-full bg-radial from-teal-500/10 via-gold-400/5 to-transparent blur-3xl opacity-80" />
+            </div>
+
+            <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+              <div className="flex flex-col items-center text-center">
+                <span className="rounded-full border border-[#063B3D]/15 bg-white/80 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-[#063B3D]/70 backdrop-blur-md">
+                  Coming Soon
+                </span>
+
+                <h2 className="mt-6 font-display text-3xl font-semibold leading-[1.1] text-[#063B3D] sm:text-4xl lg:text-5xl">
+                  Motorised Comfort
+                </h2>
+
+                <p className="mt-4 max-w-md text-[14px] font-normal leading-relaxed text-ink-700 sm:text-[15px]">
+                  For further information, please contact us.
+                </p>
+
+                <a
+                  href={whatsappHref('Hi Climate Craft, I\'d like to know more about Motorised Comfort.')}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group mt-8 inline-flex items-center gap-3 rounded-full border border-[#063B3D]/20 bg-white/80 px-6 py-3.5 text-[12px] font-bold uppercase tracking-widest text-[#063B3D] shadow-xs backdrop-blur-md transition-all duration-300 hover:border-gold-400 hover:bg-[#063B3D] hover:text-white hover:shadow-lg hover:shadow-[#063B3D]/20"
+                >
+                  <span>Message on WhatsApp</span>
+                  <MessageCircle className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
+                </a>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <>
+            <FeaturedCollection
+              family={activeFamily}
+              filteredProducts={filteredProducts}
+              onExplore={() => gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+            />
+            <ProductGrid ref={gridRef} family={activeFamily} filteredProducts={filteredProducts} />
+          </>
+        )}
+
         <CollectionStory />
         <EngineeringDetail />
         <FinalCTA />

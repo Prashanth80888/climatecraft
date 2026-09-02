@@ -59,6 +59,8 @@ export function Hero() {
       ref={ref}
       className="relative flex h-[100svh] min-h-[640px] w-full flex-col overflow-hidden bg-transparent"
     >
+      {/* Eagerly preload the LCP image (poster) */}
+      <link rel="preload" as="image" href={brand.heroPoster} fetchPriority="high" />
       <motion.div
         initial={{ scale: 1.06, opacity: 0.6 }}
         animate={introComplete ? { scale: 1, opacity: 1 } : { scale: 1.06, opacity: 0.6 }}

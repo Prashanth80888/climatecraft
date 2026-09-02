@@ -45,7 +45,7 @@ function Stat({
 
   return (
     <div className="flex flex-col items-start border-t border-ink-900/10 px-1 py-7 first:border-t-0 sm:border-t-0 sm:border-l sm:px-7 sm:py-2 sm:first:border-l-0">
-      <span className="font-display text-4xl tabular-nums text-gold-700 sm:text-5xl lg:text-6xl">
+      <span className="font-display text-4xl tabular-nums text-[#B89B4A] sm:text-5xl lg:text-6xl">
         {count}
         {suffix}
       </span>

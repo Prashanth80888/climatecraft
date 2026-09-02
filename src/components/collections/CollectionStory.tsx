@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { homeProductImage } from '../../lib/assets'
 import { SectionLabel } from '../ui/SectionLabel'
@@ -36,10 +37,7 @@ export function CollectionStory() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-16">
-
-          {/* ─────────────────────────────────────────
-              LEFT — STORY CONTENT
-          ───────────────────────────────────────── */}
+          {/* LEFT — STORY CONTENT */}
           <div className="lg:col-span-6">
             <Reveal>
               <SectionLabel>Engineered for How You Live</SectionLabel>
@@ -70,11 +68,8 @@ export function CollectionStory() {
             </Reveal>
           </div>
 
-          {/* ─────────────────────────────────────────
-              RIGHT — 4 SEATER + SINGLE SEATER
-          ───────────────────────────────────────── */}
+          {/* RIGHT — THREE SEATER + SINGLE SEATER */}
           <div className="relative lg:col-span-6">
-
             {/* Soft background glow */}
             <div
               className="pointer-events-none absolute right-[5%] top-[10%] h-[400px] w-[400px] rounded-full opacity-30 blur-[110px]"
@@ -87,69 +82,66 @@ export function CollectionStory() {
             {/* Decorative outer frame */}
             <div className="pointer-events-none absolute right-[2%] top-[4%] h-[88%] w-[82%] rounded-[36px] border border-[#0B3F42]/10" />
 
-            {/* ─────────────────────────────
-                4-SEATER — MAIN / LEFT
-            ───────────────────────────── */}
-            <motion.div
-              style={{ y: mainY }}
-              className="group relative z-10 w-[82%] overflow-hidden rounded-[30px] border border-white/70 bg-white/20 shadow-[0_45px_110px_-38px_rgba(6,61,60,0.38)] transition-all duration-500 hover:shadow-[0_55px_125px_-35px_rgba(6,61,60,0.45)] sm:w-[80%] lg:w-[82%]"
+            {/* THREE SEATER — MAIN / LEFT */}
+            <Link
+              to="/products/craft-classic-grand"
+              className="group relative z-10 block w-[82%] cursor-pointer overflow-hidden rounded-[30px] border border-white/70 bg-white/20 shadow-[0_45px_110px_-38px_rgba(6,61,60,0.38)] transition-all duration-500 hover:-translate-y-1 hover:border-gold-400/60 hover:shadow-[0_55px_125px_-35px_rgba(6,61,60,0.45)] sm:w-[80%] lg:w-[82%]"
             >
-              <div className="aspect-[4/3] w-full overflow-hidden">
-                <img
-                  src={homeProductImage('craft-classic-grand')}
-                  alt="Climate Craft four seater sofa"
-                  className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                  loading="lazy"
-                />
-              </div>
-
-              {/* Image gradient */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent" />
-
-              {/* Corner accent */}
-              <span className="pointer-events-none absolute left-5 top-5 h-8 w-8 rounded-tl-xl border-l border-t border-white/70" />
-
-              {/* 4 Seater Label */}
-              <div className="absolute bottom-5 left-5 rounded-full border border-white/30 bg-black/25 px-3.5 py-1.5 backdrop-blur-md">
-                <span className="text-[9px] font-medium uppercase tracking-[0.18em] text-white/90">
-                  Three Seater
-                </span>
-              </div>
-            </motion.div>
-
-            {/* ─────────────────────────────
-                SINGLE SEATER — RIGHT
-            ───────────────────────────── */}
-            <motion.div
-              style={{ y: accentY }}
-              className="group absolute -bottom-[4%] right-[-2%] z-20 w-[40%] overflow-hidden rounded-[24px] border border-white/80 bg-white/30 p-1.5 shadow-[0_35px_80px_-28px_rgba(6,61,60,0.45)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_45px_95px_-25px_rgba(6,61,60,0.5)] sm:right-[-1%] sm:w-[38%] lg:right-[-5%] lg:w-[39%]"
-            >
-              <div className="relative overflow-hidden rounded-[19px]">
-
-                <div className="aspect-[4/5] w-full">
+              <motion.div style={{ y: mainY }}>
+                <div className="aspect-[4/3] w-full overflow-hidden">
                   <img
-                    src={homeProductImage('climate-craft-signature')}
-                    alt="Climate Craft single seater chair"
-                    className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+                    src={homeProductImage('craft-classic-grand')}
+                    alt="Climate Craft three seater sofa"
+                    className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                     loading="lazy"
                   />
                 </div>
 
                 {/* Image gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#063B3D]/50 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent transition-opacity duration-500 group-hover:from-black/50" />
 
-                {/* Single Seater Label */}
-                <div className="absolute bottom-3 left-3 right-3">
-                  <span className="text-[8px] font-medium uppercase tracking-[0.18em] text-white/90">
-                    Single Seater
+                {/* Corner accent */}
+                <span className="pointer-events-none absolute left-5 top-5 h-8 w-8 rounded-tl-xl border-l border-t border-white/70 transition-colors duration-300 group-hover:border-gold-300" />
+
+                {/* Three Seater Label */}
+                <div className="absolute bottom-5 left-5 rounded-full border border-white/30 bg-black/25 px-3.5 py-1.5 backdrop-blur-md transition-all duration-300 group-hover:border-gold-300/60 group-hover:bg-[#063B3D]/80">
+                  <span className="text-[9px] font-medium uppercase tracking-[0.18em] text-white/90">
+                    Three Seater
                   </span>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Link>
 
-            {/* ─────────────────────────────
-                SMALL GOLD DETAIL
-            ───────────────────────────── */}
+            {/* SINGLE SEATER — RIGHT */}
+            <Link
+              to="/products/climate-craft-signature"
+              className="group absolute -bottom-[4%] right-[-2%] z-20 block w-[40%] cursor-pointer overflow-hidden rounded-[24px] border border-white/80 bg-white/30 p-1.5 shadow-[0_35px_80px_-28px_rgba(6,61,60,0.45)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-gold-300/70 hover:shadow-[0_45px_95px_-25px_rgba(6,61,60,0.5)] sm:right-[-1%] sm:w-[38%] lg:right-[-5%] lg:w-[39%]"
+            >
+              <motion.div style={{ y: accentY }}>
+                <div className="relative overflow-hidden rounded-[19px]">
+                  <div className="aspect-[4/5] w-full">
+                    <img
+                      src={homeProductImage('climate-craft-signature')}
+                      alt="Climate Craft single seater chair"
+                      className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Image gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#063B3D]/50 via-transparent to-transparent transition-opacity duration-500 group-hover:from-[#063B3D]/65" />
+
+                  {/* Single Seater Label */}
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <span className="text-[8px] font-medium uppercase tracking-[0.18em] text-white/90">
+                      Single Seater
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* SMALL GOLD DETAIL */}
             <motion.div
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}

@@ -5,9 +5,10 @@ import { Reveal } from '../ui/Reveal'
 interface CategoryNavProps {
   active: number
   onChange: (index: number) => void
+  productCounts?: Record<string, number>
 }
 
-export function CategoryNav({ active, onChange }: CategoryNavProps) {
+export function CategoryNav({ active, onChange, productCounts }: CategoryNavProps) {
   return (
     <Reveal amount={0.4}>
       <div className="sticky top-[76px] z-30 bg-canvas/80 py-3 backdrop-blur-xl sm:top-[92px]">
@@ -18,7 +19,7 @@ export function CategoryNav({ active, onChange }: CategoryNavProps) {
             className="scrollbar-none flex items-center gap-1 overflow-x-auto rounded-full border border-white/80 bg-white/55 p-1.5 shadow-[0_14px_36px_-22px_rgba(6,59,61,0.22),inset_0_1px_0_rgba(255,255,255,0.85)] backdrop-blur-[22px] sm:justify-center"
           >
             {PRODUCT_FAMILIES.map((family, i) => {
-              const count = HOME_PRODUCTS.filter((p) => p.familyId === family.id).length
+              const count = productCounts?.[family.id] ?? HOME_PRODUCTS.filter((p) => p.familyId === family.id).length
               return (
                 <button
                   key={family.id}

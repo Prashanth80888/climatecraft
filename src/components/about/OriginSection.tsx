@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Sparkles, Cpu, Box, Layers, MapPin, History } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { SectionLabel } from '../ui/SectionLabel'
 import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { Reveal } from '../ui/Reveal'
@@ -84,39 +85,41 @@ export function OriginSection() {
           {/* Right Column: Hero Visual Showcase */}
           <div className="lg:col-span-6">
             <Reveal delay={0.2}>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="relative overflow-hidden rounded-[32px] border border-white/80 bg-white/40 p-3 shadow-[0_30px_70px_-20px_rgba(6,59,61,0.25)] backdrop-blur-xl"
-              >
-                <div className="relative overflow-hidden rounded-[24px]">
-                  <img
-                    src="/images/about/motion.png"
-                    alt="The motorized mechanism at the centre of a Climate Craft piece"
-                    loading="lazy"
-                    className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-105 sm:aspect-[4/3] lg:aspect-[4/5]"
-                  />
+              <Link to="/products/craft-motion" className="block">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative overflow-hidden rounded-[32px] border border-white/80 bg-white/40 p-3 shadow-[0_30px_70px_-20px_rgba(6,59,61,0.25)] backdrop-blur-xl"
+                >
+                  <div className="relative overflow-hidden rounded-[24px]">
+                    <img
+                      src="/images/about/motion.png"
+                      alt="The motorized mechanism at the centre of a Climate Craft piece"
+                      loading="lazy"
+                      className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-105 sm:aspect-[4/3] lg:aspect-[4/5]"
+                    />
 
-                  {/* Image Light Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#063B3D]/60 via-transparent to-transparent opacity-80" />
+                    {/* Image Light Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#063B3D]/60 via-transparent to-transparent opacity-80" />
 
-                  {/* Location Floating Badge Overlay */}
-                  <div className="absolute bottom-4 left-4 flex items-center gap-1.5 rounded-full border border-white/40 bg-white/85 px-3 py-1.5 shadow-lg backdrop-blur-md sm:bottom-5 sm:left-5 sm:gap-2 sm:px-4 sm:py-2">
-                    <MapPin className="h-3.5 w-3.5 text-teal-700 animate-bounce sm:h-4 sm:w-4" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#063B3D] sm:text-xs">
-                      Antwerp, Belgium · Est. 2009
-                    </span>
+                    {/* Location Floating Badge Overlay */}
+                    <div className="absolute bottom-4 left-4 flex items-center gap-1.5 rounded-full border border-white/40 bg-white/85 px-3 py-1.5 shadow-lg backdrop-blur-md sm:bottom-5 sm:left-5 sm:gap-2 sm:px-4 sm:py-2">
+                      <MapPin className="h-3.5 w-3.5 text-teal-700 animate-bounce sm:h-4 sm:w-4" />
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#063B3D] sm:text-xs">
+                        Antwerp, Belgium · Est. 2009
+                      </span>
+                    </div>
+
+                    {/* Quality Seal Floating Pill */}
+                    <div className="absolute top-4 right-4 flex items-center gap-1 rounded-full border border-gold-400/50 bg-[#063B3D]/80 px-2.5 py-1 shadow-md backdrop-blur-md sm:top-5 sm:right-5 sm:gap-1.5 sm:px-3.5 sm:py-1.5">
+                      <Sparkles className="h-3 w-3 text-gold-400 sm:h-3.5 sm:w-3.5" />
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-white sm:text-[10px]">
+                        Patented Motion
+                      </span>
+                    </div>
                   </div>
-
-                  {/* Quality Seal Floating Pill */}
-                  <div className="absolute top-4 right-4 flex items-center gap-1 rounded-full border border-gold-400/50 bg-[#063B3D]/80 px-2.5 py-1 shadow-md backdrop-blur-md sm:top-5 sm:right-5 sm:gap-1.5 sm:px-3.5 sm:py-1.5">
-                    <Sparkles className="h-3 w-3 text-gold-400 sm:h-3.5 sm:w-3.5" />
-                    <span className="text-[9px] font-bold uppercase tracking-widest text-white sm:text-[10px]">
-                      Patented Motion
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             </Reveal>
           </div>
 

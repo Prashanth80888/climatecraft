@@ -62,6 +62,12 @@ export function CollectionsHero() {
       ref={sectionRef}
       className="relative overflow-hidden bg-transparent px-5 pb-16 pt-32 sm:px-6 sm:pb-20 sm:pt-36 lg:pt-40"
     >
+      {/* Preload images to prevent layout flash when the carousel automatically transitions */}
+      <div className="hidden" aria-hidden="true">
+        {HERO_SLIDES.map((slide) => (
+          <img key={slide.slug} src={slide.image} alt="" />
+        ))}
+      </div>
       {/* Ambient Background Glows */}
       <div className="pointer-events-none absolute inset-0">
         <div

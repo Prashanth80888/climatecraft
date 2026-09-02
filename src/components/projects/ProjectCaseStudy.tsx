@@ -1,3 +1,4 @@
+
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import type { ElementType, ReactNode } from 'react'
@@ -28,6 +29,21 @@ export function ProjectCaseStudy({
   const isEven = index % 2 === 0
   const prefersReducedMotion = useReducedMotion()
 
+  const firstProjectRoutes = [
+    '/products/craft-motion',
+    '/products/craft-classic',
+    '/products/craft-classic-duo',
+  ]
+
+  const projectImageRoute =
+    index === 0
+      ? '/products/craft-motion'
+      : index === 1
+        ? '/products/craft-classic'
+        : index === 2
+          ? '/products/craft-classic-duo'
+          : undefined
+
   return (
     <section
       id={`project-${project.id}`}
@@ -49,10 +65,10 @@ export function ProjectCaseStudy({
           prefersReducedMotion
             ? undefined
             : {
-                x: [0, 20, 0],
-                y: [0, -20, 0],
-                scale: [1, 1.08, 1],
-              }
+              x: [0, 20, 0],
+              y: [0, -20, 0],
+              scale: [1, 1.08, 1],
+            }
         }
         transition={{
           duration: 14,
@@ -82,10 +98,10 @@ export function ProjectCaseStudy({
           prefersReducedMotion
             ? undefined
             : {
-                x: [0, -25, 0],
-                y: [0, 20, 0],
-                scale: [1, 1.05, 1],
-              }
+              x: [0, -25, 0],
+              y: [0, 20, 0],
+              scale: [1, 1.05, 1],
+            }
         }
         transition={{
           duration: 18,
@@ -332,9 +348,9 @@ export function ProjectCaseStudy({
                           prefersReducedMotion
                             ? false
                             : {
-                                opacity: 0,
-                                x: -12,
-                              }
+                              opacity: 0,
+                              x: -12,
+                            }
                         }
                         whileInView={{
                           opacity: 1,
@@ -474,6 +490,7 @@ export function ProjectCaseStudy({
                     label="Project"
                     eager={index === 0}
                     large
+                    to={projectImageRoute}
                   />
                 </RevealItem>
 
@@ -487,6 +504,7 @@ export function ProjectCaseStudy({
                       alt={`${project.title} - environment view`}
                       label="Environment"
                       showLabel={false}
+                      to={projectImageRoute}
                     />
 
                     <ProjectImage
@@ -494,6 +512,7 @@ export function ProjectCaseStudy({
                       alt={`${project.title} - detail view`}
                       label="Detail"
                       showLabel={false}
+                      to={projectImageRoute}
                     />
 
                   </div>
@@ -549,10 +568,10 @@ export function ProjectCaseStudy({
                   prefersReducedMotion
                     ? undefined
                     : {
-                        x: [0, 20, 0],
-                        y: [0, 14, 0],
-                        scale: [1, 1.08, 1],
-                      }
+                      x: [0, 20, 0],
+                      y: [0, 14, 0],
+                      scale: [1, 1.08, 1],
+                    }
                 }
                 transition={{
                   duration: 9,
@@ -578,9 +597,9 @@ export function ProjectCaseStudy({
                   prefersReducedMotion
                     ? undefined
                     : {
-                        x: [0, -18, 0],
-                        y: [0, -12, 0],
-                      }
+                      x: [0, -18, 0],
+                      y: [0, -12, 0],
+                    }
                 }
                 transition={{
                   duration: 11,
@@ -618,166 +637,174 @@ export function ProjectCaseStudy({
                   label="Installed Configuration"
                 >
                   <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {project.installedSeating.map((seat) => (
-                      <Link
-                        key={seat.slug}
-                        to={`/products/${seat.slug}`}
-                        className="
-                          block
-                          cursor-pointer
-                          rounded-[20px]
-                          focus-visible:outline
-                          focus-visible:outline-2
-                          focus-visible:outline-offset-2
-                          focus-visible:outline-gold-400
-                        "
-                        aria-label={`View ${seat.name} product details`}
-                      >
-                        <motion.div
-                          initial={
-                            prefersReducedMotion
-                              ? false
-                              : {
+                    {project.installedSeating.map((seat, seatIndex) => {
+
+                      const productRoute =
+                        index === 0 && firstProjectRoutes[seatIndex]
+                          ? firstProjectRoutes[seatIndex]
+                          : `/products/${seat.slug}`
+
+                      return (
+                        <Link
+                          key={seat.slug}
+                          to={productRoute}
+                          className="
+                            block
+                            cursor-pointer
+                            rounded-[20px]
+                            focus-visible:outline
+                            focus-visible:outline-2
+                            focus-visible:outline-offset-2
+                            focus-visible:outline-gold-400
+                          "
+                          aria-label={`View ${seat.name} product details`}
+                        >
+                          <motion.div
+                            initial={
+                              prefersReducedMotion
+                                ? false
+                                : {
                                   opacity: 0,
                                   y: 18,
                                 }
-                          }
-                          whileInView={{
-                            opacity: 1,
-                            y: 0,
-                          }}
-                          viewport={{
-                            once: true,
-                            amount: 0.25,
-                          }}
-                          transition={{
-                            duration: 0.55,
-                            ease: easeOut,
-                          }}
-                          whileHover={{
-                            y: -6,
-                            scale: 1.01,
-                          }}
-                          whileTap={{
-                            scale: 0.985,
-                          }}
-                          className="
-                            group
-                            relative
-                            overflow-hidden
-                            rounded-[20px]
-                            border
-                            border-white/50
-                            bg-white/[0.12]
-                            p-3
-                            shadow-[0_18px_45px_-30px_rgba(6,59,61,0.38)]
-                            backdrop-blur-lg
-                            transition-all
-                            duration-300
-                            hover:border-teal-700/40
-                            hover:bg-[#063B3D]/10
-                            hover:shadow-xl
-                          "
-                        >
-                          <div className="flex items-center gap-3.5">
+                            }
+                            whileInView={{
+                              opacity: 1,
+                              y: 0,
+                            }}
+                            viewport={{
+                              once: true,
+                              amount: 0.25,
+                            }}
+                            transition={{
+                              duration: 0.55,
+                              ease: easeOut,
+                            }}
+                            whileHover={{
+                              y: -6,
+                              scale: 1.01,
+                            }}
+                            whileTap={{
+                              scale: 0.985,
+                            }}
+                            className="
+                              group
+                              relative
+                              overflow-hidden
+                              rounded-[20px]
+                              border
+                              border-white/50
+                              bg-white/[0.12]
+                              p-3
+                              shadow-[0_18px_45px_-30px_rgba(6,59,61,0.38)]
+                              backdrop-blur-lg
+                              transition-all
+                              duration-300
+                              hover:border-teal-700/40
+                              hover:bg-[#063B3D]/10
+                              hover:shadow-xl
+                            "
+                          >
+                            <div className="flex items-center gap-3.5">
 
-                            <div
-                              className="
-                                relative
-                                h-[68px]
-                                w-[68px]
-                                flex-none
-                                overflow-hidden
-                                rounded-[14px]
-                                border
-                                border-white/55
-                              "
-                            >
-                              <img
-                                src={seat.image}
-                                alt={seat.name}
-                                loading="lazy"
-                                draggable={false}
+                              <div
                                 className="
-                                  h-full
-                                  w-full
-                                  object-cover
-                                  object-center
-                                  transition-transform
-                                  duration-700
-                                  ease-out
-                                  group-hover:scale-110
+                                  relative
+                                  h-[68px]
+                                  w-[68px]
+                                  flex-none
+                                  overflow-hidden
+                                  rounded-[14px]
+                                  border
+                                  border-white/55
                                 "
-                              />
+                              >
+                                <img
+                                  src={seat.image}
+                                  alt={seat.name}
+                                  loading="lazy"
+                                  draggable={false}
+                                  className="
+                                    h-full
+                                    w-full
+                                    object-cover
+                                    object-center
+                                    transition-transform
+                                    duration-700
+                                    ease-out
+                                    group-hover:scale-110
+                                  "
+                                />
 
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent transition-opacity duration-300 group-hover:opacity-60" />
-                            </div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent transition-opacity duration-300 group-hover:opacity-60" />
+                              </div>
 
-                            <div className="min-w-0 flex-1">
-                              <h4
+                              <div className="min-w-0 flex-1">
+                                <h4
+                                  className="
+                                    font-display
+                                    text-[16px]
+                                    leading-tight
+                                    text-cream-100
+                                    transition-colors
+                                    duration-300
+                                    group-hover:text-gold-400
+                                  "
+                                >
+                                  {seat.name}
+                                </h4>
+
+                                <p
+                                  className="
+                                    mt-1
+                                    text-[11px]
+                                    leading-relaxed
+                                    text-cream-200
+                                    transition-colors
+                                    duration-300
+                                    group-hover:text-cream-100
+                                  "
+                                >
+                                  {seat.seats} seat
+                                  {seat.seats > 1 ? 's' : ''} · Climate Smart family
+                                </p>
+                              </div>
+
+                              <ArrowRight
                                 className="
-                                  font-display
-                                  text-[16px]
-                                  leading-tight
-                                  text-cream-100
-                                  transition-colors
+                                  mr-1
+                                  h-4
+                                  w-4
+                                  flex-none
+                                  text-teal-700/40
+                                  transition-all
                                   duration-300
+                                  group-hover:translate-x-1.5
                                   group-hover:text-gold-400
                                 "
-                              >
-                                {seat.name}
-                              </h4>
-
-                              <p
-                                className="
-                                  mt-1
-                                  text-[11px]
-                                  leading-relaxed
-                                  text-cream-200
-                                  transition-colors
-                                  duration-300
-                                  group-hover:text-cream-100
-                                "
-                              >
-                                {seat.seats} seat
-                                {seat.seats > 1 ? 's' : ''} · Climate Smart family
-                              </p>
+                              />
                             </div>
 
-                            <ArrowRight
+                            <span
+                              aria-hidden="true"
                               className="
-                                mr-1
-                                h-4
-                                w-4
-                                flex-none
-                                text-teal-700/40
+                                pointer-events-none
+                                absolute
+                                bottom-0
+                                left-3
+                                h-[2px]
+                                w-0
+                                rounded-full
+                                bg-gold-400
                                 transition-all
-                                duration-300
-                                group-hover:translate-x-1.5
-                                group-hover:text-gold-400
+                                duration-500
+                                group-hover:w-[calc(100%-24px)]
                               "
                             />
-                          </div>
-
-                          <span
-                            aria-hidden="true"
-                            className="
-                              pointer-events-none
-                              absolute
-                              bottom-0
-                              left-3
-                              h-[2px]
-                              w-0
-                              rounded-full
-                              bg-gold-400
-                              transition-all
-                              duration-500
-                              group-hover:w-[calc(100%-24px)]
-                            "
-                          />
-                        </motion.div>
-                      </Link>
-                    ))}
+                          </motion.div>
+                        </Link>
+                      )
+                    })}
                   </div>
                 </InfoBlock>
 
@@ -816,9 +843,9 @@ export function ProjectCaseStudy({
                           prefersReducedMotion
                             ? false
                             : {
-                                opacity: 0,
-                                y: 12,
-                              }
+                              opacity: 0,
+                              y: 12,
+                            }
                         }
                         whileInView={{
                           opacity: 1,
@@ -1052,6 +1079,7 @@ function ProjectImage({
   eager = false,
   large = false,
   showLabel = true,
+  to,
 }: {
   src: string
   alt: string
@@ -1059,8 +1087,9 @@ function ProjectImage({
   eager?: boolean
   large?: boolean
   showLabel?: boolean
+  to?: string
 }) {
-  return (
+  const image = (
     <motion.div
       whileHover={{
         y: -6,
@@ -1089,10 +1118,9 @@ function ProjectImage({
     >
       <div
         className={`
-          ${
-            large
-              ? 'aspect-[16/10]'
-              : 'aspect-[4/3]'
+          ${large
+            ? 'aspect-[16/10]'
+            : 'aspect-[4/3]'
           }
           w-full
           overflow-hidden
@@ -1214,6 +1242,8 @@ function ProjectImage({
       )}
     </motion.div>
   )
+
+  return to ? <Link to={to} className="block">{image}</Link> : image
 }
 
 /* ==========================================================================
@@ -1308,3 +1338,4 @@ function MetaItem({
     </motion.div>
   )
 }
+

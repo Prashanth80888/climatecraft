@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { Snowflake, Flame } from 'lucide-react'
 import { getProductBySlug } from '../../data/homeProducts'
 import { SectionLabel } from '../ui/SectionLabel'
@@ -92,16 +93,21 @@ export function ClimateTechnology() {
 
         <div className="lg:col-span-6">
           <Reveal delay={0.1}>
-            <div className="group relative overflow-hidden rounded-[28px] border border-white/70 bg-white/30 shadow-[0_60px_140px_-50px_rgba(18,59,61,0.4)] backdrop-blur-sm">
-              <img
-                src="/images/Green sofa 1.png"
-                alt="Climate Craft green sofa"
-                loading="lazy"
-                className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03] sm:aspect-[4/3]"
-              />
+            <Link
+              to="/products/craft-classic-duo"
+              className="group block cursor-pointer"
+            >
+              <div className="relative overflow-hidden rounded-[28px] border border-white/70 bg-white/30 shadow-[0_60px_140px_-50px_rgba(18,59,61,0.4)] backdrop-blur-sm">
+                <img
+                  src="/images/Green sofa 1.png"
+                  alt="Climate Craft green sofa"
+                  loading="lazy"
+                  className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03] sm:aspect-[4/3]"
+                />
 
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-            </div>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              </div>
+            </Link>
           </Reveal>
         </div>
       </div>

@@ -32,7 +32,7 @@ export function AboutPage() {
   }, [location.hash])
   return (
     <>
-      <main>
+      <main className="overflow-x-hidden">
         <AboutHero />
         <BrandStatement />
         <AboutStats />

@@ -74,7 +74,7 @@ const CONCEPTS: Concept[] = [
       'Plain-water liquid climate control brings personalised heating and cooling directly into the seating experience.',
     detail:
       'Micro-channels in the lumbar cushion gently circulate temperature-controlled fluid.',
-    previewImage: '/images/climate.png',
+    previewImage: '/images/climate.jpg',
   },
   {
     id: 'control',
@@ -172,6 +172,7 @@ export function EngineeredComfort() {
   return (
     <section className="relative overflow-hidden bg-transparent py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+
         <Reveal className="text-center">
           <SectionLabel>Engineered Comfort</SectionLabel>
 
@@ -188,20 +189,26 @@ export function EngineeredComfort() {
           </p>
         </Reveal>
 
+        {/* ================================================================
+            INTERACTIVE ENGINEERING STAGE
+        ================================================================= */}
+
         <div
           ref={stageRef}
-          className="relative mx-auto mt-16 w-full max-w-[700px] sm:mt-20"
+          className="relative mx-auto mt-14 w-[min(100%,360px)] max-w-[700px] sm:mt-20 sm:w-full"
         >
           <motion.div
             style={{ scale }}
-            className="relative aspect-square w-full"
+            className="relative aspect-square w-full overflow-visible"
           >
             {/* AMBIENT LIGHT */}
+
             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[75%] w-[75%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-600/[0.08] blur-[80px]" />
 
             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[55%] w-[55%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold-400/[0.06] blur-[65px]" />
 
             {/* ORBITS */}
+
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
@@ -227,6 +234,7 @@ export function EngineeredComfort() {
             />
 
             {/* CONNECTION LINES */}
+
             <svg
               className="pointer-events-none absolute inset-0 z-[1] h-full w-full"
               viewBox="0 0 100 100"
@@ -292,9 +300,9 @@ export function EngineeredComfort() {
                       animate={
                         inView
                           ? {
-                              pathLength: 1,
-                              opacity: 1,
-                            }
+                            pathLength: 1,
+                            opacity: 1,
+                          }
                           : {}
                       }
                       transition={{
@@ -320,9 +328,9 @@ export function EngineeredComfort() {
                       animate={
                         inView
                           ? {
-                              opacity: 1,
-                              scale: 1,
-                            }
+                            opacity: 1,
+                            scale: 1,
+                          }
                           : {}
                       }
                       transition={{
@@ -335,20 +343,10 @@ export function EngineeredComfort() {
               })}
             </svg>
 
-            {/* =========================================================
+            {/* ============================================================
                 MAIN CIRCULAR IMAGE
+            ============================================================ */}
 
-                DEFAULT:
-                Always uses the original Craft Classic product image.
-
-                HOVER / CLICK:
-                Only the image changes to the exact corresponding
-                feature image. No zoom/scale — object-contain keeps
-                the whole image (including any text in it) visible.
-
-                NO DESKTOP CARD.
-                NO MOBILE CARD.
-                ========================================================= */}
             <motion.div
               initial={{
                 opacity: 0,
@@ -357,9 +355,9 @@ export function EngineeredComfort() {
               animate={
                 inView
                   ? {
-                      opacity: 1,
-                      scale: 1,
-                    }
+                    opacity: 1,
+                    scale: 1,
+                  }
                   : {}
               }
               transition={{
@@ -387,14 +385,18 @@ export function EngineeredComfort() {
                   duration: 0.3,
                   ease: easeOut,
                 }}
-                className="h-full w-full object-contain"
+                className="h-full w-full rounded-full object-cover object-center"
               />
 
               {/* Very subtle image protection overlay */}
+
               <div className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-t from-[#063B3D]/20 via-transparent to-white/[0.03]" />
             </motion.div>
 
-            {/* CONCEPT BUTTONS */}
+            {/* ============================================================
+                CONCEPT BUTTONS
+            ============================================================ */}
+
             {CONCEPTS.map((concept, index) => {
               const Icon = concept.icon
               const isActive = active === concept.id
@@ -409,9 +411,9 @@ export function EngineeredComfort() {
                   animate={
                     inView
                       ? {
-                          opacity: 1,
-                          scale: 1,
-                        }
+                        opacity: 1,
+                        scale: 1,
+                      }
                       : {}
                   }
                   transition={{
@@ -423,10 +425,58 @@ export function EngineeredComfort() {
                     left: `${concept.x}%`,
                     top: `${concept.y}%`,
                   }}
-                  className="absolute z-40 -translate-x-1/2 -translate-y-1/2"
+                  className={`absolute z-40 -translate-y-1/2 -translate-x-1/2 ${concept.id === 'craft' || concept.id === 'material'
+                      ? 'max-sm:translate-x-[calc(-50%+24px)]'
+                      : concept.id === 'motion' || concept.id === 'climate'
+                        ? 'max-sm:translate-x-[calc(-50%-24px)]'
+                        : ''
+                    }`}
                   onMouseEnter={() => openConcept(concept.id)}
                   onMouseLeave={closeConcept}
                 >
+                  {isActive && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ duration: 0.22, ease: easeOut }}
+                      onMouseEnter={() => openConcept(concept.id)}
+                      onMouseLeave={closeConcept}
+                      className={`absolute z-[60] w-[220px] max-w-[calc(100vw-32px)] rounded-2xl border border-gold-400/60 bg-[#063B3D]/95 p-4 text-left shadow-[0_20px_55px_-18px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:w-[270px] sm:max-w-none ${concept.id === 'ergonomics'
+                        ? 'left-1/2 top-full mt-4 -translate-x-1/2 lg:top-auto lg:bottom-full lg:mb-4 lg:mt-0'
+                        : concept.id === 'motion' || concept.id === 'climate'
+                          ? 'right-0 top-full mt-3 lg:mt-0 lg:top-1/2 lg:-translate-y-1/2 lg:right-auto lg:left-full lg:ml-4'
+                          : concept.id === 'material' || concept.id === 'craft'
+                            ? 'left-0 top-full mt-3 lg:mt-0 lg:top-1/2 lg:-translate-y-1/2 lg:left-auto lg:right-full lg:mr-4'
+                            : 'left-1/2 bottom-full mb-4 -translate-x-1/2'
+                        }`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="flex h-9 w-9 flex-none items-center justify-center rounded-xl bg-gold-400 text-[#063B3D]">
+                          <Icon className="h-4 w-4" />
+                        </div>
+
+                        <div className="min-w-0">
+                          <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gold-400">
+                            {concept.eyebrow}
+                          </p>
+                          <h3 className="mt-1 font-display text-[16px] font-normal leading-tight text-white">
+                            {concept.title}
+                          </h3>
+                        </div>
+                      </div>
+
+                      <p className="mt-3 text-[12px] leading-[1.65] text-white/90">
+                        {concept.description}
+                      </p>
+
+                      <div className="mt-3 border-t border-white/15 pt-3">
+                        <p className="text-[11px] leading-[1.6] text-gold-100/90">
+                          {concept.detail}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+
                   <motion.button
                     type="button"
                     onClick={() => selectConcept(concept.id)}
@@ -443,6 +493,7 @@ export function EngineeredComfort() {
                     className="group relative outline-none"
                   >
                     {/* ACTIVE GLOW */}
+
                     {isActive && (
                       <motion.span
                         initial={{
@@ -461,16 +512,16 @@ export function EngineeredComfort() {
                     )}
 
                     {/* LABEL */}
-                    <span
-                      className={`relative flex items-center gap-2 rounded-full border px-3.5 py-2.5 backdrop-blur-xl transition-all duration-300 sm:px-4 sm:py-3 ${
-                        isActive
-                          ? 'border-gold-300 bg-gold-400 text-[#063B3D] shadow-[0_12px_30px_-8px_rgba(240,169,44,0.6)]'
-                          : 'border-white/90 bg-white/[0.96] text-[#063B3D] shadow-[0_10px_28px_-12px_rgba(6,59,61,0.35)] hover:border-teal-700/30 hover:bg-white'
-                      }`}
-                    >
-                      <Icon className="h-3.5 w-3.5 flex-none" />
 
-                      <span className="whitespace-nowrap text-[9px] font-bold uppercase tracking-[0.16em] sm:text-[10px]">
+                    <span
+                      className={`relative flex items-center gap-1.5 rounded-full border px-2.5 py-2 backdrop-blur-xl transition-all duration-300 sm:gap-2 sm:px-4 sm:py-3 ${isActive
+                        ? 'border-gold-300 bg-gold-400 text-[#063B3D] shadow-[0_12px_30px_-8px_rgba(240,169,44,0.6)]'
+                        : 'border-white bg-white text-[#063B3D] shadow-[0_10px_28px_-12px_rgba(6,59,61,0.35)] hover:border-teal-700 hover:bg-white'
+                        }`}
+                    >
+                      <Icon className="h-3 w-3 flex-none sm:h-3.5 sm:w-3.5" />
+
+                      <span className="whitespace-nowrap text-[8px] font-bold uppercase tracking-[0.12em] sm:text-[10px] sm:tracking-[0.16em]">
                         {concept.label}
                       </span>
                     </span>
@@ -480,6 +531,7 @@ export function EngineeredComfort() {
             })}
           </motion.div>
         </div>
+
       </div>
     </section>
   )

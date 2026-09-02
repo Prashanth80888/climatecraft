@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowDown, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { HOME_PRODUCTS, PRODUCT_FAMILIES, type ProductFamily } from '../../data/homeProducts'
+import { HOME_PRODUCTS, PRODUCT_FAMILIES, type HomeProduct, type ProductFamily } from '../../data/homeProducts'
 import { homeProductImage } from '../../lib/assets'
 import { SectionLabel } from '../ui/SectionLabel'
 
@@ -19,20 +19,13 @@ const FAMILY_DESCRIPTIONS: Record<ProductFamily['id'], string> = {
 interface FeaturedCollectionProps {
   family: ProductFamily
   onExplore: () => void
+  filteredProducts?: HomeProduct[]
 }
 
-export function FeaturedCollection({ family, onExplore }: FeaturedCollectionProps) {
-  const products = HOME_PRODUCTS.filter((p) => p.familyId === family.id)
+export function FeaturedCollection({ family, onExplore, filteredProducts }: FeaturedCollectionProps) {
+  const products = filteredProducts ?? HOME_PRODUCTS.filter((p) => p.familyId === family.id)
 
-  // Explicitly select Climate Craft Duo for the climate-smart family if present
-  const duoProduct = products.find(
-    (p) =>
-      p.slug.includes('climate-craft-duo') ||
-      p.name.toLowerCase().includes('duo'),
-  )
-
-  const featured =
-    family.id === 'climate-smart' && duoProduct ? duoProduct : products[0]
+  const featured = products[0]
 
   return (
     <section className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-24">

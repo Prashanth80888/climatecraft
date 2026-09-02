@@ -205,6 +205,14 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
           </button>
         </div>
       )}
+
+      {/* Preload adjacent images for smooth swiping */}
+      {hasMultiple && (
+        <div className="hidden" aria-hidden="true">
+          <link rel="preload" as="image" href={images[(index + 1) % images.length]} />
+          <link rel="preload" as="image" href={images[(index - 1 + images.length) % images.length]} />
+        </div>
+      )}
     </div>
   )
 

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { Sparkles, Layers, CheckCircle2, Quote, Star, Palette } from 'lucide-react'
 import { SectionLabel } from '../ui/SectionLabel'
 import { SectionAtmosphere } from '../ui/SectionAtmosphere'
@@ -28,42 +29,44 @@ export function FabricArchive() {
           {/* Left Column: Image & Interactive Visual Showcase */}
           <div className="order-2 lg:order-1 lg:col-span-6">
             <Reveal>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="relative overflow-hidden rounded-[32px] border border-white/80 bg-white/40 p-3 shadow-[0_30px_70px_-20px_rgba(6,59,61,0.25)] backdrop-blur-xl"
-              >
-                <div className="relative overflow-hidden rounded-[24px]">
-                  <img
-                    src="/images/about/design.png"
-                    alt="Diamond-quilted upholstery from the Climate Craft fabric archive"
-                    loading="lazy"
-                    className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-105 sm:aspect-[4/3] lg:aspect-[4/5]"
-                  />
+              <Link to="/products/craft-classic" className="block">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative overflow-hidden rounded-[32px] border border-white/80 bg-white/40 p-3 shadow-[0_30px_70px_-20px_rgba(6,59,61,0.25)] backdrop-blur-xl"
+                >
+                  <div className="relative overflow-hidden rounded-[24px]">
+                    <img
+                      src="/images/about/design.png"
+                      alt="Diamond-quilted upholstery from the Climate Craft fabric archive"
+                      loading="lazy"
+                      className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-105 sm:aspect-[4/3] lg:aspect-[4/5]"
+                    />
 
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#063B3D]/70 via-transparent to-transparent opacity-85" />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#063B3D]/70 via-transparent to-transparent opacity-85" />
 
-                  {/* Top Floating Badge */}
-                  <div className="absolute top-4 left-4 flex items-center gap-1.5 rounded-full border border-white/40 bg-[#063B3D]/80 px-3 py-1 shadow-md backdrop-blur-md sm:top-5 sm:left-5 sm:gap-2 sm:px-4 sm:py-1.5">
-                    <Palette className="h-3 w-3 text-gold-400 sm:h-3.5 sm:w-3.5" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-white sm:text-[11px]">
-                      2,000+ Curated Specs
-                    </span>
-                  </div>
-
-                  {/* Bottom Image Caption Badge */}
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-white/30 bg-white/85 p-3 shadow-lg backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-5 sm:rounded-2xl sm:p-4">
-                    <div>
-                      <p className="text-xs font-bold text-[#063B3D]">Digital Twin Calibration</p>
-                      <p className="text-[11px] font-medium text-ink-700">100% Color-Accurate Rendering</p>
+                    {/* Top Floating Badge */}
+                    <div className="absolute top-4 left-4 flex items-center gap-1.5 rounded-full border border-white/40 bg-[#063B3D]/80 px-3 py-1 shadow-md backdrop-blur-md sm:top-5 sm:left-5 sm:gap-2 sm:px-4 sm:py-1.5">
+                      <Palette className="h-3 w-3 text-gold-400 sm:h-3.5 sm:w-3.5" />
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-white sm:text-[11px]">
+                        2,000+ Curated Specs
+                      </span>
                     </div>
-                    <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-teal-700 text-white">
-                      <Sparkles className="h-4 w-4 text-gold-400" />
+
+                    {/* Bottom Image Caption Badge */}
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-white/30 bg-white/85 p-3 shadow-lg backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-5 sm:rounded-2xl sm:p-4">
+                      <div>
+                        <p className="text-xs font-bold text-[#063B3D]">Digital Twin Calibration</p>
+                        <p className="text-[11px] font-medium text-ink-700">100% Color-Accurate Rendering</p>
+                      </div>
+                      <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-teal-700 text-white">
+                        <Sparkles className="h-4 w-4 text-gold-400" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             </Reveal>
           </div>
 

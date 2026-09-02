@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { HOME_PRODUCTS, type ProductFamily } from '../../data/homeProducts'
+import { HOME_PRODUCTS, type HomeProduct, type ProductFamily } from '../../data/homeProducts'
 import { ProductCard } from './ProductCard'
 import { SectionLabel } from '../ui/SectionLabel'
 
@@ -23,13 +23,14 @@ const item = {
 
 interface ProductGridProps {
   family: ProductFamily
+  filteredProducts?: HomeProduct[]
 }
 
 export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(function ProductGrid(
-  { family },
+  { family, filteredProducts },
   ref,
 ) {
-  const products = HOME_PRODUCTS.filter((p) => p.familyId === family.id)
+  const products = filteredProducts ?? HOME_PRODUCTS.filter((p) => p.familyId === family.id)
 
   return (
     <section ref={ref} className="relative bg-transparent pb-24 pt-8 sm:pb-28 lg:pb-32">

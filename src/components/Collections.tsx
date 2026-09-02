@@ -48,11 +48,7 @@ function ProductCard({ product }: { product: HomeProduct }) {
       <div className="relative aspect-[4/5] overflow-hidden bg-[#E8EFEC]">
         {product.imageCount > 0 ? (
           <img
-            src={
-              product.slug === 'climate-craft-signature'
-                ? '/images/DSC04872.png'
-                : homeProductImage(product.slug)
-            }
+            src={homeProductImage(product.slug)}
             alt={product.name}
             draggable={false}
             loading="lazy"
@@ -80,7 +76,7 @@ function ProductCard({ product }: { product: HomeProduct }) {
 
       <div className="relative border-t border-ink-900/[0.08] p-3 transition-transform duration-500 ease-out group-hover:-translate-y-0.5 sm:p-4 lg:p-5">
         <h4 className="font-display text-sm text-cream-100 transition-colors duration-500 group-hover:text-white sm:text-base lg:text-lg">
-          {product.name}
+          {product.slug === 'craft-classic-grand' ? 'Climate Craft Classic' : product.name}
         </h4>
 
         <p className="mt-0.5 text-[9px] uppercase tracking-widest text-cream-200 transition-colors duration-500 group-hover:text-white/60 sm:text-[10px] lg:text-[11px]">
@@ -284,7 +280,15 @@ export function Collections() {
 
       <div className="mt-10 flex flex-col gap-10 sm:mt-14 sm:gap-14 lg:mt-16 lg:gap-16">
         {SEAT_ROWS.map((row, idx) => {
-          const products = HOME_PRODUCTS.filter((p) => p.seats === row.seats)
+          let products = HOME_PRODUCTS.filter((p) => p.seats === row.seats)
+
+          // Replace the removed Duo Two-Seater with an existing Single-Seater ('classic') in the second row.
+          if (row.seats === 2) {
+            const singleSeaterReplacement = HOME_PRODUCTS.find((p) => p.id === 'classic')
+            if (singleSeaterReplacement) {
+              products = [singleSeaterReplacement, ...products]
+            }
+          }
 
           return (
             <div key={row.seats}>
