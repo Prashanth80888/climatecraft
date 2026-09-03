@@ -60,11 +60,11 @@ export function FloatingWhatsApp() {
         onMouseLeave={() => setLabelVisible(false)}
         onFocus={() => setLabelVisible(true)}
         onBlur={() => setLabelVisible(false)}
-        className="group relative flex h-16 w-16 items-center justify-center rounded-full text-white shadow-[0_18px_44px_-14px_rgba(22,155,154,0.55)] transition-transform duration-300 ease-out hover:scale-105 active:scale-95 sm:h-16 sm:w-16 md:h-16 md:w-16"
+        className="group relative flex h-[84px] w-[84px] items-center justify-center rounded-full text-white shadow-[0_18px_44px_-14px_rgba(22,155,154,0.55)] transition-transform duration-300 ease-out hover:scale-105 active:scale-95 sm:h-[84px] sm:w-[84px] md:h-[84px] md:w-[84px]"
         style={{ backgroundColor: '#25D366' }}
       >
         <span className="relative z-10 flex items-center justify-center">
-          <WhatsAppIcon className="h-8 w-8 sm:h-8 sm:w-8 md:h-8 md:w-8" />
+          <WhatsAppIcon className="h-[42px] w-[42px] sm:h-[42px] sm:w-[42px] md:h-[42px] md:w-[42px]" />
         </span>
       </button>
     </div>
