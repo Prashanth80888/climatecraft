@@ -76,17 +76,17 @@ export const HOME_PRODUCTS: HomeProduct[] = [
     number: 10,
     familyId: 'climate-smart',
     name: 'Climate Craft | Signature',
-    category: 'Smart Recliner • Single Seater',
+    category: 'Smart Recliner ï¿½ Single Seater',
     operation: 'SMART & Motorized',
     seats: 1,
     teaser: 'A refined single-seater smart recliner engineered for personalized comfort.',
-    description: 'A refined single-seater smart recliner engineered for personalized comfort. Signature combines premium upholstery, motorized reclining and Climate Craft’s intelligent liquid cooling and heating technology, with seamless control through the smart interface, remote and voice commands.',
-    highlights: ['1 Seat', 'Smart & Motorized', '15°C–35°C Cooling & Heating', '2-Year Warranty'],
+    description: 'A refined single-seater smart recliner engineered for personalized comfort. Signature combines premium upholstery, motorized reclining and Climate Craftï¿½s intelligent liquid cooling and heating technology, with seamless control through the smart interface, remote and voice commands.',
+    highlights: ['1 Seat', 'Smart & Motorized', '15ï¿½Cï¿½35ï¿½C Cooling & Heating', '2-Year Warranty'],
     specifications: [
       'Seating capacity: 1',
       'Motorized reclining and leg-rest adjustment',
       'Patented liquid cooling & heating technology',
-      'Temperature range: 15°C–35°C',
+      'Temperature range: 15ï¿½Cï¿½35ï¿½C',
       'Smart touchscreen/interface control',
       'Remote control',
       'Voice control',
@@ -102,14 +102,14 @@ export const HOME_PRODUCTS: HomeProduct[] = [
         x: 67,
         y: 47,
         title: 'Smart Interface Control',
-        description: 'A discreet touch control panel built into the armrest – full smart touchscreen, remote and voice control over recline and temperature.',
+        description: 'A discreet touch control panel built into the armrest ï¿½ full smart touchscreen, remote and voice control over recline and temperature.',
       },
       {
         id: 'backrest',
         x: 36,
         y: 26,
         title: 'Liquid Cooling & Heating',
-        description: 'Patented liquid cooling and heating technology runs through the backrest, holding a temperature range of 15°C–35°C.',
+        description: 'Patented liquid cooling and heating technology runs through the backrest, holding a temperature range of 15ï¿½Cï¿½35ï¿½C.',
       },
       {
         id: 'seat',
@@ -200,7 +200,7 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Integrated cup holders',
       '2-year warranty',
     ],
-    imageCount: 2,
+    imageCount: 9,
     hotspots: [
       {
         id: 'control',
@@ -304,7 +304,7 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Integrated cup holders',
       '2-year warranty',
     ],
-    imageCount: 2,
+    imageCount: 6,
     hotspots: [
       {
         id: 'console',
@@ -404,7 +404,7 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Ergonomic back, seat and leg support',
       '2-year warranty',
     ],
-    imageCount: 4,
+    imageCount: 8,
     hotspots: [
       {
         id: 'control',
@@ -455,7 +455,7 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Ergonomic back, seat and leg support',
       '2-year warranty',
     ],
-    imageCount: 3,
+    imageCount: 5,
     hotspots: [
       {
         id: 'control',

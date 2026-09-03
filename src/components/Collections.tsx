@@ -17,7 +17,7 @@ const SEAT_ROWS: { label: string; blurb: string; seats: 1 | 2 | 3; dur: number; 
   { label: 'Climate Grand', blurb: 'Climate Grand · Three Seater', seats: 3, dur: 36, dir: 'ltr' },
 ]
 
-function ProductCard({ product }: { product: HomeProduct }) {
+function ProductCard({ product, priority = false }: { product: HomeProduct; priority?: boolean }) {
   const cardRef = useRef<HTMLAnchorElement>(null)
 
   const onMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -48,13 +48,16 @@ function ProductCard({ product }: { product: HomeProduct }) {
       <div className="relative aspect-[4/5] overflow-hidden bg-[#E8EFEC]">
         {product.imageCount > 0 ? (
           <img
-            src={homeProductImage(product.slug)}
-            alt={product.name}
-            draggable={false}
-            loading="eager"
-            decoding="async"
-            className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.07]"
-          />
+              src={homeProductImage(product.slug)}
+              alt={product.name}
+              draggable={false}
+              width={400}
+              height={500}
+              loading={priority ? 'eager' : 'lazy'}
+              fetchPriority={priority ? 'high' : 'auto'}
+              decoding="async"
+              className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.07]"
+            />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-canvas-aqua to-canvas px-6 text-center">
             <Camera className="h-6 w-6 text-cream-200" strokeWidth={1.5} />
@@ -244,7 +247,7 @@ function MarqueeRow({
         className="flex w-max cursor-grab select-none gap-3 pb-2 active:cursor-grabbing sm:gap-5 md:gap-6 lg:gap-7"
       >
         {sequence.map((product, i) => (
-          <ProductCard key={`${product.id}-${i}`} product={product} />
+          <ProductCard key={`${product.id}-${i}`} product={product} priority={i < products.length} />
         ))}
       </div>
     </motion.div>
@@ -283,12 +286,21 @@ export function Collections() {
         {SEAT_ROWS.map((row, idx) => {
           let products = HOME_PRODUCTS.filter((p) => p.seats === row.seats)
 
+          // Move classic-duo from row 1 to row 2
+          if (row.seats === 1) {
+            products = products.filter((p) => p.id !== 'classic-duo')
+          }
+
           // Replace the removed Duo Two-Seater with the new Climate Craft Signature Single-Seater in the second row.
           if (row.seats === 2) {
             const singleSeaterReplacement = HOME_PRODUCTS.find((p) => p.id === 'signature-new')
-            if (singleSeaterReplacement) {
-              products = [singleSeaterReplacement, ...products]
-            }
+            const movedClassicDuo = HOME_PRODUCTS.find((p) => p.id === 'classic-duo')
+            
+            const additions = []
+            if (singleSeaterReplacement) additions.push(singleSeaterReplacement)
+            if (movedClassicDuo) additions.push(movedClassicDuo)
+            
+            products = [...additions, ...products]
           }
 
           return (

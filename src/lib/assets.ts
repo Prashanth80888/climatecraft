@@ -2,38 +2,54 @@ import { addressSingleLine } from '../data/siteConfig'
 
 export const productImage = (key: string) => `/images/products/${key}.jpeg`
 
-const SIGNATURE_NEW_IMAGES = [
-  'DSC04689.png', // Hero image (index 1 / 0-th in array)
-  'DSC04640.png',
-  'DSC04646.png',
-  'DSC04649.png',
-  'DSC04669.png',
-  'DSC04728.png',
-  'DSC04735.png'
-]
+const PRODUCT_IMAGES: Record<string, string[]> = {
+  'climate-craft-duo': ['01.png'],
+  'climate-craft-grand': ['01.png', '02.png', '03.png', '04.png', '05.JPG', '06.JPG', '07.JPG', '08.JPG', '09.JPG'],
+  'climate-craft-signature': ['01.png', '02.png', '03.png', '04.png', '05.JPG', '06.JPG', '07.JPG', '08.JPG'],
+  'climate-craft-signature-new': [
+    'DSC04689.png', // Hero image (index 1 / 0-th in array)
+    'DSC04640.png',
+    'DSC04646.png',
+    'DSC04649.png',
+    'DSC04669.png',
+    'DSC04728.png',
+    'DSC04735.png'
+  ],
+  'craft-classic': ['01.png', '02.png', '03.png', '04.png', '05.png', '06.png', '07.png'],
+  'craft-classic-duo': ['01.png', '02.png', '03.png', '04.JPG', '05.JPG'],
+  'craft-classic-grand': ['01.png', '02.png', '03.png', '04.png', '05.png', '06.png'],
+  'craft-motion': ['01.png', '02.png', '03.png', '04.png'],
+  'craft-motion-duo': ['01.png', '02.png', '03.JPG', '04.JPG', '05.JPG', '06.JPG'],
+  'craft-motion-grand': ['01.png', '02.png', '03.png', '04.png'],
+}
 
 /** Hero photo for a Home-page product (see src/data/homeProducts.ts). */
 export const homeProductImage = (slug: string) => {
-  if (slug === 'climate-craft-signature-new') {
-    return `/images/products/climate-craft-signature-new/${SIGNATURE_NEW_IMAGES[0]}`
+  const images = PRODUCT_IMAGES[slug]
+  if (images && images.length > 0) {
+    return `/images/products/${slug}/${images[0]}`
   }
   return `/images/products/${slug}/01.png`
 }
 
 /** A specific angle (1-indexed) for a product with multiple verified photos. */
 export const homeProductImageAt = (slug: string, index: number) => {
-  if (slug === 'climate-craft-signature-new') {
-    return `/images/products/climate-craft-signature-new/${SIGNATURE_NEW_IMAGES[index - 1]}`
+  const images = PRODUCT_IMAGES[slug]
+  if (images && index >= 1 && index <= images.length) {
+    return `/images/products/${slug}/${images[index - 1]}`
   }
+  // Fallback
   return `/images/products/${slug}/${String(index).padStart(2, '0')}.png`
 }
 
 /** All verified angle images for a product, in order. */
-export const homeProductImages = (slug: string, imageCount: number) => {
-  if (slug === 'climate-craft-signature-new') {
-    return SIGNATURE_NEW_IMAGES.map((file) => `/images/products/climate-craft-signature-new/${file}`)
+export const homeProductImages = (slug: string, _imageCount: number) => {
+  const images = PRODUCT_IMAGES[slug]
+  if (images) {
+    return images.map((file) => `/images/products/${slug}/${file}`)
   }
-  return Array.from({ length: imageCount }, (_, i) => homeProductImageAt(slug, i + 1))
+  // Fallback to imageCount logic if slug not found
+  return Array.from({ length: _imageCount }, (_, i) => homeProductImageAt(slug, i + 1))
 }
 
 /** A specific angle (1-indexed) for a Projects-page space (see src/data/projects.ts). */
