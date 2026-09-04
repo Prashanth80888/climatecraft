@@ -1,4 +1,14 @@
-import { Zap, Smartphone, Thermometer, Mic, Radio, Armchair, Palette, Wind } from 'lucide-react'
+
+import {
+  Zap,
+  Smartphone,
+  Thermometer,
+  Mic,
+  Radio,
+  Armchair,
+  Palette,
+  Wind,
+} from 'lucide-react'
 import type { HomeProduct } from '../../data/homeProducts'
 import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { RevealGroup, RevealItem } from '../ui/Reveal'
@@ -12,17 +22,22 @@ interface FeatureRule {
 
 const RULES: FeatureRule[] = [
   {
-    match: (s) => s.some((x) => /motorized reclining|reclining seats?$|reclining position/i.test(x)),
+    match: (s) =>
+      s.some((x) =>
+        /motorized reclining|reclining seats?$|reclining position/i.test(x),
+      ),
     icon: Zap,
     label: 'Motorized Reclining',
   },
   {
-    match: (s) => s.some((x) => /smart touchscreen|interface control/i.test(x)),
+    match: (s) =>
+      s.some((x) => /smart touchscreen|interface control/i.test(x)),
     icon: Smartphone,
     label: 'Smart Interface Control',
   },
   {
-    match: (s) => s.some((x) => /liquid cooling|temperature range/i.test(x)),
+    match: (s) =>
+      s.some((x) => /liquid cooling|temperature range/i.test(x)),
     icon: Thermometer,
     label: 'Liquid Cooling & Heating',
   },
@@ -53,7 +68,11 @@ const RULES: FeatureRule[] = [
   },
 ]
 
-export function ProductFeatures({ product }: { product: HomeProduct }) {
+export function ProductFeatures({
+  product,
+}: {
+  product: HomeProduct
+}) {
   const features = RULES.filter((r) => r.match(product.specifications))
 
   if (features.length === 0) return null
@@ -61,24 +80,39 @@ export function ProductFeatures({ product }: { product: HomeProduct }) {
   return (
     <section className="relative bg-transparent py-14 sm:py-18 lg:py-20">
       <SectionAtmosphere variant="radial" />
-      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        <SectionLabel>What Makes It {product.name.split('|').pop()?.trim() ?? product.name}</SectionLabel>
 
-        <RevealGroup className="mt-8 flex flex-wrap gap-3 sm:gap-4">
-          {features.map((f) => (
-            <RevealItem key={f.label}>
-              <div className="group flex items-center gap-3 rounded-full border border-ink-900/10 bg-white/45 py-3 pl-3 pr-5 transition-all duration-300 hover:border-teal-500/60 hover:bg-white/70">
-                <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full border border-gold-400/25 text-gold-700 transition-transform duration-300 group-hover:scale-110">
-                  <f.icon className="h-3.5 w-3.5" strokeWidth={1.5} />
-                </span>
-                <span className="text-[12.5px] font-medium uppercase tracking-wide text-cream-100">
-                  {f.label}
-                </span>
-              </div>
-            </RevealItem>
-          ))}
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <SectionLabel>
+          What Makes It{' '}
+          {product.name.split('|').pop()?.trim() ?? product.name}
+        </SectionLabel>
+
+        <RevealGroup className="mt-10 grid grid-cols-1 gap-x-10 gap-y-2 md:grid-cols-2 lg:gap-x-16">
+          {features.map((feature) => {
+            const Icon = feature.icon
+
+            return (
+              <RevealItem key={feature.label}>
+                <div className="group flex items-center gap-4 border-b border-ink-900/10 py-5 transition-all duration-300 hover:border-teal-500/40">
+                  {/* Icon */}
+                  <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full border border-gold-400/25 bg-white/30 text-gold-700 transition-all duration-300 group-hover:scale-105 group-hover:border-teal-500/50 group-hover:bg-white/60">
+                    <Icon
+                      className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
+                      strokeWidth={1.5}
+                    />
+                  </span>
+
+                  {/* Feature text */}
+                  <span className="text-[15px] font-semibold uppercase tracking-[0.10em] text-cream-100 transition-colors duration-300">
+                    {feature.label}
+                  </span>
+                </div>
+              </RevealItem>
+            )
+          })}
         </RevealGroup>
       </div>
     </section>
   )
 }
+

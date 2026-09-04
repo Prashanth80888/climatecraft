@@ -32,6 +32,26 @@ export const homeProductImage = (slug: string) => {
   return `/images/products/${slug}/01.png`
 }
 
+/**
+ * Small (640px-wide) WebP/PNG derivatives of `homeProductImage`, pre-generated for the
+ * Home page "Explore Collection" cards — those cards never render wider than 310px, so
+ * the original 1512px source photos (2-3MB each) were massively oversized for display.
+ * Only covers slugs with a generated `card.webp`/`card.png`; falls back to the full-size
+ * original for anything else so a missing derivative never breaks the image.
+ */
+const HOME_CARD_IMAGE_SLUGS = new Set(Object.keys(PRODUCT_IMAGES))
+
+export const homeCardImage = (slug: string): { webp: string; fallback: string } => {
+  if (HOME_CARD_IMAGE_SLUGS.has(slug)) {
+    return {
+      webp: `/images/products/${slug}/card.webp`,
+      fallback: `/images/products/${slug}/card.png`,
+    }
+  }
+  const original = homeProductImage(slug)
+  return { webp: original, fallback: original }
+}
+
 /** A specific angle (1-indexed) for a product with multiple verified photos. */
 export const homeProductImageAt = (slug: string, index: number) => {
   const images = PRODUCT_IMAGES[slug]

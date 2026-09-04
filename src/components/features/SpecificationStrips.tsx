@@ -58,7 +58,7 @@ export function SpecificationStrips() {
                   key={row.number}
                   onMouseEnter={() => setActive(row.number)}
                   onMouseLeave={() => setActive(null)}
-                  className="group relative border-b border-ink-900/10 py-6 transition-all duration-300 sm:py-7"
+                  className="group relative border-b border-ink-900/10 py-7 transition-all duration-300 sm:py-8"
                 >
                   {/* Animated top highlight */}
                   <motion.span
@@ -71,24 +71,54 @@ export function SpecificationStrips() {
                   <motion.div
                     animate={{ x: isActive ? 8 : 0 }}
                     transition={{ duration: 0.35 }}
-                    className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-8"
+                    className="
+                      flex
+                      flex-col
+                      gap-5
+                      sm:flex-row
+                      sm:items-center
+                      sm:justify-between
+                      sm:gap-x-10
+                    "
                   >
-                    {/* Left Side */}
+                    {/* LEFT SIDE */}
                     <div className="flex items-baseline gap-5">
                       <span
-                        className={`font-display text-sm italic tabular-nums transition-colors duration-300 ${
-                          isActive ? 'text-gold-700' : 'text-ink-700'
-                        }`}
+                        className={`
+                          font-display
+                          text-base
+                          italic
+                          tabular-nums
+                          transition-colors
+                          duration-300
+                          sm:text-lg
+                          ${isActive
+                            ? 'text-gold-700'
+                            : 'text-ink-700'
+                          }
+                        `}
                       >
                         {row.number}
                       </span>
 
-                      <span className="font-display text-xl text-cream-100 sm:text-2xl">
+                      <span
+                        className="
+                          font-display
+                          text-xl
+                          font-normal
+                          leading-tight
+                          tracking-[-0.01em]
+                          text-cream-100
+                          transition-colors
+                          duration-300
+                          sm:text-2xl
+                        "
+                      >
                         {row.title}
                       </span>
                     </div>
 
-                    {/* Right Side — Main Feature Highlight */}
+                    {/* RIGHT SIDE — MAIN FEATURE */}
                     <motion.div
                       animate={{
                         scale: isActive ? 1.035 : 1,
@@ -100,14 +130,20 @@ export function SpecificationStrips() {
                       }}
                       className="relative self-start sm:self-auto"
                     >
-                      {/* Soft glow behind the feature */}
+                      {/* Soft glow */}
                       <motion.div
                         animate={{
-                          opacity: isActive ? 0.75 : 0,
+                          opacity: isActive ? 0.8 : 0,
                           scale: isActive ? 1 : 0.9,
                         }}
                         transition={{ duration: 0.3 }}
-                        className="absolute inset-0 rounded-full bg-gold-400/20 blur-xl"
+                        className="
+                          absolute
+                          inset-0
+                          rounded-full
+                          bg-gold-400/25
+                          blur-2xl
+                        "
                       />
 
                       <span
@@ -117,36 +153,52 @@ export function SpecificationStrips() {
                           items-center
                           rounded-full
                           border
-                          px-4
-                          py-2
-                          text-[12px]
+                          px-5
+                          py-2.5
+                          text-[14px]
                           font-bold
                           uppercase
-                          tracking-[0.12em]
+                          leading-tight
+                          tracking-[0.10em]
                           transition-all
                           duration-300
-                          sm:px-5
-                          sm:py-2.5
-                          sm:text-[13px]
-                          ${
-                            isActive
-                              ? 'border-gold-400/70 bg-gold-400/15 text-gold-700 shadow-[0_8px_30px_-12px_rgba(240,169,44,0.55)]'
-                              : 'border-teal-700/25 bg-teal-700/[0.08] text-teal-700 shadow-sm'
+                          sm:px-6
+                          sm:py-3
+                          sm:text-[16px]
+                          ${isActive
+                            ? `
+                                border-gold-400
+                                bg-gold-400
+                                text-ink-950
+                                shadow-[0_12px_35px_-12px_rgba(240,169,44,0.65)]
+                              `
+                            : `
+                                border-teal-700/30
+                                bg-teal-700/[0.08]
+                                text-teal-700
+                                shadow-[0_8px_25px_-15px_rgba(18,59,61,0.35)]
+                              `
                           }
                         `}
                       >
+                        {/* Status dot */}
                         <span
                           className={`
-                            mr-2
-                            h-1.5
-                            w-1.5
+                            mr-2.5
+                            h-2
+                            w-2
+                            flex-none
                             rounded-full
                             transition-all
                             duration-300
-                            ${
-                              isActive
-                                ? 'bg-gold-400 shadow-[0_0_8px_rgba(240,169,44,0.8)]'
-                                : 'bg-teal-700'
+                            ${isActive
+                              ? `
+                                  bg-ink-950
+                                  shadow-[0_0_8px_rgba(18,59,61,0.45)]
+                                `
+                              : `
+                                  bg-teal-700
+                                `
                             }
                           `}
                         />
@@ -162,10 +214,19 @@ export function SpecificationStrips() {
                     animate={{
                       height: isActive ? 'auto' : 0,
                       opacity: isActive ? 1 : 0,
-                      marginTop: isActive ? 12 : 0,
+                      marginTop: isActive ? 14 : 0,
                     }}
                     transition={{ duration: 0.35 }}
-                    className="max-w-md overflow-hidden pl-0 text-[13.5px] leading-relaxed text-ink-700 sm:pl-[3.35rem]"
+                    className="
+                      max-w-md
+                      overflow-hidden
+                      pl-0
+                      text-[14px]
+                      font-medium
+                      leading-7
+                      text-ink-700
+                      sm:pl-[4.2rem]
+                    "
                   >
                     {row.copy}
                   </motion.p>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, ArrowUpRight, Camera } from 'lucide-react'
 import { HOME_PRODUCTS, type HomeProduct } from '../data/homeProducts'
-import { homeProductImage } from '../lib/assets'
+import { homeCardImage } from '../lib/assets'
 import { SectionLabel } from './ui/SectionLabel'
 import { SectionAtmosphere } from './ui/SectionAtmosphere'
 import { Reveal } from './ui/Reveal'
@@ -17,8 +17,9 @@ const SEAT_ROWS: { label: string; blurb: string; seats: 1 | 2 | 3; dur: number; 
   { label: 'Climate Grand', blurb: 'Climate Grand · Three Seater', seats: 3, dur: 36, dir: 'ltr' },
 ]
 
-function ProductCard({ product, priority = false }: { product: HomeProduct; priority?: boolean }) {
+function ProductCard({ product, armed }: { product: HomeProduct; armed: boolean }) {
   const cardRef = useRef<HTMLAnchorElement>(null)
+  const cardImage = homeCardImage(product.slug)
 
   const onMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const card = cardRef.current
@@ -47,17 +48,19 @@ function ProductCard({ product, priority = false }: { product: HomeProduct; prio
 
       <div className="relative aspect-[4/5] overflow-hidden bg-[#E8EFEC]">
         {product.imageCount > 0 ? (
-          <img
-              src={homeProductImage(product.slug)}
+          <picture>
+            <source srcSet={cardImage.webp} type="image/webp" />
+            <img
+              src={cardImage.fallback}
               alt={product.name}
               draggable={false}
               width={400}
               height={500}
-              loading={priority ? 'eager' : 'lazy'}
-              fetchPriority={priority ? 'high' : 'auto'}
+              loading={armed ? 'eager' : 'lazy'}
               decoding="async"
               className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.07]"
             />
+          </picture>
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-canvas-aqua to-canvas px-6 text-center">
             <Camera className="h-6 w-6 text-cream-200" strokeWidth={1.5} />
@@ -106,10 +109,12 @@ function MarqueeRow({
   products,
   dur,
   dir: direction,
+  armed,
 }: {
   products: HomeProduct[]
   dur: number
   dir: 'ltr' | 'rtl'
+  armed: boolean
 }) {
   const rowRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
@@ -247,7 +252,7 @@ function MarqueeRow({
         className="flex w-max cursor-grab select-none gap-3 pb-2 active:cursor-grabbing sm:gap-5 md:gap-6 lg:gap-7"
       >
         {sequence.map((product, i) => (
-          <ProductCard key={`${product.id}-${i}`} product={product} priority={i < products.length} />
+          <ProductCard key={`${product.id}-${i}`} product={product} armed={armed} />
         ))}
       </div>
     </motion.div>
@@ -255,9 +260,37 @@ function MarqueeRow({
 }
 
 export function Collections() {
+  const sectionRef = useRef<HTMLElement>(null)
+  // Native `loading="lazy"` has no way to tune how far ahead of the viewport it
+  // starts fetching, so cards can still pop in blank on a fast scroll. Instead we
+  // arm the whole section — flipping every card's `loading` to "eager" (never
+  // fetchPriority) — the moment it's within 1200px of the viewport, well before
+  // the user actually reaches it. The images are ~30-50KB WebP derivatives, so
+  // this background fetch never competes with the Hero's priority resources.
+  const [armed, setArmed] = useState(false)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section || armed) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setArmed(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '0px 0px 1200px 0px', threshold: 0 },
+    )
+
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [armed])
+
   return (
     <section
       id="collections"
+      ref={sectionRef}
       className="relative overflow-hidden bg-transparent py-16 sm:py-24 lg:py-32"
     >
       <SectionAtmosphere variant="bloom" />
@@ -328,6 +361,7 @@ export function Collections() {
                 products={products}
                 dur={row.dur}
                 dir={row.dir}
+                armed={armed}
               />
             </div>
           )

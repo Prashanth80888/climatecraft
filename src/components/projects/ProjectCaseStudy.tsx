@@ -9,6 +9,7 @@ import {
   Clock,
   Check,
   ArrowRight,
+
   Sparkles,
 } from 'lucide-react'
 import type { ProjectCaseStudy } from '../../data/projects'
@@ -821,8 +822,20 @@ export function ProjectCaseStudy({
                   </InfoBlock>
 
                   <div className="lg:pt-1">
-                    <p className="max-w-6xl text-[16px] leading-[1.9] tracking-[0.005em] text-cream-200/90 sm:text-[17px] sm:leading-[1.85]">
-                      {project.experience}
+                    <p
+                      className="
+                        max-w-6xl
+                        text-[18px]
+                        font-medium
+                        leading-[1.85]
+                        tracking-[0.005em]
+                        text-cream-100/95
+                        sm:text-[19px]
+                        sm:leading-[1.8]
+                        lg:text-[20px]
+                      "
+                    >
+                      <HighlightTemperature text={project.experience} />
                     </p>
                   </div>
                 </div>
@@ -906,15 +919,17 @@ export function ProjectCaseStudy({
 
                         <span
                           className="
-                            text-[13px]
-                            leading-[1.65]
-                            text-cream-200
+                            text-[15px]
+                            font-medium
+                            leading-[1.7]
+                            text-cream-100/95
                             transition-colors
                             duration-300
                             group-hover:text-cream-100
+                            sm:text-[15.5px]
                           "
                         >
-                          {result}
+                          <HighlightTemperature text={result} />
                         </span>
                       </motion.li>
                     ))}
@@ -1065,6 +1080,39 @@ function InfoBlock({
         {children}
       </div>
     </motion.div>
+  )
+}
+
+function HighlightTemperature({ text }: { text: string }) {
+  const parts = text.split(/(15°C\s*[—–-]\s*35°C)/gi)
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        /15°C\s*[—–-]\s*35°C/i.test(part) ? (
+          <span
+            key={index}
+            className="
+              inline-flex
+              items-center
+              rounded-full
+              border
+              border-gold-400/70
+              bg-gold-400/15
+              px-3
+              py-1
+              font-semibold
+              text-gold-700
+              shadow-[0_8px_24px_-12px_rgba(240,169,44,0.55)]
+            "
+          >
+            {part}
+          </span>
+        ) : (
+          <span key={index}>{part}</span>
+        ),
+      )}
+    </>
   )
 }
 
