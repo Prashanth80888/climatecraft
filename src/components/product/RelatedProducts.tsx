@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom'
 import { ArrowUpRight, Camera } from 'lucide-react'
 import { HOME_PRODUCTS, type HomeProduct } from '../../data/homeProducts'
 import { homeProductImage } from '../../lib/assets'
+import { useArmNearViewport } from '../../hooks/useArmNearViewport'
 import { SectionLabel } from '../ui/SectionLabel'
 import { RevealGroup, RevealItem } from '../ui/Reveal'
 
 const MAX_TILT = 4
 
-function RelatedCard({ product }: { product: HomeProduct }) {
+function RelatedCard({ product, armed }: { product: HomeProduct; armed: boolean }) {
   const cardRef = useRef<HTMLAnchorElement>(null)
 
   const onMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -53,7 +54,8 @@ function RelatedCard({ product }: { product: HomeProduct }) {
           <img
             src={homeProductImage(product.slug)}
             alt={product.name}
-            loading="lazy"
+            loading={armed ? 'eager' : 'lazy'}
+            decoding="async"
             className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
           />
         ) : (
@@ -113,17 +115,19 @@ export function RelatedProducts({
 }: {
   products: HomeProduct[]
 }) {
+  const { ref, armed } = useArmNearViewport<HTMLElement>()
+
   if (products.length === 0) return null
 
   return (
-    <section className="relative bg-transparent py-16 sm:py-20 lg:py-24">
+    <section ref={ref} className="relative bg-transparent py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionLabel>You May Also Like</SectionLabel>
 
         <RevealGroup className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-7">
           {products.map((product) => (
             <RevealItem key={product.id}>
-              <RelatedCard product={product} />
+              <RelatedCard product={product} armed={armed} />
             </RevealItem>
           ))}
         </RevealGroup>

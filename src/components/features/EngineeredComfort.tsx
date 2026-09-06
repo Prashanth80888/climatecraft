@@ -46,7 +46,7 @@ const CONCEPTS: Concept[] = [
       'Every seating position is considered around posture, support and long-session comfort.',
     detail:
       'Headrest and upper back support adjust dynamically to prevent neck tension.',
-    previewImage: '/images/ergonomics.png',
+    previewImage: '/images/ergonomics.webp',
   },
   {
     id: 'motion',
@@ -60,7 +60,7 @@ const CONCEPTS: Concept[] = [
       'Motorised reclining lets the seat adapt smoothly to the way you want to sit, relax or watch.',
     detail:
       'Silent dual-motor mechanism engineered for fluid multi-angle recline.',
-    previewImage: '/images/motion.png',
+    previewImage: '/images/motion.webp',
   },
   {
     id: 'climate',
@@ -74,7 +74,7 @@ const CONCEPTS: Concept[] = [
       'Plain-water liquid climate control brings personalised heating and cooling directly into the seating experience.',
     detail:
       'Micro-channels in the lumbar cushion gently circulate temperature-controlled fluid.',
-    previewImage: '/images/climate.jpg',
+    previewImage: '/images/climate.webp',
   },
   {
     id: 'control',
@@ -88,7 +88,7 @@ const CONCEPTS: Concept[] = [
       'Control the seating experience through voice, touchscreen and remote interaction.',
     detail:
       'Seamlessly integrated armrest tactile interface and voice activation array.',
-    previewImage: '/images/control.png',
+    previewImage: '/images/control.webp',
   },
   {
     id: 'material',
@@ -102,7 +102,7 @@ const CONCEPTS: Concept[] = [
       'Premium upholstery and carefully selected materials complete the engineered seating experience.',
     detail:
       'Breathable full-grain Italian leather bonded with thermal-conductive lining.',
-    previewImage: '/images/material.png',
+    previewImage: '/images/material.webp',
   },
   {
     id: 'craft',
@@ -116,7 +116,7 @@ const CONCEPTS: Concept[] = [
       'Intelligent mechanisms are brought together with the detail and finish expected from premium furniture.',
     detail:
       'Hand-stitched precision seams and sculpted high-density contour foam.',
-    previewImage: '/images/craft.png',
+    previewImage: '/images/craft.webp',
   },
 ]
 

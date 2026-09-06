@@ -23,13 +23,22 @@ const PRODUCT_IMAGES: Record<string, string[]> = {
   'craft-motion-grand': ['01.png', '02.png', '03.png', '04.png'],
 }
 
+/**
+ * The source angle photos above are full camera-resolution JPEG/PNG originals
+ * (1512-4240px, 2-4MB each) — far larger than any on-screen use of them. Every
+ * helper below serves the pre-generated WebP derivative sitting next to the
+ * original instead (same filename, `.webp` extension, ~90-96% smaller, visually
+ * lossless at display size) — see scripts/generate-image-derivatives.mjs.
+ */
+const toWebp = (file: string) => file.replace(/\.(png|jpe?g)$/i, '.webp')
+
 /** Hero photo for a Home-page product (see src/data/homeProducts.ts). */
 export const homeProductImage = (slug: string) => {
   const images = PRODUCT_IMAGES[slug]
   if (images && images.length > 0) {
-    return `/images/products/${slug}/${images[0]}`
+    return `/images/products/${slug}/${toWebp(images[0])}`
   }
-  return `/images/products/${slug}/01.png`
+  return `/images/products/${slug}/01.webp`
 }
 
 /**
@@ -56,32 +65,46 @@ export const homeCardImage = (slug: string): { webp: string; fallback: string } 
 export const homeProductImageAt = (slug: string, index: number) => {
   const images = PRODUCT_IMAGES[slug]
   if (images && index >= 1 && index <= images.length) {
-    return `/images/products/${slug}/${images[index - 1]}`
+    return `/images/products/${slug}/${toWebp(images[index - 1])}`
   }
   // Fallback
-  return `/images/products/${slug}/${String(index).padStart(2, '0')}.png`
+  return `/images/products/${slug}/${String(index).padStart(2, '0')}.webp`
 }
 
 /** All verified angle images for a product, in order. */
 export const homeProductImages = (slug: string, _imageCount: number) => {
   const images = PRODUCT_IMAGES[slug]
   if (images) {
-    return images.map((file) => `/images/products/${slug}/${file}`)
+    return images.map((file) => `/images/products/${slug}/${toWebp(file)}`)
   }
   // Fallback to imageCount logic if slug not found
   return Array.from({ length: _imageCount }, (_, i) => homeProductImageAt(slug, i + 1))
 }
 
+/**
+ * Tiny (~5-20KB) derivative of `homeProductImageAt`, for contexts that only
+ * ever show the image at thumbnail size — e.g. the ProductViewer angle-picker
+ * strip, rendered at 56-80px. Falls back to the full derivative if a
+ * dedicated thumb wasn't generated for this slug (never a broken image).
+ */
+export const homeProductThumbAt = (slug: string, index: number) => {
+  const images = PRODUCT_IMAGES[slug]
+  if (images && index >= 1 && index <= images.length) {
+    return `/images/products/${slug}/${toWebp(images[index - 1]).replace(/\.webp$/, '-thumb.webp')}`
+  }
+  return homeProductImageAt(slug, index)
+}
+
 /** A specific angle (1-indexed) for a Projects-page space (see src/data/projects.ts). */
 export const projectImageAt = (slug: string, index: number) =>
-  `/images/projects/${slug}/${String(index).padStart(2, '0')}.png`
+  `/images/projects/${slug}/${String(index).padStart(2, '0')}.webp`
 
 /** All verified angle images for a project space, in order. */
 export const projectImages = (slug: string, imageCount: number) =>
   Array.from({ length: imageCount }, (_, i) => projectImageAt(slug, i + 1))
 
 export const brand = {
-  logo: '/images/brand/logo.png',
+  logo: '/images/brand/logo.webp',
   heroVideo: '/videos/hero.mp4',
   heroPoster: '/videos/hero-poster.jpg',
   mechanicsVideo: '/videos/mechanics.mp4',

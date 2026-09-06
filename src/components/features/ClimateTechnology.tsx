@@ -99,7 +99,7 @@ export function ClimateTechnology() {
             >
               <div className="relative overflow-hidden rounded-[28px] border border-white/70 bg-white/30 shadow-[0_60px_140px_-50px_rgba(18,59,61,0.4)] backdrop-blur-sm">
                 <img
-                  src="/images/Green sofa 1.png"
+                  src="/images/Green sofa 1.webp"
                   alt="Climate Craft green sofa"
                   loading="lazy"
                   className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03] sm:aspect-[4/3]"

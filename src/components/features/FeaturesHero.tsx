@@ -46,7 +46,7 @@ const HOTSPOTS: Hotspot[] = [
     pinX: 25,
     pinY: 52,
     cardPosition: 'top-right',
-    previewImage: '/images/screen.jpg',
+    previewImage: '/images/screen.webp',
   },
   {
     id: 'recline',
@@ -57,7 +57,7 @@ const HOTSPOTS: Hotspot[] = [
     pinX: 18,
     pinY: 62,
     cardPosition: 'bottom-left',
-    previewImage: '/images/recline control.jpg',
+    previewImage: '/images/recline control.webp',
   },
 ]
 
@@ -322,6 +322,7 @@ export function FeaturesHero() {
                   alt={hero.name}
                   loading="eager"
                   decoding="async"
+                  fetchPriority="high"
                   className="h-full w-full object-cover object-center"
                 />
 
@@ -375,6 +376,8 @@ export function FeaturesHero() {
                   <motion.img
                     src={image}
                     alt={hero.name}
+                    decoding="async"
+                    fetchPriority="high"
                     initial={{
                       scale: 1.03,
                       opacity: 0,

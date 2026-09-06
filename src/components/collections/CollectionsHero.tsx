@@ -17,19 +17,19 @@ const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 const HERO_SLIDES = [
   {
     slug: 'craft-motion',
-    image: '/images/products/craft-motion/01.png',
+    image: '/images/products/craft-motion/01.webp',
     name: 'Craft Motion',
     label: 'Motorised Comfort',
   },
   {
     slug: 'craft-classic',
-    image: '/images/products/craft-classic/01.png',
+    image: '/images/products/craft-classic/01.webp',
     name: 'Craft Classic',
     label: 'Classic',
   },
   {
     slug: 'climate-craft-signature',
-    image: '/images/products/climate-craft-signature/01.png',
+    image: '/images/products/climate-craft-signature/01.webp',
     name: 'Climate Craft | Signature',
     label: 'Climate Smart',
   },

@@ -262,6 +262,8 @@ export function CaseStudyDetailHero({
                         <img
                           src={actualHeroImage}
                           alt={`${caseStudy.title} Climate Craft installation`}
+                          decoding="async"
+                          fetchPriority="high"
                           className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.04]"
                         />
                       </Link>
@@ -269,6 +271,8 @@ export function CaseStudyDetailHero({
                       <img
                         src={actualHeroImage}
                         alt={`${caseStudy.title} Climate Craft installation`}
+                        decoding="async"
+                        fetchPriority="high"
                         className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out"
                       />
                     )}

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, ArrowUpRight, Camera } from 'lucide-react'
 import { HOME_PRODUCTS, type HomeProduct } from '../data/homeProducts'
 import { homeCardImage } from '../lib/assets'
+import { useArmNearViewport } from '../hooks/useArmNearViewport'
 import { SectionLabel } from './ui/SectionLabel'
 import { SectionAtmosphere } from './ui/SectionAtmosphere'
 import { Reveal } from './ui/Reveal'
@@ -260,32 +261,11 @@ function MarqueeRow({
 }
 
 export function Collections() {
-  const sectionRef = useRef<HTMLElement>(null)
-  // Native `loading="lazy"` has no way to tune how far ahead of the viewport it
-  // starts fetching, so cards can still pop in blank on a fast scroll. Instead we
-  // arm the whole section — flipping every card's `loading` to "eager" (never
+  // Arms the whole section — flipping every card's `loading` to "eager" (never
   // fetchPriority) — the moment it's within 1200px of the viewport, well before
   // the user actually reaches it. The images are ~30-50KB WebP derivatives, so
   // this background fetch never competes with the Hero's priority resources.
-  const [armed, setArmed] = useState(false)
-
-  useEffect(() => {
-    const section = sectionRef.current
-    if (!section || armed) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setArmed(true)
-          observer.disconnect()
-        }
-      },
-      { rootMargin: '0px 0px 1200px 0px', threshold: 0 },
-    )
-
-    observer.observe(section)
-    return () => observer.disconnect()
-  }, [armed])
+  const { ref: sectionRef, armed } = useArmNearViewport<HTMLElement>()
 
   return (
     <section

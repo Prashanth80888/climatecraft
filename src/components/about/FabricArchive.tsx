@@ -37,7 +37,7 @@ export function FabricArchive() {
                 >
                   <div className="relative overflow-hidden rounded-[24px]">
                     <img
-                      src="/images/about/design.png"
+                      src="/images/about/design.webp"
                       alt="Diamond-quilted upholstery from the Climate Craft fabric archive"
                       loading="lazy"
                       className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-105 sm:aspect-[4/3] lg:aspect-[4/5]"

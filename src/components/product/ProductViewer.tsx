@@ -126,6 +126,8 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
                 src={images[index]}
                 alt={alt}
                 draggable={false}
+                decoding="async"
+                fetchPriority={index === 0 && !fullscreen ? 'high' : undefined}
                 initial={{ opacity: 0, scale: 1.03, x: direction * 24 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 exit={{ opacity: 0, scale: 0.98, x: direction * -24 }}
@@ -209,8 +211,8 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
       {/* Preload adjacent images for smooth swiping */}
       {hasMultiple && (
         <div className="hidden" aria-hidden="true">
-          <link rel="preload" as="image" href={images[(index + 1) % images.length]} />
-          <link rel="preload" as="image" href={images[(index - 1 + images.length) % images.length]} />
+          <link rel="preload" as="image" href={images[(index + 1) % images.length]} fetchPriority="low" />
+          <link rel="preload" as="image" href={images[(index - 1 + images.length) % images.length]} fetchPriority="low" />
         </div>
       )}
     </div>
@@ -236,10 +238,11 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
             >
               <div className="h-16 w-14 overflow-hidden sm:h-20 sm:w-16">
                 <img
-                  src={src}
+                  src={src.replace(/\.webp$/, '-thumb.webp')}
                   alt=""
                   aria-hidden="true"
                   loading="lazy"
+                  decoding="async"
                   className={`h-full w-full object-cover transition-opacity duration-300 ${
                     i === index ? 'opacity-100' : 'opacity-50 group-hover:opacity-80'
                   }`}

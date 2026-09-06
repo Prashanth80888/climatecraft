@@ -1179,6 +1179,7 @@ function ProjectImage({
           src={src}
           alt={alt}
           loading={eager ? 'eager' : 'lazy'}
+          decoding="async"
           draggable={false}
           className="
             h-full

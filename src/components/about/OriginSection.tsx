@@ -93,7 +93,7 @@ export function OriginSection() {
                 >
                   <div className="relative overflow-hidden rounded-[24px]">
                     <img
-                      src="/images/about/motion.png"
+                      src="/images/about/motion.webp"
                       alt="The motorized mechanism at the centre of a Climate Craft piece"
                       loading="lazy"
                       className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-105 sm:aspect-[4/3] lg:aspect-[4/5]"

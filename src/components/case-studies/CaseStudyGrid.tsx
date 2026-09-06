@@ -4,14 +4,15 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import type { CaseStudy } from '../../data/caseStudies'
 import { CASE_STUDIES } from '../../data/caseStudies'
+import { useArmNearViewport } from '../../hooks/useArmNearViewport'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 // Editorial story rows, alternating image side each time — never a repeating
 // photo grid (see master brief §2/§4). One image per case study; the category,
 // title, description and CTA carry the visual hierarchy, not the photograph.
-const CaseStudyRow = forwardRef<HTMLDivElement, { caseStudy: CaseStudy; reversed: boolean }>(function CaseStudyRow(
-  { caseStudy, reversed },
+const CaseStudyRow = forwardRef<HTMLDivElement, { caseStudy: CaseStudy; reversed: boolean; armed: boolean }>(function CaseStudyRow(
+  { caseStudy, reversed, armed },
   ref,
 ) {
   return (
@@ -35,7 +36,8 @@ const CaseStudyRow = forwardRef<HTMLDivElement, { caseStudy: CaseStudy; reversed
           <img
             src={caseStudy.gallery[0]}
             alt={caseStudy.summary}
-            loading="lazy"
+            loading={armed ? 'eager' : 'lazy'}
+            decoding="async"
             className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.05]"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
@@ -67,11 +69,13 @@ const CaseStudyRow = forwardRef<HTMLDivElement, { caseStudy: CaseStudy; reversed
 })
 
 export function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
+  const { ref, armed } = useArmNearViewport<HTMLDivElement>()
+
   return (
-    <div className="flex flex-col gap-16 sm:gap-20 lg:gap-24">
+    <div ref={ref} className="flex flex-col gap-16 sm:gap-20 lg:gap-24">
       <AnimatePresence mode="popLayout">
         {caseStudies.map((cs, i) => (
-          <CaseStudyRow key={cs.slug} caseStudy={cs} reversed={i % 2 === 1} />
+          <CaseStudyRow key={cs.slug} caseStudy={cs} reversed={i % 2 === 1} armed={armed} />
         ))}
       </AnimatePresence>
     </div>

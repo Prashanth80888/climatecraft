@@ -40,7 +40,9 @@ export interface CaseStudy {
   relatedCaseStudySlugs: string[]
 }
 
-const imageAt = (slug: string, index: number) => `/images/projects/${slug}/${String(index).padStart(2, '0')}.png`
+// .webp: pre-generated derivative of the source PNG (see scripts/generate-image-derivatives.mjs) —
+// same photography, ~95% smaller, used for every case-study gallery/hero/card image.
+const imageAt = (slug: string, index: number) => `/images/projects/${slug}/${String(index).padStart(2, '0')}.webp`
 const images = (slug: string, count: number) => Array.from({ length: count }, (_, i) => imageAt(slug, i + 1))
 
 export const CASE_STUDIES: CaseStudy[] = [
