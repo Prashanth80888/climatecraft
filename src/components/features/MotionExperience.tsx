@@ -12,7 +12,7 @@ const TRAITS = ['Smooth', 'Controlled', 'Effortless', 'Precise']
 
 export function MotionExperience() {
   const product = getProductBySlug('craft-motion')!
-  const images = homeProductImages(product.slug, product.imageCount)
+  const images = homeProductImages(product.slug)
   const [index, setIndex] = useState(0)
 
   return (

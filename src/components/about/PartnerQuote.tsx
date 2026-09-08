@@ -1,242 +1,547 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Quote, Star, Building2 } from 'lucide-react'
-import testimonialsData from '../../data/testimonials.json'
-import type { Testimonial } from '../../types'
-import { SectionAtmosphere } from '../ui/SectionAtmosphere'
+import {
+  Eye,
+  Sliders,
+  Sparkles,
+  ArrowRight,
+  ArrowUpRight,
+  ShieldCheck,
+} from 'lucide-react'
 import { SectionLabel } from '../ui/SectionLabel'
-import { Reveal } from '../ui/Reveal'
+import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 
-const testimonials = testimonialsData as Testimonial[]
+const easeOut: [number, number, number, number] = [
+  0.16,
+  1,
+  0.3,
+  1,
+]
+
+const IDEAS = [
+  {
+    number: '01',
+    icon: Eye,
+    label: 'See',
+    description: 'See the technology in the product itself.',
+  },
+  {
+    number: '02',
+    icon: Sliders,
+    label: 'Control',
+    description: 'Control your personal comfort experience.',
+  },
+  {
+    number: '03',
+    icon: Sparkles,
+    label: 'Experience',
+    description: 'Experience the difference for yourself.',
+  },
+]
 
 export function PartnerQuote() {
-  // Finds Uday Hegde or Kartik Kulkarni,
-  // otherwise falls back to the first available testimonial
-  const testimonial =
-    testimonials.find(
-      (t) => t.n === 'Uday Hegde' || t.n === 'Kartik Kulkarni',
-    ) ?? testimonials[0]
-
-  if (!testimonial) return null
-
   return (
-    <section className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-28">
-      <SectionAtmosphere variant="ambient" />
-
-      {/* ------------------------------------------------------------------ */}
-      {/* BACKGROUND AMBIENT GLOW                                            */}
-      {/* ------------------------------------------------------------------ */}
-
+    <section className="relative overflow-hidden bg-transparent py-20 sm:py-28 lg:py-32">
+      {/* =====================================================
+          AMBIENT BACKGROUND
+      ====================================================== */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[750px] -translate-x-1/2 -translate-y-1/2 opacity-[0.28] blur-[130px]"
-        style={{
-          background:
-            'radial-gradient(ellipse, #169B9A 0%, #53c9c5 38%, transparent 72%)',
-        }}
+        className="
+          pointer-events-none absolute
+          -left-40 top-20
+          h-96 w-96
+          rounded-full
+          bg-teal-500/[0.045]
+          blur-[120px]
+        "
       />
 
-      {/* Subtle gold accent */}
       <div
-        className="pointer-events-none absolute -right-32 top-1/3 h-[300px] w-[300px] rounded-full opacity-[0.10] blur-[110px]"
-        style={{
-          background:
-            'radial-gradient(circle, #D4AF37 0%, transparent 70%)',
-        }}
+        className="
+          pointer-events-none absolute
+          -right-40 bottom-0
+          h-[420px] w-[420px]
+          rounded-full
+          bg-gold-400/[0.045]
+          blur-[120px]
+        "
       />
 
-      <div className="grain-overlay opacity-[0.06]" />
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        {/* =====================================================
+            MAIN CONTENT
+        ====================================================== */}
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20">
+          {/* =================================================
+              LEFT — PROOF STORY
+          ================================================== */}
+          <div className="lg:col-span-7">
+            <Reveal>
+              <div className="flex items-center gap-2.5">
+                <span
+                  className="
+                    flex h-8 w-8
+                    items-center justify-center
+                    rounded-full
+                    border border-teal-600/15
+                    bg-teal-500/[0.06]
+                  "
+                >
+                  <ShieldCheck
+                    className="h-4 w-4 text-teal-700"
+                    strokeWidth={1.6}
+                  />
+                </span>
 
-      <div className="relative z-10 mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
+                <SectionLabel>Built on Proof</SectionLabel>
+              </div>
 
-        {/* ---------------------------------------------------------------- */}
-        {/* SECTION LABEL                                                    */}
-        {/* ---------------------------------------------------------------- */}
+              <h2
+                className="
+                  mt-6 max-w-2xl
+                  font-display
+                  text-[34px]
+                  font-medium
+                  leading-[1.04]
+                  tracking-[-0.025em]
+                  text-[#063B3D]
+                  sm:text-[46px]
+                  lg:text-[54px]
+                "
+              >
+                Why should you believe{' '}
+                <span className="italic font-normal text-teal-700">
+                  ClimateCraft?
+                </span>
+              </h2>
+            </Reveal>
 
-        <Reveal>
-          <div className="flex items-center gap-2">
-            <Building2 className="h-4 w-4 text-[#169B9A]" />
+            <Reveal delay={0.1}>
+              <div className="mt-7 max-w-2xl">
+                <p
+                  className="
+                    text-[15.5px]
+                    font-medium
+                    leading-7
+                    text-ink-700
+                    sm:text-[16.5px]
+                    sm:leading-[1.85]
+                  "
+                >
+                  We believe technology claims should be
+                  supported by the product itself. ClimateCraft
+                  focuses on integrating temperature-control
+                  technology directly into premium seating so
+                  that the experience is something you can{' '}
+                  <span className="font-semibold text-[#063B3D]">
+                    see, control and experience
+                  </span>
+                  , rather than simply read about.
+                </p>
 
-            <SectionLabel>
-              Partner Testimonial
-            </SectionLabel>
-          </div>
-        </Reveal>
+                <p
+                  className="
+                    mt-5
+                    text-[15.5px]
+                    font-medium
+                    leading-7
+                    text-ink-700
+                    sm:text-[16.5px]
+                    sm:leading-[1.85]
+                  "
+                >
+                  Our credibility comes from the product, the
+                  engineering behind it, the materials used,
+                  the controls integrated into the system and
+                  the standards we apply during product
+                  development.
+                </p>
+              </div>
+            </Reveal>
 
-        {/* ---------------------------------------------------------------- */}
-        {/* TESTIMONIAL CARD                                                 */}
-        {/* ---------------------------------------------------------------- */}
-
-        <Reveal delay={0.1}>
-          <motion.div
-            whileHover={{ y: -3 }}
-            transition={{ duration: 0.35 }}
-            className="group relative mt-8 overflow-hidden rounded-[28px] border border-white/80 bg-white/[0.72] p-7 shadow-[0_30px_75px_-25px_rgba(6,59,61,0.24)] backdrop-blur-2xl backdrop-saturate-150 transition-all duration-500 hover:border-[#169B9A]/30 hover:bg-white/[0.82] hover:shadow-[0_35px_90px_-25px_rgba(6,59,61,0.3)] sm:rounded-[32px] sm:p-10 lg:p-14"
-          >
-
-            {/* ------------------------------------------------------------ */}
-            {/* INNER GLASS BORDER                                           */}
-            {/* ------------------------------------------------------------ */}
-
-            <div className="pointer-events-none absolute inset-[1px] rounded-[27px] border border-white/50 sm:rounded-[31px]" />
-
-            {/* ------------------------------------------------------------ */}
-            {/* TOP GRADIENT ACCENT                                           */}
-            {/* ------------------------------------------------------------ */}
-
-            <div className="absolute inset-x-0 top-0 h-1 overflow-hidden">
-              <motion.div
-                initial={{ x: '-100%' }}
-                whileInView={{ x: '0%' }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 1,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="h-full w-full bg-gradient-to-r from-[#063B3D] via-[#169B9A] to-[#53c9c5]"
-              />
-            </div>
-
-            {/* ------------------------------------------------------------ */}
-            {/* SUBTLE GLASS REFLECTION                                      */}
-            {/* ------------------------------------------------------------ */}
-
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/55 to-transparent" />
-
-            {/* ------------------------------------------------------------ */}
-            {/* DECORATIVE INTERNAL GLOW                                     */}
-            {/* ------------------------------------------------------------ */}
-
-            <div
-              className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full opacity-[0.13] blur-3xl"
-              style={{
-                background:
-                  'radial-gradient(circle, #169B9A 0%, transparent 70%)',
-              }}
-            />
-
-            {/* ------------------------------------------------------------ */}
-            {/* RATING + QUOTE ICON                                         */}
-            {/* ------------------------------------------------------------ */}
-
-            <div className="relative z-10 flex items-center justify-between">
-
-              {/* Stars */}
-              <div className="flex items-center gap-1.5">
-                {[...Array(5)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{
-                      opacity: 0,
-                      scale: 0.7,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      scale: 1,
-                    }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.3,
-                      delay: i * 0.07,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
+            {/* Small proof markers */}
+            <Reveal delay={0.18}>
+              <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3">
+                {[
+                  'Product',
+                  'Engineering',
+                  'Materials',
+                  'Controls',
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-2"
                   >
-                    <Star
-                      className="h-[17px] w-[17px] fill-[#169B9A] text-[#169B9A] drop-shadow-[0_2px_5px_rgba(22,155,154,0.25)]"
-                      strokeWidth={1.5}
-                    />
-                  </motion.div>
+                    <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
+
+                    <span
+                      className="
+                        text-[10px]
+                        font-bold
+                        uppercase
+                        tracking-[0.14em]
+                        text-[#063B3D]/65
+                      "
+                    >
+                      {item}
+                    </span>
+                  </div>
                 ))}
               </div>
+            </Reveal>
+          </div>
 
-              {/* Quote Icon */}
-              <Quote
-                className="h-8 w-8 text-[#169B9A]/45 transition-all duration-500 group-hover:text-[#169B9A]/65"
-                strokeWidth={1.5}
-              />
-            </div>
+          {/* =================================================
+              RIGHT — SEE / CONTROL / EXPERIENCE
+          ================================================== */}
+          <div className="lg:col-span-5">
+            <Reveal delay={0.12}>
+              <div
+                className="
+                  relative overflow-hidden
+                  rounded-[28px]
+                  border border-[#063B3D]/10
+                  bg-white/50
+                  p-5
+                  shadow-[0_30px_80px_-50px_rgba(6,59,61,0.5)]
+                  backdrop-blur-sm
+                  sm:p-6
+                "
+              >
+                {/* Card atmosphere */}
+                <div
+                  className="
+                    pointer-events-none absolute
+                    -right-20 -top-20
+                    h-52 w-52
+                    rounded-full
+                    bg-teal-500/[0.07]
+                    blur-3xl
+                  "
+                />
 
-            {/* ------------------------------------------------------------ */}
-            {/* MAIN QUOTE                                                   */}
-            {/* ------------------------------------------------------------ */}
+                <div className="relative">
+                  <div className="flex items-end justify-between gap-4">
+                    <div>
+                      <p
+                        className="
+                          text-[9px]
+                          font-bold
+                          uppercase
+                          tracking-[0.18em]
+                          text-ink-500
+                        "
+                      >
+                        The ClimateCraft approach
+                      </p>
 
-            <motion.p
-              initial={{
-                opacity: 0,
-                y: 12,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.7,
-                delay: 0.18,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="relative z-10 mt-7 text-[21px] font-normal leading-[1.55] tracking-[-0.01em] text-[#063B3D] sm:mt-8 sm:text-[25px] sm:leading-[1.5] lg:text-[30px] lg:leading-[1.48]"
-              style={{
-                fontFamily: '"Times New Roman", Times, serif',
-              }}
+                      <h3
+                        className="
+                          mt-2
+                          font-display
+                          text-[25px]
+                          font-medium
+                          leading-tight
+                          text-[#063B3D]
+                          sm:text-[29px]
+                        "
+                      >
+                        Proof you can experience.
+                      </h3>
+                    </div>
+
+                    <span
+                      className="
+                        flex h-10 w-10
+                        flex-none items-center
+                        justify-center
+                        rounded-full
+                        bg-[#063B3D]
+                        text-gold-400
+                      "
+                    >
+                      <ShieldCheck
+                        className="h-5 w-5"
+                        strokeWidth={1.5}
+                      />
+                    </span>
+                  </div>
+
+                  <RevealGroup
+                    className="mt-7"
+                    stagger={0.09}
+                  >
+                    {IDEAS.map((idea) => {
+                      const Icon = idea.icon
+
+                      return (
+                        <RevealItem key={idea.number}>
+                          <motion.div
+                            whileHover={{ x: 5 }}
+                            transition={{
+                              duration: 0.25,
+                              ease: easeOut,
+                            }}
+                            className="
+                              group relative
+                              flex items-center
+                              gap-4
+                              border-t
+                              border-[#063B3D]/[0.09]
+                              py-5
+                              last:border-b
+                            "
+                          >
+                            {/* Number */}
+                            <span
+                              className="
+                                w-7 flex-none
+                                font-display
+                                text-[11px]
+                                italic
+                                tabular-nums
+                                text-gold-600
+                              "
+                            >
+                              {idea.number}
+                            </span>
+
+                            {/* Icon */}
+                            <span
+                              className="
+                                flex h-10 w-10
+                                flex-none
+                                items-center
+                                justify-center
+                                rounded-xl
+                                border
+                                border-teal-600/10
+                                bg-teal-500/[0.045]
+                                text-teal-700
+                                transition-all
+                                duration-300
+                                group-hover:border-teal-600/25
+                                group-hover:bg-teal-500/[0.09]
+                              "
+                            >
+                              <Icon
+                                className="h-[18px] w-[18px]"
+                                strokeWidth={1.5}
+                              />
+                            </span>
+
+                            {/* Text */}
+                            <div className="min-w-0 flex-1">
+                              <h4
+                                className="
+                                  font-display
+                                  text-[21px]
+                                  font-medium
+                                  leading-tight
+                                  text-[#063B3D]
+                                  sm:text-[23px]
+                                "
+                              >
+                                {idea.label}
+                              </h4>
+
+                              <p
+                                className="
+                                  mt-1
+                                  text-[12px]
+                                  font-medium
+                                  leading-relaxed
+                                  text-ink-500
+                                  sm:text-[12.5px]
+                                "
+                              >
+                                {idea.description}
+                              </p>
+                            </div>
+
+                            {/* Arrow */}
+                            <ArrowUpRight
+                              className="
+                                h-4 w-4 flex-none
+                                -translate-x-1 translate-y-1
+                                text-teal-700/35
+                                opacity-0
+                                transition-all duration-300
+                                group-hover:translate-x-0
+                                group-hover:translate-y-0
+                                group-hover:opacity-100
+                              "
+                              strokeWidth={1.6}
+                            />
+                          </motion.div>
+                        </RevealItem>
+                      )
+                    })}
+                  </RevealGroup>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+
+        {/* =====================================================
+            EXPERIENCE CTA
+        ====================================================== */}
+        <Reveal delay={0.2}>
+          <div
+            className="
+              relative mt-16
+              overflow-hidden
+              rounded-[30px]
+              bg-[#063B3D]
+              px-6 py-10
+              shadow-[0_35px_90px_-45px_rgba(6,59,61,0.65)]
+              sm:mt-20
+              sm:px-10 sm:py-12
+              lg:px-14 lg:py-14
+            "
+          >
+            {/* CTA background glow */}
+            <div
+              className="
+                pointer-events-none absolute
+                -right-24 -top-28
+                h-72 w-72
+                rounded-full
+                bg-teal-400/15
+                blur-[90px]
+              "
+            />
+
+            <div
+              className="
+                pointer-events-none absolute
+                -bottom-32 -left-20
+                h-64 w-64
+                rounded-full
+                bg-gold-400/10
+                blur-[80px]
+              "
+            />
+
+            {/* Decorative line */}
+            <div
+              className="
+                pointer-events-none absolute
+                right-0 top-0
+                h-px w-1/2
+                bg-gradient-to-l
+                from-gold-400/60
+                to-transparent
+              "
+            />
+
+            <div
+              className="
+                relative
+                flex flex-col
+                gap-8
+                lg:flex-row
+                lg:items-center
+                lg:justify-between
+              "
             >
-              "{testimonial.q}"
-            </motion.p>
+              <div className="max-w-2xl">
+                <div className="flex items-center gap-3">
+                  <span className="h-px w-9 bg-gold-400" />
 
-            {/* ------------------------------------------------------------ */}
-            {/* DIVIDER                                                      */}
-            {/* ------------------------------------------------------------ */}
-
-            <div className="relative z-10 mt-8 h-px w-full bg-gradient-to-r from-[#063B3D]/15 via-[#169B9A]/20 to-transparent sm:mt-10" />
-
-            {/* ------------------------------------------------------------ */}
-            {/* PARTNER DETAILS                                              */}
-            {/* ------------------------------------------------------------ */}
-
-            <div className="relative z-10 mt-7 flex items-center sm:mt-8">
-
-              <div className="flex items-center gap-4">
-
-                {/* Initials */}
-                <motion.div
-                  whileHover={{
-                    scale: 1.06,
-                    rotate: 2,
-                  }}
-                  transition={{
-                    duration: 0.25,
-                  }}
-                  className="relative flex h-12 w-12 flex-none items-center justify-center overflow-hidden rounded-full border border-[#169B9A]/25 bg-gradient-to-br from-[#169B9A]/15 via-white/70 to-[#53c9c5]/10 font-display text-base font-bold text-[#063B3D] shadow-[inset_0_1px_2px_rgba(255,255,255,0.9),0_8px_20px_-12px_rgba(6,59,61,0.3)] backdrop-blur-md sm:h-14 sm:w-14"
-                >
-                  <span className="relative z-10">
-                    {testimonial.mono || 'UH'}
+                  <span
+                    className="
+                      text-[9px]
+                      font-bold
+                      uppercase
+                      tracking-[0.19em]
+                      text-gold-400
+                    "
+                  >
+                    Experience ClimateCraft
                   </span>
-
-                  <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-white/50 via-transparent to-[#169B9A]/10" />
-                </motion.div>
-
-                {/* Name + Role */}
-                <div>
-                  <h4 className="text-[15px] font-bold tracking-[-0.01em] text-[#063B3D] sm:text-base">
-                    {testimonial.n}
-                  </h4>
-
-                  <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#557071] sm:text-xs">
-                    {testimonial.r}
-                  </p>
                 </div>
 
+                <h3
+                  className="
+                    mt-4
+                    font-display
+                    text-[28px]
+                    font-normal
+                    leading-[1.08]
+                    text-white
+                    sm:text-[37px]
+                    lg:text-[42px]
+                  "
+                >
+                  See the technology.{' '}
+                  <span className="italic text-teal-300">
+                    Experience the difference.
+                  </span>
+                </h3>
+
+                <p
+                  className="
+                    mt-4 max-w-xl
+                    text-[14px]
+                    font-medium
+                    leading-7
+                    text-white/70
+                    sm:text-[15px]
+                  "
+                >
+                  The strongest proof of temperature-controlled
+                  comfort is experiencing the product yourself.
+                </p>
               </div>
 
+              {/* CTA */}
+              <Link
+                to="/collections"
+                className="
+                  group inline-flex
+                  w-fit flex-none
+                  items-center gap-4
+                  rounded-full
+                  bg-gold-400
+                  px-6 py-3.5
+                  text-[11px]
+                  font-bold
+                  uppercase
+                  tracking-[0.13em]
+                  text-[#063B3D]
+                  shadow-[0_15px_35px_-15px_rgba(240,169,44,0.65)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:bg-gold-300
+                  hover:shadow-[0_20px_40px_-15px_rgba(240,169,44,0.75)]
+                  sm:px-7 sm:py-4
+                "
+              >
+                <span>Explore Products</span>
+
+                <span
+                  className="
+                    flex h-7 w-7
+                    items-center justify-center
+                    rounded-full
+                    bg-[#063B3D]/10
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-1
+                  "
+                >
+                  <ArrowRight
+                    className="h-4 w-4"
+                    strokeWidth={2}
+                  />
+                </span>
+              </Link>
             </div>
-
-            {/* ------------------------------------------------------------ */}
-            {/* BOTTOM GLASS HIGHLIGHT                                      */}
-            {/* ------------------------------------------------------------ */}
-
-            <div className="pointer-events-none absolute bottom-0 left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-white/90 to-transparent" />
-
-          </motion.div>
+          </div>
         </Reveal>
-
       </div>
     </section>
   )

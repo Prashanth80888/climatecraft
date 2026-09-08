@@ -1,27 +1,7 @@
 import { addressSingleLine } from '../data/siteConfig'
+import { PRODUCT_IMAGES } from '../data/generatedProductImages'
 
 export const productImage = (key: string) => `/images/products/${key}.jpeg`
-
-const PRODUCT_IMAGES: Record<string, string[]> = {
-  'climate-craft-duo': ['01.png'],
-  'climate-craft-grand': ['01.png', '02.png', '03.png', '04.png', '05.JPG', '06.JPG', '07.JPG', '08.JPG', '09.JPG'],
-  'climate-craft-signature': ['01.png', '02.png', '03.png', '04.png', '05.JPG', '06.JPG', '07.JPG', '08.JPG'],
-  'climate-craft-signature-new': [
-    'DSC04689.png', // Hero image (index 1 / 0-th in array)
-    'DSC04640.png',
-    'DSC04646.png',
-    'DSC04649.png',
-    'DSC04669.png',
-    'DSC04728.png',
-    'DSC04735.png'
-  ],
-  'craft-classic': ['01.png', '02.png', '03.png', '04.png', '05.png', '06.png', '07.png'],
-  'craft-classic-duo': ['01.png', '02.png', '03.png', '04.JPG', '05.JPG'],
-  'craft-classic-grand': ['01.png', '02.png', '03.png', '04.png', '05.png', '06.png'],
-  'craft-motion': ['01.png', '02.png', '03.png', '04.png'],
-  'craft-motion-duo': ['01.png', '02.png', '03.JPG', '04.JPG', '05.JPG', '06.JPG'],
-  'craft-motion-grand': ['01.png', '02.png', '03.png', '04.png'],
-}
 
 /**
  * The source angle photos above are full camera-resolution JPEG/PNG originals
@@ -71,15 +51,15 @@ export const homeProductImageAt = (slug: string, index: number) => {
   return `/images/products/${slug}/${String(index).padStart(2, '0')}.webp`
 }
 
-/** All verified angle images for a product, in order. */
-export const homeProductImages = (slug: string, _imageCount: number) => {
+/** All verified angle images for a product, in order (01 first). */
+export const homeProductImages = (slug: string) => {
   const images = PRODUCT_IMAGES[slug]
-  if (images) {
-    return images.map((file) => `/images/products/${slug}/${toWebp(file)}`)
-  }
-  // Fallback to imageCount logic if slug not found
-  return Array.from({ length: _imageCount }, (_, i) => homeProductImageAt(slug, i + 1))
+  if (!images) return []
+  return images.map((file) => `/images/products/${slug}/${toWebp(file)}`)
 }
+
+/** Number of verified angle photos discovered for a product — 0 means no photography yet. */
+export const homeProductImageCount = (slug: string) => PRODUCT_IMAGES[slug]?.length ?? 0
 
 /**
  * Tiny (~5-20KB) derivative of `homeProductImageAt`, for contexts that only

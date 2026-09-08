@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, Camera } from 'lucide-react'
 import { HOME_PRODUCTS, type HomeProduct } from '../../data/homeProducts'
-import { homeProductImage } from '../../lib/assets'
+import { homeProductImage, homeProductImageCount } from '../../lib/assets'
 import { useArmNearViewport } from '../../hooks/useArmNearViewport'
 import { SectionLabel } from '../ui/SectionLabel'
 import { RevealGroup, RevealItem } from '../ui/Reveal'
@@ -50,7 +50,7 @@ function RelatedCard({ product, armed }: { product: HomeProduct; armed: boolean 
       className="group relative block overflow-hidden rounded-[20px] border border-[#0B3F42]/[0.15] bg-[#F4F7F5] transition-[border-color,box-shadow] duration-300 ease-out will-change-transform hover:border-[#159FA3]/35 hover:shadow-[0_28px_64px_-26px_rgba(6,61,60,0.26)]"
     >
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#E8EFEC]">
-        {product.imageCount > 0 ? (
+        {homeProductImageCount(product.slug) > 0 ? (
           <img
             src={homeProductImage(product.slug)}
             alt={product.name}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Camera } from 'lucide-react'
 import type { HomeProduct } from '../../data/homeProducts'
-import { homeProductImage } from '../../lib/assets'
+import { homeProductImage, homeProductImageCount } from '../../lib/assets'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
@@ -59,7 +59,7 @@ export function ProductCard({ product, total }: ProductCardProps) {
       />
 
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#E8EFEC]">
-        {product.imageCount > 0 ? (
+        {homeProductImageCount(product.slug) > 0 ? (
           <motion.div
             initial={{ clipPath: 'inset(7% round 4px)', opacity: 0 }}
             whileInView={{ clipPath: 'inset(0% round 0px)', opacity: 1 }}

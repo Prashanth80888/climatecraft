@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { SectionLabel } from '../ui/SectionLabel'
-import { SectionAtmosphere } from '../ui/SectionAtmosphere'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
@@ -8,60 +7,62 @@ const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 const PRINCIPLES = [
   {
     number: '01',
-    title: 'Mechanism First',
-    copy: 'We engineer motion before form — the motor and glide are chosen and proven before the frame is built around them.',
+    title: 'Purposeful Innovation',
+    copy: 'We develop technology around real comfort problems rather than adding technology for its own sake.',
   },
   {
     number: '02',
-    title: 'Made to Order',
-    copy: 'Every piece is engineered to order and quoted for the space it goes into — never held as stock, never sold off a shelf.',
+    title: 'Human-Centered Design',
+    copy: 'The technology exists to improve the experience of the person using the product.',
   },
   {
     number: '03',
-    title: 'Partner, Not Vendor',
-    copy: 'From white-labelled ranges for manufacturers to galleries and architecture practices, we work as an extension of the specifying team.',
+    title: 'Premium Experience',
+    copy: 'Materials, ergonomics, controls and technology must work together to create a product that feels complete.',
+  },
+  {
+    number: '04',
+    title: 'Continuous Improvement',
+    copy: 'Comfort technology is an evolving field. We continue to refine the way technology and furniture work together.',
+  },
+  {
+    number: '05',
+    title: 'Responsible Engineering',
+    copy: 'Innovation is meaningful only when it can be translated into a reliable and usable product.',
   },
 ]
 
 export function BrandPrinciples() {
   return (
-    <section className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-24">
-      <SectionAtmosphere variant="glow" />
-      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-transparent py-20 sm:py-28 lg:py-32">
+      <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
         <Reveal>
-          <SectionLabel>What We Hold To</SectionLabel>
+          <div className="flex justify-center">
+            <SectionLabel>What We Stand For</SectionLabel>
+          </div>
         </Reveal>
 
-        <RevealGroup className="mt-10 grid grid-cols-1 gap-x-8 gap-y-2 border-t border-ink-900/10 sm:grid-cols-3">
+        <RevealGroup className="mt-12 sm:mt-16">
           {PRINCIPLES.map((p) => (
             <RevealItem key={p.number}>
               <motion.div
-                initial="rest"
-                whileHover="hover"
-                animate="rest"
-                className="group relative border-ink-900/10 px-1 py-7 sm:border-l sm:px-7 sm:py-9 sm:first:border-l-0"
+                whileHover={{ x: 8 }}
+                transition={{ duration: 0.35, ease: easeOut }}
+                className="group relative border-b border-[#063B3D]/10 py-8 first:border-t sm:py-10"
               >
-                <motion.div
-                  variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
-                  transition={{ duration: 0.5, ease: easeOut }}
-                  className="pointer-events-none absolute -left-10 top-0 h-40 w-40 rounded-full opacity-30 blur-[80px]"
-                  style={{ background: 'radial-gradient(circle, #C9A84E 0%, transparent 70%)' }}
-                />
-                <motion.span
-                  variants={{ rest: { x: 0 }, hover: { x: 6 } }}
-                  transition={{ duration: 0.4, ease: easeOut }}
-                  className="relative block font-display text-sm italic tabular-nums text-gold-700/80"
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-3 right-0 select-none font-display text-[5rem] font-bold italic leading-none text-[#063B3D]/[0.05] transition-colors duration-500 group-hover:text-gold-500/10 sm:-top-5 sm:text-[8rem]"
                 >
                   {p.number}
-                </motion.span>
-                <motion.h3
-                  variants={{ rest: { x: 0 }, hover: { x: 6 } }}
-                  transition={{ duration: 0.4, ease: easeOut, delay: 0.02 }}
-                  className="relative mt-3 font-display text-2xl text-cream-100"
-                >
-                  {p.title}
-                </motion.h3>
-                <p className="relative mt-3 max-w-xs text-[14px] leading-relaxed text-cream-200">{p.copy}</p>
+                </span>
+                <div className="relative max-w-lg">
+                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-gold-700">
+                    {p.number}
+                  </span>
+                  <h3 className="mt-2 font-display text-2xl font-semibold text-[#063B3D] sm:text-3xl">{p.title}</h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-ink-700">{p.copy}</p>
+                </div>
               </motion.div>
             </RevealItem>
           ))}

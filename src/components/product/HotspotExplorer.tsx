@@ -6,18 +6,18 @@ import type { ProductHotspot } from '../../data/homeProducts'
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 interface HotspotExplorerProps {
-  images: string[]
+  /** The single product photo whose visible features the hotspots below are calibrated against. */
+  image: string
   hotspots: ProductHotspot[]
   alt: string
 }
 
 export function HotspotExplorer({
-  images,
+  image,
   hotspots,
   alt,
 }: HotspotExplorerProps) {
   const [activeId, setActiveId] = useState<string | null>(null)
-  const [imageIndex, setImageIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
   /*
@@ -60,21 +60,6 @@ export function HotspotExplorer({
   }, [])
 
   const active = hotspots.find((h) => h.id === activeId) ?? null
-  const src = images[imageIndex] ?? images[0]
-
-  /*
-   * Open hotspot and switch image when required.
-   */
-  const openHotspot = (hotspot: ProductHotspot) => {
-    setActiveId(hotspot.id)
-
-    if (
-      typeof hotspot.imageIndex === 'number' &&
-      images[hotspot.imageIndex]
-    ) {
-      setImageIndex(hotspot.imageIndex)
-    }
-  }
 
   /*
    * Desktop card positioning.
@@ -125,8 +110,8 @@ export function HotspotExplorer({
       >
         <AnimatePresence mode="popLayout">
           <motion.img
-            key={src}
-            src={src}
+            key={image}
+            src={image}
             alt={alt}
             draggable={false}
             initial={{
@@ -237,7 +222,7 @@ export function HotspotExplorer({
               }}
               onClick={(e) => {
                 e.stopPropagation()
-                openHotspot(hotspot)
+                setActiveId(hotspot.id)
               }}
               onMouseEnter={() => setActiveId(hotspot.id)}
               onFocus={() => setActiveId(hotspot.id)}

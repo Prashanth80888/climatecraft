@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, ArrowUpRight, Camera } from 'lucide-react'
 import { HOME_PRODUCTS, type HomeProduct } from '../data/homeProducts'
-import { homeCardImage } from '../lib/assets'
-import { useArmNearViewport } from '../hooks/useArmNearViewport'
+import { homeCardImage, homeProductImageCount } from '../lib/assets'
 import { SectionLabel } from './ui/SectionLabel'
 import { SectionAtmosphere } from './ui/SectionAtmosphere'
 import { Reveal } from './ui/Reveal'
@@ -18,9 +17,14 @@ const SEAT_ROWS: { label: string; blurb: string; seats: 1 | 2 | 3; dur: number; 
   { label: 'Climate Grand', blurb: 'Climate Grand · Three Seater', seats: 3, dur: 36, dir: 'ltr' },
 ]
 
-function ProductCard({ product, armed }: { product: HomeProduct; armed: boolean }) {
+function ProductCard({ product }: { product: HomeProduct }) {
   const cardRef = useRef<HTMLAnchorElement>(null)
-  const cardImage = homeCardImage(product.slug)
+  // Home page "Explore Collection" override, requested for this card only — leaves
+  // the shared craft-motion-grand product data/detail page image untouched.
+  const cardImage =
+    product.slug === 'craft-motion-grand'
+      ? { webp: '/images/products/climate-craft-grand/06.webp', fallback: '/images/products/climate-craft-grand/06.png' }
+      : homeCardImage(product.slug)
 
   const onMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const card = cardRef.current
@@ -48,7 +52,7 @@ function ProductCard({ product, armed }: { product: HomeProduct; armed: boolean 
       />
 
       <div className="relative aspect-[4/5] overflow-hidden bg-[#E8EFEC]">
-        {product.imageCount > 0 ? (
+        {homeProductImageCount(product.slug) > 0 ? (
           <picture>
             <source srcSet={cardImage.webp} type="image/webp" />
             <img
@@ -57,7 +61,11 @@ function ProductCard({ product, armed }: { product: HomeProduct; armed: boolean 
               draggable={false}
               width={400}
               height={500}
-              loading={armed ? 'eager' : 'lazy'}
+              // Explore Collection sits directly under the Hero and is always mounted on
+              // Home page load — these are small (~30-50KB) WebP derivatives, so they're
+              // requested immediately rather than gated behind viewport proximity, and
+              // are already cached by the time the user scrolls down to this section.
+              loading="eager"
               decoding="async"
               className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.07]"
             />
@@ -110,12 +118,10 @@ function MarqueeRow({
   products,
   dur,
   dir: direction,
-  armed,
 }: {
   products: HomeProduct[]
   dur: number
   dir: 'ltr' | 'rtl'
-  armed: boolean
 }) {
   const rowRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
@@ -253,7 +259,7 @@ function MarqueeRow({
         className="flex w-max cursor-grab select-none gap-3 pb-2 active:cursor-grabbing sm:gap-5 md:gap-6 lg:gap-7"
       >
         {sequence.map((product, i) => (
-          <ProductCard key={`${product.id}-${i}`} product={product} armed={armed} />
+          <ProductCard key={`${product.id}-${i}`} product={product} />
         ))}
       </div>
     </motion.div>
@@ -261,16 +267,9 @@ function MarqueeRow({
 }
 
 export function Collections() {
-  // Arms the whole section — flipping every card's `loading` to "eager" (never
-  // fetchPriority) — the moment it's within 1200px of the viewport, well before
-  // the user actually reaches it. The images are ~30-50KB WebP derivatives, so
-  // this background fetch never competes with the Hero's priority resources.
-  const { ref: sectionRef, armed } = useArmNearViewport<HTMLElement>()
-
   return (
     <section
       id="collections"
-      ref={sectionRef}
       className="relative overflow-hidden bg-transparent py-16 sm:py-24 lg:py-32"
     >
       <SectionAtmosphere variant="bloom" />
@@ -341,7 +340,6 @@ export function Collections() {
                 products={products}
                 dur={row.dur}
                 dir={row.dir}
-                armed={armed}
               />
             </div>
           )

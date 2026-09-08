@@ -4,9 +4,9 @@ import { SectionLabel } from '../ui/SectionLabel'
 import { Reveal } from '../ui/Reveal'
 
 export function ProductCraftsmanship({ product }: { product: HomeProduct }) {
-  if (product.imageCount === 0) return null
+  const images = homeProductImages(product.slug)
+  if (images.length === 0) return null
 
-  const images = homeProductImages(product.slug, product.imageCount)
   const detailImage = images[images.length - 1]
 
   return (

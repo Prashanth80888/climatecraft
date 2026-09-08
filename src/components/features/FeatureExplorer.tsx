@@ -244,10 +244,7 @@ export function FeatureExplorer() {
     (item) => item.id === familyId,
   )!
 
-  const images = homeProductImages(
-    product.slug,
-    product.imageCount,
-  )
+  const images = homeProductImages(product.slug)
 
   const displayImage = images[0]
 
@@ -430,6 +427,89 @@ export function FeatureExplorer() {
                           'linear-gradient(135deg, rgba(6,59,61,0.55), transparent 45%, rgba(22,155,154,0.22))',
                       }}
                     />
+
+                    {/* Mobile image hotspots — tap a numbered point to reveal its label.
+                        Desktop hotspot positions remain completely untouched. */}
+                    <div className="absolute inset-0 z-30 lg:hidden">
+                      {features.map((feature, index) => {
+                        const isActive = feature.id === activeId
+
+                        return (
+                          <button
+                            key={`mobile-image-hotspot-${feature.id}`}
+                            type="button"
+                            aria-label={`Show ${feature.title}`}
+                            aria-expanded={isActive}
+                            onClick={() => toggleFeature(feature.id)}
+                            className="group absolute -translate-x-1/2 -translate-y-1/2 outline-none touch-manipulation"
+                            style={{
+                              left: `${feature.x}%`,
+                              top: `${feature.y}%`,
+                            }}
+                          >
+                            <span
+                              className={`absolute inset-0 -m-2.5 rounded-full transition-all duration-300 ${isActive
+                                ? 'bg-gold-300/35 ring-2 ring-white/60'
+                                : 'animate-pulse bg-teal-300/20'
+                                }`}
+                            />
+
+                            <span
+                              className={`relative flex h-9 w-9 items-center justify-center rounded-full border-2 font-display text-[10px] font-semibold italic shadow-[0_8px_22px_-8px_rgba(0,0,0,0.65)] backdrop-blur-md transition-all duration-300 ${isActive
+                                ? 'border-gold-200 bg-gold-400 text-[#063B3D] scale-110'
+                                : 'border-white bg-[#063B3D]/90 text-white'
+                                }`}
+                            >
+                              {String(index + 1).padStart(2, '0')}
+                            </span>
+                          </button>
+                        )
+                      })}
+
+                      {/* Active mobile label — deliberately anchored to the bottom
+                          of the image so it stays readable on every phone size. */}
+                      <AnimatePresence mode="wait">
+                        {activeFeature && (
+                          <motion.div
+                            key={`mobile-image-label-${activeFeature.id}`}
+                            initial={{ opacity: 0, y: 12, scale: 0.97 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                            transition={{ duration: 0.24, ease: easeOut }}
+                            className="pointer-events-none absolute inset-x-2.5 bottom-2.5 z-50"
+                          >
+                            <div className="relative rounded-[17px] border border-white/90 bg-[#FFFFFF] px-3.5 py-3 shadow-[0_18px_42px_-18px_rgba(6,59,61,0.7)] backdrop-blur-xl">
+                              <div className="flex items-start gap-2.5">
+                                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold-400 font-display text-[9px] font-semibold italic text-[#063B3D]">
+                                  {String(activeIndex + 1).padStart(2, '0')}
+                                </span>
+
+                                <div className="min-w-0">
+                                  <div className="flex items-center gap-2">
+                                    <span className="h-px w-5 bg-gold-400" />
+                                    <span className="text-[7px] font-bold uppercase tracking-[0.16em] text-[#063B3D]">
+                                      Feature
+                                    </span>
+                                  </div>
+
+                                  <h3 className="mt-1 font-display text-[15px] font-semibold leading-tight text-[#063B3D]">
+                                    {activeFeature.title}
+                                  </h3>
+
+                                  <p className="mt-1 text-[10px] font-medium leading-[1.45] text-[#163F42]">
+                                    {activeFeature.description}
+                                  </p>
+                                </div>
+                              </div>
+
+                              {/* Small visual cue showing that this card belongs to
+                                  the selected point, without moving the actual marker. */}
+                              <span className="absolute -top-1.5 left-1/2 h-3 w-3 rotate-45 border-l border-t border-white/90 bg-white" />
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
 
                     <div className="absolute left-3 top-3 z-40 sm:left-5 sm:top-5">
                       <div className="rounded-full border border-white/75 bg-white/85 px-3 py-1.5 shadow-[0_12px_28px_-16px_rgba(6,59,61,0.4)] backdrop-blur-xl sm:px-4 sm:py-2">
@@ -679,14 +759,14 @@ export function FeatureExplorer() {
                           onClick={() => toggleFeature(feature.id)}
                           aria-pressed={isActive}
                           className={`flex min-h-[52px] items-center gap-2.5 rounded-[16px] border px-3 py-2.5 text-left transition-all duration-200 ${isActive
-                              ? 'border-teal-700/30 bg-teal-700 text-white shadow-[0_12px_26px_-16px_rgba(6,59,61,0.7)]'
-                              : 'border-white/80 bg-white/75 text-[#063B3D] shadow-[0_10px_24px_-18px_rgba(6,59,61,0.35)]'
+                            ? 'border-teal-700/30 bg-teal-700 text-white shadow-[0_12px_26px_-16px_rgba(6,59,61,0.7)]'
+                            : 'border-white/80 bg-white/75 text-[#063B3D] shadow-[0_10px_24px_-18px_rgba(6,59,61,0.35)]'
                             }`}
                         >
                           <span
                             className={`flex h-7 w-7 flex-none items-center justify-center rounded-full font-display text-[10px] italic ${isActive
-                                ? 'bg-gold-400 text-[#063B3D]'
-                                : 'bg-[#E6F2EF] text-gold-700'
+                              ? 'bg-gold-400 text-[#063B3D]'
+                              : 'bg-[#E6F2EF] text-gold-700'
                               }`}
                           >
                             {String(index + 1).padStart(2, '0')}

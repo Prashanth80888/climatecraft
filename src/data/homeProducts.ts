@@ -3,10 +3,12 @@
 // standalone /collections page (out of scope for this update) — the two pages
 // are allowed to use different datasets until /collections is migrated later.
 //
-// Product photography lives at /images/products/{slug}/01.png, 02.png, etc.
-// `imageCount` is the number of verified real angle photographs available for
-// that product (0 = none confirmed yet — the card/page shows an honest
-// "photography pending" state instead of a wrong or placeholder image).
+// Product photography lives at /images/products/{slug}/01.png, 02.png, etc. —
+// 01 is always that product's main/primary image, and the full ordered set is
+// auto-discovered from the filesystem (src/data/generatedProductImages.ts, via
+// scripts/generate-image-derivatives.mjs) rather than tracked per product here.
+// Use homeProductImageCount(slug)/homeProductImages(slug) from src/lib/assets.ts
+// to read a product's photo count/URLs — never hand-maintain it on this type.
 export interface HomeProduct {
   id: string
   slug: string
@@ -24,10 +26,14 @@ export interface HomeProduct {
   highlights: string[]
   /** Complete spec list — shown on the Product Detail page. */
   specifications: string[]
-  /** Number of verified real angle photos at /images/products/{slug}/0N.png. */
-  imageCount: number
   /** Interactive part callouts for the DETAILS explorer — copy is always sourced from `specifications`. */
   hotspots: ProductHotspot[]
+  /**
+   * 0-indexed angle (into homeProductImages(slug)) used as the single DETAILS-explorer
+   * image for this product — the one photo where every hotspot below actually lines up
+   * with a visible feature. Defaults to 0 ("01") when omitted.
+   */
+  detailImageIndex?: number
 }
 
 export interface ProductHotspot {
@@ -37,8 +43,6 @@ export interface ProductHotspot {
   y: number
   title: string
   description: string
-  /** 0-indexed angle to switch the viewer to when this hotspot is opened, if a better view exists. */
-  imageIndex?: number
 }
 
 export interface ProductFamily {
@@ -76,17 +80,17 @@ export const HOME_PRODUCTS: HomeProduct[] = [
     number: 10,
     familyId: 'climate-smart',
     name: 'Climate Craft | Signature',
-    category: 'Smart Recliner � Single Seater',
+    category: 'Smart Recliner · Single Seater',
     operation: 'SMART & Motorized',
     seats: 1,
     teaser: 'A refined single-seater smart recliner engineered for personalized comfort.',
-    description: 'A refined single-seater smart recliner engineered for personalized comfort. Signature combines premium upholstery, motorized reclining and Climate Craft�s intelligent liquid cooling and heating technology, with seamless control through the smart interface, remote and voice commands.',
-    highlights: ['1 Seat', 'Smart & Motorized', '15�C�35�C Cooling & Heating', '2-Year Warranty'],
+    description: 'A refined single-seater smart recliner engineered for personalized comfort. Signature combines premium upholstery, motorized reclining and Climate Craft’s intelligent liquid cooling and heating technology, with seamless control through the smart interface, remote and voice commands.',
+    highlights: ['1 Seat', 'Smart & Motorized', '15°C–35°C Cooling & Heating', '2-Year Warranty'],
     specifications: [
       'Seating capacity: 1',
       'Motorized reclining and leg-rest adjustment',
       'Patented liquid cooling & heating technology',
-      'Temperature range: 15�C�35�C',
+      'Temperature range: 15°C–35°C',
       'Smart touchscreen/interface control',
       'Remote control',
       'Voice control',
@@ -95,30 +99,37 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Ergonomic back, seat and leg support',
       '2-year warranty',
     ],
-    imageCount: 7,
     hotspots: [
       {
-        id: 'control',
-        x: 67,
-        y: 47,
+        id: 'screen',
+        x: 41,
+        y: 50,
         title: 'Smart Interface Control',
-        description: 'A discreet touch control panel built into the armrest � full smart touchscreen, remote and voice control over recline and temperature.',
+        description: 'The embedded touchscreen display built into the armrest — smart interface control over recline and temperature.',
+      },
+      {
+        id: 'reclineControl',
+        x: 34,
+        y: 52,
+        title: 'Recline Controller',
+        description: 'Physical recline buttons beside the touchscreen, for one-touch manual control of the reclining motion.',
       },
       {
         id: 'backrest',
-        x: 36,
-        y: 26,
+        x: 39,
+        y: 24,
         title: 'Liquid Cooling & Heating',
-        description: 'Patented liquid cooling and heating technology runs through the backrest, holding a temperature range of 15�C�35�C.',
+        description: 'Patented liquid cooling and heating technology runs through the backrest, holding a temperature range of 15°C–35°C.',
       },
       {
         id: 'seat',
-        x: 55,
-        y: 68,
+        x: 78,
+        y: 64,
         title: 'Motorized Reclining & Leg Rest',
         description: 'Motorized reclining and leg-rest adjustment, finished in premium 460 GSM upholstery for ergonomic back, seat and leg support.',
       },
     ],
+    detailImageIndex: 1,
   },
   {
     id: 'classic',
@@ -146,30 +157,30 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Ergonomic back, seat and leg support',
       '2-year warranty',
     ],
-    imageCount: 7,
     hotspots: [
       {
         id: 'control',
-        x: 67,
-        y: 47,
+        x: 40,
+        y: 51,
         title: 'Smart Interface Control',
         description: 'A discreet touch control panel built into the armrest — full smart touchscreen, remote and voice control over recline and temperature.',
       },
       {
         id: 'backrest',
-        x: 36,
-        y: 26,
+        x: 40,
+        y: 29,
         title: 'Liquid Cooling & Heating',
         description: 'Patented liquid cooling and heating technology runs through the backrest, holding a temperature range of 15°C–35°C.',
       },
       {
         id: 'seat',
-        x: 55,
-        y: 68,
+        x: 61,
+        y: 72,
         title: 'Motorized Reclining & Leg Rest',
         description: 'Motorized reclining and leg-rest adjustment, finished in premium 460 GSM upholstery for ergonomic back, seat and leg support.',
       },
     ],
+    detailImageIndex: 3,
   },
 
   {
@@ -200,30 +211,30 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Integrated cup holders',
       '2-year warranty',
     ],
-    imageCount: 9,
     hotspots: [
       {
         id: 'control',
-        x: 19,
-        y: 44,
+        x: 17,
+        y: 43,
         title: 'Smart Touch Control',
         description: 'Smart touchscreen interface control on the armrest, with remote and voice control as well — this is where the 2 motorized reclining seats are commanded.',
       },
       {
         id: 'center',
-        x: 50,
-        y: 56,
+        x: 55,
+        y: 58,
         title: 'Central Fixed Seating',
         description: 'A comfortable central fixed seating position sits between the two motorized reclining seats, in premium 460 GSM upholstery.',
       },
       {
         id: 'headrests',
-        x: 50,
-        y: 30,
+        x: 58,
+        y: 27,
         title: 'Three-Across Ergonomic Cushioning',
         description: 'Ergonomic cushioning and support across all three seats, paired with liquid cooling & heating technology (15°C–35°C).',
       },
     ],
+    detailImageIndex: 0,
   },
   {
     id: 'motion',
@@ -251,30 +262,37 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Ergonomic back, seat and leg support',
       '2-year warranty',
     ],
-    imageCount: 4,
     hotspots: [
       {
-        id: 'control',
-        x: 67,
-        y: 47,
+        id: 'screen',
+        x: 37,
+        y: 54,
         title: 'Smart Interface Control',
-        description: 'A discreet touch control panel built into the armrest — full smart touchscreen, remote and voice control over recline and temperature.',
+        description: 'The embedded touchscreen display built into the armrest — smart interface control over recline and temperature.',
+      },
+      {
+        id: 'reclineControl',
+        x: 27,
+        y: 56,
+        title: 'Recline Controller',
+        description: 'Physical recline buttons beside the touchscreen, for one-touch manual control of the reclining motion.',
       },
       {
         id: 'backrest',
-        x: 36,
-        y: 26,
+        x: 42,
+        y: 30,
         title: 'Liquid Cooling & Heating',
         description: 'Patented liquid cooling and heating technology runs through the backrest, holding a temperature range of 15°C–35°C.',
       },
       {
         id: 'seat',
-        x: 55,
-        y: 68,
+        x: 63,
+        y: 70,
         title: 'Motorized Reclining & Leg Rest',
         description: 'Motorized reclining and leg-rest adjustment, finished in premium 460 GSM upholstery for ergonomic back, seat and leg support.',
       },
     ],
+    detailImageIndex: 0,
   },
   {
     id: 'motion-duo',
@@ -304,30 +322,30 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Integrated cup holders',
       '2-year warranty',
     ],
-    imageCount: 6,
     hotspots: [
       {
         id: 'console',
-        x: 49,
-        y: 44,
+        x: 61,
+        y: 58,
         title: 'Individual Reclining Console',
         description: 'Each seat reclines independently, controlled from the shared centre console for individual reclining comfort.',
       },
       {
         id: 'headrests',
-        x: 45,
-        y: 27,
+        x: 51,
+        y: 30,
         title: 'Dual Smart Headrests',
         description: 'Ergonomic cushioning and lumbar support behind Climate Craft’s liquid cooling & heating technology, tuned across 15°C–35°C.',
       },
       {
         id: 'mechanism',
-        x: 79,
-        y: 73,
+        x: 42,
+        y: 72,
         title: 'Motorized Reclining & Leg Rest',
-        description: 'Motorized reclining and motorized leg-rest adjustment, controlled by smart interface, remote or voice command.',
+        description: 'Motorized reclining and motorized leg-rest adjustment, controlled by smart interface, remote or voice command — shown here with the seat fully reclined and the leg rest extended.',
       },
     ],
+    detailImageIndex: 0,
   },
   {
     id: 'motion-grand',
@@ -353,30 +371,30 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Integrated cup holders',
       'No climate-control technology',
     ],
-    imageCount: 4,
     hotspots: [
       {
         id: 'control',
-        x: 22,
-        y: 60,
+        x: 17,
+        y: 43,
         title: 'Motorized Recline Control',
         description: 'The built-in control for the 2 motorized reclining seats, mounted on the armrest for easy reach.',
       },
       {
         id: 'legrest',
-        x: 38,
-        y: 78,
+        x: 25,
+        y: 57,
         title: 'Motorized Leg Rest',
         description: 'A motorized leg rest extends smoothly with each reclining seat, shown here at full extension.',
       },
       {
         id: 'center',
-        x: 58,
-        y: 45,
+        x: 55,
+        y: 58,
         title: 'Central Fixed Seat',
         description: 'A central fixed seat sits between the two reclining positions, in the same premium upholstery and plush cushioning.',
       },
     ],
+    detailImageIndex: 0,
   },
   {
     id: 'signature',
@@ -404,30 +422,37 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Ergonomic back, seat and leg support',
       '2-year warranty',
     ],
-    imageCount: 8,
     hotspots: [
       {
-        id: 'control',
-        x: 67,
-        y: 47,
+        id: 'screen',
+        x: 45,
+        y: 54,
         title: 'Smart Interface Control',
-        description: 'A discreet touch control panel built into the armrest — full smart touchscreen, remote and voice control over recline and temperature.',
+        description: 'The embedded touchscreen display built into the armrest — smart interface control over recline and temperature.',
+      },
+      {
+        id: 'reclineControl',
+        x: 40,
+        y: 58,
+        title: 'Recline Controller',
+        description: 'Physical recline buttons beside the touchscreen, for one-touch manual control of the reclining motion.',
       },
       {
         id: 'backrest',
-        x: 36,
-        y: 26,
+        x: 39,
+        y: 29,
         title: 'Liquid Cooling & Heating',
         description: 'Patented liquid cooling and heating technology runs through the backrest, holding a temperature range of 15°C–35°C.',
       },
       {
         id: 'seat',
-        x: 55,
-        y: 68,
+        x: 68,
+        y: 70,
         title: 'Motorized Reclining & Leg Rest',
         description: 'Motorized reclining and leg-rest adjustment, finished in premium 460 GSM upholstery for ergonomic back, seat and leg support.',
       },
     ],
+    detailImageIndex: 0,
   },
   {
     id: 'classic-duo',
@@ -455,30 +480,30 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'Ergonomic back, seat and leg support',
       '2-year warranty',
     ],
-    imageCount: 5,
     hotspots: [
       {
         id: 'control',
-        x: 67,
-        y: 47,
+        x: 31,
+        y: 42,
         title: 'Smart Interface Control',
         description: 'A discreet touch control panel built into the armrest — full smart touchscreen, remote and voice control over recline and temperature.',
       },
       {
         id: 'backrest',
-        x: 36,
-        y: 26,
+        x: 74,
+        y: 40,
         title: 'Liquid Cooling & Heating',
         description: 'Patented liquid cooling and heating technology runs through the backrest, holding a temperature range of 15°C–35°C.',
       },
       {
         id: 'seat',
-        x: 55,
-        y: 68,
+        x: 25,
+        y: 70,
         title: 'Motorized Reclining & Leg Rest',
         description: 'Motorized reclining and leg-rest adjustment, finished in premium 460 GSM upholstery for ergonomic back, seat and leg support.',
       },
     ],
+    detailImageIndex: 0,
   },
   {
     id: 'classic-grand',
@@ -504,31 +529,30 @@ export const HOME_PRODUCTS: HomeProduct[] = [
       'No reclining mechanism',
       'No climate-control technology',
     ],
-    imageCount: 6,
     hotspots: [
       {
         id: 'upholstery',
-        x: 35,
-        y: 32,
+        x: 49,
+        y: 38,
         title: 'Premium Upholstery',
         description: 'Rich velvet-finish premium upholstery across the backrest — static seating, with no reclining or climate-control mechanism.',
-        imageIndex: 3,
       },
       {
         id: 'configuration',
-        x: 55,
-        y: 56,
+        x: 49,
+        y: 60,
         title: 'Spacious Three-Seat Configuration',
         description: 'A spacious three-seat configuration with generous cushioning and an ergonomic seating design throughout.',
       },
       {
         id: 'silhouette',
-        x: 80,
-        y: 82,
+        x: 19,
+        y: 45,
         title: 'Refined Contemporary Silhouette',
-        description: 'Timeless proportions and a refined contemporary silhouette, built to keep the living room experience beautifully simple.',
+        description: 'The sofa’s tapered side profile — timeless proportions and a refined contemporary silhouette, built to keep the living room experience beautifully simple.',
       },
     ],
+    detailImageIndex: 0,
   },
 ]
 

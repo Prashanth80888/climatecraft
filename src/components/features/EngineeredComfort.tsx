@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import {
+  AnimatePresence,
   motion,
   useInView,
   useScroll,
@@ -150,14 +151,21 @@ export function EngineeredComfort() {
     }
   }
 
+  // Hover is desktop-only. Touch/mobile opens a concept only from an explicit tap.
+  const canHover = () =>
+    typeof window !== 'undefined' &&
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches
+
   const openConcept = (id: string) => {
+    if (!canHover()) return
     clearHoverTimeout()
     setActive(id)
   }
 
   const closeConcept = () => {
-    clearHoverTimeout()
+    if (!canHover()) return
 
+    clearHoverTimeout()
     hoverTimeout.current = setTimeout(() => {
       setActive(null)
       hoverTimeout.current = null
@@ -441,7 +449,7 @@ export function EngineeredComfort() {
                       transition={{ duration: 0.22, ease: easeOut }}
                       onMouseEnter={() => openConcept(concept.id)}
                       onMouseLeave={closeConcept}
-                      className={`absolute z-[60] w-[220px] max-w-[calc(100vw-32px)] rounded-2xl border border-gold-400/60 bg-[#063B3D]/95 p-4 text-left shadow-[0_20px_55px_-18px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:w-[270px] sm:max-w-none ${concept.id === 'ergonomics'
+                      className={`absolute z-[60] hidden w-[220px] max-w-[calc(100vw-32px)] rounded-2xl border border-gold-400/60 bg-[#063B3D]/95 p-4 text-left shadow-[0_20px_55px_-18px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:block sm:w-[270px] sm:max-w-none ${concept.id === 'ergonomics'
                         ? 'left-1/2 top-full mt-4 -translate-x-1/2 lg:top-auto lg:bottom-full lg:mb-4 lg:mt-0'
                         : concept.id === 'motion' || concept.id === 'climate'
                           ? 'right-0 top-full mt-3 lg:mt-0 lg:top-1/2 lg:-translate-y-1/2 lg:right-auto lg:left-full lg:ml-4'
@@ -456,21 +464,21 @@ export function EngineeredComfort() {
                         </div>
 
                         <div className="min-w-0">
-                          <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gold-400">
+                          <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gold-400 max-sm:text-[#9A6400]">
                             {concept.eyebrow}
                           </p>
-                          <h3 className="mt-1 font-display text-[16px] font-normal leading-tight text-white">
+                          <h3 className="mt-1 font-display text-[16px] font-normal leading-tight text-white max-sm:text-[#063B3D]">
                             {concept.title}
                           </h3>
                         </div>
                       </div>
 
-                      <p className="mt-3 text-[12px] leading-[1.65] text-white/90">
+                      <p className="mt-3 text-[12px] leading-[1.65] text-white/90 max-sm:text-[#173F41]">
                         {concept.description}
                       </p>
 
                       <div className="mt-3 border-t border-white/15 pt-3">
-                        <p className="text-[11px] leading-[1.6] text-gold-100/90">
+                        <p className="text-[11px] leading-[1.6] text-gold-100/90 max-sm:text-[#315F61]">
                           {concept.detail}
                         </p>
                       </div>
@@ -531,6 +539,59 @@ export function EngineeredComfort() {
             })}
           </motion.div>
         </div>
+
+        {/* ================================================================
+            MOBILE DETAIL CARD
+            The card lives outside the circular stage so every feature's
+            text remains inside the viewport and fully readable on phones.
+            Mobile interaction is tap/click only.
+        ================================================================= */}
+        <AnimatePresence mode="wait">
+          {activeConcept && (
+            <motion.div
+              key={`mobile-concept-detail-${activeConcept.id}`}
+              initial={{ opacity: 0, y: 10, scale: 0.985 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -6, scale: 0.985 }}
+              transition={{ duration: 0.24, ease: easeOut }}
+              className="mx-auto mt-5 w-full max-w-[360px] sm:hidden"
+            >
+              <div className="relative overflow-hidden rounded-[22px] border border-[#D9B65B]/70 bg-white px-4 py-4 text-left shadow-[0_18px_45px_-18px_rgba(6,59,61,0.45)]">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-teal-600 via-gold-400 to-teal-600" />
+
+                <div className="flex items-start gap-3 pt-1">
+                  <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-[#063B3D] text-gold-400 shadow-[0_8px_20px_-10px_rgba(6,59,61,0.65)]">
+                    <activeConcept.icon className="h-[18px] w-[18px]" />
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-[#9A6400]">
+                      {activeConcept.eyebrow}
+                    </p>
+
+                    <h3 className="mt-1 font-display text-[18px] font-medium leading-[1.18] text-[#063B3D]">
+                      {activeConcept.title}
+                    </h3>
+                  </div>
+                </div>
+
+                <p className="mt-3 text-[12.5px] font-medium leading-[1.6] text-[#173F41]">
+                  {activeConcept.description}
+                </p>
+
+                <div className="mt-3 border-t border-[#063B3D]/10 pt-3">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-[#9A6400]">
+                    Detail
+                  </p>
+
+                  <p className="mt-1.5 text-[11.5px] font-medium leading-[1.6] text-[#315F61]">
+                    {activeConcept.detail}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </div>
     </section>

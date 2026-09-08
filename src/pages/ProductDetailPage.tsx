@@ -41,7 +41,7 @@ export function ProductDetailPage() {
   }
 
   const family = PRODUCT_FAMILIES.find((f) => f.id === product.familyId)!
-  const images = homeProductImages(product.slug, product.imageCount)
+  const images = homeProductImages(product.slug)
   const related = getRelatedProducts(product)
   const hasHotspots = product.hotspots.length > 0 && images.length > 0
 
@@ -86,7 +86,11 @@ export function ProductDetailPage() {
                         exit={{ opacity: 0, scale: 0.985 }}
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        <HotspotExplorer images={images} hotspots={product.hotspots} alt={product.name} />
+                        <HotspotExplorer
+                          image={images[product.detailImageIndex ?? 0] ?? images[0]}
+                          hotspots={product.hotspots}
+                          alt={product.name}
+                        />
                       </motion.div>
                     ) : (
                       <motion.div

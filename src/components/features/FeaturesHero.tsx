@@ -16,10 +16,10 @@ import {
   Sparkles,
   Snowflake,
   Thermometer,
+  X,
   type LucideIcon,
 } from 'lucide-react'
 import { getProductBySlug } from '../../data/homeProducts'
-import { homeProductImage } from '../../lib/assets'
 
 const cubicEase: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
@@ -32,7 +32,10 @@ interface Hotspot {
   icon: LucideIcon
   pinX: number
   pinY: number
+  mobilePinX: number
+  mobilePinY: number
   cardPosition: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
+  mobileCardClass: string
   previewImage: string
 }
 
@@ -43,9 +46,12 @@ const HOTSPOTS: Hotspot[] = [
     description:
       'Touchscreen panel to adjust temperature and cooling / heating levels with ease.',
     icon: Thermometer,
-    pinX: 25,
-    pinY: 52,
+    pinX: 30.1,
+    pinY: 60.2,
+    mobilePinX: 23.5,
+    mobilePinY: 54.7,
     cardPosition: 'top-right',
+    mobileCardClass: 'left-2 top-2 sm:left-auto sm:top-auto',
     previewImage: '/images/screen.webp',
   },
   {
@@ -54,9 +60,12 @@ const HOTSPOTS: Hotspot[] = [
     description:
       'Easy-access buttons for smooth one-touch recline and adjustments.',
     icon: Mic,
-    pinX: 18,
-    pinY: 62,
+    pinX: 25.1,
+    pinY: 66.1,
+    mobilePinX: 16.8,
+    mobilePinY: 59.6,
     cardPosition: 'bottom-left',
+    mobileCardClass: 'left-2 top-[30%] sm:left-auto sm:top-auto',
     previewImage: '/images/recline control.webp',
   },
 ]
@@ -149,12 +158,12 @@ export function FeaturesHero() {
   }
 
   const [hoveredId, setHoveredId] = useState<string | null>(null)
+  const [mobileHoveredId, setMobileHoveredId] = useState<string | null>(null)
   const [temp, setTemp] = useState(22)
   const [isInteractiveMode, setIsInteractiveMode] = useState(false)
 
   const hero = getProductBySlug('climate-craft-grand')!
-
-  const image = homeProductImage(hero.slug)
+  const image = '/images/products/climate-craft-grand/06.webp'
 
   const tempMotion = useMotionValue(22)
 
@@ -195,8 +204,6 @@ export function FeaturesHero() {
     ],
   )
 
-
-
   const airflowOpacity = useTransform(
     smoothTemp,
     [15, 22, 35],
@@ -215,6 +222,8 @@ export function FeaturesHero() {
     [0.52, 1],
   )
 
+  const activeMobileSpot = HOTSPOTS.find((spot) => spot.id === mobileHoveredId)
+
   return (
     <section
       ref={ref}
@@ -227,7 +236,7 @@ export function FeaturesHero() {
       <div className="pointer-events-none absolute right-[-8%] top-[42%] h-[380px] w-[380px] rounded-full bg-amber-200/30 blur-[120px]" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
-        {/* Outer card: solid instead of hazy glass so nothing washes out the product image */}
+        {/* Outer card */}
         <div className="overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-[0_30px_90px_-35px_rgba(15,70,70,0.30),inset_0_1px_0_rgba(255,255,255,0.9)] sm:rounded-[38px]">
           <motion.div
             style={{ y: contentY }}
@@ -314,9 +323,13 @@ export function FeaturesHero() {
             </div>
 
             {/* Main product stage */}
-            {/* Mobile: clean product presentation so the image stays fully visible */}
+
+            {/* Mobile View */}
             <div className="relative overflow-hidden rounded-[22px] border border-slate-200 bg-[#0c2b2d] shadow-[0_25px_70px_-28px_rgba(15,70,70,0.35),inset_0_1px_0_rgba(255,255,255,0.9)] sm:hidden">
-              <div className="relative aspect-[4/3] w-full">
+              <div
+                className="relative aspect-[4/3] w-full"
+                onClick={() => setMobileHoveredId(null)}
+              >
                 <img
                   src={image}
                   alt={hero.name}
@@ -326,37 +339,96 @@ export function FeaturesHero() {
                   className="h-full w-full object-cover object-center"
                 />
 
-                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(6,30,31,0.08),transparent_55%,rgba(6,30,31,0.45))]" />
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(6,30,31,0.08),transparent_48%,rgba(6,30,31,0.52))]" />
 
-                <div className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-2xl border border-white/25 bg-[#063B3D]/90 px-3.5 py-3 shadow-[0_16px_35px_-18px_rgba(0,0,0,0.55)] backdrop-blur-md">
-                  <div className="flex min-w-0 items-center gap-2.5">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10">
-                      <Snowflake className="h-4 w-4 text-cyan-300" />
-                    </span>
-                    <div className="min-w-0">
-                      <p className="text-[9px] font-extrabold uppercase tracking-[0.14em] text-cyan-200">
-                        Seat Climate
-                      </p>
-                      <p className="mt-0.5 text-[11px] font-semibold text-white">
-                        Cooling &amp; heating
-                      </p>
-                    </div>
-                  </div>
+                {/* Hotspot pin buttons */}
+                {HOTSPOTS.map((spot) => {
+                  const isActive = mobileHoveredId === spot.id
 
-                  <div className="shrink-0 rounded-full bg-white px-2.5 py-1 text-[9px] font-extrabold text-[#123638]">
-                    15°C – 35°C
-                  </div>
-                </div>
+                  return (
+                    <button
+                      key={`mobile-trigger-${spot.id}`}
+                      type="button"
+                      aria-label={`Show ${spot.title.toLowerCase()} details`}
+                      onClick={(event) => {
+                        event.stopPropagation()
+                        setMobileHoveredId((current) =>
+                          current === spot.id ? null : spot.id,
+                        )
+                      }}
+                      className="group absolute z-30 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 touch-manipulation items-center justify-center rounded-full focus:outline-none"
+                      style={{
+                        left: `${spot.mobilePinX}%`,
+                        top: `${spot.mobilePinY}%`,
+                      }}
+                    >
+                      <span
+                        className={`absolute inline-flex h-8 w-8 rounded-full bg-cyan-400 transition-opacity duration-300 ${isActive ? 'animate-ping opacity-70' : 'animate-pulse opacity-55'
+                          }`}
+                      />
+                      <span
+                        className={`relative inline-flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-teal-600 shadow-[0_8px_18px_-6px_rgba(0,0,0,0.75)] transition-transform duration-300 ${isActive ? 'scale-125 ring-2 ring-cyan-300' : 'scale-100'
+                          }`}
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                      </span>
+                    </button>
+                  )
+                })}
+
+                {/* Mobile Bottom Sheet for Hotspot details */}
+                <AnimatePresence>
+                  {activeMobileSpot && (
+                    <motion.div
+                      initial={{ y: '100%', opacity: 0 }}
+                      animate={{ y: '0%', opacity: 1 }}
+                      exit={{ y: '100%', opacity: 0 }}
+                      transition={{ duration: 0.3, ease: cubicEase }}
+                      onClick={(e) => e.stopPropagation()}
+                      className="absolute inset-x-2 bottom-2 z-40 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/95 p-3.5 text-[#123638] shadow-[0_10px_30px_rgba(0,0,0,0.3)] backdrop-blur-md"
+                    >
+                      <div className="flex items-start justify-between gap-2 pb-2">
+                        <div className="flex items-center gap-2">
+                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-700">
+                            <activeMobileSpot.icon className="h-4 w-4" />
+                          </span>
+                          <h3 className="text-xs font-extrabold uppercase tracking-wider text-[#123638]">
+                            {activeMobileSpot.title}
+                          </h3>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setMobileHoveredId(null)}
+                          className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 text-slate-500 active:bg-slate-200"
+                        >
+                          <X className="h-3.5 w-3.5" />
+                        </button>
+                      </div>
+
+                      <div className="flex items-center gap-3 pt-1">
+                        <p className="flex-1 text-[11px] font-medium leading-relaxed text-[#355B5D]">
+                          {activeMobileSpot.description}
+                        </p>
+                        <div className="h-16 w-24 shrink-0 overflow-hidden rounded-xl border border-slate-200 shadow-sm">
+                          <img
+                            src={activeMobileSpot.previewImage}
+                            alt={activeMobileSpot.title}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
 
-            {/* Desktop/tablet: preserve the existing interactive product stage */}
+            {/* Desktop/tablet */}
             <div
               onMouseMove={onFrameMouseMove}
               onMouseLeave={onFrameMouseLeave}
               className="relative hidden aspect-[4/3] w-full overflow-hidden rounded-[22px] border border-slate-200 bg-[#0c2b2d] shadow-[0_25px_70px_-28px_rgba(15,70,70,0.35),inset_0_1px_0_rgba(255,255,255,0.9)] sm:block sm:aspect-[16/10] lg:aspect-[21/10] lg:min-h-[555px]"
             >
-              {/* Faint, low-opacity accent — no longer washes out the photo */}
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_52%_45%,rgba(255,255,255,0.06),transparent_60%)]" />
 
               <motion.div
@@ -393,10 +465,10 @@ export function FeaturesHero() {
                   />
                 </motion.div>
 
-                {/* Minimal vignette — only at top for header legibility and bottom for console legibility */}
+                {/* Minimal vignette */}
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(6,30,31,0.22),transparent_20%,transparent_68%,rgba(6,30,31,0.38))]" />
 
-                {/* Thermal Effect - Optimized for mobile by crossfading opacity instead of animating background gradient strings */}
+                {/* Cooling thermal effect */}
                 <motion.div
                   style={{
                     left: `${SEAT_ZONE.x}%`,
@@ -406,6 +478,7 @@ export function FeaturesHero() {
                   className="pointer-events-none absolute h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-screen blur-xl sm:h-96 sm:w-96 bg-[radial-gradient(circle,rgba(34,211,238,0.50)_0%,rgba(103,232,249,0.22)_30%,transparent_72%)] will-change-opacity"
                 />
 
+                {/* Heating thermal effect */}
                 <motion.div
                   style={{
                     left: `${SEAT_ZONE.x}%`,
@@ -415,6 +488,7 @@ export function FeaturesHero() {
                   className="pointer-events-none absolute h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-screen blur-xl sm:h-96 sm:w-96 bg-[radial-gradient(circle,rgba(245,158,11,0.50)_0%,rgba(251,191,36,0.20)_30%,transparent_72%)] will-change-opacity"
                 />
 
+                {/* Cooling energy field */}
                 <motion.div
                   style={{
                     left: `${SEAT_ZONE.x}%`,
@@ -424,6 +498,7 @@ export function FeaturesHero() {
                   className="pointer-events-none absolute h-48 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-screen blur-md sm:h-56 sm:w-[26rem] bg-[radial-gradient(ellipse,rgba(34,211,238,0.95)_0%,rgba(245,158,11,0)_42%,transparent_74%)] will-change-opacity"
                 />
 
+                {/* Heating energy field */}
                 <motion.div
                   style={{
                     left: `${SEAT_ZONE.x}%`,
@@ -433,6 +508,7 @@ export function FeaturesHero() {
                   className="pointer-events-none absolute h-48 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-screen blur-md sm:h-56 sm:w-[26rem] bg-[radial-gradient(ellipse,rgba(34,211,238,0)_0%,rgba(245,158,11,0.95)_42%,transparent_74%)] will-change-opacity"
                 />
 
+                {/* Airflow strands */}
                 {!prefersReducedMotion &&
                   STRAND_PATHS.map((strand, index) => (
                     <motion.div
@@ -449,7 +525,8 @@ export function FeaturesHero() {
                       >
                         <motion.path
                           d={`M ${SEAT_ZONE.x} ${SEAT_ZONE.y} Q ${SEAT_ZONE.x + strand.qx
-                            } ${SEAT_ZONE.y + strand.qy}, ${SEAT_ZONE.x + strand.ex
+                            } ${SEAT_ZONE.y + strand.qy
+                            }, ${SEAT_ZONE.x + strand.ex
                             } ${SEAT_ZONE.y + strand.ey}`}
                           fill="none"
                           stroke={
@@ -480,6 +557,7 @@ export function FeaturesHero() {
                     </motion.div>
                   ))}
 
+                {/* Heat haze */}
                 {!prefersReducedMotion && (
                   <>
                     {[0, 1, 2].map((index) => (
@@ -513,24 +591,28 @@ export function FeaturesHero() {
 
               {/* Hover Hotspots */}
               {HOTSPOTS.map((spot) => (
-                <div
+                <button
                   key={`trigger-${spot.id}`}
+                  type="button"
+                  aria-label={`Show ${spot.title.toLowerCase()} details`}
                   style={{
                     left: `${spot.pinX}%`,
                     top: `${spot.pinY}%`,
                   }}
-                  className="group absolute z-30 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center"
+                  className="group absolute z-30 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:flex"
                   onMouseEnter={() => setHoveredId(spot.id)}
                   onMouseLeave={() => setHoveredId(null)}
+                  onFocus={() => setHoveredId(spot.id)}
+                  onBlur={() => setHoveredId(null)}
                 >
-                  <span className="absolute inline-flex h-8 w-8 animate-ping rounded-full bg-cyan-400 opacity-75" />
-                  <span className="relative inline-flex h-5 w-5 items-center justify-center rounded-full border-2 border-white bg-teal-600 shadow-lg transition-transform duration-300 group-hover:scale-125">
+                  <span className="absolute inline-flex h-8 w-8 animate-ping rounded-full bg-cyan-400 opacity-65" />
+                  <span className="relative inline-flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-teal-600 shadow-[0_8px_18px_-6px_rgba(0,0,0,0.75)] transition-transform duration-300 group-hover:scale-125">
                     <span className="h-1.5 w-1.5 rounded-full bg-white" />
                   </span>
-                </div>
+                </button>
               ))}
 
-              {/* Hover Details + Exact Feature Image */}
+              {/* Desktop hover details + exact feature image */}
               {HOTSPOTS.map((spot) => {
                 const isHovered = hoveredId === spot.id
 
@@ -538,27 +620,33 @@ export function FeaturesHero() {
                   <AnimatePresence key={`popup-${spot.id}`}>
                     {isHovered && (
                       <div
-                        className={`pointer-events-none absolute z-40 flex gap-3 ${getCornerPositionClass(
-                          spot.cardPosition,
-                        )}`}
+                        className={`pointer-events-none absolute z-40 hidden sm:flex ${getCornerPositionClass(spot.cardPosition)}`}
                       >
+                        {/* Connector from the hotspot toward the information card. */}
+                        <span
+                          aria-hidden="true"
+                          className={`absolute h-px origin-left bg-[#0F766E] shadow-[0_0_10px_rgba(15,118,110,0.55)] ${spot.id === 'climate'
+                            ? 'left-[-30px] top-[calc(100%+26px)] w-[42px] rotate-[-76deg]'
+                            : 'left-[18px] top-[calc(100%-4px)] w-[48px] rotate-[18deg]'
+                            }`}
+                        />
+
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.92, x: 10 }}
-                          animate={{ opacity: 1, scale: 1, x: 0 }}
-                          exit={{ opacity: 0, scale: 0.92, x: 10 }}
+                          initial={{ opacity: 0, scale: 0.94, y: 8 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.94, y: 8 }}
                           transition={{ duration: 0.22, ease: cubicEase }}
-                          style={{ backgroundColor: 'rgba(8, 44, 46, 0.98)' }}
-                          className="w-60 rounded-2xl border border-white/15 p-3.5 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.55)] sm:w-64 sm:p-4"
+                          className="w-60 rounded-2xl border border-white/15 bg-white p-3.5 shadow-[0_20px_50px_-15px_rgba(8,44,46,0.30)] sm:w-64 sm:p-4"
                         >
                           <div className="mb-1.5 flex items-center gap-2">
-                            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/10">
-                              <spot.icon className="h-3.5 w-3.5 text-cyan-300" />
+                            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal-50">
+                              <spot.icon className="h-3.5 w-3.5 text-teal-700" />
                             </span>
-                            <h3 className="text-xs font-extrabold uppercase tracking-wider text-white">
+                            <h3 className="text-xs font-extrabold uppercase tracking-wider text-[#123638]">
                               {spot.title}
                             </h3>
                           </div>
-                          <p className="text-xs font-medium leading-relaxed text-white/90">
+                          <p className="text-xs font-medium leading-relaxed text-[#355B5D]">
                             {spot.description}
                           </p>
                         </motion.div>
@@ -568,7 +656,7 @@ export function FeaturesHero() {
                           animate={{ opacity: 1, scale: 1, x: 0 }}
                           exit={{ opacity: 0, scale: 0.88, x: 8 }}
                           transition={{ duration: 0.25, ease: cubicEase }}
-                          className="relative h-28 w-40 shrink-0 overflow-hidden rounded-2xl border-2 border-white shadow-[0_20px_45px_-15px_rgba(0,0,0,0.55)] sm:h-32 sm:w-48"
+                          className="relative h-28 w-40 shrink-0 overflow-hidden rounded-2xl border border-slate-200 shadow-[0_20px_45px_-15px_rgba(8,44,46,0.22)] sm:h-32 sm:w-48"
                         >
                           <img
                             src={spot.previewImage}
@@ -583,11 +671,23 @@ export function FeaturesHero() {
                 )
               })}
 
-              {/* Climate Console — more opaque, less blur, clearer against the photo */}
+              {/* Climate Console */}
               <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.72, ease: cubicEase }}
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                  scale: 0.96,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.72,
+                  ease: cubicEase,
+                }}
                 style={{
                   borderColor: consoleBorder,
                   backgroundColor: 'rgba(255, 255, 255, 0.94)',
@@ -599,54 +699,72 @@ export function FeaturesHero() {
                     <Sparkles className="h-3.5 w-3.5" />
                     Seat Climate
                   </span>
+
                   <button
                     type="button"
-                    onClick={() => setIsInteractiveMode((value) => !value)}
+                    onClick={() =>
+                      setIsInteractiveMode((value) => !value)
+                    }
                     aria-pressed={isInteractiveMode}
                     className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-slate-700 transition-colors hover:bg-slate-50"
                   >
                     <span
-                      className={`h-1.5 w-1.5 rounded-full ${isInteractiveMode ? 'bg-amber-400' : 'bg-teal-500'
+                      className={`h-1.5 w-1.5 rounded-full ${isInteractiveMode
+                        ? 'bg-amber-400'
+                        : 'bg-teal-500'
                         }`}
                     />
+
                     {isInteractiveMode ? 'Live' : 'Auto'}
                   </button>
                 </div>
 
                 <div className="mt-3 grid grid-cols-2 overflow-hidden rounded-[18px] border border-slate-200 bg-slate-50 shadow-inner">
                   <motion.div
-                    style={{ opacity: coolingPanelOpacity }}
+                    style={{
+                      opacity: coolingPanelOpacity,
+                    }}
                     className="relative overflow-hidden p-3"
                   >
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan-200/70 to-transparent" />
+
                     <div className="relative flex items-center gap-1.5">
                       <Snowflake className="h-5 w-5 text-cyan-600" />
+
                       <span className="font-display text-2xl font-semibold italic text-[#123638]">
                         15
                       </span>
+
                       <span className="text-[10px] font-bold text-cyan-700">
                         °C
                       </span>
                     </div>
+
                     <p className="relative mt-0.5 text-[9px] font-extrabold uppercase tracking-wider text-cyan-700">
                       Cooling
                     </p>
                   </motion.div>
 
                   <motion.div
-                    style={{ opacity: heatingPanelOpacity }}
+                    style={{
+                      opacity: heatingPanelOpacity,
+                    }}
                     className="relative overflow-hidden border-l border-slate-200 p-3 text-right"
                   >
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-bl from-amber-200/70 to-transparent" />
+
                     <div className="relative flex items-center justify-end gap-1.5">
                       <span className="text-[10px] font-bold text-amber-700">
                         °C
                       </span>
+
                       <span className="font-display text-2xl font-semibold italic text-[#123638]">
                         35
                       </span>
+
                       <Flame className="h-5 w-5 text-amber-500" />
                     </div>
+
                     <p className="relative mt-0.5 text-[9px] font-extrabold uppercase tracking-wider text-amber-700">
                       Heating
                     </p>
@@ -656,6 +774,7 @@ export function FeaturesHero() {
                 <div className="mt-3">
                   <div className="flex items-center justify-between text-[9px] font-extrabold uppercase tracking-wider text-slate-500">
                     <span>15°C</span>
+
                     <span
                       className={
                         isCooling
@@ -665,23 +784,37 @@ export function FeaturesHero() {
                             : 'font-extrabold text-teal-600'
                       }
                     >
-                      {isCooling ? 'Cooling' : isHeating ? 'Heating' : 'Balanced'}
+                      {isCooling
+                        ? 'Cooling'
+                        : isHeating
+                          ? 'Heating'
+                          : 'Balanced'}
                     </span>
+
                     <span>35°C</span>
                   </div>
 
                   <div className="relative mt-2">
                     <div className="pointer-events-none absolute inset-x-0 top-1/2 h-2.5 -translate-y-1/2 rounded-full bg-gradient-to-r from-cyan-400 via-teal-400 to-amber-500 shadow-sm" />
-                    <label htmlFor="climate-temp-slider" className="sr-only">
+
+                    <label
+                      htmlFor="climate-temp-slider"
+                      className="sr-only"
+                    >
                       Adjust seat temperature, 15 to 35 degrees Celsius
                     </label>
+
                     <input
                       id="climate-temp-slider"
                       type="range"
                       min="15"
                       max="35"
                       value={temp}
-                      aria-valuetext={`${temp}°C, ${isCooling ? 'cooling' : isHeating ? 'heating' : 'balanced'
+                      aria-valuetext={`${temp}°C, ${isCooling
+                        ? 'cooling'
+                        : isHeating
+                          ? 'heating'
+                          : 'balanced'
                         }`}
                       onChange={(e) => {
                         setTemp(Number(e.target.value))
@@ -690,10 +823,17 @@ export function FeaturesHero() {
                       onFocus={() => setIsInteractiveMode(true)}
                       className="relative z-10 h-2.5 w-full cursor-pointer appearance-none rounded-full bg-transparent accent-white outline-none"
                     />
+
                     {isInteractiveMode && (
                       <motion.span
-                        initial={{ opacity: 0, y: 4 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{
+                          opacity: 0,
+                          y: 4,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          y: 0,
+                        }}
                         className="pointer-events-none absolute -top-7 rounded-md bg-[#123638] px-2 py-0.5 text-[9px] font-bold text-white shadow-md"
                         style={{
                           left: `${((temp - 15) / 20) * 100}%`,
@@ -708,7 +848,7 @@ export function FeaturesHero() {
               </motion.div>
             </div>
 
-            {/* Quick Specs — solid, crisp panel instead of heavy glass haze */}
+            {/* Quick Specs */}
             <motion.div
               id="feature-explorer"
               initial={{
@@ -738,7 +878,6 @@ export function FeaturesHero() {
                     }}
                     animate={{
                       opacity: 1,
-                      y: 0,
                     }}
                     transition={{
                       duration: 0.5,
@@ -776,15 +915,15 @@ function getCornerPositionClass(
 ): string {
   switch (position) {
     case 'top-left':
-      return 'top-[42%] left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-[28%] flex-col items-center sm:items-start'
+      return 'top-[18%] left-[7%] flex-col items-start'
 
     case 'top-right':
-      return 'top-[42%] left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-[28%] flex-col sm:flex-row items-center'
+      return 'top-[20%] left-[31.5%] flex-row items-end'
 
     case 'bottom-left':
-      return 'top-[60%] left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-[21%] flex-col items-center sm:items-start'
+      return 'top-[40%] left-[4%] flex-row items-end'
 
     case 'bottom-right':
-      return 'top-[60%] left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-[21%] flex-col sm:flex-row items-center'
+      return 'top-[40%] left-[28%] flex-row items-end'
   }
 }
