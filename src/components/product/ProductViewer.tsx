@@ -176,7 +176,7 @@ export function ProductViewer({ images, alt, infographicSrc, infographic2Src }: 
                 exit={{ opacity: 0, scale: 0.98, x: direction * -24 }}
                 transition={{ duration: 0.5, ease: easeOut }}
                 className={
-                  fullscreen
+                  fullscreen || isInfographicSlide(index)
                     ? 'h-full w-full select-none object-contain'
                     : 'h-full w-full select-none object-cover'
                 }

@@ -57,7 +57,7 @@ export function ProductDetailPage() {
 
           <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <Reveal amount={0.6}>
-              <nav className="mx-auto flex w-full max-w-[320px] flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-center text-[10px] uppercase leading-relaxed tracking-widest text-cream-200 sm:mx-0 sm:w-auto sm:max-w-none sm:flex-nowrap sm:justify-start sm:gap-2 sm:text-left sm:text-[11px] sm:leading-normal">
+              <nav className="hidden w-full max-w-[320px] flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-center text-[10px] uppercase leading-relaxed tracking-widest text-cream-200 sm:mx-0 sm:flex sm:w-auto sm:max-w-none sm:flex-nowrap sm:justify-start sm:gap-2 sm:text-left sm:text-[11px] sm:leading-normal">
                 <Link to="/collections" className="whitespace-nowrap transition-colors duration-300 hover:text-gold-700">
                   Collections
                 </Link>
