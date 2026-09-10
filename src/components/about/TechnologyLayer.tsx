@@ -1,6 +1,6 @@
 import { ArrowRight, Layers, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { SectionLabel } from '../ui/SectionLabel'
+import { AboutSectionLabel } from './AboutSectionLabel'
 import { Reveal } from '../ui/Reveal'
 
 const FURNITURE_STEPS = ['Sit', 'Recline', 'Relax']
@@ -108,11 +108,11 @@ function StepRow({
             {/* Step title */}
             <span
               className={`
-                relative font-display text-[25px]
+                relative font-display text-[27px]
                 font-medium leading-none
                 tracking-[-0.02em]
-                sm:text-[29px]
-                lg:text-[31px]
+                sm:text-[31px]
+                lg:text-[34px]
                 ${isTeal
                   ? 'text-[#063B3D]'
                   : 'text-[#8A6314]'
@@ -263,6 +263,7 @@ export function TechnologyLayer() {
         ====================================================== */}
         <Reveal>
           <div className="max-w-2xl">
+            {/* Gemini-style icon stays BEFORE the decorative label line */}
             <div className="flex items-center gap-3">
               <span
                 className="
@@ -279,22 +280,25 @@ export function TechnologyLayer() {
                 />
               </span>
 
-              <SectionLabel>
-                Technology Without Losing the Furniture
-              </SectionLabel>
+              {/* Only the section-label text size is increased */}
+              <div className="[&_span]:!text-[12px] sm:[&_span]:!text-[13px] lg:[&_span]:!text-[14px]">
+                <AboutSectionLabel>
+                  Technology Without Losing the Furniture
+                </AboutSectionLabel>
+              </div>
             </div>
 
             <h2
               className="
                 mt-6 max-w-2xl
                 font-display
-                text-[34px]
+                text-[37px]
                 font-medium
                 leading-[1.05]
                 tracking-[-0.025em]
                 text-[#063B3D]
-                sm:text-[46px]
-                lg:text-[54px]
+                sm:text-[50px]
+                lg:text-[58px]
               "
             >
               Technology should{' '}
@@ -307,11 +311,11 @@ export function TechnologyLayer() {
             <p
               className="
                 mt-6 max-w-xl
-                text-[15px]
+                text-[16px]
                 font-medium
                 leading-7
                 text-ink-700
-                sm:text-[16px]
+                sm:text-[17px]
               "
             >
               A ClimateCraft recliner is still designed to look,
@@ -380,7 +384,7 @@ export function TechnologyLayer() {
               <div>
                 <p
                   className="
-                    text-[10px]
+                    text-[11px]
                     font-bold
                     uppercase
                     tracking-[0.18em]
@@ -393,7 +397,7 @@ export function TechnologyLayer() {
                 <p
                   className="
                     mt-1
-                    text-[13px]
+                    text-[14px]
                     font-medium
                     text-[#063B3D]/70
                   "
@@ -444,7 +448,7 @@ export function TechnologyLayer() {
               <div>
                 <p
                   className="
-                    text-[10px]
+                    text-[11px]
                     font-bold
                     uppercase
                     tracking-[0.18em]
@@ -457,7 +461,7 @@ export function TechnologyLayer() {
                 <p
                   className="
                     mt-1
-                    text-[13px]
+                    text-[14px]
                     font-medium
                     text-[#8A6314]/80
                   "
@@ -521,10 +525,10 @@ export function TechnologyLayer() {
 
               <p
                 className="
-                  text-[10px]
+                  text-[11px]
                   font-bold
                   uppercase
-                  tracking-[0.2em]
+                  tracking-[0.19em]
                   text-ink-500
                 "
               >
@@ -535,12 +539,12 @@ export function TechnologyLayer() {
                 className="
                   mt-4
                   font-display
-                  text-[25px]
+                  text-[27px]
                   font-normal
                   leading-tight
                   tracking-[-0.015em]
                   text-[#063B3D]
-                  sm:text-[32px]
+                  sm:text-[35px]
                 "
               >
                 Sit. Recline. Relax.

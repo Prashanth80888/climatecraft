@@ -83,6 +83,15 @@ export const projectImageAt = (slug: string, index: number) =>
 export const projectImages = (slug: string, imageCount: number) =>
   Array.from({ length: imageCount }, (_, i) => projectImageAt(slug, i + 1))
 
+/**
+ * Product-specific infographic shown as the final section of the Product Detail
+ * page. Lives at `infographic.png` inside each product's own image folder
+ * (same filename everywhere — the folder, keyed by `product.slug`, is what
+ * makes each path unique). Not run through the WebP derivative pipeline since
+ * these are hand-placed one-offs, not photography sets.
+ */
+export const productInfographicImage = (slug: string) => `/images/products/${slug}/infographic.png`
+
 export const brand = {
   logo: '/images/brand/logo.webp',
   heroVideo: '/videos/hero.mp4',

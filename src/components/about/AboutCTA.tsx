@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Reveal } from '../ui/Reveal'
-import { SectionLabel } from '../ui/SectionLabel'
+import { AboutSectionLabel } from './AboutSectionLabel'
 
 const easeOut: [number, number, number, number] = [
   0.16,
@@ -135,24 +135,22 @@ export function AboutCTA() {
                       />
                     </span>
 
-                    <div className="[&_span]:!text-gold-400">
-                      <SectionLabel>
-                        Experience ClimateCraft
-                      </SectionLabel>
-                    </div>
+                    <AboutSectionLabel tone="dark">
+                      Experience ClimateCraft
+                    </AboutSectionLabel>
                   </div>
 
                   <h2
                     className="
                       mt-6 max-w-2xl
                       font-display
-                      text-[32px]
+                      text-[35px]
                       font-normal
                       leading-[1.06]
                       tracking-[-0.02em]
                       text-white
-                      sm:text-[42px]
-                      lg:text-[50px]
+                      sm:text-[46px]
+                      lg:text-[54px]
                     "
                   >
                     The best way to understand it is to{' '}
@@ -179,11 +177,11 @@ export function AboutCTA() {
                     <p
                       className="
                         max-w-md
-                        text-[14.5px]
+                        text-[15.5px]
                         font-medium
                         leading-7
                         text-white/70
-                        sm:text-[15.5px]
+                        sm:text-[16.5px]
                         sm:leading-7
                       "
                     >
@@ -272,10 +270,10 @@ export function AboutCTA() {
               <div className="flex items-center justify-between gap-4">
                 <span
                   className="
-                    text-[9px]
+                    text-[10px]
                     font-bold
                     uppercase
-                    tracking-[0.18em]
+                    tracking-[0.17em]
                     text-white/35
                   "
                 >
@@ -284,10 +282,10 @@ export function AboutCTA() {
 
                 <span
                   className="
-                    text-[9px]
+                    text-[10px]
                     font-bold
                     uppercase
-                    tracking-[0.18em]
+                    tracking-[0.17em]
                     text-white/35
                   "
                 >

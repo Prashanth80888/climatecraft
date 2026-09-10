@@ -4,7 +4,7 @@
 // filenames found in public/images/products/<slug>/ — index 0 (the lowest
 // number, always "01") is that product's main/primary image.
 export const PRODUCT_IMAGES: Record<string, string[]> = {
-  'climate-craft-grand': ['01.png', '02.png', '03.png', '04.png', '05.png', '06.png'],
+  'climate-craft-grand': ['01.png', '02.png', '03.png', '04.png', '05.png', '06.png', '07.png'],
   'climate-craft-signature': ['01.png', '02.png', '03.png', '04.png', '05.png'],
   'climate-craft-signature-new': ['01.png', '02.png', '03.png', '04.png', '05.png', '06.png'],
   'craft-classic': ['01.png', '02.png', '03.png', '04.png', '05.png', '06.png', '07.png'],
@@ -12,5 +12,5 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
   'craft-classic-grand': ['01.png', '02.png', '03.png', '04.png', '05.png', '06.png'],
   'craft-motion': ['01.png', '02.png', '03.png', '04.png'],
   'craft-motion-duo': ['01.png', '02.png', '03.JPG', '04.JPG', '05.png'],
-  'craft-motion-grand': ['01.png', '02.png', '03.png', '04.png', '05.png', '06.png'],
+  'craft-motion-grand': ['01.png', '02.png', '03.png', '04.png', '05.png', '06.png', '07.png'],
 }

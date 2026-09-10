@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion, type PanInfo } from 'framer-motion'
 import { Camera, ChevronLeft, ChevronRight, Maximize2, Move, X, ZoomIn, ZoomOut } from 'lucide-react'
 
@@ -12,25 +12,50 @@ const ANGLE_LABELS = ['Front', '3/4', 'Side', 'Rear', 'Detail', 'Reclined']
 interface ProductViewerProps {
   images: string[]
   alt: string
+  /**
+   * This product's `infographic.png`, appended as the final slide in the same
+   * 360° View gallery (not a separate section). If the file 404s — a product
+   * that hasn't had one added yet — `onError` below drops it from the gallery
+   * so the rest of the photography set keeps working normally.
+   */
+  infographicSrc?: string
 }
 
-export function ProductViewer({ images, alt }: ProductViewerProps) {
+export function ProductViewer({ images, alt, infographicSrc }: ProductViewerProps) {
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState(1)
   const [expanded, setExpanded] = useState(false)
   const [zoomed, setZoomed] = useState(false)
   const [zoomOrigin, setZoomOrigin] = useState('50% 50%')
   const [hasInteracted, setHasInteracted] = useState(false)
+  const [infographicFailed, setInfographicFailed] = useState(false)
   const indexRef = useRef(0)
   const panAccum = useRef(0)
-  const hasMultiple = images.length > 1
+
+  const showInfographic = Boolean(infographicSrc) && !infographicFailed
+  const galleryImages = useMemo(
+    () => (showInfographic ? [...images, infographicSrc!] : images),
+    [images, infographicSrc, showInfographic],
+  )
+  const infographicIndex = showInfographic ? galleryImages.length - 1 : -1
+  const hasMultiple = galleryImages.length > 1
 
   useEffect(() => {
     indexRef.current = index
   }, [index])
 
+  // If the infographic drops out of the gallery (load failure) while it was
+  // the selected slide, fall back to the last valid photography slide.
+  useEffect(() => {
+    if (index > galleryImages.length - 1) {
+      const clamped = Math.max(0, galleryImages.length - 1)
+      indexRef.current = clamped
+      setIndex(clamped)
+    }
+  }, [galleryImages.length, index])
+
   const goTo = (next: number) => {
-    const wrapped = ((next % images.length) + images.length) % images.length
+    const wrapped = ((next % galleryImages.length) + galleryImages.length) % galleryImages.length
     setDirection(next > indexRef.current ? 1 : -1)
     indexRef.current = wrapped
     setIndex(wrapped)
@@ -94,7 +119,7 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
           : 'relative aspect-[4/5] w-full overflow-hidden sm:aspect-[4/3] lg:aspect-[5/4]'
       }
     >
-      {images.length === 0 ? (
+      {galleryImages.length === 0 ? (
         <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-canvas-aqua to-canvas text-center">
           <Camera className="h-7 w-7 text-cream-200" strokeWidth={1.5} />
           <span className="text-[11px] font-medium uppercase tracking-widest text-cream-200">
@@ -123,16 +148,23 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
               <motion.img
                 key={index}
                 custom={direction}
-                src={images[index]}
-                alt={alt}
+                src={galleryImages[index]}
+                alt={index === infographicIndex ? `${alt} product infographic` : alt}
                 draggable={false}
                 decoding="async"
                 fetchPriority={index === 0 && !fullscreen ? 'high' : undefined}
+                onError={() => {
+                  if (index === infographicIndex) setInfographicFailed(true)
+                }}
                 initial={{ opacity: 0, scale: 1.03, x: direction * 24 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 exit={{ opacity: 0, scale: 0.98, x: direction * -24 }}
                 transition={{ duration: 0.5, ease: easeOut }}
-                className={fullscreen ? 'h-full w-full select-none object-contain' : 'h-full w-full select-none object-cover'}
+                className={
+                  fullscreen || index === infographicIndex
+                    ? 'h-full w-full select-none object-contain'
+                    : 'h-full w-full select-none object-cover'
+                }
               />
             </AnimatePresence>
           </div>
@@ -180,12 +212,12 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
           </button>
 
           <span className="absolute bottom-4 right-4 z-10 rounded-full border border-ink-900/10 bg-white/60 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream-100 backdrop-blur-md">
-            {String(index + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+            {String(index + 1).padStart(2, '0')} / {String(galleryImages.length).padStart(2, '0')}
           </span>
         </>
       )}
 
-      {images.length > 0 && (
+      {galleryImages.length > 0 && (
         <div className="absolute left-4 top-4 z-10 flex items-center gap-2">
           {!fullscreen && (
             <button
@@ -211,8 +243,18 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
       {/* Preload adjacent images for smooth swiping */}
       {hasMultiple && (
         <div className="hidden" aria-hidden="true">
-          <link rel="preload" as="image" href={images[(index + 1) % images.length]} fetchPriority="low" />
-          <link rel="preload" as="image" href={images[(index - 1 + images.length) % images.length]} fetchPriority="low" />
+          <link
+            rel="preload"
+            as="image"
+            href={galleryImages[(index + 1) % galleryImages.length]}
+            fetchPriority="low"
+          />
+          <link
+            rel="preload"
+            as="image"
+            href={galleryImages[(index - 1 + galleryImages.length) % galleryImages.length]}
+            fetchPriority="low"
+          />
         </div>
       )}
     </div>
@@ -226,23 +268,26 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
 
       {hasMultiple && (
         <div className="scrollbar-none mt-4 flex items-center gap-2.5 overflow-x-auto">
-          {images.map((src, i) => (
+          {galleryImages.map((src, i) => {
+            const isInfographic = i === infographicIndex
+            return (
             <button
               key={src}
               type="button"
               onClick={() => goTo(i)}
-              aria-label={`View ${ANGLE_LABELS[i] ?? `angle ${i + 1}`}`}
+              aria-label={isInfographic ? 'View product infographic' : `View ${ANGLE_LABELS[i] ?? `angle ${i + 1}`}`}
               className={`group relative flex-none overflow-hidden rounded-xl border transition-all duration-300 ${
                 i === index ? 'border-gold-400/60' : 'border-ink-900/10 hover:border-ink-900/20'
               }`}
             >
               <div className="h-16 w-14 overflow-hidden sm:h-20 sm:w-16">
                 <img
-                  src={src.replace(/\.webp$/, '-thumb.webp')}
+                  src={isInfographic ? src : src.replace(/\.webp$/, '-thumb.webp')}
                   alt=""
                   aria-hidden="true"
                   loading="lazy"
                   decoding="async"
+                  onError={isInfographic ? () => setInfographicFailed(true) : undefined}
                   className={`h-full w-full object-cover transition-opacity duration-300 ${
                     i === index ? 'opacity-100' : 'opacity-50 group-hover:opacity-80'
                   }`}
@@ -253,10 +298,11 @@ export function ProductViewer({ images, alt }: ProductViewerProps) {
                   i === index ? 'bg-teal-700 text-white' : 'bg-white/65 text-ink-700 hover:bg-white/90 hover:text-ink-900'
                 }`}
               >
-                {ANGLE_LABELS[i] ?? String(i + 1).padStart(2, '0')}
+                {isInfographic ? 'Info' : ANGLE_LABELS[i] ?? String(i + 1).padStart(2, '0')}
               </span>
             </button>
-          ))}
+            )
+          })}
         </div>
       )}
 

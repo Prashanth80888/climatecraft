@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 
+
 export function BrandStatement() {
   return (
     <section className="relative isolate overflow-hidden bg-transparent py-14 sm:py-16 lg:py-20">
@@ -22,9 +23,6 @@ export function BrandStatement() {
 
       {/* =========================================================
           MASTER CONTENT CONTAINER
-
-          Wide enough to use the available space, but still safely
-          contained inside the navbar's visual boundaries.
       ========================================================= */}
       <div className="mx-auto w-full max-w-[1250px] px-5 sm:px-7 lg:px-8 xl:px-0">
         <div className="grid w-full grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:gap-12 xl:gap-14">
@@ -43,23 +41,22 @@ export function BrandStatement() {
           >
             {/* Section label */}
             <div className="flex items-center gap-3">
-              <span className="h-px w-10 shrink-0 bg-[#b18a2d]" />
+              {/* Keep ONE decorative line */}
+              <span className="h-px w-11 shrink-0 bg-[#b18a2d]" />
 
-              <span className="h-px w-5 shrink-0 bg-[#1aa8a8]" />
-
-              <span className="ml-1 text-[9px] font-bold uppercase tracking-[0.23em] text-[#245d63] sm:text-[10px]">
+              <span className="text-[12px] font-bold uppercase tracking-[0.22em] text-[#245d63] sm:text-[13px] lg:text-[14px]">
                 Why ClimateCraft Exists
               </span>
             </div>
 
             {/* Left content */}
             <div className="mt-8 max-w-[520px] space-y-7 sm:mt-9 sm:space-y-8">
-              <p className="text-[17px] font-medium leading-[1.75] text-[#245d63] sm:text-[19px] lg:text-[20px]">
+              <p className="text-[18px] font-medium leading-[1.75] text-[#245d63] sm:text-[21px] lg:text-[22px]">
                 Traditional furniture is designed primarily to support the
                 body. But comfort is more than posture.
               </p>
 
-              <p className="text-[16px] font-medium leading-[1.78] text-[#245d63] sm:text-[18px] lg:text-[19px]">
+              <p className="text-[17px] font-medium leading-[1.78] text-[#245d63] sm:text-[19px] lg:text-[20px]">
                 When temperatures rise, the areas where your body remains in
                 contact with a chair can become uncomfortable. In colder
                 conditions, the same surfaces can feel unpleasantly cold.
@@ -68,11 +65,11 @@ export function BrandStatement() {
 
             {/* Supporting label */}
             <div className="mt-10 flex items-center gap-3 sm:mt-11">
-              <span className="h-px w-10 shrink-0 bg-[#b18a2d]" />
+              <span className="h-px w-11 shrink-0 bg-[#b18a2d]" />
 
-              <span className="h-px w-5 shrink-0 bg-[#1aa8a8]" />
+              <span className="h-px w-6 shrink-0 bg-[#1aa8a8]" />
 
-              <span className="ml-1 text-[9px] font-bold uppercase tracking-[0.23em] text-[#168b8d] sm:text-[10px]">
+              <span className="ml-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-[#168b8d] sm:text-[12px]">
                 Rethinking Comfort
               </span>
             </div>
@@ -120,14 +117,14 @@ export function BrandStatement() {
                     />
                   </div>
 
-                  <span className="text-[8px] font-bold uppercase tracking-[0.22em] text-[#9a731e] sm:text-[9px] lg:text-[10px]">
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#9a731e] sm:text-[10px] lg:text-[11px]">
                     We asked a simple question:
                   </span>
                 </div>
 
                 {/* Question */}
                 <div className="mt-6 border-l border-[#39bdbd] pl-6 sm:mt-7 sm:pl-7 lg:pl-8">
-                  <h2 className="max-w-[900px] font-serif text-[29px] font-medium leading-[1.18] tracking-[-0.025em] text-[#063f42] sm:text-[35px] lg:text-[39px] xl:text-[42px]">
+                  <h2 className="max-w-[900px] font-serif text-[32px] font-medium leading-[1.18] tracking-[-0.025em] text-[#063f42] sm:text-[38px] lg:text-[43px] xl:text-[46px]">
                     What if furniture could actively manage your{" "}
                     <em className="font-serif text-[#1ca5a7]">
                       personal temperature
@@ -158,13 +155,13 @@ export function BrandStatement() {
                     />
                   </div>
 
-                  <span className="text-[8px] font-bold uppercase tracking-[0.22em] text-[#9a731e] sm:text-[9px] lg:text-[10px]">
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#9a731e] sm:text-[10px] lg:text-[11px]">
                     That question led to ClimateCraft.
                   </span>
                 </div>
 
                 {/* Answer */}
-                <p className="mt-6 max-w-[940px] text-[15px] font-medium leading-[1.75] text-[#245d63] sm:mt-7 sm:text-[16px] lg:text-[17px]">
+                <p className="mt-6 max-w-[940px] text-[16px] font-medium leading-[1.75] text-[#245d63] sm:mt-7 sm:text-[17px] lg:text-[18px]">
                   That question led to ClimateCraft. We set out to combine the
                   familiar comfort of a premium recliner with technology that
                   can actively control temperature around the body's key
@@ -175,7 +172,7 @@ export function BrandStatement() {
                 <div className="mt-7 flex items-center gap-3 sm:mt-8">
                   <span className="h-px w-10 shrink-0 bg-[#b18a2d]" />
 
-                  <span className="text-[8px] font-bold uppercase tracking-[0.22em] text-[#168b8d] sm:text-[9px]">
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#168b8d] sm:text-[10px]">
                     ClimateCraft
                   </span>
                 </div>

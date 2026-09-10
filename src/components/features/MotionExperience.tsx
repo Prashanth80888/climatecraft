@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { getProductBySlug } from '../../data/homeProducts'
@@ -14,6 +14,18 @@ export function MotionExperience() {
   const product = getProductBySlug('craft-motion')!
   const images = homeProductImages(product.slug)
   const [index, setIndex] = useState(0)
+
+  // Only the active index's image is ever in the DOM, so switching traits
+  // for the first time would otherwise trigger a fresh fetch and visibly
+  // flash in. Warm the cache for the other angles (small, already-optimized
+  // webp derivatives) right after the first one paints.
+  useEffect(() => {
+    images.slice(1).forEach((src) => {
+      const img = new Image()
+      img.src = src
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [product.slug])
 
   return (
     <section className="relative overflow-hidden bg-transparent py-20 sm:py-24 lg:py-28">

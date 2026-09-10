@@ -8,7 +8,7 @@ import {
   ArrowUpRight,
   ShieldCheck,
 } from 'lucide-react'
-import { SectionLabel } from '../ui/SectionLabel'
+import { AboutSectionLabel } from './AboutSectionLabel'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 
 const easeOut: [number, number, number, number] = [
@@ -93,20 +93,20 @@ export function PartnerQuote() {
                   />
                 </span>
 
-                <SectionLabel>Built on Proof</SectionLabel>
+                <AboutSectionLabel>Built on Proof</AboutSectionLabel>
               </div>
 
               <h2
                 className="
                   mt-6 max-w-2xl
                   font-display
-                  text-[34px]
+                  text-[37px]
                   font-medium
                   leading-[1.04]
                   tracking-[-0.025em]
                   text-[#063B3D]
-                  sm:text-[46px]
-                  lg:text-[54px]
+                  sm:text-[50px]
+                  lg:text-[58px]
                 "
               >
                 Why should you believe{' '}
@@ -120,11 +120,11 @@ export function PartnerQuote() {
               <div className="mt-7 max-w-2xl">
                 <p
                   className="
-                    text-[15.5px]
+                    text-[16.5px]
                     font-medium
                     leading-7
                     text-ink-700
-                    sm:text-[16.5px]
+                    sm:text-[17.5px]
                     sm:leading-[1.85]
                   "
                 >
@@ -142,11 +142,11 @@ export function PartnerQuote() {
                 <p
                   className="
                     mt-5
-                    text-[15.5px]
+                    text-[16.5px]
                     font-medium
                     leading-7
                     text-ink-700
-                    sm:text-[16.5px]
+                    sm:text-[17.5px]
                     sm:leading-[1.85]
                   "
                 >
@@ -176,10 +176,10 @@ export function PartnerQuote() {
 
                     <span
                       className="
-                        text-[10px]
+                        text-[11px]
                         font-bold
                         uppercase
-                        tracking-[0.14em]
+                        tracking-[0.13em]
                         text-[#063B3D]/65
                       "
                     >
@@ -225,10 +225,10 @@ export function PartnerQuote() {
                     <div>
                       <p
                         className="
-                          text-[9px]
+                          text-[10px]
                           font-bold
                           uppercase
-                          tracking-[0.18em]
+                          tracking-[0.17em]
                           text-ink-500
                         "
                       >
@@ -239,11 +239,11 @@ export function PartnerQuote() {
                         className="
                           mt-2
                           font-display
-                          text-[25px]
+                          text-[27px]
                           font-medium
                           leading-tight
                           text-[#063B3D]
-                          sm:text-[29px]
+                          sm:text-[31px]
                         "
                       >
                         Proof you can experience.
@@ -335,11 +335,11 @@ export function PartnerQuote() {
                               <h4
                                 className="
                                   font-display
-                                  text-[21px]
+                                  text-[23px]
                                   font-medium
                                   leading-tight
                                   text-[#063B3D]
-                                  sm:text-[23px]
+                                  sm:text-[25px]
                                 "
                               >
                                 {idea.label}
@@ -348,11 +348,11 @@ export function PartnerQuote() {
                               <p
                                 className="
                                   mt-1
-                                  text-[12px]
+                                  text-[13px]
                                   font-medium
                                   leading-relaxed
                                   text-ink-500
-                                  sm:text-[12.5px]
+                                  sm:text-[13.5px]
                                 "
                               >
                                 {idea.description}
@@ -452,10 +452,10 @@ export function PartnerQuote() {
 
                   <span
                     className="
-                      text-[9px]
+                      text-[10px]
                       font-bold
                       uppercase
-                      tracking-[0.19em]
+                      tracking-[0.18em]
                       text-gold-400
                     "
                   >
@@ -467,12 +467,12 @@ export function PartnerQuote() {
                   className="
                     mt-4
                     font-display
-                    text-[28px]
+                    text-[31px]
                     font-normal
                     leading-[1.08]
                     text-white
-                    sm:text-[37px]
-                    lg:text-[42px]
+                    sm:text-[41px]
+                    lg:text-[46px]
                   "
                 >
                   See the technology.{' '}
@@ -484,11 +484,11 @@ export function PartnerQuote() {
                 <p
                   className="
                     mt-4 max-w-xl
-                    text-[14px]
+                    text-[15px]
                     font-medium
                     leading-7
                     text-white/70
-                    sm:text-[15px]
+                    sm:text-[16px]
                   "
                 >
                   The strongest proof of temperature-controlled

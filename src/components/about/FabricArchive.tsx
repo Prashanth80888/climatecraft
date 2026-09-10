@@ -13,7 +13,7 @@ import {
   ArrowUpRight,
 } from 'lucide-react'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
-import { SectionLabel } from '../ui/SectionLabel'
+import { AboutSectionLabel } from './AboutSectionLabel'
 
 const easeOut: [number, number, number, number] = [
   0.16,
@@ -66,19 +66,21 @@ export function FabricArchive() {
           ====================================================== */}
           <div className="lg:col-span-5">
             <Reveal>
-              <SectionLabel>
-                Designed Around the Human Body
-              </SectionLabel>
+              <div className="[&_span]:!text-[12px] sm:[&_span]:!text-[13px] lg:[&_span]:!text-[14px]">
+                <AboutSectionLabel>
+                  Designed Around the Human Body
+                </AboutSectionLabel>
+              </div>
 
               <h2
                 className="
                   mt-5 max-w-lg
-                  font-display text-[32px]
+                  font-display text-[35px]
                   font-medium leading-[1.05]
                   tracking-[-0.025em]
                   text-[#063B3D]
-                  sm:text-[42px]
-                  lg:text-[48px]
+                  sm:text-[46px]
+                  lg:text-[52px]
                 "
               >
                 Still has to feel like{' '}
@@ -90,11 +92,11 @@ export function FabricArchive() {
               <p
                 className="
                   mt-6 max-w-md
-                  text-[15px]
+                  text-[16px]
                   font-medium
                   leading-7
                   text-ink-700
-                  sm:text-[16px]
+                  sm:text-[17px]
                 "
               >
                 Temperature control is only one part of the
@@ -309,10 +311,10 @@ export function FabricArchive() {
               <div className="mb-7">
                 <p
                   className="
-                    text-[10px]
+                    text-[11px]
                     font-bold
                     uppercase
-                    tracking-[0.19em]
+                    tracking-[0.18em]
                     text-ink-500
                   "
                 >
@@ -323,10 +325,10 @@ export function FabricArchive() {
                   className="
                     mt-2 max-w-md
                     font-display
-                    text-[22px]
+                    text-[24px]
                     leading-tight
                     text-[#063B3D]
-                    sm:text-[26px]
+                    sm:text-[28px]
                   "
                 >
                   Every detail has a purpose.
@@ -422,13 +424,13 @@ export function FabricArchive() {
                       <span
                         className="
                           min-w-0 flex-1
-                          text-[14px]
+                          text-[15px]
                           font-semibold
                           leading-snug
                           text-[#063B3D]
                           transition-colors
                           duration-300
-                          sm:text-[15.5px]
+                          sm:text-[16.5px]
                         "
                       >
                         {feature.label}
@@ -512,11 +514,11 @@ export function FabricArchive() {
                   <p
                     className="
                       max-w-lg
-                      text-[14px]
+                      text-[15px]
                       font-medium
                       leading-7
                       text-[#063B3D]
-                      sm:text-[15px]
+                      sm:text-[16px]
                     "
                   >
                     Every feature has one purpose: to make the

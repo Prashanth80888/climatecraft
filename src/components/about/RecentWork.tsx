@@ -7,7 +7,7 @@ import {
   Users,
   Sparkles,
 } from 'lucide-react'
-import { SectionLabel } from '../ui/SectionLabel'
+import { AboutSectionLabel } from './AboutSectionLabel'
 import { Reveal } from '../ui/Reveal'
 
 const COLLECTIVE_WORDS = [
@@ -72,14 +72,14 @@ export function RecentWork() {
                   <Users className="h-3.5 w-3.5 text-gold-600" />
                 </span>
 
-                <SectionLabel>
+                <AboutSectionLabel>
                   The People Behind ClimateCraft
-                </SectionLabel>
+                </AboutSectionLabel>
               </div>
             </Reveal>
 
             <Reveal delay={0.08}>
-              <h2 className="mt-7 max-w-xl font-display text-3xl font-normal leading-[1.16] tracking-[-0.025em] text-[#063B3D] sm:text-4xl lg:text-[2.65rem] xl:text-[2.8rem]">
+              <h2 className="mt-7 max-w-xl font-display text-4xl font-normal leading-[1.16] tracking-[-0.025em] text-[#063B3D] sm:text-[2.75rem] lg:text-[2.95rem] xl:text-[3.1rem]">
                 A product may carry a company's name,
                 <span className="text-teal-700/70">
                   {' '}
@@ -93,7 +93,7 @@ export function RecentWork() {
             </Reveal>
 
             <Reveal delay={0.22}>
-              <p className="mt-7 max-w-lg text-[15px] leading-[1.8] text-[#466365]">
+              <p className="mt-7 max-w-lg text-[16px] leading-[1.8] text-[#466365]">
                 At ClimateCraft, we value every hand involved in bringing our
                 products to life — from the people who shape the idea and
                 design the technology to those who manufacture, assemble, test,
@@ -111,7 +111,7 @@ export function RecentWork() {
                   <span className="h-7 w-7 rounded-full border-2 border-[#F5F7F4] bg-gold-500/35" />
                 </div>
 
-                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#063B3D]/45">
+                <span className="text-[11px] font-bold uppercase tracking-[0.17em] text-[#063B3D]/45">
                   A collective effort
                 </span>
               </div>
@@ -123,7 +123,7 @@ export function RecentWork() {
           ------------------------------------------------- */}
           <div className="min-w-0">
             <Reveal delay={0.08}>
-              <div className="space-y-5 text-[15px] leading-[1.8] text-[#466365]">
+              <div className="space-y-5 text-[16px] leading-[1.8] text-[#466365]">
                 <p>
                   We believe every contribution deserves recognition. The
                   person whose work happens behind the scenes is just as much a
@@ -177,11 +177,11 @@ export function RecentWork() {
                         <ArrowUpRight className="h-4 w-4 text-[#063B3D]/20 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold-600" />
                       </div>
 
-                      <h3 className="mt-6 font-display text-xl font-semibold text-[#063B3D]">
+                      <h3 className="mt-6 font-display text-2xl font-semibold text-[#063B3D]">
                         {point.title}
                       </h3>
 
-                      <p className="mt-2 text-[13px] leading-[1.65] text-[#65797B]">
+                      <p className="mt-2 text-[14px] leading-[1.65] text-[#65797B]">
                         {point.text}
                       </p>
                     </div>
@@ -206,12 +206,12 @@ export function RecentWork() {
                 <div className="relative">
                   <Sparkles className="h-5 w-5 text-gold-400" />
 
-                  <p className="mt-4 text-[14px] font-medium leading-[1.75] text-white/90">
+                  <p className="mt-4 text-[15px] font-medium leading-[1.75] text-white/90">
                     Because ClimateCraft is not the work of one founder, one
                     team, or one department.
                   </p>
 
-                  <p className="mt-2 text-[14px] font-medium leading-[1.75] text-white/75">
+                  <p className="mt-2 text-[15px] font-medium leading-[1.75] text-white/75">
                     It is the result of many people, many skills, and countless
                     efforts coming together to build something meaningful.
                   </p>
@@ -284,12 +284,12 @@ export function RecentWork() {
                     <MapPin className="h-3.5 w-3.5 text-gold-600" />
                   </span>
 
-                  <SectionLabel>Where We Operate</SectionLabel>
+                  <AboutSectionLabel>Where We Operate</AboutSectionLabel>
                 </div>
               </Reveal>
 
               <Reveal delay={0.1}>
-                <h2 className="mt-7 max-w-xl font-display text-3xl font-semibold leading-[1.15] tracking-[-0.025em] text-[#063B3D] sm:text-4xl">
+                <h2 className="mt-7 max-w-xl font-display text-4xl font-semibold leading-[1.15] tracking-[-0.025em] text-[#063B3D] sm:text-[2.75rem]">
                   Built in India.
                   <span className="block font-normal text-[#063B3D]/55">
                     Designed to reach further.
@@ -298,7 +298,7 @@ export function RecentWork() {
               </Reveal>
 
               <Reveal delay={0.18}>
-                <p className="mt-6 max-w-lg text-[15px] leading-[1.8] text-[#557072]">
+                <p className="mt-6 max-w-lg text-[16px] leading-[1.8] text-[#557072]">
                   Our current focus is India, with plans to expand the reach of
                   temperature-controlled comfort technology as the product
                   portfolio grows.
@@ -323,7 +323,7 @@ export function RecentWork() {
 
                     <div className="relative flex h-full flex-col">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-700">
+                        <span className="text-[11px] font-bold uppercase tracking-[0.19em] text-gold-700">
                           Based In
                         </span>
 
@@ -331,11 +331,11 @@ export function RecentWork() {
                       </div>
 
                       <div className="mt-auto pt-10">
-                        <p className="font-display text-xl font-semibold leading-tight text-[#063B3D] sm:text-2xl">
+                        <p className="font-display text-2xl font-semibold leading-tight text-[#063B3D] sm:text-[1.75rem]">
                           Bangalore
                         </p>
 
-                        <p className="mt-1 text-[13px] text-[#637678]">
+                        <p className="mt-1 text-[14px] text-[#637678]">
                           Karnataka, India
                         </p>
                       </div>
@@ -355,7 +355,7 @@ export function RecentWork() {
 
                     <div className="relative flex h-full flex-col">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-400">
+                        <span className="text-[11px] font-bold uppercase tracking-[0.19em] text-gold-400">
                           Serving
                         </span>
 
@@ -363,11 +363,11 @@ export function RecentWork() {
                       </div>
 
                       <div className="mt-auto pt-10">
-                        <p className="font-display text-xl font-semibold leading-tight text-white sm:text-2xl">
+                        <p className="font-display text-2xl font-semibold leading-tight text-white sm:text-[1.75rem]">
                           All Over India
                         </p>
 
-                        <p className="mt-1 text-[13px] text-white/50">
+                        <p className="mt-1 text-[14px] text-white/50">
                           Current focus
                         </p>
                       </div>
@@ -381,7 +381,7 @@ export function RecentWork() {
           {/* Bottom CTA */}
           <Reveal delay={0.22}>
             <div className="mt-10 flex flex-col gap-5 border-t border-[#063B3D]/8 pt-7 sm:flex-row sm:items-center sm:justify-between">
-              <p className="max-w-lg text-[13px] leading-[1.7] text-[#6A7E80]">
+              <p className="max-w-lg text-[14px] leading-[1.7] text-[#6A7E80]">
                 Discover the products bringing premium seating and active
                 temperature control together.
               </p>

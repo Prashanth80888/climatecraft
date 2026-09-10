@@ -61,21 +61,7 @@ export function ProjectCaseStudy({
           AMBIENT BACKGROUND WITH CONTINUOUS FLOATING ANIMATION
       ================================================================= */}
 
-      <motion.div
-        animate={
-          prefersReducedMotion
-            ? undefined
-            : {
-              x: [0, 20, 0],
-              y: [0, -20, 0],
-              scale: [1, 1.08, 1],
-            }
-        }
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
+      <div
         className="
           pointer-events-none
           absolute
@@ -91,24 +77,11 @@ export function ProjectCaseStudy({
           background: isEven
             ? 'radial-gradient(circle, #53c9c5 0%, transparent 68%)'
             : 'radial-gradient(circle, #f0a92c 0%, transparent 68%)',
+          animation: prefersReducedMotion ? undefined : 'cc-drift-a 14s ease-in-out infinite',
         }}
       />
 
-      <motion.div
-        animate={
-          prefersReducedMotion
-            ? undefined
-            : {
-              x: [0, -25, 0],
-              y: [0, 20, 0],
-              scale: [1, 1.05, 1],
-            }
-        }
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
+      <div
         className="
           pointer-events-none
           absolute
@@ -123,6 +96,7 @@ export function ProjectCaseStudy({
         style={{
           background:
             'radial-gradient(circle, #169B9A 0%, transparent 70%)',
+          animation: prefersReducedMotion ? undefined : 'cc-drift-b 18s ease-in-out infinite',
         }}
       />
 
@@ -552,7 +526,7 @@ export function ProjectCaseStudy({
 
               {/* Decorative background movement */}
 
-              <motion.div
+              <div
                 aria-hidden="true"
                 className="
                   pointer-events-none
@@ -565,23 +539,12 @@ export function ProjectCaseStudy({
                   bg-teal-700/[0.08]
                   blur-3xl
                 "
-                animate={
-                  prefersReducedMotion
-                    ? undefined
-                    : {
-                      x: [0, 20, 0],
-                      y: [0, 14, 0],
-                      scale: [1, 1.08, 1],
-                    }
-                }
-                transition={{
-                  duration: 9,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
+                style={{
+                  animation: prefersReducedMotion ? undefined : 'cc-drift-c 9s ease-in-out infinite',
                 }}
               />
 
-              <motion.div
+              <div
                 aria-hidden="true"
                 className="
                   pointer-events-none
@@ -594,18 +557,8 @@ export function ProjectCaseStudy({
                   bg-gold-400/[0.07]
                   blur-3xl
                 "
-                animate={
-                  prefersReducedMotion
-                    ? undefined
-                    : {
-                      x: [0, -18, 0],
-                      y: [0, -12, 0],
-                    }
-                }
-                transition={{
-                  duration: 11,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
+                style={{
+                  animation: prefersReducedMotion ? undefined : 'cc-drift-d 11s ease-in-out infinite',
                 }}
               />
 

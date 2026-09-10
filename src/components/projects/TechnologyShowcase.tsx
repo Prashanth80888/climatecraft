@@ -176,15 +176,8 @@ function ClimateControlRange() {
           >
             <div className="absolute h-32 w-px bg-gradient-to-b from-transparent via-teal-700/20 to-transparent" />
 
-            <motion.div
-              animate={{
-                rotate: [0, 180, 360],
-              }}
-              transition={{
-                duration: 24,
-                repeat: Infinity,
-                ease: 'linear',
-              }}
+            <div
+              style={{ animation: 'cc-rotate-slow 24s linear infinite' }}
               className="relative flex h-16 w-16 items-center justify-center rounded-full border border-teal-700/20 bg-white/55 shadow-[0_12px_35px_-18px_rgba(22,155,154,0.4)] backdrop-blur-xl"
             >
               <Waves
@@ -193,7 +186,7 @@ function ClimateControlRange() {
               />
 
               <span className="absolute inset-2 rounded-full border border-gold-400/20" />
-            </motion.div>
+            </div>
 
             <span className="relative mt-4 bg-white/30 px-2 text-[9px] font-semibold uppercase tracking-[0.2em] text-teal-700/75 backdrop-blur-sm">
               Continuous Range
@@ -289,17 +282,8 @@ function ClimateRangeItem({
         }`}
       >
         {/* Animated outer glow */}
-        <motion.div
-          animate={{
-            scale: [0.94, 1.06, 0.94],
-            opacity: [0.18, 0.34, 0.18],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay,
-          }}
+        <div
+          style={{ animation: `cc-glow-pulse 3s ease-in-out infinite`, animationDelay: `${delay}s` }}
           className={`absolute inset-2 rounded-full blur-2xl ${
             isCooling ? 'bg-teal-700' : 'bg-gold-400'
           }`}
@@ -348,46 +332,26 @@ function ClimateRangeItem({
           whileHover={{ scale: 1.06 }}
           className="absolute inset-[13px] flex items-center justify-center rounded-full border border-white/70 bg-white/60 shadow-inner backdrop-blur-xl"
         >
-          <motion.div
-            animate={{
-              y: [0, -2, 0],
-              scale: [1, 1.05, 1],
-            }}
-            transition={{
-              duration: 2.8,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay,
-            }}
-          >
+          <div style={{ animation: 'cc-icon-bob 2.8s ease-in-out infinite', animationDelay: `${delay}s` }}>
             <Icon
               className={`h-10 w-10 sm:h-11 sm:w-11 ${
                 isCooling ? 'text-teal-700' : 'text-gold-600'
               }`}
               strokeWidth={1.35}
             />
-          </motion.div>
+          </div>
         </motion.div>
       </motion.div>
 
       {/* Large animated temperature */}
-      <motion.div
-        animate={{
-          opacity: [0.86, 1, 0.86],
-          y: [0, -2, 0],
-        }}
-        transition={{
-          duration: 2.8,
-          repeat: Infinity,
-          ease: 'easeInOut',
-          delay,
-        }}
+      <div
+        style={{ animation: 'cc-temp-pulse 2.8s ease-in-out infinite', animationDelay: `${delay}s` }}
         className={`mt-5 font-display text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl ${
           isCooling ? 'text-teal-700' : 'text-gold-700'
         }`}
       >
         {temperature}
-      </motion.div>
+      </div>
 
       {/* Label */}
       <div
@@ -403,17 +367,11 @@ function ClimateRangeItem({
       </p>
 
       {/* Animated active-zone indicator */}
-      <motion.div
+      <div
         className={`mt-4 flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.18em] ${
           isCooling ? 'text-teal-700/75' : 'text-gold-700/80'
         }`}
-        animate={{ opacity: [0.55, 1, 0.55] }}
-        transition={{
-          duration: 2.2,
-          repeat: Infinity,
-          ease: 'easeInOut',
-          delay: delay + 0.4,
-        }}
+        style={{ animation: 'cc-dot-pulse 2.2s ease-in-out infinite', animationDelay: `${delay + 0.4}s` }}
       >
         <span
           className={`h-1.5 w-1.5 rounded-full ${
@@ -421,7 +379,7 @@ function ClimateRangeItem({
           }`}
         />
         {isCooling ? 'Active cooling zone' : 'Active heating zone'}
-      </motion.div>
+      </div>
     </motion.div>
   )
 }

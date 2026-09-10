@@ -19,12 +19,7 @@ const SEAT_ROWS: { label: string; blurb: string; seats: 1 | 2 | 3; dur: number; 
 
 function ProductCard({ product }: { product: HomeProduct }) {
   const cardRef = useRef<HTMLAnchorElement>(null)
-  // Home page "Explore Collection" override, requested for this card only — leaves
-  // the shared craft-motion-grand product data/detail page image untouched.
-  const cardImage =
-    product.slug === 'craft-motion-grand'
-      ? { webp: '/images/products/climate-craft-grand/06.webp', fallback: '/images/products/climate-craft-grand/06.png' }
-      : homeCardImage(product.slug)
+  const cardImage = homeCardImage(product.slug)
 
   const onMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const card = cardRef.current

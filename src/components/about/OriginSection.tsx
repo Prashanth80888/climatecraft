@@ -7,7 +7,7 @@ import {
   Sliders,
 } from 'lucide-react'
 import { Reveal } from '../ui/Reveal'
-import { SectionLabel } from '../ui/SectionLabel'
+import { AboutSectionLabel } from './AboutSectionLabel'
 
 const easeOut: [number, number, number, number] = [
   0.16,
@@ -75,21 +75,24 @@ export function OriginSection() {
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">
             <Reveal>
-              <SectionLabel>
-                How the Technology Works
-              </SectionLabel>
+              {/* Only this section label is enlarged */}
+              <div className="[&_span]:!text-[12px] sm:[&_span]:!text-[13px] lg:[&_span]:!text-[14px]">
+                <AboutSectionLabel>
+                  How the Technology Works
+                </AboutSectionLabel>
+              </div>
 
               <h2
                 className="
                   mt-5 max-w-lg
                   font-display
-                  text-[32px]
+                  text-[35px]
                   font-medium
                   leading-[1.05]
                   tracking-[-0.025em]
                   text-[#063B3D]
-                  sm:text-[42px]
-                  lg:text-[48px]
+                  sm:text-[46px]
+                  lg:text-[52px]
                 "
               >
                 Comfort,{' '}
@@ -101,11 +104,11 @@ export function OriginSection() {
               <p
                 className="
                   mt-6 max-w-md
-                  text-[15px]
+                  text-[16px]
                   font-medium
                   leading-7
                   text-ink-700
-                  sm:text-[16px]
+                  sm:text-[17px]
                 "
               >
                 At the heart of our temperature-controlled seating
@@ -117,11 +120,11 @@ export function OriginSection() {
               <p
                 className="
                   mt-4 max-w-md
-                  text-[15px]
+                  text-[16px]
                   font-medium
                   leading-7
                   text-ink-700
-                  sm:text-[16px]
+                  sm:text-[17px]
                 "
               >
                 The system integrates temperature-control
@@ -324,10 +327,10 @@ export function OriginSection() {
               <div className="mb-8">
                 <p
                   className="
-                    text-[10px]
+                    text-[11px]
                     font-bold
                     uppercase
-                    tracking-[0.19em]
+                    tracking-[0.18em]
                     text-ink-500
                   "
                 >
@@ -338,10 +341,10 @@ export function OriginSection() {
                   className="
                     mt-2 max-w-lg
                     font-display
-                    text-[23px]
+                    text-[25px]
                     leading-tight
                     text-[#063B3D]
-                    sm:text-[28px]
+                    sm:text-[30px]
                   "
                 >
                   Temperature management,
@@ -494,7 +497,7 @@ export function OriginSection() {
                           <h3
                             className={`
                               font-display
-                              text-[22px]
+                              text-[24px]
                               font-medium
                               leading-tight
                               tracking-[-0.015em]
@@ -502,7 +505,7 @@ export function OriginSection() {
                                 ? 'text-[#8A6314]'
                                 : 'text-[#063B3D]'
                               }
-                              sm:text-[25px]
+                              sm:text-[27px]
                             `}
                           >
                             {module.title}
@@ -526,11 +529,11 @@ export function OriginSection() {
                         <p
                           className="
                             mt-3
-                            text-[14px]
+                            text-[15px]
                             font-medium
                             leading-7
                             text-ink-700
-                            sm:text-[14.5px]
+                            sm:text-[15.5px]
                           "
                         >
                           {module.description}

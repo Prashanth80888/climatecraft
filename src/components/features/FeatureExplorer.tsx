@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
   getProductBySlug,
@@ -258,6 +258,21 @@ export function FeatureExplorer() {
       (feature) => feature.id === activeFeature.id,
     )
     : -1
+
+  // Only the currently-selected family's main image is ever rendered, so
+  // switching tabs for the first time would otherwise trigger a fresh fetch.
+  // Warm the cache for the other two families' main images once, after the
+  // active one has already painted.
+  useEffect(() => {
+    FAMILY_ORDER.forEach((id) => {
+      if (id === familyId) return
+      const slug = FAMILY_REPS[id]
+      const [firstImage] = homeProductImages(slug)
+      if (!firstImage) return
+      const img = new Image()
+      img.src = firstImage
+    })
+  }, [familyId])
 
   const selectFamily = (id: HomeProduct['familyId']) => {
     if (id === familyId) return

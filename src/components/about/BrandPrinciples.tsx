@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { SectionLabel } from '../ui/SectionLabel'
+import { AboutSectionLabel } from './AboutSectionLabel'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
@@ -38,7 +38,9 @@ export function BrandPrinciples() {
       <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <div className="flex justify-center">
-            <SectionLabel>What We Stand For</SectionLabel>
+            <div className="[&_span]:!text-[12px] sm:[&_span]:!text-[13px] lg:[&_span]:!text-[14px]">
+              <AboutSectionLabel>What We Stand For</AboutSectionLabel>
+            </div>
           </div>
         </Reveal>
 
@@ -56,12 +58,19 @@ export function BrandPrinciples() {
                 >
                   {p.number}
                 </span>
+
                 <div className="relative max-w-lg">
-                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-gold-700">
+                  <span className="text-[12px] font-extrabold uppercase tracking-widest text-gold-700">
                     {p.number}
                   </span>
-                  <h3 className="mt-2 font-display text-2xl font-semibold text-[#063B3D] sm:text-3xl">{p.title}</h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-ink-700">{p.copy}</p>
+
+                  <h3 className="mt-2 font-display text-3xl font-semibold text-[#063B3D] sm:text-[2rem]">
+                    {p.title}
+                  </h3>
+
+                  <p className="mt-3 text-[16px] leading-relaxed text-ink-700">
+                    {p.copy}
+                  </p>
                 </div>
               </motion.div>
             </RevealItem>

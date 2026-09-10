@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, MessageCircle } from 'lucide-react'
 import { getProductBySlug, getRelatedProducts, HOME_PRODUCTS, PRODUCT_FAMILIES } from '../data/homeProducts'
-import { homeProductImages, whatsappHref } from '../lib/assets'
+import { homeProductImages, productInfographicImage, whatsappHref } from '../lib/assets'
 import { ProductViewer } from '../components/product/ProductViewer'
 import { HotspotExplorer } from '../components/product/HotspotExplorer'
 import { ViewerModeSwitcher, type ViewerMode } from '../components/product/ViewerModeSwitcher'
@@ -100,7 +100,11 @@ export function ProductDetailPage() {
                         exit={{ opacity: 0, scale: 0.985 }}
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        <ProductViewer images={images} alt={product.name} />
+                        <ProductViewer
+                          images={images}
+                          alt={product.name}
+                          infographicSrc={productInfographicImage(product.slug)}
+                        />
                       </motion.div>
                     )}
                   </AnimatePresence>

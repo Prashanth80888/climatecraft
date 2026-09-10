@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowDown, ArrowRight, Sofa, Cpu, Heart } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { SectionLabel } from '../ui/SectionLabel'
+
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
@@ -25,17 +25,29 @@ export function AboutHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: easeOut }}
             >
-              <SectionLabel>About ClimateCraft</SectionLabel>
+              <div className="flex items-center gap-3">
+                {/* Keep ONE decorative line */}
+                <span className="h-px w-10 bg-[#b18a2d]" />
+
+                <span className="text-[14px] font-bold uppercase tracking-[0.24em] text-[#245d63] sm:text-[16px] lg:text-[17px]">
+                  About ClimateCraft
+                </span>
+              </div>
             </motion.div>
 
-            <h1 className="mt-6 font-display text-[2.5rem] font-semibold leading-[1.05] tracking-tight text-[#063B3D] sm:mt-7 sm:text-6xl md:text-7xl">
+            <h1 className="mt-6 font-display text-[2.75rem] font-semibold leading-[1.05] tracking-tight text-[#063B3D] sm:mt-7 sm:text-[4rem] md:text-[4.75rem] lg:text-[4.5rem] xl:text-[4.75rem]">
               {HEADLINE.map((line, i) => (
                 <span key={line} className="block overflow-hidden">
                   <motion.span
                     initial={{ y: '110%' }}
                     animate={{ y: '0%' }}
-                    transition={{ duration: 1, delay: 0.35 + i * 0.18, ease: easeOut }}
-                    className={`block ${i === 1 ? 'italic text-teal-700 font-normal' : ''}`}
+                    transition={{
+                      duration: 1,
+                      delay: 0.35 + i * 0.18,
+                      ease: easeOut,
+                    }}
+                    className={`block ${i === 1 ? 'italic text-teal-700 font-normal' : ''
+                      }`}
                   >
                     {line}
                   </motion.span>
@@ -47,7 +59,7 @@ export function AboutHero() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.85, ease: easeOut }}
-              className="mt-7 max-w-md text-[16px] leading-relaxed text-ink-700 sm:mt-8 sm:text-[18px]"
+              className="mt-7 max-w-md text-[17px] leading-relaxed text-ink-700 sm:mt-8 sm:text-[19px]"
             >
               Comfort should not depend entirely on the temperature around you.
             </motion.p>
@@ -86,27 +98,35 @@ export function AboutHero() {
             >
               <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-gold-400/70 to-transparent" />
 
-              <p className="font-display text-lg font-normal italic leading-snug text-[#063B3D] sm:text-xl">
-                ClimateCraft is building a new approach to personal comfort — combining premium furniture,
-                temperature-control technology and intelligent controls into one experience.
+              <p className="font-display text-xl font-normal italic leading-snug text-[#063B3D] sm:text-2xl">
+                ClimateCraft is building a new approach to personal comfort —
+                combining premium furniture, temperature-control technology and
+                intelligent controls into one experience.
               </p>
 
               <div className="mt-7 space-y-4 border-t border-[#063B3D]/10 pt-6">
                 {PILLARS.map((pillar, i) => {
                   const Icon = pillar.icon
+
                   return (
                     <motion.div
                       key={pillar.label}
                       initial={{ opacity: 0, x: 12 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 1.1 + i * 0.1, ease: easeOut }}
+                      transition={{
+                        duration: 0.5,
+                        delay: 1.1 + i * 0.1,
+                        ease: easeOut,
+                      }}
                       className="flex items-center gap-3.5"
                     >
                       <span className="font-display text-xs italic tabular-nums text-gold-600/80">
                         0{i + 1}
                       </span>
+
                       <Icon className="h-4 w-4 flex-none text-teal-700" />
-                      <span className="text-[12.5px] font-bold uppercase tracking-wider text-[#063B3D]">
+
+                      <span className="text-[13.5px] font-bold uppercase tracking-wider text-[#063B3D]">
                         {pillar.label}
                       </span>
                     </motion.div>

@@ -7,7 +7,7 @@ import {
   Target,
 } from 'lucide-react'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
-import { SectionLabel } from '../ui/SectionLabel'
+import { AboutSectionLabel } from './AboutSectionLabel'
 
 const STAGES = [
   {
@@ -52,17 +52,21 @@ export function VisionMission() {
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <div className="flex justify-center">
-              <SectionLabel>Built for More Than One Type of Comfort</SectionLabel>
+              <div className="[&_span]:!text-[12px] sm:[&_span]:!text-[13px] lg:[&_span]:!text-[14px]">
+                <AboutSectionLabel>
+                  Built for More Than One Type of Comfort
+                </AboutSectionLabel>
+              </div>
             </div>
 
-            <h2 className="mt-5 font-display text-3xl font-normal leading-[1.08] tracking-[-0.02em] text-[#063B3D] sm:text-4xl lg:text-[48px]">
+            <h2 className="mt-5 font-display text-4xl font-normal leading-[1.08] tracking-[-0.02em] text-[#063B3D] sm:text-[2.75rem] lg:text-[52px]">
               The concept can extend{' '}
               <span className="italic font-normal text-teal-700">
                 beyond a single product.
               </span>
             </h2>
 
-            <p className="mx-auto mt-6 max-w-2xl text-[15px] font-medium leading-7 text-ink-700 sm:text-base sm:leading-7">
+            <p className="mx-auto mt-6 max-w-2xl text-[16px] font-medium leading-7 text-ink-700 sm:text-[17px] sm:leading-7">
               Our initial focus is temperature-controlled recliner seating,
               but the broader opportunity is much larger. We see the potential
               for comfort technology across different environments where
@@ -122,11 +126,11 @@ export function VisionMission() {
                         </div>
                       </div>
 
-                      <h3 className="mt-4 font-display text-[22px] font-normal leading-[1.15] tracking-[-0.01em] text-[#063B3D] sm:text-[24px]">
+                      <h3 className="mt-4 font-display text-[24px] font-normal leading-[1.15] tracking-[-0.01em] text-[#063B3D] sm:text-[26px]">
                         {stage.title}
                       </h3>
 
-                      <p className="mt-4 flex-1 text-[13px] font-medium leading-6 text-ink-600 sm:text-[14px] sm:leading-6">
+                      <p className="mt-4 flex-1 text-[14px] font-medium leading-6 text-ink-600 sm:text-[15px] sm:leading-6">
                         {stage.description}
                       </p>
 
@@ -155,7 +159,7 @@ export function VisionMission() {
               <div className="pointer-events-none absolute left-1/2 top-0 h-20 w-48 -translate-x-1/2 rounded-full bg-gold-400/10 blur-3xl" />
 
               <div className="relative">
-                <p className="font-display text-[20px] leading-snug text-[#063B3D] sm:text-[23px]">
+                <p className="font-display text-[22px] leading-snug text-[#063B3D] sm:text-[25px]">
                   Our goal is to build the technology and product platform
                   that can make this possible.
                 </p>

@@ -163,7 +163,7 @@ export function FeaturesHero() {
   const [isInteractiveMode, setIsInteractiveMode] = useState(false)
 
   const hero = getProductBySlug('climate-craft-grand')!
-  const image = '/images/products/climate-craft-grand/06.webp'
+  const image = '/images/products/climate-craft-grand/01.webp'
 
   const tempMotion = useMotionValue(22)
 

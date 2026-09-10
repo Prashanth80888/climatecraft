@@ -454,6 +454,53 @@
   animation: cc-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ── Ambient decorative loops ────────────────────────────────────────────────
+   Pure-CSS replacements for what used to be framer-motion `repeat: Infinity`
+   loops on purely decorative (pointer-events-none, non-interactive) elements
+   like background blobs and idle pulse/bob/rotate effects. These run on the
+   compositor instead of costing per-frame JS/React work, which matters a lot
+   when the same shape is repeated many times on one page (e.g. one pair of
+   blobs per Projects case-study card). Visually identical to the animations
+   they replace. The site-wide `prefers-reduced-motion: reduce` rule above
+   already forces `animation-duration: 0.01ms` on everything, so these need no
+   separate reduced-motion handling. */
+@keyframes cc-drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -20px) scale(1.08); }
+}
+@keyframes cc-drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-25px, 20px) scale(1.05); }
+}
+@keyframes cc-drift-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, 14px) scale(1.08); }
+}
+@keyframes cc-drift-d {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-18px, -12px); }
+}
+@keyframes cc-rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes cc-glow-pulse {
+  0%, 100% { transform: scale(0.94); opacity: 0.18; }
+  50% { transform: scale(1.06); opacity: 0.34; }
+}
+@keyframes cc-icon-bob {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-2px) scale(1.05); }
+}
+@keyframes cc-temp-pulse {
+  0%, 100% { opacity: 0.86; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+}
+@keyframes cc-dot-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
 /* ── Case Study Detail pages (scoped) ────────────────────────────────────────
    All rules here live under `.case-study-detail` and can never affect the
    Home, Collections, Product, Features, Projects, Case Studies index, About
