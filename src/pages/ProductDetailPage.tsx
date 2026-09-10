@@ -41,7 +41,11 @@ export function ProductDetailPage() {
   }
 
   const family = PRODUCT_FAMILIES.find((f) => f.id === product.familyId)!
-  const images = homeProductImages(product.slug)
+  // Climate Craft Grand: drop the "Reclined" angle (06) from the gallery only for
+  // this product — not a global change to the shared image pipeline/labels.
+  const images = homeProductImages(product.slug).filter(
+    (src) => !(product.slug === 'climate-craft-grand' && src.endsWith('/06.webp')),
+  )
   const related = getRelatedProducts(product)
   const hasHotspots = product.hotspots.length > 0 && images.length > 0
 
