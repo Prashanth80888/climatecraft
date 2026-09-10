@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, MessageCircle } from 'lucide-react'
 import { getProductBySlug, getRelatedProducts, HOME_PRODUCTS, PRODUCT_FAMILIES } from '../data/homeProducts'
-import { homeProductImages, productInfographicImage, whatsappHref } from '../lib/assets'
+import { homeProductImages, productInfographicImage, productInfographic2Image, whatsappHref } from '../lib/assets'
 import { ProductViewer } from '../components/product/ProductViewer'
 import { HotspotExplorer } from '../components/product/HotspotExplorer'
 import { ViewerModeSwitcher, type ViewerMode } from '../components/product/ViewerModeSwitcher'
@@ -57,14 +57,14 @@ export function ProductDetailPage() {
 
           <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <Reveal amount={0.6}>
-              <nav className="flex items-center gap-2 text-[11px] uppercase tracking-widest text-cream-200">
-                <Link to="/collections" className="transition-colors duration-300 hover:text-gold-700">
+              <nav className="mx-auto flex w-full max-w-[320px] flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-center text-[10px] uppercase leading-relaxed tracking-widest text-cream-200 sm:mx-0 sm:w-auto sm:max-w-none sm:flex-nowrap sm:justify-start sm:gap-2 sm:text-left sm:text-[11px] sm:leading-normal">
+                <Link to="/collections" className="whitespace-nowrap transition-colors duration-300 hover:text-gold-700">
                   Collections
                 </Link>
-                <span>/</span>
-                <span className="text-cream-200">{family.label}</span>
-                <span>/</span>
-                <span className="text-cream-100">{product.name}</span>
+                <span className="whitespace-nowrap">/</span>
+                <span className="whitespace-nowrap text-cream-200">{family.label}</span>
+                <span className="whitespace-nowrap">/</span>
+                <span className="whitespace-nowrap text-cream-100">{product.name}</span>
               </nav>
             </Reveal>
 
@@ -104,6 +104,7 @@ export function ProductDetailPage() {
                           images={images}
                           alt={product.name}
                           infographicSrc={productInfographicImage(product.slug)}
+                          infographic2Src={productInfographic2Image(product.slug)}
                         />
                       </motion.div>
                     )}

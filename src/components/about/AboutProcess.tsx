@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
-import { AboutSectionLabel } from './AboutSectionLabel'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
@@ -43,13 +42,14 @@ export function AboutProcess() {
     >
       <div className="relative z-10 mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
         <Reveal>
-          <span className="mx-auto block w-fit">
-            <div className="[&_span]:!text-[12px] sm:[&_span]:!text-[13px] lg:[&_span]:!text-[14px]">
-              <AboutSectionLabel>
+          {/* Highlighted centered section label — same style as previous sections */}
+          <div className="flex w-full justify-center">
+            <div className="inline-flex w-fit max-w-full items-center justify-center whitespace-nowrap rounded-full border border-gold-500/30 bg-gold-400/[0.10] px-5 py-2.5 text-center shadow-[0_10px_30px_-18px_rgba(6,59,61,0.45)]">
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-teal-800 sm:text-[13px] lg:text-[14px]">
                 Our Approach to Product Development
-              </AboutSectionLabel>
+              </span>
             </div>
-          </span>
+          </div>
 
           <h2 className="mt-5 text-center font-display text-4xl font-semibold leading-[1.1] tracking-tight text-[#063B3D] sm:text-[2.75rem]">
             Innovation should{' '}

@@ -7,22 +7,29 @@ interface MetaOptions {
   description: string
   /** Override the canonical URL. Defaults to SITE_URL + current pathname. */
   canonical?: string
-  /** Override the OG image. Defaults to the brand logo. */
+  /** Override the OG image. Defaults to the brand logo (as an absolute URL). */
   image?: string
   /** Override the OG type. Defaults to "website". */
   type?: string
+  /** Override the og:description when it should differ from the meta description. Defaults to `description`. */
+  ogDescription?: string
+  /** Override the robots directive. Defaults to "index, follow". */
+  robots?: string
 }
 
 /**
- * Sets document title, meta description, Open Graph tags, Twitter card tags,
- * and canonical URL for the current page. Cleans up on unmount so
- * navigating away never leaves stale metadata from the previous route.
+ * Sets document title, meta description, robots directive, Open Graph tags,
+ * Twitter card tags, and canonical URL for the current page. Cleans up on
+ * unmount so navigating away never leaves stale metadata from the previous
+ * route.
  */
 export function useDocumentMeta(title: string, description: string, options?: Partial<MetaOptions>) {
   const location = useLocation()
   const url = options?.canonical ?? `${SITE_URL}${location.pathname}`
-  const image = options?.image ?? OG_IMAGE
+  const image = options?.image ?? `${SITE_URL}${OG_IMAGE}`
   const type = options?.type ?? 'website'
+  const ogDescription = options?.ogDescription ?? description
+  const robots = options?.robots ?? 'index, follow'
 
   useEffect(() => {
     const prevTitle = document.title
@@ -40,14 +47,24 @@ export function useDocumentMeta(title: string, description: string, options?: Pa
     }
     descMeta.setAttribute('content', description)
 
+    // Robots
+    let robotsMeta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null
+    const prevRobots = robotsMeta?.getAttribute('content') ?? null
+    if (!robotsMeta) {
+      robotsMeta = document.createElement('meta')
+      robotsMeta.setAttribute('name', 'robots')
+      document.head.appendChild(robotsMeta)
+    }
+    robotsMeta.setAttribute('content', robots)
+
     // Open Graph
     const ogTags: Array<[string, string]> = [
       ['og:title', title],
-      ['og:description', description],
+      ['og:description', ogDescription],
       ['og:url', url],
       ['og:type', type],
       ['og:image', image],
-      ['og:site_name', 'Climate Craft'],
+      ['og:site_name', 'ClimateCraft'],
     ]
 
     const prevOg: Array<[string, string | null]> = []
@@ -68,7 +85,7 @@ export function useDocumentMeta(title: string, description: string, options?: Pa
     const twitterTags: Array<[string, string]> = [
       ['twitter:card', 'summary_large_image'],
       ['twitter:title', title],
-      ['twitter:description', description],
+      ['twitter:description', ogDescription],
       ['twitter:image', image],
     ]
 
@@ -99,6 +116,7 @@ export function useDocumentMeta(title: string, description: string, options?: Pa
     return () => {
       document.title = prevTitle
       if (prevDescription !== null) descMeta?.setAttribute('content', prevDescription)
+      if (prevRobots !== null) robotsMeta?.setAttribute('content', prevRobots)
       for (const [property, prev] of prevOg) {
         if (prev !== null) {
           document.querySelector(`meta[property="${property}"]`)?.setAttribute('content', prev)
@@ -111,5 +129,5 @@ export function useDocumentMeta(title: string, description: string, options?: Pa
       }
       if (prevCanonical !== null) canonical?.setAttribute('href', prevCanonical)
     }
-  }, [title, description, url, image, type, location.pathname])
+  }, [title, description, url, image, type, ogDescription, robots, location.pathname])
 }

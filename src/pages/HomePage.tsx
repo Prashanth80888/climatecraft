@@ -14,8 +14,12 @@ export function HomePage() {
   const location = useLocation()
 
   useDocumentMeta(
-    'Premium Temperature-Controlled Recliners & Smart Comfort | Climate Craft',
-    'Climate Craft engineers precision motion furniture with patented liquid cooling and heating technology. Handcrafted in Europe for the world\'s most discerning spaces.',
+    'ClimateCraft | Advanced Climate-Controlled Comfort',
+    'Experience personalized comfort with ClimateCraft. Advanced cooling and heating, voice and remote control, motorized recliner, and premium upholstery in one premium comfort experience.',
+    {
+      ogDescription:
+        'Cooling, heating and intelligent comfort control designed into a premium reclining experience.',
+    },
   )
 
   // Supports deep links like "/#final-cta" (e.g. Request Quote navigating in from

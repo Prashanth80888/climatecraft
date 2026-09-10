@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { AboutSectionLabel } from './AboutSectionLabel'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
@@ -37,9 +36,12 @@ export function BrandPrinciples() {
     <section className="relative overflow-hidden bg-transparent py-20 sm:py-28 lg:py-32">
       <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
         <Reveal>
-          <div className="flex justify-center">
-            <div className="[&_span]:!text-[12px] sm:[&_span]:!text-[13px] lg:[&_span]:!text-[14px]">
-              <AboutSectionLabel>What We Stand For</AboutSectionLabel>
+          {/* Highlighted centered section label — same style as previous sections */}
+          <div className="flex w-full justify-center">
+            <div className="inline-flex w-fit max-w-full items-center justify-center whitespace-nowrap rounded-full border border-gold-500/30 bg-gold-400/[0.10] px-5 py-2.5 text-center shadow-[0_10px_30px_-18px_rgba(6,59,61,0.45)]">
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-teal-800 sm:text-[13px] lg:text-[14px]">
+                What We Stand For
+              </span>
             </div>
           </div>
         </Reveal>

@@ -13,15 +13,21 @@ interface ProductViewerProps {
   images: string[]
   alt: string
   /**
-   * This product's `infographic.png`, appended as the final slide in the same
+   * This product's `infographic.png`, appended as a final slide in the same
    * 360° View gallery (not a separate section). If the file 404s — a product
    * that hasn't had one added yet — `onError` below drops it from the gallery
    * so the rest of the photography set keeps working normally.
    */
   infographicSrc?: string
+  /**
+   * This product's `infographic2.png` — appended after `infographicSrc`, always
+   * the last slide in the gallery when present. Same missing-file safety as
+   * `infographicSrc`: a 404 drops it from the gallery via `onError`.
+   */
+  infographic2Src?: string
 }
 
-export function ProductViewer({ images, alt, infographicSrc }: ProductViewerProps) {
+export function ProductViewer({ images, alt, infographicSrc, infographic2Src }: ProductViewerProps) {
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState(1)
   const [expanded, setExpanded] = useState(false)
@@ -29,15 +35,23 @@ export function ProductViewer({ images, alt, infographicSrc }: ProductViewerProp
   const [zoomOrigin, setZoomOrigin] = useState('50% 50%')
   const [hasInteracted, setHasInteracted] = useState(false)
   const [infographicFailed, setInfographicFailed] = useState(false)
+  const [infographic2Failed, setInfographic2Failed] = useState(false)
   const indexRef = useRef(0)
   const panAccum = useRef(0)
 
   const showInfographic = Boolean(infographicSrc) && !infographicFailed
+  const showInfographic2 = Boolean(infographic2Src) && !infographic2Failed
   const galleryImages = useMemo(
-    () => (showInfographic ? [...images, infographicSrc!] : images),
-    [images, infographicSrc, showInfographic],
+    () => [
+      ...images,
+      ...(showInfographic ? [infographicSrc!] : []),
+      ...(showInfographic2 ? [infographic2Src!] : []),
+    ],
+    [images, infographicSrc, showInfographic, infographic2Src, showInfographic2],
   )
-  const infographicIndex = showInfographic ? galleryImages.length - 1 : -1
+  const infographicIndex = showInfographic ? images.length : -1
+  const infographic2Index = showInfographic2 ? images.length + (showInfographic ? 1 : 0) : -1
+  const isInfographicSlide = (i: number) => i === infographicIndex || i === infographic2Index
   const hasMultiple = galleryImages.length > 1
 
   useEffect(() => {
@@ -149,19 +163,20 @@ export function ProductViewer({ images, alt, infographicSrc }: ProductViewerProp
                 key={index}
                 custom={direction}
                 src={galleryImages[index]}
-                alt={index === infographicIndex ? `${alt} product infographic` : alt}
+                alt={isInfographicSlide(index) ? `${alt} product infographic` : alt}
                 draggable={false}
                 decoding="async"
                 fetchPriority={index === 0 && !fullscreen ? 'high' : undefined}
                 onError={() => {
                   if (index === infographicIndex) setInfographicFailed(true)
+                  if (index === infographic2Index) setInfographic2Failed(true)
                 }}
                 initial={{ opacity: 0, scale: 1.03, x: direction * 24 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 exit={{ opacity: 0, scale: 0.98, x: direction * -24 }}
                 transition={{ duration: 0.5, ease: easeOut }}
                 className={
-                  fullscreen || index === infographicIndex
+                  fullscreen
                     ? 'h-full w-full select-none object-contain'
                     : 'h-full w-full select-none object-cover'
                 }
@@ -269,13 +284,20 @@ export function ProductViewer({ images, alt, infographicSrc }: ProductViewerProp
       {hasMultiple && (
         <div className="scrollbar-none mt-4 flex items-center gap-2.5 overflow-x-auto">
           {galleryImages.map((src, i) => {
-            const isInfographic = i === infographicIndex
+            const isInfographic = isInfographicSlide(i)
+            const infographicLabel = i === infographic2Index ? 'Info 2' : 'Info'
             return (
             <button
               key={src}
               type="button"
               onClick={() => goTo(i)}
-              aria-label={isInfographic ? 'View product infographic' : `View ${ANGLE_LABELS[i] ?? `angle ${i + 1}`}`}
+              aria-label={
+                isInfographic
+                  ? i === infographic2Index
+                    ? 'View second product infographic'
+                    : 'View product infographic'
+                  : `View ${ANGLE_LABELS[i] ?? `angle ${i + 1}`}`
+              }
               className={`group relative flex-none overflow-hidden rounded-xl border transition-all duration-300 ${
                 i === index ? 'border-gold-400/60' : 'border-ink-900/10 hover:border-ink-900/20'
               }`}
@@ -287,7 +309,11 @@ export function ProductViewer({ images, alt, infographicSrc }: ProductViewerProp
                   aria-hidden="true"
                   loading="lazy"
                   decoding="async"
-                  onError={isInfographic ? () => setInfographicFailed(true) : undefined}
+                  onError={
+                    isInfographic
+                      ? () => (i === infographic2Index ? setInfographic2Failed(true) : setInfographicFailed(true))
+                      : undefined
+                  }
                   className={`h-full w-full object-cover transition-opacity duration-300 ${
                     i === index ? 'opacity-100' : 'opacity-50 group-hover:opacity-80'
                   }`}
@@ -298,7 +324,7 @@ export function ProductViewer({ images, alt, infographicSrc }: ProductViewerProp
                   i === index ? 'bg-teal-700 text-white' : 'bg-white/65 text-ink-700 hover:bg-white/90 hover:text-ink-900'
                 }`}
               >
-                {isInfographic ? 'Info' : ANGLE_LABELS[i] ?? String(i + 1).padStart(2, '0')}
+                {isInfographic ? infographicLabel : ANGLE_LABELS[i] ?? String(i + 1).padStart(2, '0')}
               </span>
             </button>
             )

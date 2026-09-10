@@ -74,7 +74,7 @@ export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(function
                     }`}
                 >
                   <div className="h-full rounded-2xl border border-[#063B3D]/10 bg-white/60 p-2 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-gold-400/40 hover:bg-white/90 hover:shadow-xl hover:shadow-gold-400/10">
-                    <ProductCard product={product} total={HOME_PRODUCTS.length} />
+                    <ProductCard product={product} index={i} total={products.length} />
                   </div>
                 </div>
               </motion.div>

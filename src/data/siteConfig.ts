@@ -58,7 +58,7 @@ export const socialLinks = {
 export const LAST_UPDATED = '25 August 2026'
 
 /** Production site URL — used for canonical tags, Open Graph, sitemap, etc. */
-export const SITE_URL = 'https://climatecraft.co'
+export const SITE_URL = 'https://climatecraft.in'
 
 /** Default brand image used for Open Graph / Twitter cards when no page-specific image exists. */
 export const OG_IMAGE = '/images/brand/logo.png'

@@ -3,6 +3,15 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-
 import { Link, useLocation } from 'react-router-dom'
 import { MoreVertical, X, ArrowUpRight } from 'lucide-react'
 import { brand } from '../lib/assets'
+import { routeModuleForPath } from '../lib/routeModules'
+
+// Warms a route's chunk the instant intent is signalled (hover/focus) rather
+// than waiting for the click — belt-and-braces alongside the idle-time
+// prefetch in App.tsx, for the rare case a visitor navigates within the
+// first second of a page load, before idle prefetching has had a chance to run.
+function prefetchOnIntent(to: string) {
+  routeModuleForPath(to)?.()
+}
 
 // Matches the `lg:` breakpoint already used below to split the desktop nav from the
 // mobile burger/drawer — scroll-direction hiding is a mobile/tablet-only behavior,
@@ -151,6 +160,8 @@ export function Navbar() {
               <Link
                 key={link.label}
                 to={link.to}
+                onPointerEnter={() => prefetchOnIntent(link.to)}
+                onFocus={() => prefetchOnIntent(link.to)}
                 className={`relative rounded-full px-4 py-2.5 text-[12px] font-medium uppercase tracking-widest transition-colors duration-300 ${
                   location.pathname === link.to ? 'text-teal-800' : 'text-ink-700 hover:text-ink-900'
                 }`}
@@ -173,6 +184,8 @@ export function Navbar() {
               <Link
                 key={link.label}
                 to={link.to}
+                onPointerEnter={() => prefetchOnIntent(link.to)}
+                onFocus={() => prefetchOnIntent(link.to)}
                 className={`whitespace-nowrap rounded-full px-1.5 py-1.5 text-[9.5px] font-semibold uppercase tracking-tight transition-colors duration-300 sm:px-2.5 sm:py-2 sm:text-[11.5px] sm:tracking-wide ${
                   location.pathname === link.to ? 'text-teal-800' : 'text-ink-700 hover:text-ink-900'
                 }`}
@@ -185,6 +198,8 @@ export function Navbar() {
           <div className="hidden shrink-0 lg:block">
             <Link
               to="/contact"
+              onPointerEnter={() => prefetchOnIntent('/contact')}
+              onFocus={() => prefetchOnIntent('/contact')}
               className="group inline-flex items-center gap-1.5 rounded-full bg-teal-700 px-5 py-2.5 text-[12px] font-semibold uppercase tracking-widest text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_10px_26px_-10px_rgba(22,155,154,0.6)] transition-all duration-300 hover:bg-teal-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_14px_32px_-10px_rgba(22,155,154,0.7)] active:scale-[0.97]"
             >
               Request Quote
@@ -231,6 +246,8 @@ export function Navbar() {
                     key={link.label}
                     to={link.to}
                     role="menuitem"
+                    onPointerEnter={() => prefetchOnIntent(link.to)}
+                    onFocus={() => prefetchOnIntent(link.to)}
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: i * 0.04 }}
@@ -244,6 +261,8 @@ export function Navbar() {
                 <Link
                   to="/contact"
                   role="menuitem"
+                  onPointerEnter={() => prefetchOnIntent('/contact')}
+                  onFocus={() => prefetchOnIntent('/contact')}
                   className="mt-3 inline-flex items-center justify-center gap-1.5 rounded-full bg-teal-700 px-5 py-3 text-[12px] font-semibold uppercase tracking-widest text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_10px_26px_-10px_rgba(22,155,154,0.55)] transition-colors duration-300 hover:bg-teal-800"
                 >
                   Request Quote

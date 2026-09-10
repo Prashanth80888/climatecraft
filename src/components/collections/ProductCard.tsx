@@ -9,12 +9,13 @@ const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 interface ProductCardProps {
   product: HomeProduct
+  index: number
   total: number
 }
 
 const MAX_TILT = 5
 
-export function ProductCard({ product, total }: ProductCardProps) {
+export function ProductCard({ product, index, total }: ProductCardProps) {
   const cardRef = useRef<HTMLAnchorElement>(null)
 
   const onMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -90,7 +91,7 @@ export function ProductCard({ product, total }: ProductCardProps) {
         {/* Top Bar: Glass Pills for Index & Operation Status */}
         <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between p-3 sm:p-4 lg:p-5">
           <span className="rounded-full border border-white/20 bg-black/30 px-3 py-1 font-display text-xs font-semibold italic tabular-nums text-white backdrop-blur-md transition-colors duration-500 group-hover:border-gold-400/50 group-hover:text-gold-300">
-            {String(product.number).padStart(2, '0')} / {String(total).padStart(2, '0')}
+            {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
           </span>
           <span className="rounded-full border border-white/20 bg-black/30 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur-md">
             {product.operation}

@@ -22,8 +22,8 @@ const CLIMATE_SMART_PRODUCTS = HOME_PRODUCTS.filter((p) =>
 
 export function CollectionsPage() {
   useDocumentMeta(
-    'Luxury Recliner Collections | Climate Craft',
-    'Explore Climate Craft\'s three collections — Climate Smart, Motorised Comfort and Classic — engineered and handcrafted in Europe.',
+    'ClimateCraft Products | Smart Cooling & Heating Comfort',
+    'Explore ClimateCraft premium climate-controlled comfort products featuring cooling, heating, voice control, remote control, motorized reclining and premium upholstery.',
   )
 
   const [active, setActive] = useState(0)

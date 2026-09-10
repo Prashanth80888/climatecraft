@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { APPLICATIONS } from '../../data/projects'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 import { SectionLabel } from '../ui/SectionLabel'
@@ -71,22 +72,8 @@ export function ApplicationsSection() {
 
               {/* CTA */}
               <Reveal delay={0.26} className="mt-7 sm:mt-9">
-                <a
-                  href="/case-studies"
-                  onClick={(event) => {
-                    /*
-                     * Prevent the browser from doing a hard navigation.
-                     * This keeps the interaction feeling like part of the
-                     * existing application.
-                     */
-                    if (
-                      window.location.pathname !== '/case-studies'
-                    ) {
-                      event.preventDefault()
-                      window.history.pushState({}, '', '/case-studies')
-                      window.dispatchEvent(new PopStateEvent('popstate'))
-                    }
-                  }}
+                <Link
+                  to="/case-studies"
                   className="group inline-flex items-center gap-3 rounded-full border border-teal-700/25 bg-white/40 px-5 py-3 backdrop-blur-md transition-all duration-500 hover:-translate-y-0.5 hover:border-teal-700/60 hover:bg-white/70"
                 >
                   <span className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-teal-700">
@@ -96,7 +83,7 @@ export function ApplicationsSection() {
                   <span className="flex h-7 w-7 items-center justify-center rounded-full bg-teal-700/10 transition-all duration-500 group-hover:bg-teal-700">
                     <ArrowRight className="h-3.5 w-3.5 text-teal-700 transition-all duration-500 group-hover:translate-x-0.5 group-hover:text-white" />
                   </span>
-                </a>
+                </Link>
               </Reveal>
             </div>
           </div>

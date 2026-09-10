@@ -7,7 +7,6 @@ import {
   Target,
 } from 'lucide-react'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
-import { AboutSectionLabel } from './AboutSectionLabel'
 
 const STAGES = [
   {
@@ -51,11 +50,12 @@ export function VisionMission() {
         {/* INTRO */}
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
-            <div className="flex justify-center">
-              <div className="[&_span]:!text-[12px] sm:[&_span]:!text-[13px] lg:[&_span]:!text-[14px]">
-                <AboutSectionLabel>
+            {/* Highlighted centered section label */}
+            <div className="flex w-full justify-center">
+              <div className="inline-flex w-fit max-w-full items-center justify-center whitespace-nowrap rounded-full border border-gold-500/30 bg-gold-400/[0.10] px-5 py-2.5 text-center shadow-[0_10px_30px_-18px_rgba(6,59,61,0.45)]">
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-teal-800 sm:text-[13px] lg:text-[14px]">
                   Built for More Than One Type of Comfort
-                </AboutSectionLabel>
+                </span>
               </div>
             </div>
 
@@ -97,6 +97,7 @@ export function VisionMission() {
                     {/* Timeline node */}
                     <div className="relative z-20 mx-auto mb-5 flex h-16 w-16 flex-none items-center justify-center sm:mb-6">
                       <div className="absolute inset-0 rounded-full bg-gold-400/10 blur-xl transition-all duration-500 group-hover:bg-gold-400/20" />
+
                       <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-gold-400/60 bg-[#F8F6EE] shadow-[0_12px_35px_-16px_rgba(6,59,61,0.5)] transition-all duration-500 group-hover:border-gold-500 group-hover:bg-gold-400">
                         <span className="font-display text-lg font-semibold text-[#063B3D]">
                           {i + 1}
@@ -112,7 +113,10 @@ export function VisionMission() {
                       <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0">
                           <span className="inline-flex items-center gap-2 rounded-full border border-gold-500/20 bg-gold-400/[0.08] px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.18em] text-gold-700">
-                            <Clock3 className="h-3 w-3" strokeWidth={1.8} />
+                            <Clock3
+                              className="h-3 w-3"
+                              strokeWidth={1.8}
+                            />
                             {stage.label}
                           </span>
 
@@ -122,7 +126,10 @@ export function VisionMission() {
                         </div>
 
                         <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl border border-teal-700/10 bg-teal-600/[0.055] text-teal-700 transition-all duration-500 group-hover:border-gold-500/25 group-hover:bg-gold-400/15 group-hover:text-[#063B3D]">
-                          <Icon className="h-[18px] w-[18px]" strokeWidth={1.5} />
+                          <Icon
+                            className="h-[18px] w-[18px]"
+                            strokeWidth={1.5}
+                          />
                         </div>
                       </div>
 
@@ -137,6 +144,7 @@ export function VisionMission() {
                       <div className="mt-auto pt-7">
                         <div className="flex items-center gap-3 border-t border-[#063B3D]/[0.08] pt-5">
                           <span className="h-px w-8 bg-gradient-to-r from-teal-600 to-gold-500 transition-all duration-500 group-hover:w-12" />
+
                           <span className="text-[9px] font-bold uppercase tracking-[0.17em] text-teal-800">
                             Comfort, evolving
                           </span>
@@ -166,7 +174,9 @@ export function VisionMission() {
 
                 <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-teal-800">
                   <span>One platform</span>
+
                   <ArrowRight className="h-3.5 w-3.5 flex-none text-gold-600" />
+
                   <span>Many possibilities</span>
                 </div>
               </div>

@@ -12,8 +12,8 @@ import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
 export function FeaturesPage() {
   useDocumentMeta(
-    'Smart Comfort & Climate Technology | Climate Craft',
-    'Discover the engineering behind Climate Craft — patented liquid cooling and heating, motorized precision reclining, smart control and premium handcrafted comfort.',
+    'ClimateCraft Features | Cooling, Heating & Smart Control',
+    'Explore ClimateCraft features including cooling up to 15°C, heating up to 35°C, voice control, remote control, motorized reclining and premium upholstery.',
   )
   return (
     <>

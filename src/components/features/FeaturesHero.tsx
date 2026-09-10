@@ -48,8 +48,8 @@ const HOTSPOTS: Hotspot[] = [
     icon: Thermometer,
     pinX: 30.1,
     pinY: 60.2,
-    mobilePinX: 23.5,
-    mobilePinY: 54.7,
+    mobilePinX: 29.0,
+    mobilePinY: 56.0,
     cardPosition: 'top-right',
     mobileCardClass: 'left-2 top-2 sm:left-auto sm:top-auto',
     previewImage: '/images/screen.webp',
@@ -62,8 +62,8 @@ const HOTSPOTS: Hotspot[] = [
     icon: Mic,
     pinX: 25.1,
     pinY: 66.1,
-    mobilePinX: 16.8,
-    mobilePinY: 59.6,
+    mobilePinX: 22.0,
+    mobilePinY: 63.5,
     cardPosition: 'bottom-left',
     mobileCardClass: 'left-2 top-[30%] sm:left-auto sm:top-auto',
     previewImage: '/images/recline control.webp',
@@ -363,14 +363,14 @@ export function FeaturesHero() {
                       }}
                     >
                       <span
-                        className={`absolute inline-flex h-8 w-8 rounded-full bg-cyan-400 transition-opacity duration-300 ${isActive ? 'animate-ping opacity-70' : 'animate-pulse opacity-55'
+                        className={`absolute inline-flex h-5 w-5 rounded-full bg-cyan-400 transition-opacity duration-300 ${isActive ? 'animate-ping opacity-55' : 'animate-pulse opacity-40'
                           }`}
                       />
                       <span
-                        className={`relative inline-flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-teal-600 shadow-[0_8px_18px_-6px_rgba(0,0,0,0.75)] transition-transform duration-300 ${isActive ? 'scale-125 ring-2 ring-cyan-300' : 'scale-100'
+                        className={`relative inline-flex h-4 w-4 items-center justify-center rounded-full border-[1.5px] border-white bg-teal-600 shadow-[0_5px_12px_-5px_rgba(0,0,0,0.75)] transition-transform duration-300 ${isActive ? 'scale-105 ring-1 ring-cyan-300' : 'scale-100'
                           }`}
                       >
-                        <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                        <span className="h-1 w-1 rounded-full bg-white" />
                       </span>
                     </button>
                   )

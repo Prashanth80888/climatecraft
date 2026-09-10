@@ -23,8 +23,8 @@ export function AboutPage() {
   const location = useLocation()
 
   useDocumentMeta(
-    'About ClimateCraft | Rethinking What Comfort Can Be',
-    'ClimateCraft combines premium furniture, temperature-control technology and intelligent controls into one experience — starting with temperature-controlled recliners.',
+    'About ClimateCraft | Rethinking Personal Comfort',
+    'Learn about ClimateCraft, our approach to intelligent personal comfort, and our vision for combining climate control, smart technology and premium design.',
   )
 
   useEffect(() => {

@@ -5,7 +5,6 @@ import {
   Sparkles,
   Thermometer,
 } from 'lucide-react'
-import { AboutSectionLabel } from './AboutSectionLabel'
 import { Reveal } from '../ui/Reveal'
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
@@ -19,16 +18,14 @@ export function WhyClimateCraft() {
             SECTION INTRO
         ===================================================== */}
         <Reveal>
-          <div className="flex flex-col items-center text-center">
-            <div className="flex items-center justify-center gap-3">
-              {/* Single clean decorative line */}
-              <span className="h-px w-8 bg-gold-600/45 sm:w-12" />
+          <div className="flex w-full flex-col items-center text-center">
 
-              {/* Section label — enlarged */}
-              <div className="[&_span]:!text-[12px] sm:[&_span]:!text-[13px] lg:[&_span]:!text-[14px]">
-                <AboutSectionLabel>
+            {/* Highlighted centered section label — same style as previous section */}
+            <div className="flex w-full justify-center">
+              <div className="inline-flex w-fit max-w-full items-center justify-center whitespace-nowrap rounded-full border border-gold-500/30 bg-gold-400/[0.10] px-5 py-2.5 text-center shadow-[0_10px_30px_-18px_rgba(6,59,61,0.45)]">
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-teal-800 sm:text-[13px] lg:text-[14px]">
                   Why ClimateCraft?
-                </AboutSectionLabel>
+                </span>
               </div>
             </div>
 

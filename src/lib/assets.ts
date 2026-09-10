@@ -121,6 +121,14 @@ export const projectImages = (slug: string, imageCount: number) =>
 export const productInfographicImage = (slug: string) =>
   `/images/products/${slug}/infographic.png`
 
+/**
+ * Second product-specific infographic, appended after `infographic.png` as the
+ * final gallery slide when present. Same hand-placed, not-derivative-pipelined
+ * convention as `productInfographicImage` above.
+ */
+export const productInfographic2Image = (slug: string) =>
+  `/images/products/${slug}/infographic2.png`
+
 export const brand = {
   logo: '/images/brand/logo.webp',
   heroVideo: '/videos/hero.mp4',

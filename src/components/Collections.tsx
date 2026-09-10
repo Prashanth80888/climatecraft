@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -8,18 +9,32 @@ import { SectionLabel } from './ui/SectionLabel'
 import { SectionAtmosphere } from './ui/SectionAtmosphere'
 import { Reveal } from './ui/Reveal'
 
-const TOTAL = HOME_PRODUCTS.length
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
-const SEAT_ROWS: { label: string; blurb: string; seats: 1 | 2 | 3; dur: number; dir: 'ltr' | 'rtl' }[] = [
-  { label: ' Climate Signature', blurb: 'Climate Signature · Single Seater', seats: 1, dur: 28, dir: 'ltr' },
-  { label: ' Climate Duo', blurb: 'Climate Duo · Two Seater', seats: 2, dur: 32, dir: 'rtl' },
-  { label: 'Climate Grand', blurb: 'Climate Grand · Three Seater', seats: 3, dur: 36, dir: 'ltr' },
-]
+const SEAT_ROWS: {
+  label: string
+  blurb: string
+  seats: 1 | 2 | 3
+  dur: number
+  dir: 'ltr' | 'rtl'
+}[] = [
+    { label: ' Climate Signature', blurb: 'Climate Signature · Single Seater', seats: 1, dur: 28, dir: 'ltr' },
+    { label: ' Climate Duo', blurb: 'Climate Duo · Two Seater', seats: 2, dur: 32, dir: 'rtl' },
+    { label: 'Climate Grand', blurb: 'Climate Grand · Three Seater', seats: 3, dur: 36, dir: 'ltr' },
+  ]
 
 function ProductCard({ product }: { product: HomeProduct }) {
   const cardRef = useRef<HTMLAnchorElement>(null)
-  const cardImage = homeCardImage(product.slug)
+
+  // Climate Craft Grand must always use its verified primary image (01)
+  // in the Explore Collection card.
+  const cardImage =
+    product.slug === 'climate-craft-grand'
+      ? {
+        webp: '/images/products/climate-craft-grand/01.webp',
+        fallback: '/images/products/climate-craft-grand/01.png',
+      }
+      : homeCardImage(product.slug)
 
   const onMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const card = cardRef.current
@@ -75,14 +90,6 @@ function ProductCard({ product }: { product: HomeProduct }) {
         )}
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent transition-opacity duration-500" />
-
-        <span className="absolute left-2.5 top-2.5 font-display text-[10px] italic text-cream-100 tabular-nums transition-colors duration-500 group-hover:text-gold-600 sm:left-4 sm:top-4 sm:text-xs">
-          {String(product.number).padStart(2, '0')} / {String(TOTAL).padStart(2, '0')}
-        </span>
-
-        <span className="absolute right-2.5 top-2.5 text-[8px] font-medium uppercase tracking-widest text-cream-100 sm:right-4 sm:top-4 sm:text-[10px]">
-          {product.operation}
-        </span>
       </div>
 
       <div className="relative border-t border-ink-900/[0.08] p-3 transition-transform duration-500 ease-out group-hover:-translate-y-0.5 sm:p-4 lg:p-5">
@@ -212,7 +219,7 @@ function MarqueeRow({
     state.dragging = true
     state.startX = e.clientX
     state.startPosition = state.position
-    ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
+      ; (e.target as HTMLElement).setPointerCapture(e.pointerId)
   }
 
   const onPointerMove = (e: React.PointerEvent) => {
@@ -290,7 +297,7 @@ export function Collections() {
       </div>
 
       <div className="mt-10 flex flex-col gap-10 sm:mt-14 sm:gap-14 lg:mt-16 lg:gap-16">
-        {SEAT_ROWS.map((row, idx) => {
+        {SEAT_ROWS.map((row) => {
           let products = HOME_PRODUCTS.filter((p) => p.seats === row.seats)
 
           // Move classic-duo from row 1 to row 2
@@ -302,11 +309,11 @@ export function Collections() {
           if (row.seats === 2) {
             const singleSeaterReplacement = HOME_PRODUCTS.find((p) => p.id === 'signature-new')
             const movedClassicDuo = HOME_PRODUCTS.find((p) => p.id === 'classic-duo')
-            
+
             const additions = []
             if (singleSeaterReplacement) additions.push(singleSeaterReplacement)
             if (movedClassicDuo) additions.push(movedClassicDuo)
-            
+
             products = [...additions, ...products]
           }
 
@@ -323,11 +330,6 @@ export function Collections() {
                       {row.blurb}
                     </p>
                   </div>
-
-                  <span className="text-[10px] uppercase tracking-widest text-cream-200 tabular-nums sm:text-[11px]">
-                    {String(idx + 1).padStart(2, '0')} /{' '}
-                    {String(SEAT_ROWS.length).padStart(2, '0')}
-                  </span>
                 </div>
               </Reveal>
 
@@ -362,3 +364,4 @@ export function Collections() {
     </section>
   )
 }
+
