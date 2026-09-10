@@ -303,6 +303,16 @@ export function Mechanics() {
           }}
           className="group relative mt-5 sm:mt-7"
         >
+          {/* Soft ambient halo behind the video frame — same teal/gold language as
+              the rest of the section, kept subtle so it reads as depth, not glow. */}
+          <div
+            className="pointer-events-none absolute -inset-3 rounded-[32px] opacity-40 blur-2xl transition-opacity duration-700 group-hover:opacity-60 sm:-inset-4 sm:rounded-[40px]"
+            style={{
+              background:
+                'radial-gradient(60% 80% at 15% 100%, rgba(201,162,74,0.35) 0%, transparent 70%), radial-gradient(55% 75% at 100% 0%, rgba(22,155,154,0.35) 0%, transparent 70%)',
+            }}
+          />
+
           <div className="relative overflow-hidden rounded-[28px] border border-white/80 shadow-[0_50px_120px_-40px_rgba(6,59,61,0.35)] transition-shadow duration-500 group-hover:shadow-[0_60px_140px_-30px_rgba(6,59,61,0.45)] sm:rounded-[36px]">
 
             <div className="aspect-[16/10] w-full sm:aspect-[16/9]">
@@ -318,9 +328,11 @@ export function Mechanics() {
               />
             </div>
 
-            {/* Video overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-black/20" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
+            {/* Video overlays — concentrated near the bottom so caption text stays
+                readable against the new video's brighter, warm-lit interior,
+                while keeping the recliner itself uncovered. */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-transparent" />
 
             {/* Decorative ring */}
             <motion.div
@@ -335,31 +347,41 @@ export function Mechanics() {
             <div className="pointer-events-none absolute -left-8 bottom-10 h-24 w-24 animate-[spin_60s_linear_infinite] rounded-full border border-dashed border-teal-400/20" />
 
             {/* Video caption */}
-            <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1 p-6 sm:p-10">
+            <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 p-6 sm:gap-2 sm:p-10">
               {/* Keep the short two-line heading on mobile.
                   The supporting section label remains available on desktop. */}
-              <span className="section-label hidden text-white/90 sm:block">
-                Precision in Motion
-              </span>
+              <Reveal y={10} amount={0.5} className="hidden sm:block">
+                <span className="section-label text-white/90 [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]">
+                  Precision in Motion
+                </span>
+              </Reveal>
 
-              <h3 className="mt-0 max-w-xl font-display text-2xl italic text-white sm:mt-1 sm:text-3xl">
-                Quiet technology. Effortless comfort.
-              </h3>
+              <Reveal y={12} delay={0.08} amount={0.5}>
+                <h3 className="mt-0 max-w-xl font-display text-2xl italic text-white [text-shadow:0_2px_18px_rgba(4,33,31,0.5)] sm:mt-1 sm:text-3xl">
+                  Recline into effortless comfort.
+                </h3>
+              </Reveal>
 
-              <p className="mt-1 max-w-lg text-[13px] leading-relaxed text-white/65 sm:text-sm">
-                Climate control, intelligent controls and a smooth electric
-                motor work together beneath the upholstery to create a
-                seamless experience.
-              </p>
-            </div>
+              <Reveal y={12} delay={0.16} amount={0.5}>
+                <p className="mt-1 max-w-lg text-[13px] leading-relaxed text-white/70 sm:text-sm">
+                  Smooth electric movement adjusts the backrest and footrest
+                  with quiet precision, bringing a more relaxed seating
+                  experience to every moment.
+                </p>
+              </Reveal>
 
-            {/* Scroll indicator */}
-            <div className="absolute right-6 top-6 flex items-center gap-2 sm:right-10 sm:top-10">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold-400" />
-
-              <span className="text-[10px] uppercase tracking-widest2 text-white/75">
-                Scroll to witness
-              </span>
+              <Reveal y={8} delay={0.24} amount={0.5}>
+                <span className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md sm:mt-2.5">
+                  <motion.span
+                    className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400 shadow-[0_0_10px_2px_rgba(201,162,74,0.55)]"
+                    animate={{ scale: [1, 1.35, 1], opacity: [0.75, 1, 0.75] }}
+                    transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
+                  />
+                  <span className="text-[9px] font-semibold uppercase tracking-widest text-white/85 sm:text-[10px]">
+                    Smooth Electric Reclining
+                  </span>
+                </span>
+              </Reveal>
             </div>
           </div>
         </motion.div>
