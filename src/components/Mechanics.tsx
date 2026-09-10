@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, Cog, Thermometer, Mic, Radio, Zap } from 'lucide-react'
 import { brand } from '../lib/assets'
@@ -9,6 +9,7 @@ export function Mechanics() {
   const sectionRef = useRef<HTMLElement>(null)
   const visualRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [isVideoReady, setIsVideoReady] = useState(false)
 
   const { scrollYProgress } = useScroll({
     target: visualRef,
@@ -34,11 +35,20 @@ export function Mechanics() {
     const video = videoRef.current
     if (!video) return
 
+    // readyState can already be >= 2 (HAVE_CURRENT_DATA) if the browser
+    // served the video from cache before this effect ran, in which case
+    // the 'loadeddata' listener below would never fire.
+    if (video.readyState >= 2) {
+      setIsVideoReady(true)
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.play().catch(() => { })
-        } else {
+          if (video.paused) {
+            video.play().catch(() => { })
+          }
+        } else if (!video.paused) {
           video.pause()
         }
       },
@@ -315,16 +325,25 @@ export function Mechanics() {
 
           <div className="relative overflow-hidden rounded-[28px] border border-white/80 shadow-[0_50px_120px_-40px_rgba(6,59,61,0.35)] transition-shadow duration-500 group-hover:shadow-[0_60px_140px_-30px_rgba(6,59,61,0.45)] sm:rounded-[36px]">
 
-            <div className="aspect-[16/10] w-full sm:aspect-[16/9]">
+            <div className="relative aspect-[16/10] w-full sm:aspect-[16/9]">
+              {/* Neutral placeholder shown until the current video has an actual
+                  frame decoded — prevents any stale/previous asset from ever
+                  flashing before playback starts. */}
+              <div
+                aria-hidden="true"
+                className={`absolute inset-0 z-10 bg-gradient-to-br from-[#0C302F] to-[#04211F] transition-opacity duration-500 ${isVideoReady ? 'pointer-events-none opacity-0' : 'opacity-100'
+                  }`}
+              />
+
               <video
                 ref={videoRef}
                 className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 src={brand.mechanicsVideo}
-                poster={brand.mechanicsPoster}
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload="auto"
+                onLoadedData={() => setIsVideoReady(true)}
               />
             </div>
 

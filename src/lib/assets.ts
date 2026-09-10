@@ -134,7 +134,6 @@ export const brand = {
   heroVideo: '/videos/hero.mp4',
   heroPoster: '/videos/hero-poster.jpg',
   mechanicsVideo: '/videos/mechanics.mp4',
-  mechanicsPoster: '/videos/mechanics-poster.jpg',
 }
 
 export const contact = {
