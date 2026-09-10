@@ -328,61 +328,98 @@ export function Mechanics() {
               />
             </div>
 
-            {/* Video overlays — concentrated near the bottom so caption text stays
-                readable against the new video's brighter, warm-lit interior,
-                while keeping the recliner itself uncovered. */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-transparent" />
+            {/* Desktop-only video overlays.
+                On mobile the video remains completely clean so no text,
+                gradient, or decorative element covers the recliner. */}
+            <div className="absolute inset-0 hidden sm:block">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-transparent" />
 
-            {/* Decorative ring */}
-            <motion.div
-              style={{
-                rotate: ringRotate,
-                transform: 'translateZ(0)',
-                willChange: 'transform',
-              }}
-              className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full border border-gold-400/25 sm:h-52 sm:w-52"
-            />
+              {/* Decorative ring */}
+              <motion.div
+                style={{
+                  rotate: ringRotate,
+                  transform: 'translateZ(0)',
+                  willChange: 'transform',
+                }}
+                className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full border border-gold-400/25 sm:h-52 sm:w-52"
+              />
 
-            <div className="pointer-events-none absolute -left-8 bottom-10 h-24 w-24 animate-[spin_60s_linear_infinite] rounded-full border border-dashed border-teal-400/20" />
+              <div className="pointer-events-none absolute -left-8 bottom-10 h-24 w-24 animate-[spin_60s_linear_infinite] rounded-full border border-dashed border-teal-400/20" />
 
-            {/* Video caption */}
-            <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 p-6 sm:gap-2 sm:p-10">
-              {/* Keep the short two-line heading on mobile.
-                  The supporting section label remains available on desktop. */}
-              <Reveal y={10} amount={0.5} className="hidden sm:block">
-                <span className="section-label text-white/90 [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]">
-                  Precision in Motion
-                </span>
-              </Reveal>
-
-              <Reveal y={12} delay={0.08} amount={0.5}>
-                <h3 className="mt-0 max-w-xl font-display text-2xl italic text-white [text-shadow:0_2px_18px_rgba(4,33,31,0.5)] sm:mt-1 sm:text-3xl">
-                  Recline into effortless comfort.
-                </h3>
-              </Reveal>
-
-              <Reveal y={12} delay={0.16} amount={0.5}>
-                <p className="mt-1 max-w-lg text-[13px] leading-relaxed text-white/70 sm:text-sm">
-                  Smooth electric movement adjusts the backrest and footrest
-                  with quiet precision, bringing a more relaxed seating
-                  experience to every moment.
-                </p>
-              </Reveal>
-
-              <Reveal y={8} delay={0.24} amount={0.5}>
-                <span className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md sm:mt-2.5">
-                  <motion.span
-                    className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400 shadow-[0_0_10px_2px_rgba(201,162,74,0.55)]"
-                    animate={{ scale: [1, 1.35, 1], opacity: [0.75, 1, 0.75] }}
-                    transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
-                  />
-                  <span className="text-[9px] font-semibold uppercase tracking-widest text-white/85 sm:text-[10px]">
-                    Smooth Electric Reclining
+              {/* Desktop video caption */}
+              <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-10">
+                <Reveal y={10} amount={0.5}>
+                  <span className="section-label text-white/90 [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]">
+                    Precision in Motion
                   </span>
-                </span>
-              </Reveal>
+                </Reveal>
+
+                <Reveal y={12} delay={0.08} amount={0.5}>
+                  <h3 className="mt-1 max-w-xl font-display text-3xl italic text-white [text-shadow:0_2px_18px_rgba(4,33,31,0.5)]">
+                    Recline into effortless comfort.
+                  </h3>
+                </Reveal>
+
+                <Reveal y={12} delay={0.16} amount={0.5}>
+                  <p className="mt-1 max-w-lg text-sm leading-relaxed text-white/70">
+                    Smooth electric movement adjusts the backrest and footrest
+                    with quiet precision, bringing a more relaxed seating
+                    experience to every moment.
+                  </p>
+                </Reveal>
+
+                <Reveal y={8} delay={0.24} amount={0.5}>
+                  <span className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md">
+                    <motion.span
+                      className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400 shadow-[0_0_10px_2px_rgba(201,162,74,0.55)]"
+                      animate={{ scale: [1, 1.35, 1], opacity: [0.75, 1, 0.75] }}
+                      transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                    <span className="text-[10px] font-semibold uppercase tracking-widest text-white/85">
+                      Smooth Electric Reclining
+                    </span>
+                  </span>
+                </Reveal>
+              </div>
             </div>
+          </div>
+
+          {/* Mobile caption — completely outside the video.
+              This guarantees that no text covers any part of the recliner. */}
+          <div className="flex flex-col gap-2 px-2 pb-1 pt-5 sm:hidden">
+            <Reveal y={10} amount={0.5}>
+              <span className="section-label text-teal-700/80">
+                Precision in Motion
+              </span>
+            </Reveal>
+
+            <Reveal y={12} delay={0.08} amount={0.5}>
+              <h3 className="font-display text-2xl italic leading-tight text-[#04211F]">
+                Recline into effortless comfort.
+              </h3>
+            </Reveal>
+
+            <Reveal y={12} delay={0.16} amount={0.5}>
+              <p className="mt-1 max-w-lg text-[13px] leading-relaxed text-[#0C302F]/70">
+                Smooth electric movement adjusts the backrest and footrest
+                with quiet precision, bringing a more relaxed seating
+                experience to every moment.
+              </p>
+            </Reveal>
+
+            <Reveal y={8} delay={0.24} amount={0.5}>
+              <span className="mt-1 inline-flex w-fit items-center gap-2 rounded-full border border-gold-500/20 bg-gold-400/10 px-3 py-1.5">
+                <motion.span
+                  className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500 shadow-[0_0_10px_2px_rgba(201,162,74,0.35)]"
+                  animate={{ scale: [1, 1.35, 1], opacity: [0.75, 1, 0.75] }}
+                  transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <span className="text-[9px] font-semibold uppercase tracking-widest text-teal-800/85">
+                  Smooth Electric Reclining
+                </span>
+              </span>
+            </Reveal>
           </div>
         </motion.div>
       </div>

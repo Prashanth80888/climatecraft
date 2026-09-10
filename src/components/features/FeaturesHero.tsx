@@ -66,7 +66,7 @@ const HOTSPOTS: Hotspot[] = [
     mobilePinY: 63.5,
     cardPosition: 'bottom-left',
     mobileCardClass: 'left-2 top-[30%] sm:left-auto sm:top-auto',
-    previewImage: '/images/recline control.webp',
+    previewImage: '/images/products/climate-craft-grand/06.webp',
   },
 ]
 
